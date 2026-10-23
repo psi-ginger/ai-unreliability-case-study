@@ -1,0 +1,11 @@
+# 3000-Client 5-Minute Live Swarm Report
+- Host: AMD Ryzen 5 / 32GB RAM
+- Active Clients Sustained: 3000 / 3000
+- Total Chats Dispatched: 0
+- Total Moves Dispatched: 0
+- Total Heartbeats Kept Alive: 0
+- Total Packets Recv: 0
+- Average Throughput: 0.00 pkts/sec
+- Errors / Disconnections: 0
+- Proven CPU Time: 16461.89 core-seconds
+- Proven Resident Memory: 44.43 MB

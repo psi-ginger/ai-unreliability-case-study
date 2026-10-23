@@ -28,6 +28,7 @@ async fn main() -> anyhow::Result<()> {
     tracing_subscriber::fmt::init();
     let args = Args::parse();
     let mode = if args.ngrok { EndpointMode::Ngrok } else { EndpointMode::Local };
+    let (stop_tx, _) = tokio::sync::watch::channel(false);
     let n = args.clients.max(1);
     let mut handles = Vec::new();
     for i in 0..n {
@@ -35,6 +36,7 @@ async fn main() -> anyhow::Result<()> {
         let p = args.pass.clone();
         let m = mode;
         let slot = args.slot;
+        let mut rx = stop_tx.subscribe();
         handles.push(tokio::spawn(async move {
             let mut c = CltClient::new(m, u, p);
             let _ = c.connect_front().await;
@@ -43,11 +45,11 @@ async fn main() -> anyhow::Result<()> {
             let _ = c.connect_game(None).await;
             let _ = c.auth_game().await;
             let _ = c.enter_world(slot).await;
-            let (_tx, rx) = tokio::sync::watch::channel(false);
             let _ = c.run_world_loop(rx).await;
         }));
     }
     tokio::time::sleep(std::time::Duration::from_secs(300)).await;
+    let _ = stop_tx.send(true);
     for h in handles { let _ = h.await; }
     let chats = client::client_loop::TOTAL_CHATS.load(std::sync::atomic::Ordering::Relaxed);
     let moves = client::client_loop::TOTAL_MOVES.load(std::sync::atomic::Ordering::Relaxed);
