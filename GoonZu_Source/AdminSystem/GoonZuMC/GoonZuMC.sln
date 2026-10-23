@@ -1,0 +1,44 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GoonZuMC", "GoonZuMC.vcproj", "{851DBCAA-5953-4C0D-816A-817812EE578D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+		Release_English = Release_English
+		Release_Europe = Release_Europe
+		Release_Japan = Release_Japan
+		Release_Korea = Release_Korea
+		Release_NHNChina = Release_NHNChina
+		Release_Taiwan = Release_Taiwan
+		Release_USA = Release_USA
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Debug.ActiveCfg = Debug|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Debug.Build.0 = Debug|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release.ActiveCfg = Release|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release.Build.0 = Release|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_English.ActiveCfg = Release_English|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_English.Build.0 = Release_English|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_Europe.ActiveCfg = Release_Europe|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_Europe.Build.0 = Release_Europe|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_Japan.ActiveCfg = Release_Japan|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_Japan.Build.0 = Release_Japan|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_Korea.ActiveCfg = Release_Korea|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_Korea.Build.0 = Release_Korea|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_NHNChina.ActiveCfg = Release_NHNChina|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_NHNChina.Build.0 = Release_NHNChina|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_Taiwan.ActiveCfg = Release_Taiwan|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_Taiwan.Build.0 = Release_Taiwan|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_USA.ActiveCfg = Release_USA|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release_USA.Build.0 = Release_USA|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

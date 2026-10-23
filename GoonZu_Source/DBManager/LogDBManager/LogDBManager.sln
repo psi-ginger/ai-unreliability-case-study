@@ -1,0 +1,44 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LogDBManager", "LogDBManager.vcproj", "{70F13F68-FB33-477A-AC9B-371F9D5F7347}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Debug_ToolsLog = Debug_ToolsLog
+		Release = Release
+		Release_China = Release_China
+		Release_English = Release_English
+		Release_Europe = Release_Europe
+		Release_Japan = Release_Japan
+		Release_Korea = Release_Korea
+		Release_Taiwan = Release_Taiwan
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Debug.ActiveCfg = Debug|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Debug.Build.0 = Debug|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Debug_ToolsLog.ActiveCfg = Debug_ToolsLog|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Debug_ToolsLog.Build.0 = Debug_ToolsLog|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release.ActiveCfg = Release|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release.Build.0 = Release|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release_China.ActiveCfg = Release_China|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release_China.Build.0 = Release_China|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release_English.ActiveCfg = Release_English|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release_English.Build.0 = Release_English|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release_Europe.ActiveCfg = Release_Europe|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release_Europe.Build.0 = Release_Europe|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release_Japan.ActiveCfg = Release_Japan|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release_Japan.Build.0 = Release_Japan|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release_Korea.ActiveCfg = Release_Korea|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release_Korea.Build.0 = Release_Korea|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release_Taiwan.ActiveCfg = Release_Taiwan|Win32
+		{70F13F68-FB33-477A-AC9B-371F9D5F7347}.Release_Taiwan.Build.0 = Release_Taiwan|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

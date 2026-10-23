@@ -1,0 +1,179 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.9782.0 (afdeb67f).
+//
+// bxpgincli.tlh
+//
+// C++ source equivalent of Win32 type library bxpgincli.tlb
+// compiler-generated file created 10/26/04 at 18:23:39 - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+namespace BXPGINCLILib {
+
+//
+// Forward references and typedefs
+//
+
+struct __declspec(uuid("461605ab-3a52-4922-9659-2050f7143016"))
+/* dual interface */ IPGTXCli;
+struct /* coclass */ PGTXCli;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(IPGTXCli, __uuidof(IPGTXCli));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("461605ab-3a52-4922-9659-2050f7143016"))
+IPGTXCli : IDispatch
+{
+    //
+    // Wrapper methods for error-handling
+    //
+
+    _variant_t ReqGive (
+        VARIANT * vsEvent_cd,
+        VARIANT * vsMenu_id,
+        VARIANT * vsCompanyCd,
+        VARIANT * vsUser_id,
+        VARIANT * vsUser_no,
+        VARIANT * vsAgTxNo,
+        VARIANT * vIAmount,
+        VARIANT * vsBxTxNo,
+        VARIANT * vsRetVal,
+        VARIANT * vsRetMessage );
+    _variant_t CancelBonus (
+        VARIANT * vsEvent_cd,
+        VARIANT * vsMenu_id,
+        VARIANT * vsCompanyCd,
+        VARIANT * vsUser_id,
+        VARIANT * vsUser_no,
+        VARIANT * vsAgTxNo,
+        VARIANT * vIAmount,
+        VARIANT * vsBxTxNo,
+        VARIANT * vsRetVal,
+        VARIANT * vsRetMessage );
+    _variant_t PkgMeterRate (
+        VARIANT * vsUser_id,
+        VARIANT * vsUser_no,
+        VARIANT * vsCompanyCd,
+        VARIANT * vsEvent_cd,
+        VARIANT * vlAmount,
+        VARIANT * vsStart_dt,
+        VARIANT * vsEnd_dt,
+        VARIANT * vsBxAID,
+        VARIANT * vsRetVal,
+        VARIANT * vsRetMessage );
+    _variant_t CancelPkgCash (
+        VARIANT * vsUser_id,
+        VARIANT * vsUser_no,
+        VARIANT * vsCompanyCd,
+        VARIANT * vsEvent_cd,
+        VARIANT * vlAmount,
+        VARIANT * vsStart_dt,
+        VARIANT * vsEnd_dt,
+        VARIANT * vsBxAID,
+        VARIANT * vsRetVal,
+        VARIANT * vsRetMessage );
+    _variant_t GetUserPkgCash (
+        VARIANT * vsUser_no,
+        VARIANT * vsCompany_cd,
+        VARIANT * vsUser_id,
+        VARIANT * vIPkg_no,
+        VARIANT * vIRemainPkgAmt,
+        VARIANT * vsRetVal,
+        VARIANT * vsRetMessage );
+
+    //
+    // Raw methods provided by interface
+    //
+
+    virtual HRESULT __stdcall raw_ReqGive (
+        VARIANT * vsEvent_cd,
+        VARIANT * vsMenu_id,
+        VARIANT * vsCompanyCd,
+        VARIANT * vsUser_id,
+        VARIANT * vsUser_no,
+        VARIANT * vsAgTxNo,
+        VARIANT * vIAmount,
+        VARIANT * vsBxTxNo,
+        VARIANT * vsRetVal,
+        VARIANT * vsRetMessage,
+        VARIANT * pbstrReturn ) = 0;
+    virtual HRESULT __stdcall raw_CancelBonus (
+        VARIANT * vsEvent_cd,
+        VARIANT * vsMenu_id,
+        VARIANT * vsCompanyCd,
+        VARIANT * vsUser_id,
+        VARIANT * vsUser_no,
+        VARIANT * vsAgTxNo,
+        VARIANT * vIAmount,
+        VARIANT * vsBxTxNo,
+        VARIANT * vsRetVal,
+        VARIANT * vsRetMessage,
+        VARIANT * pbstrReturn ) = 0;
+    virtual HRESULT __stdcall raw_PkgMeterRate (
+        VARIANT * vsUser_id,
+        VARIANT * vsUser_no,
+        VARIANT * vsCompanyCd,
+        VARIANT * vsEvent_cd,
+        VARIANT * vlAmount,
+        VARIANT * vsStart_dt,
+        VARIANT * vsEnd_dt,
+        VARIANT * vsBxAID,
+        VARIANT * vsRetVal,
+        VARIANT * vsRetMessage,
+        VARIANT * pbstrReturn ) = 0;
+    virtual HRESULT __stdcall raw_CancelPkgCash (
+        VARIANT * vsUser_id,
+        VARIANT * vsUser_no,
+        VARIANT * vsCompanyCd,
+        VARIANT * vsEvent_cd,
+        VARIANT * vlAmount,
+        VARIANT * vsStart_dt,
+        VARIANT * vsEnd_dt,
+        VARIANT * vsBxAID,
+        VARIANT * vsRetVal,
+        VARIANT * vsRetMessage,
+        VARIANT * pbstrReturn ) = 0;
+    virtual HRESULT __stdcall raw_GetUserPkgCash (
+        VARIANT * vsUser_no,
+        VARIANT * vsCompany_cd,
+        VARIANT * vsUser_id,
+        VARIANT * vIPkg_no,
+        VARIANT * vIRemainPkgAmt,
+        VARIANT * vsRetVal,
+        VARIANT * vsRetMessage,
+        VARIANT * pbstrReturn ) = 0;
+};
+
+struct __declspec(uuid("462f3e9c-e6f2-4374-8889-04f534731088"))
+PGTXCli;
+    // [ default ] interface IPGTXCli
+
+//
+// Named GUID constants initializations
+//
+
+extern "C" const GUID __declspec(selectany) LIBID_BXPGINCLILib =
+    {0xe9e205f8,0x3195,0x4e98,{0xb7,0xcf,0x77,0x5f,0x05,0xa2,0xe6,0xf0}};
+extern "C" const GUID __declspec(selectany) IID_IPGTXCli =
+    {0x461605ab,0x3a52,0x4922,{0x96,0x59,0x20,0x50,0xf7,0x14,0x30,0x16}};
+extern "C" const GUID __declspec(selectany) CLSID_PGTXCli =
+    {0x462f3e9c,0xe6f2,0x4374,{0x88,0x89,0x04,0xf5,0x34,0x73,0x10,0x88}};
+
+//
+// Wrapper method implementations
+//
+
+#include "bxpgincli.tli"
+
+} // namespace BXPGINCLILib
+
+#pragma pack(pop)

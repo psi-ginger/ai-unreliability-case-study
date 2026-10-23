@@ -1,0 +1,351 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\GoonzuUserlog.rc2""  // Microsoft Visual C++에서 편집되지 않은 리소스\r\n"
+    "#include ""afxres.rc""         // 표준 구성 요소\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\GoonzuUserlog.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "GoonzuUserlog 정보"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "GoonzuUserlog Version 1.0",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2005",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "확인",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_GOONZUUSERLOG_DIALOG DIALOGEX 0, 0, 211, 66
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "GoonzuUserlog"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT1,65,15,67,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,65,35,67,14,ES_PASSWORD | ES_AUTOHSCROLL
+    COMBOBOX        IDC_COMBO_SERVERSELECT,138,15,59,44,CBS_DROPDOWN | 
+                    WS_TABSTOP
+    DEFPUSHBUTTON   "로그인",IDOK,138,33,58,16
+    LTEXT           "아이디:",IDC_STATIC,17,18,31,13
+    LTEXT           "비밀번호:",IDC_STATIC,17,35,42,13
+END
+
+IDD_DIALOG1 DIALOGEX 0, 0, 559, 414
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_OVERLAPPEDWINDOW
+CAPTION "GoonzuUserLog"
+MENU IDR_USERLOG_MENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_DATETIMEPICKER_DATE,"SysDateTimePick32",
+                    DTS_RIGHTALIGN | DTS_LONGDATEFORMAT | WS_TABSTOP,45,7,
+                    121,15
+    CONTROL         "",IDC_DATETIMEPICKER_STARTTIME,"SysDateTimePick32",
+                    DTS_RIGHTALIGN | DTS_UPDOWN | WS_TABSTOP | 0x8,45,25,54,
+                    15
+    CONTROL         "",IDC_DATETIMEPICKER_ENDTIME,"SysDateTimePick32",
+                    DTS_RIGHTALIGN | DTS_UPDOWN | WS_TABSTOP | 0x8,112,25,54,
+                    15
+    COMBOBOX        IDC_COMBO8,178,7,73,66,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDC_EDIT2,292,7,73,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,292,22,73,12,ES_AUTOHSCROLL
+    LISTBOX         IDC_LIST1,378,19,75,58,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDC_EDIT_USER_SEARCH,470,19,76,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "검색시작",IDC_BUTTON3,466,40,86,41
+    EDITTEXT        IDC_EDIT_SEARCH,81,69,66,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "찾기",IDC_BUTTON_SEARCH,148,70,33,12
+    PUSHBUTTON      "미선택",IDC_BUTTON_UNSELECTED_DELETE,306,70,28,12
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | 
+                    WS_TABSTOP,7,86,545,218
+    EDITTEXT        IDC_EDIT6,7,305,545,31,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT4,80,357,114,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT5,80,375,53,15,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "정보 보기",IDC_BUTTON2,141,376,53,15
+    COMBOBOX        IDC_COMBO9,209,351,100,72,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDC_EDIT1,209,367,61,15,ES_AUTOHSCROLL
+    PUSHBUTTON      "변환",IDC_BUTTON1,273,367,35,15
+    PUSHBUTTON      "열기",IDC_BUTTON_LOAD,449,379,93,17
+    PUSHBUTTON      "저장",IDC_BUTTON_SAVEFILE,449,355,93,17,WS_GROUP
+    LTEXT           "이름:",IDC_STATIC,270,9,19,10
+    LTEXT           "아이템:",IDC_STATIC,262,24,27,10
+    LTEXT           "바이너리 데이타",IDC_STATIC,12,359,66,10
+    LTEXT           "아이템 유니크",IDC_STATIC,12,377,61,10
+    GROUPBOX        "바이너리로부터 아이템 정보 가져오기",IDC_STATIC,7,340,
+                    194,65
+    GROUPBOX        "파일 처리",IDC_STATIC,438,340,114,65
+    GROUPBOX        "이름 변환",IDC_STATIC,204,340,111,65
+    GROUPBOX        "필터옵션",IDC_STATIC,373,7,86,75
+    EDITTEXT        IDC_EDIT_ROWCOUNT,7,73,65,12,ES_CENTER | ES_AUTOHSCROLL | 
+                    ES_READONLY
+    GROUPBOX        "결과내검색",IDC_STATIC,78,56,258,29
+    GROUPBOX        "상세검색",IDC_STATIC,466,7,86,31
+    LTEXT           "검색시간:",IDC_STATIC,7,28,35,8
+    LTEXT           "검색일:",IDC_STATIC,7,10,28,8
+    PUSHBUTTON      "새창으로 항목 내보내기",IDC_BUTTON_SENDCHILDWINDOW,186,
+                    70,90,12
+    PUSHBUTTON      "선택",IDC_BUTTON_SELECTED_DELETE,282,70,22,12
+    GROUPBOX        "삭제",IDC_STATIC,280,61,56,24
+    LTEXT           "~",IDC_STATIC,103,29,8,8
+    GROUPBOX        "날자 변환",IDC_STATIC,318,340,117,65
+    EDITTEXT        IDC_EDIT_DATEVARY,328,357,49,15,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "변환",IDC_BUTTON_DATEVARY,382,357,42,15
+    EDITTEXT        IDC_EDIT_GAMETIME,328,375,96,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_VIEWNAMECHANGE,209,385,100,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+END
+
+IDD_DIALOG2 DIALOGEX 0, 0, 168, 165
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "아이템 설명"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "화면닫기",IDOK,103,138,50,14
+    EDITTEXT        IDC_EDIT1,7,7,154,128,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    ES_READONLY
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "TODO: <회사 이름>"
+            VALUE "FileDescription", "TODO: <파일 설명>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "GoonzuUserlog.exe"
+            VALUE "LegalCopyright", "TODO: (c) <회사 이름>.  All rights reserved."
+            VALUE "OriginalFilename", "GoonzuUserlog.exe"
+            VALUE "ProductName", "TODO: <제품 이름>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "변환", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_GOONZUUSERLOG_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 204
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 59
+    END
+
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 552
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 405
+    END
+
+    IDD_DIALOG2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 161
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 158
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// HTML
+//
+
+IDR_HTML_ITEMEXPLAIN    HTML                    "ItemExplain.htm"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_USERLOG_MENU MENU 
+BEGIN
+    POPUP "파일(&F)"
+    BEGIN
+        MENUITEM "열기(&O)...\tCtrl+O",         ID_OPEN_FILE
+        MENUITEM "저장(&S)\tCtrl+S",            ID_SAVE_FILE
+        MENUITEM SEPARATOR
+        MENUITEM "끝내기(&X)",                  ID_EXIT_APP
+    END
+    POPUP "편집(&E)"
+    BEGIN
+        MENUITEM "새창으로 항목 내보내기(&S)\tCtrl+T", ID_SEND_DATA
+        MENUITEM SEPARATOR
+        MENUITEM "선택된 열 삭제(&D)\tCtrl+D, Del", ID_DELETE_SELECTED
+        MENUITEM "선택되지않은 열 삭제(&E)\tCtrl+Shift+D", 
+                                                ID_DELETE_UNSELECTED
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_USERLOG_ACCEL ACCELERATORS 
+BEGIN
+    "S",            ID_SAVE_FILE,           VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_OPEN_FILE,           VIRTKEY, CONTROL, NOINVERT
+    "T",            ID_SEND_DATA,           VIRTKEY, CONTROL, NOINVERT
+    "D",            ID_DELETE_SELECTED,     VIRTKEY, CONTROL, NOINVERT
+    "D",            ID_DELETE_UNSELECTED,   VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "GoonzuUserlog 정보(&A)..."
+END
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\GoonzuUserlog.rc2"  // Microsoft Visual C++에서 편집되지 않은 리소스
+#include "afxres.rc"         // 표준 구성 요소
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

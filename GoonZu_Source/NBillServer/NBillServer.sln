@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NBillServer", "NBillServer.vcproj", "{878E0197-A3CA-471A-A335-999D4C408AE1}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{878E0197-A3CA-471A-A335-999D4C408AE1}.Debug.ActiveCfg = Debug|Win32
+		{878E0197-A3CA-471A-A335-999D4C408AE1}.Debug.Build.0 = Debug|Win32
+		{878E0197-A3CA-471A-A335-999D4C408AE1}.Release.ActiveCfg = Release|Win32
+		{878E0197-A3CA-471A-A335-999D4C408AE1}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

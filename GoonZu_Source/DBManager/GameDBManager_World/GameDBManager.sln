@@ -1,0 +1,74 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameDBManager_World", "GameDBManager.vcproj", "{135DF2F2-D739-47EE-A577-A374180C834F}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Debug_China = Debug_China
+		Debug_Dev = Debug_Dev
+		Debug_English = Debug_English
+		Debug_Europe = Debug_Europe
+		Debug_Japan = Debug_Japan
+		Debug_Korea = Debug_Korea
+		Debug_Korea_Alpha = Debug_Korea_Alpha
+		Debug_Korea_DBGW = Debug_Korea_DBGW
+		Debug_Taiwan = Debug_Taiwan
+		Debug_USA = Debug_USA
+		Release = Release
+		Release_China = Release_China
+		Release_English = Release_English
+		Release_Europe = Release_Europe
+		Release_Japan = Release_Japan
+		Release_Korea = Release_Korea
+		Release_NHNChina = Release_NHNChina
+		Release_Taiwan = Release_Taiwan
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug.ActiveCfg = Debug_China|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug.Build.0 = Debug_China|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_China.ActiveCfg = Debug_China|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_China.Build.0 = Debug_China|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Dev.ActiveCfg = Debug_Dev|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Dev.Build.0 = Debug_Dev|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_English.ActiveCfg = Debug_English|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_English.Build.0 = Debug_English|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Europe.ActiveCfg = Debug_Europe|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Europe.Build.0 = Debug_Europe|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Japan.ActiveCfg = Debug_Japan|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Japan.Build.0 = Debug_Japan|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Korea.ActiveCfg = Debug_Korea|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Korea.Build.0 = Debug_Korea|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Korea_Alpha.ActiveCfg = Debug_Korea_Alpha|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Korea_Alpha.Build.0 = Debug_Korea_Alpha|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Korea_DBGW.ActiveCfg = Debug_Korea_DBGW|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Korea_DBGW.Build.0 = Debug_Korea_DBGW|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Taiwan.ActiveCfg = Debug_Taiwan|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_Taiwan.Build.0 = Debug_Taiwan|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_USA.ActiveCfg = Debug_USA|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Debug_USA.Build.0 = Debug_USA|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release.ActiveCfg = Release|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release.Build.0 = Release|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_China.ActiveCfg = Release_China|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_China.Build.0 = Release_China|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_English.ActiveCfg = Release_English|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_English.Build.0 = Release_English|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_Europe.ActiveCfg = Release_Europe|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_Europe.Build.0 = Release_Europe|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_Japan.ActiveCfg = Release_Japan|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_Japan.Build.0 = Release_Japan|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_Korea.ActiveCfg = Release_Korea|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_Korea.Build.0 = Release_Korea|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_NHNChina.ActiveCfg = Release_NHNChina|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_NHNChina.Build.0 = Release_NHNChina|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_Taiwan.ActiveCfg = Release_Taiwan|Win32
+		{135DF2F2-D739-47EE-A577-A374180C834F}.Release_Taiwan.Build.0 = Release_Taiwan|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

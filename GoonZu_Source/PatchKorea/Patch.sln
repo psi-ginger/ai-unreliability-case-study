@@ -1,0 +1,56 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Patch", "Patch.vcproj", "{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+		Release_Japan = Release_Japan
+		Release_Japan_User_Test = Release_Japan_User_Test
+		ReleaseChina = ReleaseChina
+		ReleaseEnglish = ReleaseEnglish
+		ReleaseEUROPE = ReleaseEUROPE
+		ReleaseKorea = ReleaseKorea
+		ReleaseKorea_New = ReleaseKorea_New
+		ReleaseNetmarble = ReleaseNetmarble
+		ReleaseNHNChina = ReleaseNHNChina
+		ReleaseTaiwan = ReleaseTaiwan
+		ReleaseUSA = ReleaseUSA
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.Debug.ActiveCfg = Debug|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.Debug.Build.0 = Debug|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.Release.ActiveCfg = Debug|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.Release.Build.0 = Debug|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.Release_Japan.ActiveCfg = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.Release_Japan.Build.0 = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.Release_Japan_User_Test.ActiveCfg = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.Release_Japan_User_Test.Build.0 = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseChina.ActiveCfg = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseChina.Build.0 = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseEnglish.ActiveCfg = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseEnglish.Build.0 = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseEUROPE.ActiveCfg = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseEUROPE.Build.0 = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseKorea.ActiveCfg = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseKorea.Build.0 = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseKorea_New.ActiveCfg = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseKorea_New.Build.0 = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseNetmarble.ActiveCfg = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseNetmarble.Build.0 = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseNHNChina.ActiveCfg = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseNHNChina.Build.0 = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseTaiwan.ActiveCfg = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseTaiwan.Build.0 = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseUSA.ActiveCfg = ReleaseKorea_New|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseUSA.Build.0 = ReleaseKorea_New|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

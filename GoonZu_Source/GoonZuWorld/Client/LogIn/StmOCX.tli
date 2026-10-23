@@ -1,0 +1,32 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.9782.0 (c0a47778).
+//
+// StmOCX.tli
+//
+// Wrapper implementations for Win32 type library StmOCX.dll
+// compiler-generated file created 07/26/06 at 15:55:13 - DO NOT EDIT!
+
+#pragma once
+
+//
+// interface IStm wrapper method implementations
+//
+
+inline _bstr_t IStm::ioVersion ( ) {
+    BSTR _result;
+    HRESULT _hr = raw_ioVersion(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline _bstr_t IStm::ioBegin ( ) {
+    BSTR _result;
+    HRESULT _hr = raw_ioBegin(&_result);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _bstr_t(_result, false);
+}
+
+inline HRESULT IStm::ioEnd ( _bstr_t blackbox ) {
+    HRESULT _hr = raw_ioEnd(blackbox);
+    if (FAILED(_hr)) _com_issue_errorex(_hr, this, __uuidof(this));
+    return _hr;
+}

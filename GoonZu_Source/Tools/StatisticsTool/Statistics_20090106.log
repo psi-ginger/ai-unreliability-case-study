@@ -1,0 +1,2 @@
+if( type(NStatistics) ~= "table" ) then NStatistics = {} end
+-- time:0ms

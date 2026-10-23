@@ -1,0 +1,34 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GoonZuMC", "GoonZuMC.vcproj", "{851DBCAA-5953-4C0D-816A-817812EE578D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {CC63D246-00FC-4CC8-A80A-A005E2277287}
+		SccProjectUniqueName1 = GoonZuMC.vcproj
+		SccProjectName1 = \u0022$/0901OBT_GOONZU\u0022,\u0020SYMAAAAA
+		SccLocalPath1 = ..\\..
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection1 = AdminSystem\\GOONZUChinaMC\\
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Debug.ActiveCfg = Debug|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Debug.Build.0 = Debug|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release.ActiveCfg = Release|Win32
+		{851DBCAA-5953-4C0D-816A-817812EE578D}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<directory>
+	<service namespace="purple.promoter/sqlmap" description="중국 NHNCHINA Promoter System 개발용 sqlmap">
+		<group name="group" description="기본 group">
+			<host address="218.240.11.176" weight="1">
+				<port number="4053" type="npc/tcp"/>
+			</host>
+		</group>
+	</service>
+</directory>

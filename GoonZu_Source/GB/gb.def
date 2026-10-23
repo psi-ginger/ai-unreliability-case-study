@@ -1,0 +1,4 @@
+LIBRARY	"gb.dll"
+EXPORTS
+EncryptBill Private
+

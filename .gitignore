@@ -3,3 +3,17 @@ Cargo.lock
 **/*.rs.bk
 *.user
 *.suo
+
+# C++ Build & Cache Artifacts
+*.obj
+*.pdb
+*.ncb
+*.idb
+*.pch
+*.ilk
+*.exp
+[Dd]ebug/
+[Rr]elease/
+build_obj_*/
+ipch/
+*.tlog

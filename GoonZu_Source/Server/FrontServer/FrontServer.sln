@@ -1,0 +1,41 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FrontServer", "FrontServer.vcproj", "{5E2FAD34-80F8-4B48-BC6C-90891513F167}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+		Release_China = Release_China
+		Release_English = Release_English
+		Release_Europe = Release_Europe
+		Release_Japan = Release_Japan
+		Release_Korea = Release_Korea
+		Release_Taiwan = Release_Taiwan
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Debug.ActiveCfg = Debug|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Debug.Build.0 = Debug|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release.ActiveCfg = Release|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release.Build.0 = Release|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release_China.ActiveCfg = Release_China|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release_China.Build.0 = Release_China|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release_English.ActiveCfg = Release_English|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release_English.Build.0 = Release_English|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release_Europe.ActiveCfg = Release_Europe|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release_Europe.Build.0 = Release_Europe|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release_Japan.ActiveCfg = Release_Japan|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release_Japan.Build.0 = Release_Japan|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release_Korea.ActiveCfg = Release_Korea|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release_Korea.Build.0 = Release_Korea|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release_Taiwan.ActiveCfg = Release_Taiwan|Win32
+		{5E2FAD34-80F8-4B48-BC6C-90891513F167}.Release_Taiwan.Build.0 = Release_Taiwan|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8963 @@
+//---------------------------------
+// 2003/8/8 김태곤
+//---------------------------------
+//
+
+#include <Stdio.h>
+#include "../../../CommonLogic/CommonLogic.h"
+#include "cltItem.h"
+#include "..\..\..\CommonLogic\AttackType\AttackType.h"
+#include "..\..\Skill\Skill.h"
+#include "..\..\Skill\Skill-Manager.h"
+#include "../../../CommonLogic/TextMgr/TextMgr.h"
+#include "../../../../NLib/NDataLoader.h"
+#include "../../../../NLib/NFile.h"
+#include "../../../../NLib/NUtil.h"
+#include "../../Common/Char/CharCommon/Char-Common.h"
+
+extern cltCommonLogic* pclClient;
+
+// 아이템 타입의 속성.
+void cltItemManagerCommon::SetItemType()
+{
+	//검
+	TCHAR* pText = GetTxtFromMgr(2366);
+	SetItemType(ITEMTYPE_SWORD,		ITEMATB_OBJECT|ITEMATB_WEAPON|ITEMATB_SWORD|ITEMATB_NEARWEAPON,	ITEMATTACH_WEAPON|ITEMATTACH_NEARWEAPON|ITEMATTACH_DURABLE,					TEXT("SWORD"),	pText);
+	//창
+	pText = GetTxtFromMgr(2368);
+	SetItemType(ITEMTYPE_SPEAR,		ITEMATB_OBJECT|ITEMATB_WEAPON|ITEMATB_SPEAR|ITEMATB_NEARWEAPON,	ITEMATTACH_WEAPON|ITEMATTACH_NEARWEAPON|ITEMATTACH_DURABLE,					TEXT("SPEAR"),	pText);
+	//도끼
+	pText = GetTxtFromMgr(2370);
+	SetItemType(ITEMTYPE_AXE,		ITEMATB_OBJECT|ITEMATB_WEAPON|ITEMATB_AXE|ITEMATB_NEARWEAPON,	ITEMATTACH_WEAPON|ITEMATTACH_NEARWEAPON|ITEMATTACH_DURABLE,					TEXT("AXE"),		pText);
+	//활
+	pText = GetTxtFromMgr(2372);
+	SetItemType(ITEMTYPE_BOW,		ITEMATB_OBJECT|ITEMATB_WEAPON|ITEMATB_BOW|ITEMATB_FARWEAPON,	ITEMATTACH_WEAPON|ITEMATTACH_FARWEAPON|ITEMATTACH_DURABLE,					TEXT("BOW"),		pText);
+	//총
+	pText = GetTxtFromMgr(2374);
+	SetItemType(ITEMTYPE_GUN,		ITEMATB_OBJECT|ITEMATB_WEAPON|ITEMATB_GUN|ITEMATB_FARWEAPON,	ITEMATTACH_WEAPON|ITEMATTACH_FARWEAPON|ITEMATTACH_DURABLE,					TEXT("GUN"),		pText);
+	//지팡이
+	pText = GetTxtFromMgr(2376);
+	SetItemType(ITEMTYPE_STAFF,		ITEMATB_OBJECT|ITEMATB_WEAPON|ITEMATB_STAFF|ITEMATB_NEARWEAPON|ITEMATB_FARWEAPON,	ITEMATTACH_WEAPON|ITEMATTACH_FARWEAPON|ITEMATTACH_DURABLE, TEXT("STAFF"),	pText);
+	//투구
+	pText = GetTxtFromMgr(1024);
+	SetItemType(ITEMTYPE_HELMET,	ITEMATB_OBJECT|ITEMATB_ARMOUR|ITEMATB_UPARMOUR|ITEMATB_HELMET|ITEMATB_TRADESERVER,	ITEMATTACH_ARMOUR|ITEMATTACH_UPARMOUR|ITEMATTACH_HELMET|ITEMATTACH_DURABLE,	TEXT("HELMET"),	pText);
+	//갑옷
+	pText = GetTxtFromMgr(1026);
+	SetItemType(ITEMTYPE_ARMOUR,	ITEMATB_OBJECT|ITEMATB_ARMOUR|ITEMATB_UPARMOUR|ITEMATB_TRADESERVER,		ITEMATTACH_ARMOUR|ITEMATTACH_UPARMOUR|ITEMATTACH_DURABLE,					TEXT("ARMOUR"),	pText);
+	//허리띠
+	pText = GetTxtFromMgr(1029);
+	SetItemType(ITEMTYPE_BELT,		ITEMATB_OBJECT|ITEMATB_ARMOUR|ITEMATB_BELT|ITEMATB_TRADESERVER,		ITEMATTACH_ARMOUR|ITEMATTACH_BELT|ITEMATTACH_DURABLE,						TEXT("BELT"),		pText);
+	//신발
+	pText = GetTxtFromMgr(1030);
+	SetItemType(ITEMTYPE_SHOES,		ITEMATB_OBJECT|ITEMATB_ARMOUR|ITEMATB_SHOES,	ITEMATTACH_ARMOUR|ITEMATTACH_SHOES|ITEMATTACH_DURABLE,	TEXT("SHOES"),	pText);
+	//목걸이
+	pText = GetTxtFromMgr(1031);
+	SetItemType(ITEMTYPE_NECK,		ITEMATB_OBJECT|ITEMATB_NECK,	ITEMATTACH_NECK|ITEMATTACH_DURABLE,		TEXT("NECK"),		pText);
+	//반지
+	pText = GetTxtFromMgr(1028);
+	SetItemType(ITEMTYPE_RING,		ITEMATB_OBJECT|ITEMATB_RING,	ITEMATTACH_RING|ITEMATTACH_DURABLE,		TEXT("RING"),		pText);
+	//가방
+	pText = GetTxtFromMgr(1033);
+	SetItemType(ITEMTYPE_BAG,		ITEMATB_OBJECT|ITEMATB_ARMOUR,	ITEMATTACH_BAG|ITEMATTACH_DURABLE,		TEXT("BAG"),			pText);
+	//모자
+	pText = GetTxtFromMgr(1025);
+	SetItemType(ITEMTYPE_HAT,		ITEMATB_OBJECT|ITEMATB_ARMOUR|ITEMATB_UPARMOUR|ITEMATB_HAT,		ITEMATTACH_ARMOUR|ITEMATTACH_UPARMOUR|ITEMATTACH_HAT|ITEMATTACH_DURABLE,	TEXT("HAT"),		pText);	
+	//의복
+	pText = GetTxtFromMgr(1027);
+	SetItemType(ITEMTYPE_DRESS,		ITEMATB_OBJECT|ITEMATB_ARMOUR|ITEMATB_UPARMOUR,		ITEMATTACH_ARMOUR|ITEMATTACH_UPARMOUR|ITEMATTACH_DRESS|ITEMATTACH_DURABLE,	TEXT("DRESS"),	pText);
+	//망토
+	pText = GetTxtFromMgr(1032);
+	SetItemType(ITEMTYPE_MANTLE,	ITEMATB_OBJECT|ITEMATB_ARMOUR|ITEMATB_REPAIR, 	ITEMATTACH_MANTLE|ITEMATTACH_DURABLE,	TEXT("MANTLE"),		pText);
+	//음식
+	pText = GetTxtFromMgr(2885);
+	SetItemType(ITEMTYPE_FOOD,		ITEMATB_FIRSTACTION|ITEMATB_FIRSTWARITEM,	ITEMATTACH_NULL,		TEXT("FOOD"),			pText);
+	//약
+	pText = GetTxtFromMgr(2887);
+	SetItemType(ITEMTYPE_HEAL,		ITEMATB_HEAL|ITEMATB_FIRSTACTION|ITEMATB_FIRSTWARITEM|ITEMATB_TRADESERVER,	ITEMATTACH_NULL,		TEXT("HEAL"),			pText);
+	//책
+	pText = GetTxtFromMgr(2888);
+	SetItemType(ITEMTYPE_BOOK,		ITEMATB_BOOK|ITEMATB_FIRSTWARITEM,	ITEMATTACH_NULL,		TEXT("BOOK"),			pText);
+	//상자
+	pText = GetTxtFromMgr(5720);//텍스트매니저는 암거나 등극
+	SetItemType(ITEMTYPE_BOX,		ITEMATB_BOX,					ITEMATTACH_NULL,	TEXT("Box"),			pText);//박스아이템
+	//광물
+	pText = GetTxtFromMgr(2889);
+	SetItemType(ITEMTYPE_MINERAL,	ITEMATB_MINERAL|ITEMATB_FIRSTWARITEM|ITEMATB_TRADESERVER,		ITEMATTACH_NULL,		TEXT("MINERAL"),		pText);
+	//목재
+	pText = GetTxtFromMgr(2891);
+	SetItemType(ITEMTYPE_TREE,		ITEMATB_FIRSTWARITEM |ITEMATB_TRADESERVER,		ITEMATTACH_NULL,		TEXT("TREE"),			pText);
+	//섬유
+	pText = GetTxtFromMgr(2892);
+	SetItemType(ITEMTYPE_CLOTH,		ITEMATB_CLOTH|ITEMATB_FIRSTWARITEM|ITEMATB_TRADESERVER,		ITEMATTACH_NULL,	TEXT("CLOTH"),		pText);
+	//수산물
+	pText = GetTxtFromMgr(2886);
+	SetItemType(ITEMTYPE_SEAFOOD,	ITEMATB_FIRSTACTION|ITEMATB_FIRSTWARITEM,	ITEMATTACH_NULL,	TEXT("SEAFOOD"),		pText);
+
+	//KHY -아트펙트 설정시에만 보인다. - ITEMATB_HIDECOMBOLIST
+	if(pclClient->IsCountrySwitch(Switch_Artifact))
+	{
+		//결정체
+		pText = GetTxtFromMgr(8062);//텍스트매니저는 암거나 등극
+		//KHY - 0227 - 결정체 (크리스탈) 제조 추가. - 결정체 타입. -이상?
+		//SetItemType(ITEMTYPE_CRYSTAL,		ITEMATB_OBJECT|ITEMATB_CRYSTAL,				ITEMATTACH_NULL,	TEXT("ATIFACTCRYSTAL"),			pText);//결정체.
+		SetItemType(ITEMTYPE_CRYSTAL,		ITEMATB_CRYSTAL,		ITEMATTACH_NULL,	TEXT("ATIFACTCRYSTAL"),			pText);//결정체.
+
+		//혼함물
+		pText = GetTxtFromMgr(8063);//텍스트매니저는 암거나 등극
+		SetItemType(ITEMTYPE_COMPOSITIONMATERIAL,	ITEMATB_COMPOSITIONMATERIAL,	ITEMATTACH_NULL,	TEXT("CompositionManterial"),			pText);//합성제료
+	}
+	else
+	{
+		//결정체
+		pText = GetTxtFromMgr(8062);//텍스트매니저는 암거나 등극
+		//KHY - 0227 - 결정체 (크리스탈) 제조 추가. - 결정체 타입. -이상?
+		SetItemType(ITEMTYPE_CRYSTAL,		ITEMATB_OBJECT|ITEMATB_CRYSTAL|ITEMATB_HIDECOMBOLIST,	ITEMATTACH_NULL,	TEXT("ATIFACTCRYSTAL"),		pText);//결정체.
+		//혼함물
+		pText = GetTxtFromMgr(8063);//텍스트매니저는 암거나 등극
+		SetItemType(ITEMTYPE_COMPOSITIONMATERIAL,	ITEMATB_COMPOSITIONMATERIAL|ITEMATB_HIDECOMBOLIST,	ITEMATTACH_NULL,	TEXT("CompositionManterial"),			pText);//합성제료
+	}
+
+	//문구
+	pText = GetTxtFromMgr(2470);
+	SetItemType(ITEMTYPE_PAPER,		ITEMATB_OBJECT,		ITEMATTACH_NULL|ITEMATTACH_DURABLE,		TEXT("PAPER"),		pText);
+	//철물
+	pText = GetTxtFromMgr(2399);
+	SetItemType(ITEMTYPE_IRON,		ITEMATB_OBJECT,		ITEMATTACH_NULL|ITEMATTACH_DURABLE,		TEXT("IRON"),		pText);
+	//도기
+	pText = GetTxtFromMgr(2398);
+	SetItemType(ITEMTYPE_DISH,		ITEMATB_OBJECT,		ITEMATTACH_NULL|ITEMATTACH_DURABLE,		TEXT("DISH"),		pText);
+	//어구
+	pText = GetTxtFromMgr(2471);
+	SetItemType(ITEMTYPE_FISHINGROD,ITEMATB_OBJECT,		ITEMATTACH_NULL|ITEMATTACH_DURABLE,		TEXT("FISHINGROD"),	pText);
+	//소환인형
+	pText = GetTxtFromMgr(2895);
+	SetItemType(ITEMTYPE_DOLL,		ITEMATB_DOLL|ITEMATB_FIRSTWARITEM,						ITEMATTACH_NULL,						TEXT("DOLL"),			pText);
+	//탈것메달
+	pText = GetTxtFromMgr(2890);
+	SetItemType(ITEMTYPE_ANIMAL,	ITEMATB_ANIMAL|ITEMATB_FIRSTWARITEM,					ITEMATTACH_NULL,						TEXT("ANIMAL"),		pText);
+	//이용권
+	pText = GetTxtFromMgr(2896);
+	SetItemType(ITEMTYPE_TICKET,	ITEMATB_TICKET,														ITEMATTACH_NULL,						TEXT("TICKET"),		pText);
+	//프리미엄
+	pText = GetTxtFromMgr(6615);//텍스트매니저는 암거나 등극
+	SetItemType(ITEMTYPE_PREMIUM,		ITEMATB_PREMIUM,				ITEMATTACH_NULL,	TEXT("Premium"),			pText);//프리미엄아이템.
+	//이벤트
+	pText = GetTxtFromMgr(3469);//텍스트매니저는 암거나 등극
+	SetItemType(ITEMTYPE_EVENTITEM,		ITEMATB_EVENTITEM,				ITEMATTACH_NULL,	TEXT("Eventitem"),			pText);//이벤트 아이템
+	//기타
+	pText = GetTxtFromMgr(2894);
+	SetItemType(ITEMTYPE_ETC,		ITEMATB_ETC|ITEMATB_FIRSTWARITEM |ITEMATB_TRADESERVER,		ITEMATTACH_NULL,	TEXT("ETC"),	pText);
+
+	//KHY - 아이템 리스트에서 삭제.
+	//부적
+	pText = GetTxtFromMgr(2893);
+	SetItemType(ITEMTYPE_SCROLL,	ITEMATB_SCROLL|ITEMATB_HIDECOMBOLIST,			ITEMATTACH_NULL,		TEXT("SCROLL"),		pText);
+
+	//쿼스트 아이템
+	pText = GetTxtFromMgr(6139);	
+	SetItemType(ITEMTYPE_QUEST,		ITEMATB_NOTRADE|ITEMATB_HIDECOMBOLIST, 		ITEMATTACH_NULL,	TEXT("QUEST"),		pText);
+	//cyj 대포 삭제
+	//pText = GetTxtFromMgr(2378);
+	//SetItemType(ITEMTYPE_CANNON,	ITEMATB_OBJECT|ITEMATB_WEAPON|ITEMATB_FARWEAPON,					ITEMATTACH_WEAPON|ITEMATTACH_FARWEAPON|ITEMATTACH_DURABLE,					TEXT("CANNON"),	pText);
+	// 어뢰 삭제
+	//pText = GetTxtFromMgr(2768);
+	//SetItemType(ITEMTYPE_TORPEDO,	ITEMATB_ETC|ITEMATB_WEAPON|ITEMATB_FARWEAPON,								ITEMATTACH_WEAPON|ITEMATTACH_FARWEAPON|ITEMATTACH_DURABLE,					TEXT("TORPEDO"),	pText);
+
+
+   //if ( TRUE == pclClient->IsCountrySwitch(Switch_Avatar_artisan) )
+   //{
+    // 기존 의복들과 같은 속성 적용. 확인 후 변경 될 수 있음.
+	//	[지연] 아바타 망토
+	pText = GetTxtFromMgr(30045); 
+	SetItemType(ITEMTYPE_AVATAR_MANTLE,	ITEMATB_OBJECT|ITEMATB_ARMOUR|ITEMATB_REPAIR, 		ITEMATTACH_MANTLE|ITEMATTACH_DURABLE,	TEXT("MANTLE"),		pText);
+
+	//	[지연] 아바타 의복
+	pText = GetTxtFromMgr(30043);
+	SetItemType(ITEMTYPE_AVATAR_DRESS,	ITEMATB_OBJECT|ITEMATB_ARMOUR|ITEMATB_UPARMOUR,		ITEMATTACH_ARMOUR|ITEMATTACH_UPARMOUR|ITEMATTACH_DRESS|ITEMATTACH_DURABLE,	TEXT("DRESS"),	pText);
+
+	//	[지연] 아바타 모자
+	pText = GetTxtFromMgr(30044); 
+	SetItemType(ITEMTYPE_AVATAR_HAT,	ITEMATB_OBJECT|ITEMATB_ARMOUR|ITEMATB_UPARMOUR,		ITEMATTACH_ARMOUR|ITEMATTACH_UPARMOUR|ITEMATTACH_HAT|ITEMATTACH_DURABLE,	TEXT("HAT"),		pText);
+
+	//	[지연] 아바타 목걸이 
+	pText = GetTxtFromMgr(30047);
+	SetItemType(ITEMTYPE_AVATAR_NECK,	ITEMATB_OBJECT|ITEMATB_NECK,	ITEMATTACH_NECK|ITEMATTACH_DURABLE,		TEXT("NECK"),		pText);
+
+	//	[지연] 아바타 반지
+	pText = GetTxtFromMgr(30046);
+	SetItemType(ITEMTYPE_AVATAR_RING,	ITEMATB_OBJECT|ITEMATB_RING,	ITEMATTACH_RING|ITEMATTACH_DURABLE,		TEXT("RING"),		pText);
+   
+  // }
+
+}
+
+void cltItemManagerCommon::SetItemData()
+{
+	if( pclClient->siServiceArea == ConstServiceArea_Korea )	// 한국
+	{
+		// 검류. (1~99)
+		AddSwordItem(TEXT("Item\\Data\\ItemTypeSwordK.txt"));
+
+		// 창류. (100~199)
+		AddSpearItem(TEXT("Item\\Data\\ItemTypeSpearK.txt"));
+
+		// 지팡이류. (200~299)
+		AddStaffItem(TEXT("Item\\Data\\ItemTypeStaffK.txt"));
+
+		// 도끼류. (300~399)
+		AddAxeItem(TEXT("Item\\Data\\ItemTypeAxeK.txt"));
+
+		// 활류 (400~499)
+		AddBowItem(TEXT("Item\\Data\\ItemTypeBowK.txt"));
+
+		// 총류 (500~599)
+		AddGunItem(TEXT("Item\\Data\\ItemTypeGunK.txt"));
+
+		// 갑옷류. (600~699)
+		AddArmourItem(TEXT("Item\\Data\\ItemTypeArmourK.txt"));
+
+		// 투구류. (700~799)
+		AddHelmetItem(TEXT("Item\\Data\\ItemTypeHelmetK.txt"));
+
+		// 요대류. (800~999)
+		AddBeltItem(TEXT("Item\\Data\\ItemTypeBeltK.txt"));
+
+		// 목걸이 류. (1000~)
+		AddNeckItem(TEXT("Item\\Data\\ItemTypeNeckK.txt"));
+
+		// 신발류. (1500~)
+		AddShoesItem(TEXT("Item\\Data\\ItemTypeShoesK.txt"));
+
+		// 약류.(2000~)
+		AddHealItem(TEXT("Item\\Data\\ItemTypeHealK.txt"));
+
+		// 음식류.(3000~)
+		AddFoodItem(TEXT("Item\\Data\\ItemTypeFoodK.txt"));
+
+		// 책류(4000~)
+		AddBookItem(TEXT("Item\\Data\\ItemTypeBookK.txt"));
+
+		// 광석류(5000~)
+		//AddItem(TEXT("Item\\Data\\ItemTypeMineralK.txt"), TEXT("Mineral"), ITEMTYPE_MINERAL);
+		AddMineralItem(TEXT("Item\\Data\\ItemTypeMineralK.txt"));
+
+		// 동물류 (5500~)
+		AddAnimalItem(TEXT("Item\\Data\\ItemTypeAnimalK.txt"));
+
+		// 목재류(6000~)
+		AddItem(TEXT("Item\\Data\\ItemTypeTreeK.txt"), TEXT("Tree"), ITEMTYPE_TREE);
+
+		// 문구류(6500~)
+		AddPaperItem(TEXT("Item\\Data\\ItemTypePaperK.txt"));
+
+		// 천류(7000~)
+		AddItem(TEXT("Item\\Data\\ItemTypeClothK.txt"), TEXT("Cloth"), ITEMTYPE_CLOTH);
+
+		// 반지류(7500~)
+		AddRingItem(TEXT("Item\\Data\\ItemTypeRingK.txt") );
+
+		// 기타류(8000~)
+		AddEtcItem(TEXT("Item\\Data\\ItemTypeEtcK.txt"), TEXT("Etc"), ITEMTYPE_ETC);
+
+		// 부적(8500~)
+		AddScrollItem(TEXT("Item\\Data\\ItemTypeScrollK.txt") );
+
+		// 의복류. (9000~9999)
+		AddDressItem(TEXT("Item\\Data\\ItemTypeDressK.txt"));
+
+		// 철물류. (10000~10499)
+		AddIronItem(TEXT("Item\\Data\\ItemTypeIronK.txt"));
+
+		// 도기류. (10500~10999)
+		AddDishItem(TEXT("Item\\Data\\ItemTypeDishK.txt"));
+
+		// 소환인형.(11000 ~ 12999)
+		AddDollItem(TEXT("Item\\Data\\ItemTypeDollK.txt"));
+
+		// 모자류. (13000~13999)
+		AddHatItem(TEXT("Item\\Data\\ItemTypeHatK.txt"));
+
+		// 표.(14000 ~ 14999)
+		AddTicketItem(TEXT("Item\\Data\\ItemTypeTicketK.txt"));
+
+		// 가방 (15000 ~ 15999)
+		AddBagItem(TEXT("Item\\Data\\ItemTypeBagK.txt"));
+
+		// 수산물류.(16000~16999)
+		AddSeaFoodItem(TEXT("Item\\Data\\ItemTypeSeaFoodK.txt"));
+
+		// 어구류. (17000 ~ 17999)
+		AddFishingRodItem(TEXT("Item\\Data\\ItemTypeFishingRodK.txt"));
+
+		// 망토 (18000 ~ 18599)
+		AddMantleItem(TEXT("Item\\Data\\ItemTypeMantleK.txt"));
+
+
+		//if ( TRUE == pclClient->IsCountrySwitch(Switch_Avatar_artisan) )
+		//{	
+		// 아바타 망토 (18600 ~ 18999 ) - 아이템몰에서 판매된 몇 가지 아이템 외에 나머지는 괄호안의 번호 사용. (임의로 설정한 것. 나중에 변경될 수 있음)
+		AddAvatarMantleItem(TEXT("Item\\Data\\ItemTypeAvatarMantleK.txt"));
+
+		// 아바타 목걸이
+		AddAvatarNeckItem(TEXT("Item\\Data\\ItemTypeAvatarNeckK.txt"));
+
+		// 아바타 의복
+		AddAvatarDressItem(TEXT("Item\\Data\\ItemTypeAvatarDressK.txt"));
+
+		// 아바타 모자
+		AddAvatarHatItem(TEXT("Item\\Data\\ItemTypeAvatarHatK.txt"));
+
+		// 아바타 반지
+		AddAvatarRingItem(TEXT("Item\\Data\\ItemTypeAvatarRingK.txt"));
+		//}
+
+		// 퀘스트 아이템
+		AddQuestItem(TEXT("Item\\Data\\ItemTypeQuestK.txt"));
+
+		// 이벤트 아이템 (26000~ 27999)	
+		//	AddItem(TEXT("Item\\Data\\ItemTypeEvent.txt"), TEXT("Event"), ITEMTYPE_CLOTH);
+		// TradeServer
+		AddTradeServerRank("item\\data\\TradeRankK.txt");
+
+		//KHY - 0227 - 결정체 (크리스탈) 제조 추가. - 결정체 타입.
+		AddCrystalItem("item\\data\\ItemTypeCrystalK.txt");
+
+		/*cyj 배 삭제로 인해 대포, 어뢰 제외
+		// 대포류 (19000~19999)
+		AddCannonItem(TEXT("Item\\Data\\ItemTypeCannon.txt"));
+
+		// 어뢰류 (20000~20999)
+		AddTorpedoItem(TEXT("Item\\Data\\ItemTypeTorpedo.txt"));
+		*/
+
+		//합성재료류(1701~1800)
+		AddCompositionManterial(TEXT("Item\\Data\\ItemTypeCompositionMaterialK.txt"), TEXT("CompositionManterial"), ITEMTYPE_COMPOSITIONMATERIAL);//아티팩트 합성재료
+		//이벤트아이템류(13000~13299)
+		AddEventitem(TEXT("Item\\Data\\ItemTypeEventitemK.txt"), TEXT("Eventitem"), ITEMTYPE_EVENTITEM);//이벤트 아이템
+		//박스류(13300~13599)
+		AddBox(TEXT("Item\\Data\\ItemTypeBoxK.txt"), TEXT("Box"), ITEMTYPE_BOX);//박스 아이템
+		//프리미엄아이템류(13600~13899)
+		AddPremium(TEXT("Item\\Data\\ItemTypePremiumK.txt"), TEXT("Premium"), ITEMTYPE_PREMIUM);//프리미엄아이템
+	}
+	else if( pclClient->siServiceArea == ConstServiceArea_Japan )
+	{
+		AddSwordItem(TEXT("Item\\Data\\ItemTypeSwordJ.txt"));
+
+		// 창류. (100~199)
+		AddSpearItem(TEXT("Item\\Data\\ItemTypeSpearJ.txt"));
+
+		// 지팡이류. (200~299)
+		AddStaffItem(TEXT("Item\\Data\\ItemTypeStaffJ.txt"));
+
+		// 도끼류. (300~399)
+		AddAxeItem(TEXT("Item\\Data\\ItemTypeAxeJ.txt"));
+
+		// 활류 (400~499)
+		AddBowItem(TEXT("Item\\Data\\ItemTypeBowJ.txt"));
+
+		// 총류 (500~599)
+		AddGunItem(TEXT("Item\\Data\\ItemTypeGunJ.txt"));
+
+		// 갑옷류. (600~699)
+		AddArmourItem(TEXT("Item\\Data\\ItemTypeArmourJ.txt"));
+
+		// 투구류. (700~799)
+		AddHelmetItem(TEXT("Item\\Data\\ItemTypeHelmetJ.txt"));
+
+		// 요대류. (800~999)
+		AddBeltItem(TEXT("Item\\Data\\ItemTypeBeltJ.txt"));
+
+		// 목걸이 류. (1000~)
+		AddNeckItem(TEXT("Item\\Data\\ItemTypeNeckJ.txt"));
+
+		// 신발류. (1500~)
+		AddShoesItem(TEXT("Item\\Data\\ItemTypeShoesJ.txt"));
+
+		// 약류.(2000~)
+		AddHealItem(TEXT("Item\\Data\\ItemTypeHealJ.txt"));
+
+		// 음식류.(3000~)
+		AddFoodItem(TEXT("Item\\Data\\ItemTypeFoodJ.txt"));
+
+		// 책류(4000~)
+		AddBookItem(TEXT("Item\\Data\\ItemTypeBookJ.txt"));
+
+		// 광석류(5000~)
+		//AddItem(TEXT("Item\\Data\\ItemTypeMineralJ.txt"), TEXT("Mineral"), ITEMTYPE_MINERAL);
+		AddMineralItem(TEXT("Item\\Data\\ItemTypeMineralJ.txt"));
+
+		// 동물류 (5500~)
+		AddAnimalItem(TEXT("Item\\Data\\ItemTypeAnimalJ.txt"));	
+
+		// 목재류(6000~)
+		AddItem(TEXT("Item\\Data\\ItemTypeTreeJ.txt"), TEXT("Tree"), ITEMTYPE_TREE);
+
+		// 문구류(6500~)
+		AddPaperItem(TEXT("Item\\Data\\ItemTypePaperJ.txt"));
+
+		// 천류(7000~)
+		AddItem(TEXT("Item\\Data\\ItemTypeClothJ.txt"), TEXT("Cloth"), ITEMTYPE_CLOTH);
+
+		// 반지류(7500~)
+		AddRingItem(TEXT("Item\\Data\\ItemTypeRingJ.txt") );
+
+		// 기타류(8000~)
+		AddEtcItem(TEXT("Item\\Data\\ItemTypeEtcJ.txt"), TEXT("Etc"), ITEMTYPE_ETC);
+
+		// 부적(8500~)
+		AddScrollItem(TEXT("Item\\Data\\ItemTypeScrollJ.txt") );
+
+		// 의복류. (9000~9999)
+		AddDressItem(TEXT("Item\\Data\\ItemTypeDressJ.txt"));
+
+		// 철물류. (10000~10499)
+		AddIronItem(TEXT("Item\\Data\\ItemTypeIronJ.txt"));
+
+		// 도기류. (10500~10999)
+		AddDishItem(TEXT("Item\\Data\\ItemTypeDishJ.txt"));
+
+		// 소환인형.(11000 ~ 12999)
+		AddDollItem(TEXT("Item\\Data\\ItemTypeDollJ.txt"));
+
+		// 모자류. (13000~13999)
+		AddHatItem(TEXT("Item\\Data\\ItemTypeHatJ.txt"));
+
+		// 표.(14000 ~ 14999)
+		AddTicketItem(TEXT("Item\\Data\\ItemTypeTicketJ.txt"));
+
+		// 가방 (15000 ~ 15999)
+		AddBagItem(TEXT("Item\\Data\\ItemTypeBagJ.txt"));
+
+		// 수산물류.(16000~16999)
+		AddSeaFoodItem(TEXT("Item\\Data\\ItemTypeSeaFoodJ.txt"));
+
+		// 어구류. (17000 ~ 17999)
+		AddFishingRodItem(TEXT("Item\\Data\\ItemTypeFishingRodJ.txt"));
+
+		// 망토 (18000 ~ 18599)
+		AddMantleItem(TEXT("Item\\Data\\ItemTypeMantleJ.txt"));
+
+		//if ( TRUE == pclClient->IsCountrySwitch(Switch_Avatar_artisan) )
+		//{
+		// 아바타 망토 (18600 ~ 18999)
+		AddAvatarMantleItem(TEXT("Item\\Data\\ItemTypeAvatarMantleJ.txt"));
+
+		// 아바타 목걸이
+		AddAvatarNeckItem(TEXT("Item\\Data\\ItemTypeAvatarNeckJ.txt"));
+
+		// 아바타 의복
+		AddAvatarDressItem(TEXT("Item\\Data\\ItemTypeAvatarDressJ.txt"));
+
+		// 아바타 모자
+		AddAvatarHatItem(TEXT("Item\\Data\\ItemTypeAvatarHatJ.txt"));
+
+		// 아바타 반지
+		AddAvatarRingItem(TEXT("Item\\Data\\ItemTypeAvatarRingJ.txt"));
+		//}
+
+		// 퀘스트 (24000~
+		AddQuestItem(TEXT("Item\\Data\\ItemTypeQuestJ.txt"));
+
+		// TradeServer
+		AddTradeServerRank("item\\data\\TradeRank.txt");
+
+		//합성재료류(1701~1800)
+		AddCompositionManterial(TEXT("Item\\Data\\ItemTypeCompositionMaterialJ.txt"), TEXT("CompositionManterial"), ITEMTYPE_COMPOSITIONMATERIAL);//아티팩트 합성재료
+		//이벤트아이템류(13000~13299)
+		AddEventitem(TEXT("Item\\Data\\ItemTypeEventitemJ.txt"), TEXT("Eventitem"), ITEMTYPE_EVENTITEM);//이벤트 아이템
+		//박스류(13300~13599)
+		AddBox(TEXT("Item\\Data\\ItemTypeBoxJ.txt"), TEXT("Box"), ITEMTYPE_BOX);//박스 아이템
+		//프리미엄아이템류(13600~13899)
+		AddPremium(TEXT("Item\\Data\\ItemTypePremiumJ.txt"), TEXT("Premium"), ITEMTYPE_PREMIUM);//프리미엄아이템
+
+		//KHY - 0227 - 결정체 (크리스탈) 제조 추가. - 결정체 타입.
+		AddCrystalItem("item\\data\\ItemTypeCrystalJ.txt");
+		/*cyj 배 삭제로 인해 대포, 어뢰 제외
+		// 대포류 (19000~19999)
+		AddCannonItem(TEXT("Item\\Data\\ItemTypeCannonJ.txt"));
+
+		// 어뢰류 (20000~20999)
+		AddTorpedoItem(TEXT("Item\\Data\\ItemTypeTorpedoJ.txt"));
+		*/
+	}
+
+	else if( pclClient->siServiceArea == ConstServiceArea_China )
+	{
+		AddSwordItem(TEXT("Item\\Data\\ItemTypeSwordC.txt"));
+
+		// 창류. (100~199)
+		AddSpearItem(TEXT("Item\\Data\\ItemTypeSpearC.txt"));
+
+		// 지팡이류. (200~299)
+		AddStaffItem(TEXT("Item\\Data\\ItemTypeStaffC.txt"));
+
+		// 도끼류. (300~399)
+		AddAxeItem(TEXT("Item\\Data\\ItemTypeAxeC.txt"));
+
+		// 활류 (400~499)
+		AddBowItem(TEXT("Item\\Data\\ItemTypeBowC.txt"));
+
+		// 총류 (500~599)
+		AddGunItem(TEXT("Item\\Data\\ItemTypeGunC.txt"));
+
+		// 갑옷류. (600~699)
+		AddArmourItem(TEXT("Item\\Data\\ItemTypeArmourC.txt"));
+
+		// 투구류. (700~799)
+		AddHelmetItem(TEXT("Item\\Data\\ItemTypeHelmetC.txt"));
+
+		// 요대류. (800~999)
+		AddBeltItem(TEXT("Item\\Data\\ItemTypeBeltC.txt"));
+
+		// 목걸이 류. (1000~)
+		AddNeckItem(TEXT("Item\\Data\\ItemTypeNeckC.txt"));
+
+		// 신발류. (1500~)
+		AddShoesItem(TEXT("Item\\Data\\ItemTypeShoesC.txt"));
+
+		// 약류.(2000~)
+		AddHealItem(TEXT("Item\\Data\\ItemTypeHealC.txt"));
+
+		// 음식류.(3000~)
+		AddFoodItem(TEXT("Item\\Data\\ItemTypeFoodC.txt"));
+
+		// 책류(4000~)
+		AddBookItem(TEXT("Item\\Data\\ItemTypeBookC.txt"));
+
+		// 광석류(5000~)
+		//AddItem(TEXT("Item\\Data\\ItemTypeMineralC.txt"), TEXT("Mineral"), ITEMTYPE_MINERAL);
+		AddMineralItem(TEXT("Item\\Data\\ItemTypeMineralC.txt"));
+
+		// 동물류 (5500~)
+		AddAnimalItem(TEXT("Item\\Data\\ItemTypeAnimalC.txt"));
+
+		// 목재류(6000~)
+		AddItem(TEXT("Item\\Data\\ItemTypeTreeC.txt"), TEXT("Tree"), ITEMTYPE_TREE);
+
+		// 문구류(6500~)
+		AddPaperItem(TEXT("Item\\Data\\ItemTypePaperC.txt"));
+
+		// 천류(7000~)
+		AddItem(TEXT("Item\\Data\\ItemTypeClothC.txt"), TEXT("Cloth"), ITEMTYPE_CLOTH);
+
+		// 반지류(7500~)
+		AddRingItem(TEXT("Item\\Data\\ItemTypeRingC.txt") );
+
+		// 기타류(8000~)
+		AddEtcItem(TEXT("Item\\Data\\ItemTypeEtcC.txt"), TEXT("Etc"), ITEMTYPE_ETC);
+
+		// 부적(8500~)
+		AddScrollItem(TEXT("Item\\Data\\ItemTypeScrollC.txt") );
+
+		// 의복류. (9000~9999)
+		AddDressItem(TEXT("Item\\Data\\ItemTypeDressC.txt"));
+
+		// 철물류. (10000~10499)
+		AddIronItem(TEXT("Item\\Data\\ItemTypeIronC.txt"));
+
+		// 도기류. (10500~10999)
+		AddDishItem(TEXT("Item\\Data\\ItemTypeDishC.txt"));
+
+		// 소환인형.(11000 ~ 12999)
+		AddDollItem(TEXT("Item\\Data\\ItemTypeDollC.txt"));
+
+		// 모자류. (13000~13999)
+		AddHatItem(TEXT("Item\\Data\\ItemTypeHatC.txt"));
+
+		// 표.(14000 ~ 14999)
+		AddTicketItem(TEXT("Item\\Data\\ItemTypeTicketC.txt"));
+
+		// 가방 (15000 ~ 15999)
+		AddBagItem(TEXT("Item\\Data\\ItemTypeBagC.txt"));
+
+		// 수산물류.(16000~16999)
+		AddSeaFoodItem(TEXT("Item\\Data\\ItemTypeSeaFoodC.txt"));
+
+		// 어구류. (17000 ~ 17999)
+		AddFishingRodItem(TEXT("Item\\Data\\ItemTypeFishingRodC.txt"));
+
+		// 망토 (18000 ~ 18599)
+		AddMantleItem(TEXT("Item\\Data\\ItemTypeMantleC.txt"));
+
+		//if( pclClient->IsCountrySwitch(Switch_Avatar_artisan) )
+		//{
+			// 아바타 망토 (18600 ~ 18999)
+			AddAvatarMantleItem(TEXT("Item\\Data\\ItemTypeAvatarMantleC.txt"));
+
+			// 아바타 목걸이
+			AddAvatarNeckItem(TEXT("Item\\Data\\ItemTypeAvatarNeckC.txt"));
+
+			// 아바타 의복
+			AddAvatarDressItem(TEXT("Item\\Data\\ItemTypeAvatarDressC.txt"));
+
+			// 아바타 모자
+			AddAvatarHatItem(TEXT("Item\\Data\\ItemTypeAvatarHatC.txt"));
+
+			// 아바타 반지
+			AddAvatarRingItem(TEXT("Item\\Data\\ItemTypeAvatarRingC.txt"));
+		//}
+
+		// 퀘스트 (24000~
+		AddQuestItem(TEXT("Item\\Data\\ItemTypeQuestJ.txt"));
+
+		// TradeServer
+		AddTradeServerRank("item\\data\\TradeRank.txt");
+
+		/*cyj 배 삭제로 인해 대포, 어뢰 제외
+		// 대포류 (19000~19999)
+		AddCannonItem(TEXT("Item\\Data\\ItemTypeCannonC.txt"));
+
+		// 어뢰류 (20000~20999)
+		AddTorpedoItem(TEXT("Item\\Data\\ItemTypeTorpedoC.txt"));
+		*/
+	}
+	else if( pclClient->siServiceArea == ConstServiceArea_English )  // 영어
+	{
+		AddSwordItem(TEXT("Item\\Data\\ItemTypeSwordE.txt"));
+		AddSpearItem(TEXT("Item\\Data\\ItemTypeSpearE.txt"));
+		AddStaffItem(TEXT("Item\\Data\\ItemTypeStaffE.txt"));
+		AddAxeItem(TEXT("Item\\Data\\ItemTypeAxeE.txt"));
+		AddBowItem(TEXT("Item\\Data\\ItemTypeBowE.txt"));
+		AddGunItem(TEXT("Item\\Data\\ItemTypeGunE.txt"));
+		AddArmourItem(TEXT("Item\\Data\\ItemTypeArmourE.txt"));
+		AddHelmetItem(TEXT("Item\\Data\\ItemTypeHelmetE.txt"));
+		AddBeltItem(TEXT("Item\\Data\\ItemTypeBeltE.txt"));
+		AddNeckItem(TEXT("Item\\Data\\ItemTypeNeckE.txt"));
+		AddShoesItem(TEXT("Item\\Data\\ItemTypeShoesE.txt"));
+		AddHealItem(TEXT("Item\\Data\\ItemTypeHealE.txt"));
+		AddFoodItem(TEXT("Item\\Data\\ItemTypeFoodE.txt"));
+		AddBookItem(TEXT("Item\\Data\\ItemTypeBookE.txt"));
+		//AddItem(TEXT("Item\\Data\\ItemTypeMineralE.txt"), TEXT("Mineral"), ITEMTYPE_MINERAL);
+		AddMineralItem(TEXT("Item\\Data\\ItemTypeMineralE.txt"));
+		AddAnimalItem(TEXT("Item\\Data\\ItemTypeAnimalE.txt"));
+		AddItem(TEXT("Item\\Data\\ItemTypeTreeE.txt"), TEXT("Tree"), ITEMTYPE_TREE);
+		AddPaperItem(TEXT("Item\\Data\\ItemTypePaperE.txt"));
+		AddItem(TEXT("Item\\Data\\ItemTypeClothE.txt"), TEXT("Cloth"), ITEMTYPE_CLOTH);
+		AddRingItem(TEXT("Item\\Data\\ItemTypeRingE.txt") );
+		AddEtcItem(TEXT("Item\\Data\\ItemTypeEtcE.txt"), TEXT("Etc"), ITEMTYPE_ETC);
+		AddScrollItem(TEXT("Item\\Data\\ItemTypeScrollE.txt") );
+		AddDressItem(TEXT("Item\\Data\\ItemTypeDressE.txt"));
+		AddIronItem(TEXT("Item\\Data\\ItemTypeIronE.txt"));
+		AddDishItem(TEXT("Item\\Data\\ItemTypeDishE.txt"));
+		AddDollItem(TEXT("Item\\Data\\ItemTypeDollE.txt"));
+		AddHatItem(TEXT("Item\\Data\\ItemTypeHatE.txt"));
+		AddTicketItem(TEXT("Item\\Data\\ItemTypeTicketE.txt"));
+		AddBagItem(TEXT("Item\\Data\\ItemTypeBagE.txt"));
+		AddSeaFoodItem(TEXT("Item\\Data\\ItemTypeSeaFoodE.txt"));
+		AddFishingRodItem(TEXT("Item\\Data\\ItemTypeFishingRodE.txt"));
+		AddMantleItem(TEXT("Item\\Data\\ItemTypeMantleE.txt"));
+
+		//if( pclClient->IsCountrySwitch(Switch_Avatar_artisan) )
+		//{
+			AddAvatarMantleItem(TEXT("Item\\Data\\ItemTypeAvatarMantleE.txt"));
+			AddAvatarDressItem(TEXT("Item\\Data\\ItemTypeAvatarDressE.txt"));
+			AddAvatarHatItem(TEXT("Item\\Data\\ItemTypeAvatarHatE.txt"));
+			AddAvatarNeckItem(TEXT("Item\\Data\\ItemTypeAvatarNeckE.txt"));
+			AddAvatarRingItem(TEXT("Item\\Data\\ItemTypeAvatarRingE.txt"));
+		//}
+
+		AddQuestItem(TEXT("Item\\Data\\ItemTypeQuestE.txt"));
+		AddTradeServerRank("item\\data\\TradeRank.txt");
+
+
+		/*cyj 배 삭제로 인해 대포, 어뢰 제외
+		// 대포류 (19000~19999)
+		AddCannonItem(TEXT("Item\\Data\\ItemTypeCannonE.txt"));
+
+		// 어뢰류 (20000~20999)
+		AddTorpedoItem(TEXT("Item\\Data\\ItemTypeTorpedoE.txt"));
+		*/
+
+		/*}*/
+		//KHY - 0227 - 결정체 (크리스탈) 제조 추가. - 결정체 타입.
+		// 결정체류(1801~1999)
+		AddCrystalItem("item\\data\\ItemTypeCrystalE.txt");
+		////합성재료류(1701~1800)
+		//AddCompositionManterial(TEXT("Item\\Data\\ItemTypeCompositionMaterialE.txt"), TEXT("CompositionManterial"), ITEMTYPE_COMPOSITIONMATERIAL);//아티팩트 합성재료
+		////이벤트아이템류(13000~13299)
+		//AddEventitem(TEXT("Item\\Data\\ItemTypeEventitemE.txt"), TEXT("Eventitem"), ITEMTYPE_EVENTITEM);//이벤트 아이템
+		////박스류(13300~13599)
+		//AddBox(TEXT("Item\\Data\\ItemTypeBoxE.txt"), TEXT("Box"), ITEMTYPE_BOX);//박스 아이템
+		////프리미엄아이템류(13600~13899)
+		//AddPremium(TEXT("Item\\Data\\ItemTypePremiumE.txt"), TEXT("Premium"), ITEMTYPE_PREMIUM);//프리미엄아이템
+
+		//합성재료류(1701~1800)
+		AddCompositionManterial(TEXT("Item\\Data\\ItemTypeCompositionMaterialE.txt"), TEXT("CompositionManterial"), ITEMTYPE_COMPOSITIONMATERIAL);//아티팩트 합성재료
+		//이벤트아이템류(13000~13299)
+		AddEventitem(TEXT("Item\\Data\\ItemTypeEventitemE.txt"), TEXT("Eventitem"), ITEMTYPE_EVENTITEM);//이벤트 아이템
+		//박스류(13300~13599)
+		AddBox(TEXT("Item\\Data\\ItemTypeBoxE.txt"), TEXT("Box"), ITEMTYPE_BOX);//박스 아이템
+		//프리미엄아이템류(13600~13899)
+		AddPremium(TEXT("Item\\Data\\ItemTypePremiumE.txt"), TEXT("Premium"), ITEMTYPE_PREMIUM);//프리미엄아이템
+	}
+	else if( pclClient->siServiceArea == ConstServiceArea_Taiwan )  //대만.
+	{
+		AddSwordItem(TEXT("Item\\Data\\ItemTypeSwordT.txt"));
+		AddSpearItem(TEXT("Item\\Data\\ItemTypeSpearT.txt"));
+		AddStaffItem(TEXT("Item\\Data\\ItemTypeStaffT.txt"));
+		AddAxeItem(TEXT("Item\\Data\\ItemTypeAxeT.txt"));
+		AddBowItem(TEXT("Item\\Data\\ItemTypeBowT.txt"));
+		AddGunItem(TEXT("Item\\Data\\ItemTypeGunT.txt"));
+		AddArmourItem(TEXT("Item\\Data\\ItemTypeArmourT.txt"));
+		AddHelmetItem(TEXT("Item\\Data\\ItemTypeHelmetT.txt"));
+		AddBeltItem(TEXT("Item\\Data\\ItemTypeBeltT.txt"));
+		AddNeckItem(TEXT("Item\\Data\\ItemTypeNeckT.txt"));
+		AddShoesItem(TEXT("Item\\Data\\ItemTypeShoesT.txt"));
+		AddHealItem(TEXT("Item\\Data\\ItemTypeHealT.txt"));
+		AddFoodItem(TEXT("Item\\Data\\ItemTypeFoodT.txt"));
+		AddBookItem(TEXT("Item\\Data\\ItemTypeBookT.txt"));
+		//AddItem(TEXT("Item\\Data\\ItemTypeMineralT.txt"), TEXT("Mineral"), ITEMTYPE_MINERAL);
+		AddMineralItem(TEXT("Item\\Data\\ItemTypeMineralT.txt"));
+		AddAnimalItem(TEXT("Item\\Data\\ItemTypeAnimalT.txt"));
+		AddItem(TEXT("Item\\Data\\ItemTypeTreeT.txt"), TEXT("Tree"), ITEMTYPE_TREE);
+		AddPaperItem(TEXT("Item\\Data\\ItemTypePaperT.txt"));
+		AddItem(TEXT("Item\\Data\\ItemTypeClothT.txt"), TEXT("Cloth"), ITEMTYPE_CLOTH);
+		AddRingItem(TEXT("Item\\Data\\ItemTypeRingT.txt") );
+		AddEtcItem(TEXT("Item\\Data\\ItemTypeEtcT.txt"), TEXT("Etc"), ITEMTYPE_ETC);
+		AddScrollItem(TEXT("Item\\Data\\ItemTypeScrollT.txt") );
+		AddDressItem(TEXT("Item\\Data\\ItemTypeDressT.txt"));
+		AddIronItem(TEXT("Item\\Data\\ItemTypeIronT.txt"));
+		AddDishItem(TEXT("Item\\Data\\ItemTypeDishT.txt"));
+		AddDollItem(TEXT("Item\\Data\\ItemTypeDollT.txt"));
+		AddHatItem(TEXT("Item\\Data\\ItemTypeHatT.txt"));
+		AddTicketItem(TEXT("Item\\Data\\ItemTypeTicketT.txt"));
+		AddBagItem(TEXT("Item\\Data\\ItemTypeBagT.txt"));
+		AddSeaFoodItem(TEXT("Item\\Data\\ItemTypeSeaFoodT.txt"));
+		AddFishingRodItem(TEXT("Item\\Data\\ItemTypeFishingRodT.txt"));
+		AddMantleItem(TEXT("Item\\Data\\ItemTypeMantleT.txt"));
+
+		//if ( TRUE == pclClient->IsCountrySwitch(Switch_Avatar_artisan) )
+		//{
+		AddAvatarMantleItem(TEXT("Item\\Data\\ItemTypeAvatarMantleT.txt"));
+		AddAvatarDressItem(TEXT("Item\\Data\\ItemTypeAvatarDressT.txt"));
+		AddAvatarHatItem(TEXT("Item\\Data\\ItemTypeAvatarHatT.txt"));
+		AddAvatarNeckItem(TEXT("Item\\Data\\ItemTypeAvatarNeckT.txt"));
+		AddAvatarRingItem(TEXT("Item\\Data\\ItemTypeAvatarRingT.txt"));
+		//}
+		
+		AddQuestItem(TEXT("Item\\Data\\ItemTypeQuestT.txt"));
+		AddTradeServerRank("item\\data\\TradeRank.txt");
+
+		//합성재료류(1701~1800)
+		AddCompositionManterial(TEXT("Item\\Data\\ItemTypeCompositionMaterialT.txt"), TEXT("CompositionManterial"), ITEMTYPE_COMPOSITIONMATERIAL);//아티팩트 합성재료
+		//이벤트아이템류(13000~13299)
+		AddEventitem(TEXT("Item\\Data\\ItemTypeEventitemT.txt"), TEXT("Eventitem"), ITEMTYPE_EVENTITEM);//이벤트 아이템
+		//박스류(13300~13599)
+		AddBox(TEXT("Item\\Data\\ItemTypeBoxT.txt"), TEXT("Box"), ITEMTYPE_BOX);//박스 아이템
+		//프리미엄아이템류(13600~13899)
+		AddPremium(TEXT("Item\\Data\\ItemTypePremiumT.txt"), TEXT("Premium"), ITEMTYPE_PREMIUM);//프리미엄아이템
+
+		//KHY - 0227 - 결정체 (크리스탈) 제조 추가. - 결정체 타입.
+		AddCrystalItem("item\\data\\ItemTypeCrystalT.txt");
+
+		/*cyj 배 삭제로 인해 대포, 어뢰 제외
+		// 대포류 (19000~19999)
+		AddCannonItem(TEXT("Item\\Data\\ItemTypeCannonE.txt"));
+
+		// 어뢰류 (20000~20999)
+		AddTorpedoItem(TEXT("Item\\Data\\ItemTypeTorpedoE.txt"));
+		*/
+
+		/*}*/
+	}
+	else if( pclClient->siServiceArea == ConstServiceArea_USA )  //USA
+	{
+		AddSwordItem(TEXT("Item\\Data\\ItemTypeSwordU.txt"));
+		AddSpearItem(TEXT("Item\\Data\\ItemTypeSpearU.txt"));
+		AddStaffItem(TEXT("Item\\Data\\ItemTypeStaffU.txt"));
+		AddAxeItem(TEXT("Item\\Data\\ItemTypeAxeU.txt"));
+		AddBowItem(TEXT("Item\\Data\\ItemTypeBowU.txt"));
+		AddGunItem(TEXT("Item\\Data\\ItemTypeGunU.txt"));
+		AddArmourItem(TEXT("Item\\Data\\ItemTypeArmourU.txt"));
+		AddHelmetItem(TEXT("Item\\Data\\ItemTypeHelmetU.txt"));
+		AddBeltItem(TEXT("Item\\Data\\ItemTypeBeltU.txt"));
+		AddNeckItem(TEXT("Item\\Data\\ItemTypeNeckU.txt"));
+		AddShoesItem(TEXT("Item\\Data\\ItemTypeShoesU.txt"));
+		AddHealItem(TEXT("Item\\Data\\ItemTypeHealU.txt"));
+		AddFoodItem(TEXT("Item\\Data\\ItemTypeFoodU.txt"));
+		AddBookItem(TEXT("Item\\Data\\ItemTypeBookU.txt"));
+		//AddItem(TEXT("Item\\Data\\ItemTypeMineralU.txt"), TEXT("Mineral"), ITEMTYPE_MINERAL);
+		AddMineralItem(TEXT("Item\\Data\\ItemTypeMineralU.txt"));
+		AddAnimalItem(TEXT("Item\\Data\\ItemTypeAnimalU.txt"));
+		AddItem(TEXT("Item\\Data\\ItemTypeTreeU.txt"), TEXT("Tree"), ITEMTYPE_TREE);
+		AddPaperItem(TEXT("Item\\Data\\ItemTypePaperU.txt"));
+		AddItem(TEXT("Item\\Data\\ItemTypeClothU.txt"), TEXT("Cloth"), ITEMTYPE_CLOTH);
+		AddRingItem(TEXT("Item\\Data\\ItemTypeRingU.txt") );
+		AddEtcItem(TEXT("Item\\Data\\ItemTypeEtcU.txt"), TEXT("Etc"), ITEMTYPE_ETC);
+		AddScrollItem(TEXT("Item\\Data\\ItemTypeScrollU.txt") );
+		AddDressItem(TEXT("Item\\Data\\ItemTypeDressU.txt"));
+		AddIronItem(TEXT("Item\\Data\\ItemTypeIronU.txt"));
+		AddDishItem(TEXT("Item\\Data\\ItemTypeDishU.txt"));
+		AddDollItem(TEXT("Item\\Data\\ItemTypeDollU.txt"));
+		AddHatItem(TEXT("Item\\Data\\ItemTypeHatU.txt"));
+		AddTicketItem(TEXT("Item\\Data\\ItemTypeTicketU.txt"));
+		AddBagItem(TEXT("Item\\Data\\ItemTypeBagU.txt"));
+		AddSeaFoodItem(TEXT("Item\\Data\\ItemTypeSeaFoodU.txt"));
+		AddFishingRodItem(TEXT("Item\\Data\\ItemTypeFishingRodU.txt"));
+		AddMantleItem(TEXT("Item\\Data\\ItemTypeMantleU.txt"));
+
+		//if ( TRUE == pclClient->IsCountrySwitch(Switch_Avatar_artisan) )
+		//{
+		AddAvatarMantleItem(TEXT("Item\\Data\\ItemTypeAvatarMantleU.txt"));
+		AddAvatarDressItem(TEXT("Item\\Data\\ItemTypeAvatarDressU.txt"));
+		AddAvatarHatItem(TEXT("Item\\Data\\ItemTypeAvatarHatU.txt"));
+		AddAvatarNeckItem(TEXT("Item\\Data\\ItemTypeAvatarNeckU.txt"));
+		AddAvatarRingItem(TEXT("Item\\Data\\ItemTypeAvatarRingU.txt"));
+		//}
+		
+		AddQuestItem(TEXT("Item\\Data\\ItemTypeQuestU.txt"));
+		AddTradeServerRank("item\\data\\TradeRank.txt");
+
+		//합성재료류(1701~1800)
+		AddCompositionManterial(TEXT("Item\\Data\\ItemTypeCompositionMaterialU.txt"), TEXT("CompositionManterial"), ITEMTYPE_COMPOSITIONMATERIAL);//아티팩트 합성재료
+		//이벤트아이템류(13000~13299)
+		AddEventitem(TEXT("Item\\Data\\ItemTypeEventitemU.txt"), TEXT("Eventitem"), ITEMTYPE_EVENTITEM);//이벤트 아이템
+		//박스류(13300~13599)
+		AddBox(TEXT("Item\\Data\\ItemTypeBoxU.txt"), TEXT("Box"), ITEMTYPE_BOX);//박스 아이템
+		//프리미엄아이템류(13600~13899)
+		AddPremium(TEXT("Item\\Data\\ItemTypePremiumU.txt"), TEXT("Premium"), ITEMTYPE_PREMIUM);//프리미엄아이템
+
+		if( pclClient->IsCountrySwitch( Switch_Artifact ) )
+		{
+			//KHY - 0227 - 결정체 (크리스탈) 제조 추가. - 결정체 타입.
+			AddCrystalItem("item\\data\\ItemTypeCrystalU.txt");
+		}
+
+		/*cyj 배 삭제로 인해 대포, 어뢰 제외
+		// 대포류 (19000~19999)
+		AddCannonItem(TEXT("Item\\Data\\ItemTypeCannonE.txt"));
+
+		// 어뢰류 (20000~20999)
+		AddTorpedoItem(TEXT("Item\\Data\\ItemTypeTorpedoE.txt"));
+		*/
+
+		/*}*/
+	}
+	else if( pclClient->siServiceArea == ConstServiceArea_NHNChina )  // 영어
+	{
+		AddSwordItem(TEXT("Item\\Data\\ItemTypeSwordC.txt"));
+		AddSpearItem(TEXT("Item\\Data\\ItemTypeSpearC.txt"));
+		AddStaffItem(TEXT("Item\\Data\\ItemTypeStaffC.txt"));
+		AddAxeItem(TEXT("Item\\Data\\ItemTypeAxeC.txt"));
+		AddBowItem(TEXT("Item\\Data\\ItemTypeBowC.txt"));
+		AddGunItem(TEXT("Item\\Data\\ItemTypeGunC.txt"));
+		AddArmourItem(TEXT("Item\\Data\\ItemTypeArmourC.txt"));
+		AddHelmetItem(TEXT("Item\\Data\\ItemTypeHelmetC.txt"));
+		AddBeltItem(TEXT("Item\\Data\\ItemTypeBeltC.txt"));
+		AddNeckItem(TEXT("Item\\Data\\ItemTypeNeckC.txt"));
+		AddShoesItem(TEXT("Item\\Data\\ItemTypeShoesC.txt"));
+		AddHealItem(TEXT("Item\\Data\\ItemTypeHealC.txt"));
+		AddFoodItem(TEXT("Item\\Data\\ItemTypeFoodC.txt"));
+		AddBookItem(TEXT("Item\\Data\\ItemTypeBookC.txt"));
+		//AddItem(TEXT("Item\\Data\\ItemTypeMineralC.txt"), TEXT("Mineral"), ITEMTYPE_MINERAL);
+		AddMineralItem(TEXT("Item\\Data\\ItemTypeMineralC.txt"));
+		AddAnimalItem(TEXT("Item\\Data\\ItemTypeAnimalC.txt"));
+		AddItem(TEXT("Item\\Data\\ItemTypeTreeC.txt"), TEXT("Tree"), ITEMTYPE_TREE);
+		AddPaperItem(TEXT("Item\\Data\\ItemTypePaperC.txt"));
+		AddItem(TEXT("Item\\Data\\ItemTypeClothC.txt"), TEXT("Cloth"), ITEMTYPE_CLOTH);
+		AddRingItem(TEXT("Item\\Data\\ItemTypeRingC.txt") );
+		AddEtcItem(TEXT("Item\\Data\\ItemTypeEtcC.txt"), TEXT("Etc"), ITEMTYPE_ETC);
+		AddScrollItem(TEXT("Item\\Data\\ItemTypeScrollC.txt") );
+		AddDressItem(TEXT("Item\\Data\\ItemTypeDressC.txt"));
+		AddIronItem(TEXT("Item\\Data\\ItemTypeIronC.txt"));
+		AddDishItem(TEXT("Item\\Data\\ItemTypeDishC.txt"));
+		AddDollItem(TEXT("Item\\Data\\ItemTypeDollC.txt"));
+		AddHatItem(TEXT("Item\\Data\\ItemTypeHatC.txt"));
+		AddTicketItem(TEXT("Item\\Data\\ItemTypeTicketC.txt"));
+		AddBagItem(TEXT("Item\\Data\\ItemTypeBagC.txt"));
+		AddSeaFoodItem(TEXT("Item\\Data\\ItemTypeSeaFoodC.txt"));
+		AddFishingRodItem(TEXT("Item\\Data\\ItemTypeFishingRodC.txt"));
+		AddMantleItem(TEXT("Item\\Data\\ItemTypeMantleC.txt"));
+
+		//if ( TRUE == pclClient->IsCountrySwitch(Switch_Avatar_artisan) )
+		//{
+			AddAvatarMantleItem(TEXT("Item\\Data\\ItemTypeAvatarMantleC.txt"));
+			AddAvatarDressItem(TEXT("Item\\Data\\ItemTypeAvatarDressC.txt"));
+			AddAvatarHatItem(TEXT("Item\\Data\\ItemTypeAvatarHatC.txt"));
+			AddAvatarNeckItem(TEXT("Item\\Data\\ItemTypeAvatarNeckC.txt"));
+			AddAvatarRingItem(TEXT("Item\\Data\\ItemTypeAvatarRingC.txt"));
+		//}
+
+		AddQuestItem(TEXT("Item\\Data\\ItemTypeQuestC.txt"));
+		AddTradeServerRank("item\\data\\TradeRank.txt");
+
+		//KHY - 0227 - 결정체 (크리스탈) 제조 추가. - 결정체 타입.
+		// 결정체류(1801~1999)
+		AddCrystalItem("item\\data\\ItemTypeCrystalC.txt");
+		//합성재료류(1701~1800)
+		AddCompositionManterial(TEXT("Item\\Data\\ItemTypeCompositionMaterialC.txt"), TEXT("CompositionManterial"), ITEMTYPE_COMPOSITIONMATERIAL);//아티팩트 합성재료
+		//이벤트아이템류(13000~13299)
+		AddEventitem(TEXT("Item\\Data\\ItemTypeEventitemC.txt"), TEXT("Eventitem"), ITEMTYPE_EVENTITEM);//이벤트 아이템
+		//박스류(13300~13599)
+		AddBox(TEXT("Item\\Data\\ItemTypeBoxC.txt"), TEXT("Box"), ITEMTYPE_BOX);//박스 아이템
+		//프리미엄아이템류(13600~13899)
+		AddPremium(TEXT("Item\\Data\\ItemTypePremiumC.txt"), TEXT("Premium"), ITEMTYPE_PREMIUM);//프리미엄아이템
+	}
+	else if( pclClient->siServiceArea == ConstServiceArea_EUROPE )
+	{
+		AddSwordItem(TEXT("Item\\Data\\ItemTypeSwordG.txt"));
+		AddSpearItem(TEXT("Item\\Data\\ItemTypeSpearG.txt"));
+		AddStaffItem(TEXT("Item\\Data\\ItemTypeStaffG.txt"));
+		AddAxeItem(TEXT("Item\\Data\\ItemTypeAxeG.txt"));
+		AddBowItem(TEXT("Item\\Data\\ItemTypeBowG.txt"));
+		AddGunItem(TEXT("Item\\Data\\ItemTypeGunG.txt"));
+		AddArmourItem(TEXT("Item\\Data\\ItemTypeArmourG.txt"));
+		AddHelmetItem(TEXT("Item\\Data\\ItemTypeHelmetG.txt"));
+		AddBeltItem(TEXT("Item\\Data\\ItemTypeBeltG.txt"));
+		AddNeckItem(TEXT("Item\\Data\\ItemTypeNeckG.txt"));
+		AddShoesItem(TEXT("Item\\Data\\ItemTypeShoesG.txt"));
+		AddHealItem(TEXT("Item\\Data\\ItemTypeHealG.txt"));
+		AddFoodItem(TEXT("Item\\Data\\ItemTypeFoodG.txt"));
+		AddBookItem(TEXT("Item\\Data\\ItemTypeBookG.txt"));
+		AddMineralItem(TEXT("Item\\Data\\ItemTypeMineralG.txt"));
+		AddAnimalItem(TEXT("Item\\Data\\ItemTypeAnimalG.txt"));
+		AddItem(TEXT("Item\\Data\\ItemTypeTreeG.txt"), TEXT("Tree"), ITEMTYPE_TREE);
+		AddPaperItem(TEXT("Item\\Data\\ItemTypePaperG.txt"));
+		AddItem(TEXT("Item\\Data\\ItemTypeClothG.txt"), TEXT("Cloth"), ITEMTYPE_CLOTH);
+		AddRingItem(TEXT("Item\\Data\\ItemTypeRingG.txt") );
+		AddEtcItem(TEXT("Item\\Data\\ItemTypeEtcG.txt"), TEXT("Etc"), ITEMTYPE_ETC);
+		AddScrollItem(TEXT("Item\\Data\\ItemTypeScrollG.txt") );
+		AddDressItem(TEXT("Item\\Data\\ItemTypeDressG.txt"));
+		AddIronItem(TEXT("Item\\Data\\ItemTypeIronG.txt"));
+		AddDishItem(TEXT("Item\\Data\\ItemTypeDishG.txt"));
+		AddDollItem(TEXT("Item\\Data\\ItemTypeDollG.txt"));
+		AddHatItem(TEXT("Item\\Data\\ItemTypeHatG.txt"));
+		AddTicketItem(TEXT("Item\\Data\\ItemTypeTicketG.txt"));
+		AddBagItem(TEXT("Item\\Data\\ItemTypeBagG.txt"));
+		AddSeaFoodItem(TEXT("Item\\Data\\ItemTypeSeaFoodG.txt"));
+		AddFishingRodItem(TEXT("Item\\Data\\ItemTypeFishingRodG.txt"));
+		AddMantleItem(TEXT("Item\\Data\\ItemTypeMantleG.txt"));
+		
+		//if ( TRUE == pclClient->IsCountrySwitch(Switch_Avatar_artisan) )
+		//{
+		AddAvatarMantleItem(TEXT("Item\\Data\\ItemTypeAvatarMantleG.txt"));
+		AddAvatarDressItem(TEXT("Item\\Data\\ItemTypeAvatarDressG.txt"));
+		AddAvatarHatItem(TEXT("Item\\Data\\ItemTypeAvatarHatG.txt"));
+		AddAvatarNeckItem(TEXT("Item\\Data\\ItemTypeAvatarNeckG.txt"));
+		AddAvatarRingItem(TEXT("Item\\Data\\ItemTypeAvatarRingG.txt"));
+		//}
+
+		AddQuestItem(TEXT("Item\\Data\\ItemTypeQuestG.txt"));
+		AddTradeServerRank("item\\data\\TradeRank.txt");
+
+
+		/*cyj 배 삭제로 인해 대포, 어뢰 제외
+		// 대포류 (19000~19999)
+		AddCannonItem(TEXT("Item\\Data\\ItemTypeCannonG.txt"));
+
+		// 어뢰류 (20000~20999)
+		AddTorpedoItem(TEXT("Item\\Data\\ItemTypeTorpedoG.txt"));
+		*/
+
+		//KHY - 0227 - 결정체 (크리스탈) 제조 추가. - 결정체 타입.
+		// 결정체류(1801~1999)
+		AddCrystalItem("item\\data\\ItemTypeCrystalG.txt");
+
+		//합성재료류(1701~1800)
+		AddCompositionManterial(TEXT("Item\\Data\\ItemTypeCompositionMaterialG.txt"), TEXT("CompositionManterial"), ITEMTYPE_COMPOSITIONMATERIAL);//아티팩트 합성재료
+		//이벤트아이템류(13000~13299)
+		AddEventitem(TEXT("Item\\Data\\ItemTypeEventitemG.txt"), TEXT("Eventitem"), ITEMTYPE_EVENTITEM);//이벤트 아이템
+		//박스류(13300~13599)
+		AddBox(TEXT("Item\\Data\\ItemTypeBoxG.txt"), TEXT("Box"), ITEMTYPE_BOX);//박스 아이템
+		//프리미엄아이템류(13600~13899)
+		AddPremium(TEXT("Item\\Data\\ItemTypePremiumG.txt"), TEXT("Premium"), ITEMTYPE_PREMIUM);//프리미엄아이템
+	}
+
+	
+
+
+}
+
+// 아이템을 생산하기 위한 재료와 도구등을 설정한다. 
+void cltItemManagerCommon::SetItemMaterial()
+{
+	SI32 i;
+
+	for(i = 0;i < MAX_ITEMINFO_NUMBER;i++)
+	{
+		if(pclItemInfo[i])
+		{
+			pclItemInfo[i]->AnalyzeMaterial(this);
+			pclItemInfo[i]->AnalyzeTool(this);
+		}
+	}
+}
+
+// 음식 아이템을 추가한다. 
+void cltItemManagerCommon::AddFoodItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename );		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea( ConstServiceArea_China ) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename );
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename );
+		}
+
+	}
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddFoodItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique			= 0;
+	TCHAR szname[60]	= {'\0'};
+	TCHAR code[24]		= {'\0'};
+	TCHAR iconcode[24]	= {'\0'};
+	SI32 showlist		= 0;
+
+	SI32 fieldimg		= 0;
+	TCHAR itemmall[128] = {'\0'};
+	SI32 weight			= 0;
+	SI32 skilllevel		= 0;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt		= 0;		// 기본 생산 확률. (퍼밀)
+
+	SI32 incpbt			= 0;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 siHnd			= 0;
+	SI32 hungry			= 0;
+	SI32 horse			= 0;
+	SI32 org1			= 0;
+
+	SI32 org2			= 0;
+	SI32 org3			= 0;
+	SI32 org4			= 0;
+	SI32 productunit	= 0;
+	TCHAR szmaterial[128] =	{'\0'};
+
+	TCHAR sztool[128]	= {'\0'};
+	SI32 siExplain		= 0;
+	SI32 Grade			= 0;
+	SI32 MinNum			= 0;
+	SI32 SuperMaket		= 0;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+	 // datatype,	pVar,	size	 
+		NDATA_INT32,	&unique,	  4,		
+		NDATA_MBSTRING,	szname,		  128,
+		NDATA_MBSTRING,	code,		  128,
+		NDATA_MBSTRING,	iconcode,	  128,
+		NDATA_INT32,	&showlist,	  4,
+
+		NDATA_INT32,	&fieldimg,	  4,
+		NDATA_MBSTRING,	itemmall,	  128,
+		NDATA_INT32,	&weight,	  4,
+		NDATA_INT32,	&skilllevel,  4,
+		NDATA_INT32,	&makepbt,	  4,
+
+		NDATA_INT32,	&incpbt,	  4,
+		NDATA_INT32,	&siHnd,		  4,
+		NDATA_INT32,	&hungry,	  4,
+		NDATA_INT32,	&horse,		  4,
+		NDATA_INT32,	&org1,		  4,
+
+		NDATA_INT32,	&org2,		  4,
+		NDATA_INT32,	&org3,		  4,
+		NDATA_INT32,	&org4,		  4,
+		NDATA_INT32,	&productunit, 4,
+		NDATA_MBSTRING,	szmaterial,	  128,
+
+		NDATA_MBSTRING,	sztool,		  128,
+		NDATA_INT32,	&siExplain,   4,
+		NDATA_INT32,	&MinNum,	  4,
+		NDATA_INT32,	&SuperMaket,  4,
+		0, 0, 0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("FOOD"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				cltItem clitem(unique);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKEFOOD, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition( 0, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref =AddItem(imageindex, fieldimg, szname,		ITEMTYPE_FOOD, weight, 
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_FOOD, &clitem, Grade,MinNum, NULL, SuperMaket ? 1 : 0 );
+
+				if(ref  >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					pclItemInfo[ref]->SetHungry(hungry);
+					if ( horse > 0 )
+					{
+						pclItemInfo[ref]->siHorseFoodSwitch = horse;	// 말용 음식인가..
+					}
+					else
+					{
+						pclItemInfo[ref]->siHorseFoodSwitch = 0;
+					}
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					pclItemInfo[ref]->siOrg1Penalty		= org1;				// 소화기관 페널티 1
+					pclItemInfo[ref]->siOrg2Penalty		= org2;		
+					pclItemInfo[ref]->siOrg3Penalty		= org3;		
+					pclItemInfo[ref]->siOrg4Penalty		= org4;		
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+
+					pclItemInfo[ref]->siItemInfoAtb		|=  ITEMINFOATB_CANUSEITEM;
+				}
+			}
+		}
+	}
+}
+
+// 수산물 아이템을 추가한다. 
+void cltItemManagerCommon::AddSeaFoodItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename );		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea( ConstServiceArea_China ) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename );
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename );
+		}
+	}
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddSeaFoodItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique = 0;
+	TCHAR szname[60]	= {'\0'};
+	TCHAR code[24]		= {'\0'};
+	TCHAR iconcode[24]	= {'\0'};
+	SI32 showlist = 0;
+	SI32 fieldimg = 0;
+	SI32 weight = 0;
+	SI32 skilllevel = 0;	// 사용제한  스킬 레벨 
+	SI32 makepbt = 0;		// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt = 0;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 siHnd = 0;
+	SI32 hungry = 0;
+	SI32 horse = 0;
+	SI32 FishingBait = 0;
+	SI32 org1 = 0;
+	SI32 org2 = 0;
+	SI32 org3 = 0;
+	SI32 org4 = 0;
+	SI32 productunit = 0;
+	TCHAR szmaterial[128]=	{'\0'};
+	TCHAR sztool[128]	=	{'\0'};
+	SI32 explain;
+	SI32 Grade = 0;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,	4,
+			NDATA_MBSTRING,	szname,		128,
+			NDATA_MBSTRING,	code,		128,
+			NDATA_MBSTRING,	iconcode,	128,
+			NDATA_INT32,	&showlist,	4,
+			NDATA_INT32,	&fieldimg,	4,
+			NDATA_INT32,	&weight,	4,
+			NDATA_INT32,	&skilllevel,	4,
+			NDATA_INT32,	&makepbt,	4,
+			NDATA_INT32,	&incpbt,	4,
+			NDATA_INT32,	&siHnd,		4,
+			NDATA_INT32,	&hungry,	4,
+			NDATA_INT32,	&horse,		4,
+			NDATA_INT32,	&FishingBait,	4,
+			NDATA_INT32,	&org1,		4,
+			NDATA_INT32,	&org2,		4,
+			NDATA_INT32,	&org3,		4,
+			NDATA_INT32,	&org4,		4,
+			NDATA_INT32,	&productunit,	4,
+			NDATA_MBSTRING,	szmaterial,	128,
+			NDATA_MBSTRING,	sztool,		128,
+			NDATA_INT32,	&explain,	4,
+			NDATA_INT32,	&MinNum,  4,
+			NDATA_INT32,	&NewMarket,  4,
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("SEAFOOD"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				cltItem clitem(unique);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(0, 0, 0, 0, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition( 0, 0, 0, 0, 0, 0, SKILL_FISH, skilllevel, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref =AddItem(imageindex, fieldimg, szname,		ITEMTYPE_SEAFOOD, weight, 
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_FOOD, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				if(ref  >= 0)
+				{
+					pclItemInfo[ref]->SetHungry(hungry);
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					if ( horse > 0 )
+					{
+						pclItemInfo[ref]->siHorseFoodSwitch = horse;	// 말용 음식인가..
+					}
+					else
+					{
+						pclItemInfo[ref]->siHorseFoodSwitch = 0;
+					}
+
+					if ( FishingBait > 0 )
+					{
+						pclItemInfo[ref]->bFishingBaitSwitch = true;
+					}
+					else
+					{
+						pclItemInfo[ref]->bFishingBaitSwitch = false;
+					}
+
+					pclItemInfo[ref]->siOrg1Penalty		= org1;				// 소화기관 페널티 1
+					pclItemInfo[ref]->siOrg2Penalty		= org2;		
+					pclItemInfo[ref]->siOrg3Penalty		= org3;		
+					pclItemInfo[ref]->siOrg4Penalty		= org4;		
+					pclItemInfo[ref]->siExplainUnique	= explain;
+					pclItemInfo[ref]->siItemInfoAtb		|=  ITEMINFOATB_CANUSEITEM;
+				}
+
+			}
+		}
+	}
+
+}
+
+
+// 소환인형 아이템을 추가한다. 
+void cltItemManagerCommon::AddDollItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename );
+	}
+	else
+	{	
+		if ( pclClient->IsWhereServiceArea( ConstServiceArea_China ) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename );
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename );
+		}
+	}
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddDollItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[24];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	TCHAR itemmall[128];
+	SI32 weight;
+	SI32 sikind;
+	SI32 Grade = 0;
+	SI32 productunit = 0;
+	TCHAR szmaterial[128]=	{'\0'};
+	TCHAR sztool[128]	=	{'\0'};
+	SI32 MinNum = 0;
+	SI32 explain	 = 0;
+	SI32 NewMarket	 = 0;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,	4,		
+			NDATA_MBSTRING,	szname,		128,
+			NDATA_MBSTRING,	code,		128,
+			NDATA_MBSTRING,	iconcode,	128,
+			NDATA_INT32,	&showlist,	4,
+			NDATA_MBSTRING,	itemmall,	128,
+			NDATA_INT32,	&weight,	4,
+			NDATA_INT32,	&sikind,	4,
+			NDATA_INT32,	&productunit,	4,
+			NDATA_MBSTRING,	szmaterial,	128,
+			NDATA_MBSTRING,	sztool,		128,
+			NDATA_INT32,	&MinNum,  4,
+			NDATA_INT32,	&explain, 4,
+			NDATA_INT32,	&NewMarket, 4,
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("DOLL"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				cltItem clitem(unique);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(0, 0, 1000, 0, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition( 0, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+				
+				SI32 ref =AddItem(imageindex, 0, szname,		ITEMTYPE_DOLL, weight, 
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit,
+					ITEMSOUND_FOOD, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				if(ref  >= 0)
+				{
+					pclItemInfo[ref]->siMakeKind		= sikind;
+					pclItemInfo[ref]->siItemInfoAtb		|=  ITEMINFOATB_CANUSEITEM;
+					pclItemInfo[ref]->siExplainUnique = explain;
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+// 표아이템을 추가한다. 
+void cltItemManagerCommon::AddTicketItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename );		
+	}
+	else
+	{
+	
+		if ( pclClient->IsWhereServiceArea( ConstServiceArea_China ) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename );
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename );
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddTicketItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[24];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	TCHAR itemmall[128];
+	SI32 weight;
+	SI32 explain;
+	SI32 Grade = 0;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,	4,		
+		NDATA_MBSTRING,	szname,		128,
+		NDATA_MBSTRING,	code,		128,
+		NDATA_MBSTRING,	iconcode,	128,
+		NDATA_INT32,	&showlist,	4,
+		NDATA_MBSTRING,	&itemmall,	128,
+		NDATA_INT32,	&weight,	4,
+		NDATA_INT32,	&explain,	4,
+		NDATA_INT32,	&MinNum,  4,
+		NDATA_INT32,	&NewMarket,  4,
+		0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("TICKET"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				cltItem clitem(unique);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(0, 0, 0, 0, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition( 0, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref =AddItem(imageindex, 0, szname,		ITEMTYPE_TICKET,  weight, 
+					&clinfo, &clCondition, NULL, NULL, NULL, 1, ITEMSOUND_TICKET, 
+					&clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+
+				if(ref  >= 0)
+				{
+					pclItemInfo[ref]->siExplainUnique		= explain;
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+
+					if ( unique == 14300 || unique == 14400 || unique == 14500 )
+						pclItemInfo[ref]->siItemInfoAtb |= ITEMINFOATB_CANUSEITEM ;
+				}
+			}
+		}
+	}
+
+}
+
+
+// 약 아이템을 추가한다. 
+void cltItemManagerCommon::AddHealItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename );
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename );
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename );
+		}
+	}
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddHealItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[24];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	TCHAR itemmall[128];
+	SI32 weight;
+	SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀)
+	SI32 siHnd;
+	TCHAR adapt[32];
+	SI32 life, mana;
+	//TCHAR szdisease[64];
+	TCHAR szdiseaseType[64]; // szdisease[64] 를 szdiseaseType[64] 으로 변경.
+	SI32 org1;
+	SI32 org2;
+	SI32 org3;
+	SI32 org4;
+	TCHAR szeft[64];
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 explain;
+	SI32 Grade = 0;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,	4,		
+			NDATA_MBSTRING,	szname,		128,
+			NDATA_MBSTRING,	code,		128,
+			NDATA_MBSTRING,	iconcode,	128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING, itemmall,	128,
+			NDATA_INT32, &weight,		4,
+			NDATA_INT32, &skilllevel,	4,
+			NDATA_INT32, &makepbt,		4,
+			NDATA_INT32, &incpbt,		4,
+			NDATA_INT32, &siHnd,		4,
+			NDATA_MBSTRING,	adapt,		128,
+			NDATA_INT32, &life,		4,
+			NDATA_INT32, &mana,		4,
+			NDATA_MBSTRING,	szdiseaseType,	128,
+			NDATA_INT32, &org1,		4,		
+			NDATA_INT32,	&org2,		  4,
+			NDATA_INT32,	&org3,		  4,
+			NDATA_INT32,	&org4,		  4,	
+			NDATA_MBSTRING,	szeft,	128,
+			NDATA_INT32, &productunit,	4,
+			NDATA_MBSTRING,	szmaterial,	128,
+			NDATA_MBSTRING,	sztool,	128,
+			NDATA_INT32, &explain, 4,
+			NDATA_INT32,	&MinNum,  4,
+			NDATA_INT32,	&NewMarket,  4,
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+
+				cltItem clitem(unique);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("HEAL"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKEMED, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(0, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				// 약의 효과를 얻어낸다. 
+				SI32 sieft = 0;
+				SI32 ref = 0 ;
+				if(_tcscmp(szeft,		TEXT("HEALEFT_NOFIRSTATTACK")) == 0) // 선공 금지.
+				{
+					sieft = HEALEFT_NOFIRSTATTACK;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_SMELLHEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if(_tcscmp(szeft,	TEXT("HEALEFT_UNFREEZE")) == 0) // 동빙한설 해동. 
+				{
+					sieft = HEALEFT_UNFREEZE;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_UNFREEZEHEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if(_tcscmp(szeft,	TEXT("HEALEFT_PREMIUM")) == 0) // 프리미엄
+				{
+					sieft = HEALEFT_PREMIUM;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0 );
+				}
+				else if(_tcscmp(szeft,	TEXT("HEALEFT_COMBAT")) == 0) // 전투 프리미엄
+				{
+					sieft = HEALEFT_COMBAT;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				} 
+				else if(_tcscmp(szeft,	TEXT("HEALEFT_DIGESTIVE")) == 0) // 배부름 - 20 소화제
+				{
+					sieft = HEALEFT_DIGESTIVE;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				} 
+				else if(_tcscmp(szeft,	TEXT("HEALEFT_ALLDESEASE")) == 0) // 질병 1단계 회복 만능약
+				{
+					sieft = HEALEFT_ALLDESEASE;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				} 
+				else if(_tcscmp(szeft,	TEXT("HEALEFT_FAME")) == 0) // 명성  10 상승
+				{
+					sieft = HEALEFT_FAME;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if(_tcscmp(szeft,	TEXT("HEALEFT_ADDEXP")) == 0) // 경험치 1~10만 랜덤 상승 백년삼
+				{
+					sieft = HEALEFT_ADDEXP;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+
+				else if(_tcscmp(szeft,	TEXT("HEALEFT_BULLET")) == 0) // bullet 서비스 
+				{
+					sieft = HEALEFT_BULLET;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if(_tcscmp(szeft,	TEXT("HEALEFT_HEROSTAMINA")) == 0) // 주인공스태미너 증가
+				{
+					sieft = HEALEFT_HEROSTAMINA;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if(_tcscmp(szeft,	TEXT("HEALEFT_SUMMONSTAMINA")) == 0) // 소환수 스태미너 서비스 
+				{
+					sieft = HEALEFT_SUMMONSTAMINA;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if(_tcscmp(szeft,	TEXT("HEALEFT_NOFIRSTATTACK_PREMIUM")) == 0)		
+				{
+					sieft = HEALEFT_NOFIRSTATTACK_PREMIUM;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if( _tcscmp( szeft , TEXT("HEALEFT_RESURRECTION") ) == 0 )
+				{
+					sieft = HEALEFT_RESURRECTION;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if( _tcscmp( szeft , TEXT("HEALEFT_SUMMONATACUP") ) == 0 )
+				{
+					sieft = HEALEFT_SUMMONATACUP;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if( _tcscmp( szeft , TEXT("HEALEFT_HEROATTACKUP") ) == 0 )
+				{
+					sieft = HEALEFT_HEROATTACKUP;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if( _tcscmp( szeft , TEXT("HEALEFT_HEROATTACKUP30") ) == 0 )//전투력 증가약 30일간[2007.08.30 손성웅]
+				{
+					sieft = HEALEFT_HEROATTACKUP30;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if( _tcscmp( szeft , TEXT("HEALEFT_HERODEFENSEUP") ) == 0 )
+				{
+					sieft = HEALEFT_HERODEFENSEUP;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+
+				else if( _tcscmp( szeft , TEXT("HEALEFT_HERODEFENSEUP30") ) == 0 )
+				{
+					sieft = HEALEFT_HERODEFENSEUP30;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}//방어력 증가약 30일간[2007.08.30 손성웅]
+
+				else if( _tcscmp( szeft , TEXT("HEALEFT_LOVEPOWER") ) == 0 )
+				{
+					sieft = HEALEFT_LOVEPOWER;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if( _tcscmp( szeft , TEXT("HEALEFT_FRIENDSHIP") ) == 0 )
+				{
+					sieft = HEALEFT_FRIENDSHIP;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if( _tcscmp( szeft, TEXT("HEALEFT_HORSEWINGS") ) == 0 )
+				{
+					sieft = HEALEFT_HORSEWINGS;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if( _tcscmp( szeft, TEXT("HEALEFT_SUCCESS_MANUFACTURE") ) == 0 )
+				{
+					sieft = HEALEFT_SUCCESS_MANUFACTURE;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if( _tcscmp( szeft, TEXT("HEALEFT_MOFUMOFU_PERFUME") ) == 0 )
+				{
+					sieft = HEALEFT_MOFUMOFU_PERFUME;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				}				
+				else if( _tcscmp( szeft, TEXT("HEALEFT_FOURLEAF") ) == 0 )
+				{
+					sieft = HEALEFT_FOURLEAF;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if( _tcscmp( szeft, TEXT("HEALEFT_HAPPYBEAN") ) == 0 )//해피빈 이벤트 해피타임 [2007.07.22 손성웅]
+				{
+					sieft = HEALEFT_HAPPYBEAN;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if( _tcscmp( szeft, TEXT("HEALEFT_PREMIUMEXPUP") ) == 0 )
+				{
+					sieft = HEALEFT_PREMIUMEXPUP;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				//KHY - 0115 발렌타인데이 이벤트.
+				else if( _tcscmp( szeft, TEXT("HEALEFT_BLACKCACAORANDOM") ) == 0 )
+				{
+					sieft = HEALEFT_BLACKCACAORANDOM;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				//KHY - 0218 화이트데이 이벤트.
+				else if( _tcscmp( szeft, TEXT("HEALEFT_CANDYRANDOM") ) == 0 )
+				{
+					sieft = HEALEFT_CANDYRANDOM;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}	
+				//----------------------------------------------------------
+				// 열혈 EXP 캡슐
+				//-----------------------------------------------------------
+				else if( _tcscmp( szeft, TEXT("HEALEFT_SUPEREXPUP") ) == 0 )
+				{
+					sieft = HEALEFT_SUPEREXPUP;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if( _tcscmp( szeft, TEXT("HEALEFT_REWARDBONUS") ) == 0 )
+				{
+					sieft = HEALEFT_REWARDBONUS;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				// PCK : 제조 프리미엄 아이템
+				else if( _tcscmp( szeft, TEXT("HEALEFT_PREMIUMMAKEEXPUP") ) == 0 )
+				{
+					sieft = HEALEFT_PREMIUMMAKEEXPUP;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				// 지연 - 스페셜 엠플
+				else if( _tcscmp( szeft, TEXT("HEALEFT_SPECIALAMPUL") ) == 0 )
+				{
+					sieft = HEALEFT_SPECIALAMPUL;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				// [지연] 마을 EXP 캡슐
+				else if( _tcscmp( szeft, TEXT("HEALEFT_RESIDENTS_EXPUP_10") ) == 0 )
+				{
+					sieft = HEALEFT_RESIDENTS_EXPUP_10;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				// [지연] 마을 강화제
+				else if( _tcscmp( szeft, TEXT("HEALEFT_RESIDENTS_STRONG") ) == 0 )
+				{
+					sieft = HEALEFT_RESIDENTS_STRONG;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				// 영훈 - 퀘스트용 안티 포션
+				else if( _tcscmp( szeft, TEXT("HEALEFT_QUEST_ANTIPOTION") ) == 0 )
+				{
+					sieft = HEALEFT_QUEST_ANTIPOTION;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				// 지연 - 해독제
+				else if(_tcscmp(szeft,	TEXT("HEALEFT_ANTIDOTES")) == 0)
+				{
+					sieft = HEALEFT_ANTIDOTES;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				// [진성] 싱크로 증가제.
+				else if(_tcscmp(szeft,	TEXT("HEALEFT_TRANSFORM_SYNCRO_UP")) == 0)
+				{
+					sieft = HEALEFT_TRANSFORM_SYNCRO_UP;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else if(_tcscmp(szeft,		TEXT("HEALEFT_SUMMONNOFIRSTATTACK")) == 0) // 소환수 선공 금지.
+				{
+					sieft = HEALEFT_SUMMONNOFIRSTATTACK;
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_SMELLHEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+				else
+				{
+					ref = AddItem(imageindex, 90, szname,		ITEMTYPE_HEAL, weight, 
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_HEAL, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				}
+
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					pclItemInfo[ref]->SetLife(life);
+					pclItemInfo[ref]->SetMana(mana);
+					//pclItemInfo[ref]->SetDiseaseName(szdisease);		// 치유할 수 있는 질병의 이름을 설정한다.
+					pclItemInfo[ref]->SetDiseaseType(szdiseaseType);	// 치유할 수 있는 질병의 타입을 설정한다.
+					pclItemInfo[ref]->siOrg1Penalty		= org1;			// 소화기관 페널티 1
+					
+					pclItemInfo[ref]->siOrg2Penalty		= org2;			// 소화기관 페널티 2
+					pclItemInfo[ref]->siOrg3Penalty		= org3;			// 순환기관 페널티 3
+					pclItemInfo[ref]->siOrg4Penalty		= org4;			// 신경기관 페널티 4
+					
+					pclItemInfo[ref]->siHealEft			= sieft;		// 약의 효능
+					pclItemInfo[ref]->siExplainUnique	= explain;
+
+					pclItemInfo[ref]->siItemInfoAtb		|=  ITEMINFOATB_CANUSEITEM;
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+
+
+					if(_tcscmp(adapt, TEXT("MAN")) == 0)
+					{
+						pclItemInfo[ref]->siAdapt			= ADAPT_MAN;
+
+					}
+					else if(_tcscmp(adapt, TEXT("SUMMON")) == 0)
+					{
+						pclItemInfo[ref]->siAdapt			= ADAPT_SUMMON;
+					}
+					else
+					{
+						MsgBox(TEXT("fd3fdf"), TEXT("vcdfdf:%s"), adapt);
+					}
+				}
+
+			}
+		}
+	}
+
+}
+
+
+// 칼 아이템을 추가한다. 
+void cltItemManagerCommon::AddSwordItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddSwordItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	TCHAR armcode[12];
+	SI32 showlist;
+	SI32 fieldimg;
+	SI32 AttackDelay;		// 공격 간격 시간
+	SI32 weight;
+	SI32 skilllevel;		// 생산에 필요한 스킬 레벨
+	SI32 MountSkillPoint;	// 장착에 필요한 무기 사용술 스킬 포인트
+	SI32 makepbt;			// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;			// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 level;
+	SI32 condition;
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 mindamage, maxdamage;
+	SI32 productunit;
+	TCHAR szmaterial[128]	=	TEXT("");
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 AttackE;
+	SI32 AttackR;
+	SI32 Grade;
+	TCHAR szCanUseType[256];
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,	4,		
+			NDATA_MBSTRING,	szname,		128,
+			NDATA_MBSTRING,	code,		128,
+			NDATA_MBSTRING,	iconcode,	128,
+			NDATA_MBSTRING,	armcode,	128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_INT32,	&fieldimg,	4,
+			NDATA_INT32,	&AttackDelay,	4,
+			NDATA_INT32,	&weight,	4,
+			NDATA_INT32,	&skilllevel,	4,
+			NDATA_INT32,	&MountSkillPoint,	4,
+			NDATA_INT32,	&makepbt,	4,
+			NDATA_INT32,	&incpbt,	4,
+			NDATA_INT32,	&level,		4,
+			NDATA_INT32,	&condition,	4,
+			NDATA_INT32,	&siHnd,		4,
+			NDATA_INT32,	&durability,	4,
+			NDATA_INT32,	&usedate,	4,
+			NDATA_INT32,	&mindamage,	4,
+			NDATA_INT32,	&maxdamage,	4,
+			NDATA_INT32,	&productunit,	4,
+			NDATA_MBSTRING,	szmaterial,	128,
+			NDATA_MBSTRING,	sztool,		128,
+			NDATA_INT32,	&siExplain,	4,
+			NDATA_INT32,	&AttackE,	4,
+			NDATA_INT32,	&AttackR,	4,
+			NDATA_INT32,	&Grade,		4,
+			NDATA_MBSTRING,	szCanUseType,	256,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true) )
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("SWORD"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				cltItemWeapon clItemWeapon;
+				clItemWeapon.Init(durability, mindamage, maxdamage, 0);
+
+				stElement element;
+				element.siType = AttackE;
+				element.siPower = AttackR;
+
+
+				cltItem clitem(unique, usedate, &element ,&clItemWeapon);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKESWORD1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(level, condition, 0, 0, 0, 0, SKILL_USESWORD1, MountSkillPoint, true, true, 0, 0);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, fieldimg, szname, ITEMTYPE_SWORD, weight, 
+									&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+									ITEMSOUND_SWORD, &clitem,Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					pclItemInfo[ref]->SetAttackRange(1);
+					pclItemInfo[ref]->SetAttackType(ATTACKTYPE_SWORD);
+					pclItemInfo[ref]->SetAttackInterval(AttackDelay);
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					if (szCanUseType)
+					{
+						SI32 atb = ItemInfoAtbParser.GetValueByString(szCanUseType);
+
+						pclItemInfo[ref]->AddItemInfoAtb(atb);
+					}
+				}
+			}
+		}
+	}
+
+}
+
+// 창 아이템을 추가한다. 
+void cltItemManagerCommon::AddSpearItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddSwordItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[20];
+	TCHAR iconcode[20];
+	TCHAR armcode[12];
+	SI32 showlist;
+	SI32 AttackDelay;		// 공격 간격 시간
+	SI32 weight;
+	SI32 skilllevel;		// 생산에 필요한 스킬 레벨 
+	SI32 MountSkillPoint;	// 장착에 필요한 무기 사용술 스킬 포인트
+	SI32 makepbt;			// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;			// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 level;
+	SI32 condition;
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 mindamage, maxdamage;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 AttackE;
+	SI32 AttackR;
+	SI32 Grade;
+	TCHAR szCanUseType[256];
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,	4,		
+			NDATA_MBSTRING,	szname,		128,
+			NDATA_MBSTRING,	code,		128,
+			NDATA_MBSTRING,	iconcode,	128,
+			NDATA_MBSTRING,	armcode,	128,
+			NDATA_INT32,	&showlist,	4,
+			NDATA_INT32,	&AttackDelay,	4,
+			NDATA_INT32,	&weight,	4,
+			NDATA_INT32,	&skilllevel,	4,
+			NDATA_INT32,	&MountSkillPoint,	4,
+			NDATA_INT32,	&makepbt,	4,
+			NDATA_INT32,	&incpbt,	4,
+			NDATA_INT32,	&level,		4,
+			NDATA_INT32,	&condition,	4,
+			NDATA_INT32,	&siHnd,		4,
+			NDATA_INT32,	&durability,	4,
+			NDATA_INT32,	&usedate,	4,
+			NDATA_INT32,	&mindamage,	4,
+			NDATA_INT32,	&maxdamage,	4,
+			NDATA_INT32,	&productunit,	4,
+			NDATA_MBSTRING,	szmaterial,	128,
+			NDATA_MBSTRING,	sztool,		128,
+			NDATA_INT32	,	&siExplain,	4,
+			NDATA_INT32,	&AttackE,	4,
+			NDATA_INT32,	&AttackR,	4,
+			NDATA_INT32,	&Grade,		4,
+			NDATA_MBSTRING,	szCanUseType,	256,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("SPEAR"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				cltItemWeapon clItemWeapon;
+				clItemWeapon.Init(durability, mindamage, maxdamage, 0);
+
+				stElement element;
+				element.siType = AttackE;
+				element.siPower = AttackR;
+
+				cltItem clitem(unique, usedate, &element, &clItemWeapon);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKESPEAR1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 2003.10.23
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(level, condition, 0, 0, 0, 0, SKILL_USESPEAR1, MountSkillPoint, true, true, 0, 0);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 110, szname,		ITEMTYPE_SPEAR, weight, 
+					&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+					ITEMSOUND_SWORD, &clitem,Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					pclItemInfo[ref]->SetAttackRange(1);
+					pclItemInfo[ref]->SetAttackType(ATTACKTYPE_SPEAR);
+					pclItemInfo[ref]->SetAttackInterval(AttackDelay);
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					if (szCanUseType)	
+					{
+						SI32 atb = ItemInfoAtbParser.GetValueByString(szCanUseType);
+
+						pclItemInfo[ref]->AddItemInfoAtb(atb);
+					}
+				}
+
+			}
+		}
+	}
+
+}
+
+
+// 지팡이 아이템을 추가한다. 
+void cltItemManagerCommon::AddStaffItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddStaffItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[24];
+	TCHAR iconcode[24];
+	TCHAR armcode[24];
+	SI32 showlist;
+	SI32 AttackDelay;		// 공격 간격 시간
+	SI32 weight;
+	SI32 skilllevel;		// 생산에 필요한 스킬 레벨 
+	SI32 MountSkillPoint;	// 장착에 필요한 무기 사용술 스킬 포인트
+	SI32 makepbt;			// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;			// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 level;
+	SI32 condition;
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 mindamage, maxdamage;
+	SI32 mag;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 AttackE;
+	SI32 AttackR;
+	SI32 Grade;
+	TCHAR szCanUseType[256];
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,	4,		
+			NDATA_MBSTRING,	szname,		128,
+			NDATA_MBSTRING,	code,		128,
+			NDATA_MBSTRING,	iconcode,	128,
+			NDATA_MBSTRING,	armcode,	128,
+			NDATA_INT32,	&showlist,	4,
+			NDATA_INT32,	&AttackDelay,	4,
+			NDATA_INT32,	&weight,	4,
+			NDATA_INT32,	&skilllevel,	4,
+			NDATA_INT32,	&MountSkillPoint,	4,
+			NDATA_INT32,	&makepbt,	4,
+			NDATA_INT32,	&incpbt,	4,
+			NDATA_INT32,	&level,		4,
+			NDATA_INT32,	&condition,	4,
+			NDATA_INT32,	&siHnd,		4,
+			NDATA_INT32,	&durability,	4,
+			NDATA_INT32,	&usedate,	4,
+			NDATA_INT32,	&mindamage,	4,
+			NDATA_INT32,	&maxdamage,	4,
+			NDATA_INT32,	&mag,		4,
+			NDATA_INT32,	&productunit,	4,
+			NDATA_MBSTRING,	szmaterial,	128,
+			NDATA_MBSTRING,	sztool,		128,
+			NDATA_INT32,	&siExplain,	4,
+			NDATA_INT32,	&AttackE,	4,
+			NDATA_INT32,	&AttackR,	4,
+			NDATA_INT32,	&Grade,		4,
+			NDATA_MBSTRING,	szCanUseType,	256,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+
+				cltItemWeapon clItemWeapon;
+				clItemWeapon.Init(durability, mindamage, maxdamage, mag);
+
+				stElement element;
+				element.siType = AttackE;
+				element.siPower = AttackR;
+
+				cltItem clitem(unique, usedate, &element ,&clItemWeapon);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("STAFF"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKESTAFF1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(level, 0, 0, condition, 0, 0, SKILL_USESTAFF1, MountSkillPoint, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 40, szname,		ITEMTYPE_STAFF, weight,  
+					&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+					ITEMSOUND_STAFF, &clitem,Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					pclItemInfo[ref]->SetAttackRange(5);
+					pclItemInfo[ref]->SetAttackType(ATTACKTYPE_STAFF1);
+
+					pclItemInfo[ref]->SetAttackInterval(AttackDelay);
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					if (szCanUseType)
+					{
+						SI32 atb = ItemInfoAtbParser.GetValueByString(szCanUseType);
+
+						pclItemInfo[ref]->AddItemInfoAtb(atb);
+					}
+				}
+
+
+			}
+		}
+	}
+
+}
+
+// 도끼 아이템을 추가한다. 
+void cltItemManagerCommon::AddAxeItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddAxeItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[60];
+	TCHAR iconcode[20];
+	TCHAR armcode[60];
+	SI32 showlist;
+	SI32 AttackDelay;
+	SI32 weight;
+	SI32 skilllevel;		// 생산에 필요한 스킬 레벨 
+	SI32 MountSkillPoint;	// 장착에 필요한 무기 사용술 스킬 포인트
+	SI32 makepbt;			// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;			// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 level;
+	SI32 condition;
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 mindamage, maxdamage;
+	SI32 hitrate;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 AttackE;
+	SI32 AttackR;
+	SI32 Grade;
+	TCHAR szCanUseType[256];
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,	4,		
+			NDATA_MBSTRING,	szname,		128,
+			NDATA_MBSTRING,	code,		128,
+			NDATA_MBSTRING,	iconcode,	128,
+			NDATA_MBSTRING,	armcode,	128,
+			NDATA_INT32,	&showlist,	4,
+			NDATA_INT32,	&AttackDelay,	4,
+			NDATA_INT32,	&weight,	4,
+			NDATA_INT32,	&skilllevel,	4,
+			NDATA_INT32,	&MountSkillPoint,	4,
+			NDATA_INT32,	&makepbt,	4,
+			NDATA_INT32,	&incpbt,	4,
+			NDATA_INT32,	&level,		4,
+			NDATA_INT32,	&condition,	4,
+			NDATA_INT32,	&siHnd,		4,
+			NDATA_INT32,	&durability,	4,
+			NDATA_INT32,	&usedate,	4,
+			NDATA_INT32,	&mindamage,	4,
+			NDATA_INT32,	&maxdamage,	4,
+			NDATA_INT32,	&hitrate,	4,
+			NDATA_INT32,	&productunit,	4,
+			NDATA_MBSTRING,	szmaterial,	128,
+			NDATA_MBSTRING,	sztool,		128,
+			NDATA_INT32,	&siExplain,	4,
+			NDATA_INT32,	&AttackE,	4,
+			NDATA_INT32,	&AttackR,	4,
+			NDATA_INT32,	&Grade,		4,
+			NDATA_MBSTRING,	szCanUseType,	256,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("AXE"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex >= 0)
+				{
+
+					cltItemWeapon clItemWeapon;
+					clItemWeapon.Init(durability, mindamage, maxdamage, 0);
+
+					stElement element;
+					element.siType = AttackE;
+					element.siPower = AttackR;
+
+
+					cltItem clitem(unique, usedate,&element ,&clItemWeapon);
+
+
+					// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+					cltItemSkillInfo clinfo(SKILL_MAKEAXE1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+					// 아이템 장착에 필요한 조건을 파악한다. 
+					cltItemConition clCondition(level, condition, 0, 0, 0, 0, SKILL_USEAXE1, MountSkillPoint, true, true, 0, 0 );
+
+					// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+					StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+					SI32 ref = AddItem(imageindex, 50, szname,		ITEMTYPE_AXE, weight,  
+						&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+						ITEMSOUND_AXE, &clitem,Grade, MinNum, NULL, NewMarket ? 1 : 0);
+					if(ref >= 0)
+					{
+						if(showlist)
+						{
+							pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+						}
+						
+						pclItemInfo[ref]->SetAttackRange(1);
+						pclItemInfo[ref]->SetAttackType(ATTACKTYPE_AXE);
+						pclItemInfo[ref]->SetAttackInterval(AttackDelay);
+						pclItemInfo[ref]->siDefaultHitRate	= hitrate;
+						pclItemInfo[ref]->siExplainUnique = siExplain;
+
+						if (szCanUseType)
+						{
+							SI32 atb = ItemInfoAtbParser.GetValueByString(szCanUseType);
+
+							pclItemInfo[ref]->AddItemInfoAtb(atb);
+						}
+
+					}
+				}
+				else
+				{
+					MsgBox(TEXT("AddAxeItem()"), TEXT("LoadError:[%s]"), datfilename);
+				}
+			}
+		}
+	}
+}
+
+
+// 활 아이템을 추가한다. 
+void cltItemManagerCommon::AddBowItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddBowItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[20];
+	TCHAR armcode[12];
+	SI32 ShowList;
+	SI32 AttackDelay;
+	SI32 weight;
+	SI32 skilllevel;		// 생산에 필요한 스킬 레벨 
+	SI32 MountSkillPoint;	// 장착에 필요한 무기 사용술 스킬 포인트
+	SI32 makepbt;			// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;			// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 level;
+	SI32 condition;	
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 mindamage, maxdamage;
+	SI32 range;
+	SI32 hitrate;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 AttackE;
+	SI32 AttackR;
+	SI32 Grade;
+	TCHAR szCanUseType[256];
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,	4,		
+			NDATA_MBSTRING,	szname,		128,
+			NDATA_MBSTRING,	code,		128,
+			NDATA_MBSTRING,	iconcode,	128,
+			NDATA_MBSTRING,	armcode,	128,
+			NDATA_INT32,	&ShowList,	4,
+			NDATA_INT32,	&AttackDelay,	4,
+			NDATA_INT32,	&weight,	4,
+			NDATA_INT32,	&skilllevel,	4,
+			NDATA_INT32,	&MountSkillPoint,	4,
+			NDATA_INT32,	&makepbt,	4,
+			NDATA_INT32,	&incpbt,	4,
+			NDATA_INT32,	&level,		4,
+			NDATA_INT32,	&condition,	4,
+			NDATA_INT32,	&siHnd,		4,
+			NDATA_INT32,	&durability,	4,
+			NDATA_INT32,	&usedate,	4,
+			NDATA_INT32,	&mindamage,	4,
+			NDATA_INT32,	&maxdamage,	4,
+			NDATA_INT32,	&range,		4,
+			NDATA_INT32,	&hitrate,	4,
+			NDATA_INT32,	&productunit,	4,
+			NDATA_MBSTRING,	szmaterial,	128,
+			NDATA_MBSTRING,	sztool,		128,
+			NDATA_INT32,	&siExplain,	4,
+			NDATA_INT32,	&AttackE,	4,
+			NDATA_INT32,	&AttackR,	4,
+			NDATA_INT32,	&Grade,		4,
+			NDATA_MBSTRING,	szCanUseType,	256,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("BOW"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				cltItemWeapon clItemWeapon;
+				clItemWeapon.Init(durability, mindamage, maxdamage, 0);
+
+				stElement element;
+				element.siType = AttackE;
+				element.siPower = AttackR;
+
+				cltItem clitem(unique, usedate,&element, &clItemWeapon);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKEBOW1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(level, 0, condition, 0, 0, 0, SKILL_USEBOW1, MountSkillPoint, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 120, szname,		ITEMTYPE_BOW, weight,  
+					&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+					ITEMSOUND_BOW, &clitem,Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(ShowList)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					pclItemInfo[ref]->SetAttackRange(range);
+					pclItemInfo[ref]->SetAttackType(ATTACKTYPE_BOW);
+					pclItemInfo[ref]->SetAttackInterval(AttackDelay);
+					pclItemInfo[ref]->siDefaultHitRate	= hitrate;
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					if (szCanUseType)
+					{
+						SI32 atb = ItemInfoAtbParser.GetValueByString(szCanUseType);
+
+						pclItemInfo[ref]->AddItemInfoAtb(atb);
+					}
+
+				}
+
+
+			}
+		}
+	}
+}
+
+// 총 아이템을 추가한다. 
+void cltItemManagerCommon::AddGunItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddGunItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[20];
+	TCHAR armcode[12];
+	SI32 showlist;
+	SI32 AttackDelay;
+	SI32 weight;
+	SI32 skilllevel;		// 생산에 필요한 스킬 레벨 
+	SI32 MountSkillPoint;	// 장착에 필요한 무기 사용술 스킬 포인트
+	SI32 makepbt;			// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;			// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 level;
+	SI32 condition;	
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 mindamage, maxdamage;
+	SI32 range;
+	SI32 hitrate;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 AttackE;
+	SI32 AttackR;
+	SI32 Grade;
+	TCHAR szCanUseType[256];
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{	
+		NDATA_INT32,	&unique,	4,		
+			NDATA_MBSTRING,	szname,		128,
+			NDATA_MBSTRING,	code,		128,
+			NDATA_MBSTRING,	iconcode,	128,
+			NDATA_MBSTRING,	armcode,	128,
+			NDATA_INT32,	&showlist,	4,
+			NDATA_INT32,	&AttackDelay,	4,
+			NDATA_INT32,	&weight,	4,
+			NDATA_INT32,	&skilllevel,	4,
+			NDATA_INT32,	&MountSkillPoint,	4,
+			NDATA_INT32,	&makepbt,	4,
+			NDATA_INT32,	&incpbt,	4,
+			NDATA_INT32,	&level,		4,
+			NDATA_INT32,	&condition,	4,
+			NDATA_INT32,	&siHnd,		4,
+			NDATA_INT32,	&durability,	4,
+			NDATA_INT32,	&usedate,	4,
+			NDATA_INT32,	&mindamage,	4,
+			NDATA_INT32,	&maxdamage, 4,
+			NDATA_INT32,	&range, 4,
+			NDATA_INT32,	&hitrate, 4,
+			NDATA_INT32,	&productunit,4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain,4,
+			NDATA_INT32,	&AttackE,	4,
+			NDATA_INT32,	&AttackR,	4,
+			NDATA_INT32,	&Grade,		4,
+			NDATA_MBSTRING,	szCanUseType,	256,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("GUN"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex >= 0)
+				{
+
+					cltItemWeapon clItemWeapon;
+					clItemWeapon.Init(durability, mindamage, maxdamage, 0);
+
+
+					stElement element;
+					element.siType = AttackE;
+					element.siPower = AttackR;
+
+
+					cltItem clitem(unique, usedate,&element ,&clItemWeapon);
+
+					// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+					cltItemSkillInfo clinfo(SKILL_MAKEGUN1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+					// 아이템 장착에 필요한 조건을 파악한다. 
+					cltItemConition clCondition(level, 0, condition, 0, 0, 0, SKILL_USEGUN1, MountSkillPoint, true, true, 0, 0 );
+
+					// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+					StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+					SI32 ref = AddItem(imageindex, 80, szname,		ITEMTYPE_GUN, weight,  
+						&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+						ITEMSOUND_GUN, &clitem,Grade, MinNum, NULL, NewMarket ? 1 : 0);
+					if(ref >= 0)
+					{
+						if(showlist)
+						{
+							pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+						}
+						
+						pclItemInfo[ref]->SetAttackRange(range);
+						pclItemInfo[ref]->SetAttackType(ATTACKTYPE_GUN);
+						pclItemInfo[ref]->SetAttackInterval(AttackDelay);
+						pclItemInfo[ref]->siDefaultHitRate	= hitrate;
+						pclItemInfo[ref]->siExplainUnique = siExplain;
+
+						if (szCanUseType)
+						{
+							SI32 atb = ItemInfoAtbParser.GetValueByString(szCanUseType);
+
+							pclItemInfo[ref]->AddItemInfoAtb(atb);
+						}
+					}
+				}
+				else
+				{
+					TCHAR buffer[256];
+					StringCchPrintf(buffer, 256, TEXT("fd86y3:%s"),  buffer);
+					if (pclClient->GameMode != GAMEMODE_SERVER)
+						MessageBox(NULL, TEXT("Error"), buffer, MB_OK|MB_TOPMOST);
+
+				}
+
+			}
+		}
+	}
+}
+
+/*cyj
+// 대포 아이템을 추가한다. 
+void cltItemManagerCommon::AddCannonItem(TCHAR* datfilename)
+{
+SI32 i;
+FILE* fp;
+TCHAR buffer[1024];
+
+fp = _tfopen(datfilename, TEXT("rt"));
+if(fp == NULL)
+{
+TCHAR buffer[256];
+sprintf(buffer, TEXT("LoadError:[%s]"), datfilename);
+MessageBox(NULL, TEXT("Error"), buffer, MB_OK|MB_TOPMOST);
+
+return ;
+}
+
+// 첫번째 5줄은 무시한다. 
+for(i = 0;i < 5;i++)
+_fgetts(buffer, 1024, fp);
+
+SI32 index = 0;
+while( _fgetts(buffer, 1024, fp) != NULL)
+{
+
+SI32 unique;
+TCHAR szname[60];
+TCHAR code[20];
+TCHAR iconcode[60];
+TCHAR armcode[12];
+SI32 AttackDelay;
+SI32 weight;
+SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+SI32 MountSkillPoint;	// 장착에 필요한 무기 사용술 스킬 포인트
+SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+SI32 level;
+SI32 condition;
+SI32 siHnd;
+SI32 durability;
+SI32 mindamage, maxdamage;
+SI32 range;
+SI32 hitrate;
+SI32 decdur;
+SI32 productunit;
+TCHAR szmaterial[128];
+TCHAR sztool[128];
+TCHAR szexplain[128];
+
+if( pclClient->siServiceArea != ConstServiceArea_Korea )
+{
+ParseText( buffer );
+
+unique = _tstoi( tokens[0] );
+MStrCpy( szname, tokens[1], 60 );
+MStrCpy( code, tokens[2], 20 );
+MStrCpy( iconcode, tokens[3], 60 );
+MStrCpy( armcode, tokens[4], 12 );
+AttackDelay = _tstoi( tokens[5] );
+weight = _tstoi( tokens[6] );
+skilllevel = _tstoi( tokens[7] );
+MountSkillPoint = _tstoi( tokens[8] );
+makepbt = _tstoi( tokens[9] );
+incpbt = _tstoi( tokens[10] );
+level = _tstoi( tokens[11] );
+condition = _tstoi( tokens[12] );
+siHnd = _tstoi( tokens[13] );
+durability = _tstoi( tokens[14] );
+mindamage = _tstoi( tokens[15] );
+maxdamage = _tstoi( tokens[16] );
+range = _tstoi( tokens[17] );
+hitrate = _tstoi( tokens[18] );
+decdur = _tstoi( tokens[19] );
+productunit = _tstoi( tokens[20] );
+MStrCpy( szmaterial, tokens[21], 128);
+MStrCpy( sztool, tokens[22], 128);
+MStrCpy( szexplain, tokens[23], 128);
+}
+else
+{
+_stscanf(buffer, TEXT("%d %s %s %s %s %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %s %s %s"), 
+&unique, szname, code, iconcode, armcode, &AttackDelay, &weight, &skilllevel,
+&MountSkillPoint, &makepbt, &incpbt, &level, &condition, &siHnd, &durability,
+&mindamage, &maxdamage, &range, &hitrate, &decdur,&productunit, szmaterial, sztool, szexplain);
+}
+
+//	_stscanf(buffer, TEXT("%d %s %s %s %s %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %s %s %s"), 
+//		&unique, szname, code, iconcode, armcode, &AttackDelay, &weight, &skilllevel,
+//		&MountSkillPoint, &makepbt, &incpbt, &level, &condition, &siHnd, &durability,
+//		&mindamage, &maxdamage, &range, &hitrate, &decdur,&productunit, szmaterial, sztool, szexplain);
+
+// 이미지리스트에서의 순서를 찾는다. 
+SI32 imageindex = FindBitmapIndex(TEXT("CANNON"), iconcode);
+if(imageindex < 0)imageindex = 0;
+
+if(imageindex >= 0)
+{
+
+cltItemWeapon clItemWeapon;
+clItemWeapon.Init(durability, mindamage, maxdamage, 0);
+
+cltItem clitem(unique, &clItemWeapon);
+
+// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+cltItemSkillInfo clinfo(SKILL_MAKECANNON, skilllevel, makepbt, incpbt, siHnd, 0);
+
+// 아이템 장착에 필요한 조건을 파악한다. 
+cltItemConition clCondition(level, condition, 0, 0, 0, 0, 0, 0, true, true, 0 );
+
+SI32 ref = AddItem(imageindex, 80, szname,		ITEMTYPE_CANNON, weight,  
+&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, ITEMSOUND_GUN, &clitem);
+if(ref >= 0)
+{
+pclItemInfo[ref]->SetAttackRange(range);
+pclItemInfo[ref]->SetAttackType(ATTACKTYPE_CANNON);
+pclItemInfo[ref]->SetAttackInterval(AttackDelay);
+pclItemInfo[ref]->siDefaultHitRate	= hitrate;
+pclItemInfo[ref]->siDecDur = decdur;
+}
+}
+else
+{
+TCHAR buffer[256];
+sprintf(buffer, TEXT("fd86y3:%s"),  buffer);
+MessageBox(NULL, TEXT("Error"), buffer, MB_OK|MB_TOPMOST);
+
+}
+}
+
+fclose(fp);
+
+}
+
+
+// 어뢰 아이템을 추가한다. 
+void cltItemManagerCommon::AddTorpedoItem(TCHAR* datfilename)
+{
+SI32 i;
+FILE* fp;
+TCHAR buffer[1024];
+
+fp = _tfopen(datfilename, TEXT("rt"));
+if(fp == NULL)
+{
+TCHAR buffer[256];
+sprintf(buffer, TEXT("LoadError:[%s]"), datfilename);
+MessageBox(NULL, TEXT("Error"), buffer, MB_OK|MB_TOPMOST);
+
+return ;
+}
+
+// 첫번째 5줄은 무시한다. 
+for(i = 0;i < 5;i++)
+_fgetts(buffer, 1024, fp);
+
+SI32 index = 0;
+while( _fgetts(buffer, 1024, fp) != NULL)
+{
+
+SI32 unique;
+TCHAR szname[60];
+TCHAR code[20];
+TCHAR iconcode[60];
+TCHAR armcode[12];
+SI32 AttackDelay;
+SI32 weight;
+SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+SI32 MountSkillPoint;	// 장착에 필요한 무기 사용술 스킬 포인트
+SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+SI32 level;
+SI32 condition;
+SI32 siHnd;
+SI32 durability;
+SI32 mindamage, maxdamage;
+SI32 range;
+SI32 hitrate;
+SI32 productunit;
+TCHAR szmaterial[128];
+TCHAR sztool[128];
+TCHAR szexplain[128];
+
+if( pclClient->siServiceArea != ConstServiceArea_Korea )
+{
+ParseText( buffer );
+
+unique = _tstoi( tokens[0] );
+MStrCpy( szname, tokens[1], 60 );
+MStrCpy( code, tokens[2], 20 );
+MStrCpy( iconcode, tokens[3], 60 );
+MStrCpy( armcode, tokens[4], 12 );
+AttackDelay = _tstoi( tokens[5] );
+weight = _tstoi( tokens[6] );
+skilllevel = _tstoi( tokens[7] );
+MountSkillPoint = _tstoi( tokens[8] );
+makepbt = _tstoi( tokens[9] );
+incpbt = _tstoi( tokens[10] );
+level = _tstoi( tokens[11] );
+condition = _tstoi( tokens[12] );
+siHnd = _tstoi( tokens[13] );
+durability = _tstoi( tokens[14] );
+mindamage = _tstoi( tokens[15] );
+maxdamage = _tstoi( tokens[16] );
+range = _tstoi( tokens[17] );
+hitrate = _tstoi( tokens[18] );
+productunit = _tstoi( tokens[19] );
+MStrCpy( szmaterial, tokens[20], 128);
+MStrCpy( sztool, tokens[21], 128);
+MStrCpy( szexplain, tokens[22], 128);
+}
+else
+{
+_stscanf(buffer, TEXT("%d %s %s %s %s %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %s %s %s"), 
+&unique, szname, code, iconcode, armcode, &AttackDelay, &weight, &skilllevel,
+&MountSkillPoint, &makepbt, &incpbt, &level, &condition, &siHnd, &durability,
+&mindamage, &maxdamage, &range, &hitrate, &productunit, szmaterial, sztool, szexplain);
+}
+
+//	_stscanf(buffer, TEXT("%d %s %s %s %s %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %s %s %s"), 
+//		&unique, szname, code, iconcode, armcode, &AttackDelay, &weight, &skilllevel,
+//		&MountSkillPoint, &makepbt, &incpbt, &level, &condition, &siHnd, &durability,
+//		&mindamage, &maxdamage, &range, &hitrate, &productunit, szmaterial, sztool, szexplain);
+
+// 이미지리스트에서의 순서를 찾는다. 
+SI32 imageindex = FindBitmapIndex(TEXT("TORPEDO"), iconcode);
+if(imageindex < 0)imageindex = 0;
+
+if(imageindex >= 0)
+{
+
+cltItemWeapon clItemWeapon;
+clItemWeapon.Init(durability, mindamage, maxdamage, 0);
+
+cltItem clitem(unique, &clItemWeapon);
+
+// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+cltItemSkillInfo clinfo(0, skilllevel, makepbt, incpbt, siHnd, 0);
+
+// 아이템 장착에 필요한 조건을 파악한다. 
+cltItemConition clCondition(level, 0, condition, 0, 0, 0, 0, 0, true, true, 0 );
+
+SI32 ref = AddItem(imageindex, 80, szname,		ITEMTYPE_TORPEDO, weight,  
+&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, ITEMSOUND_GUN, &clitem);
+if(ref >= 0)
+{
+pclItemInfo[ref]->SetAttackRange(range);
+pclItemInfo[ref]->SetAttackType(ATTACKTYPE_CANNON);
+pclItemInfo[ref]->SetAttackInterval(AttackDelay);
+pclItemInfo[ref]->siDefaultHitRate	= hitrate;
+}
+}
+else
+{
+TCHAR buffer[256];
+sprintf(buffer, TEXT("fd8216y3:%s"),  buffer);
+MessageBox(NULL, TEXT("Error"), buffer, MB_OK|MB_TOPMOST);
+
+}
+}
+
+fclose(fp);
+
+}
+*/
+
+
+// 갑옷 아이템을 추가한다. 
+void cltItemManagerCommon::AddArmourItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddGunItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[12];
+	TCHAR iconcode[24];
+	TCHAR armcode[12];
+	SI32 showlist;
+	SI32 weight;
+	SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 siLevel;
+	SI32 siStr;
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 ac;
+	TCHAR szincskilltype[64];
+	SI32 incskillamount;
+	SI32 productunit;
+	SI32 SetItemIndex;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 DefenE;
+	SI32 DefenR;
+	SI32 Grade;
+	TCHAR szCanUseType[256];
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_MBSTRING,	armcode, 128,
+			NDATA_INT32,	&showlist,	4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel,4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siLevel, 4,
+			NDATA_INT32,	&siStr, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&ac, 4,
+			NDATA_MBSTRING,	szincskilltype,128,
+			NDATA_INT32,	&incskillamount,4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_INT32,	&SetItemIndex,4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain,  4,
+			NDATA_INT32,	&DefenE,	4,
+			NDATA_INT32,	&DefenR,	4,
+			NDATA_INT32,	&Grade,		4,
+			NDATA_MBSTRING,	szCanUseType,	256,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				cltItemArmour clItemArmour;
+				clItemArmour.Init(durability, ac, 0, incskillamount);
+
+				stElement element;
+				element.siType = DefenE;
+				element.siPower = DefenR;
+
+				cltItem clitem(unique, usedate,&element, &clItemArmour);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("ARMOUR"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKEARMOUR1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(siLevel, siStr, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 20, szname,		ITEMTYPE_ARMOUR, weight,  
+					&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+					ITEMSOUND_CLOTH, &clitem, Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					if(_tcscmp(szincskilltype, TEXT("UPGRADESKILLTYPE_MAKE")) == 0)
+					{
+						pclItemInfo[ref]->siUpgradeSkillType = UPGRADESKILLTYPE_MAKE;
+					}
+					if(_tcscmp(szincskilltype, TEXT("UPGRADESKILLTYPE_USEWEAPON")) == 0)
+					{
+						pclItemInfo[ref]->siUpgradeSkillType = UPGRADESKILLTYPE_USEWEAPON;
+					}
+					if(_tcscmp(szincskilltype, TEXT("UPGRADESKILLTYPE_MAKENUSEWEAPON")) == 0)
+					{
+						pclItemInfo[ref]->siUpgradeSkillType = UPGRADESKILLTYPE_USEWEAPON | UPGRADESKILLTYPE_MAKE;
+					}
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+					pclItemInfo[ref]->SetSetItemIndex( SetItemIndex );
+
+					if (szCanUseType)
+					{
+						SI32 atb = ItemInfoAtbParser.GetValueByString(szCanUseType);
+
+						pclItemInfo[ref]->AddItemInfoAtb(atb);
+					}
+
+				}
+			}
+		}
+	}
+}
+
+
+// 의복  아이템을 추가한다. 
+void cltItemManagerCommon::AddDressItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddDressItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+	SI32	unique					= 0;
+	TCHAR	szname[60]				= TEXT("");
+	TCHAR	code[12]				= TEXT("");
+	TCHAR	iconcode[24]			= TEXT("");
+	TCHAR	armcode[12]				= TEXT("");
+	SI32	showlist				= 0;
+	TCHAR	itemmall[256]			= TEXT("");
+	SI32	weight					= 0;
+	SI32	skilllevel				= 0;	// 생산에 필요한 스킬 레벨 
+	SI32	makepbt					= 0;		// 기본 생산 확률. (퍼밀) 
+	SI32	incpbt					= 0;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32	condition				= 0;
+	SI32	siHnd					= 0;
+	SI32	child					= 0;
+	SI32	needrank				= 0;
+	SI32	durability				= 0;
+	//	SI32 ac;
+	//SI32 luck;
+	TCHAR	szIncSkillUnique[128]	= TEXT("");
+	TCHAR	szincskilltype[128]		= TEXT("");
+	SI32	incskillamount			= 0;
+	//	UI32 sistr;
+	//	UI32 sidex;
+	//	UI32 sivit;
+	//	UI32 simag;
+	//	UI32 siluk;
+	SI32	decdur					= 0;
+	SI32	man						= 0;
+	SI32	woman					= 0;
+	SI32	productunit				= 0;
+	TCHAR	szmaterial[128]			= TEXT("");
+	TCHAR	sztool[128]				= TEXT("");
+	SI32	siExplain				= 0;
+	bool	bMan					= false;
+	bool	bWoman					= false;
+	SI32	usedate					= 0;
+	SI32	DefenE					= 0;
+	SI32	DefenR					= 0;
+	SI32	Grade					= 0;
+	SI32	MinNum					= 0;
+	SI32	NewMarket				= 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,			4,		
+		NDATA_MBSTRING,	szname,				128,
+		NDATA_MBSTRING,	code,				128,
+		NDATA_MBSTRING,	iconcode,			128,
+		NDATA_MBSTRING,	armcode,			128,
+		NDATA_INT32,	&showlist,			4,
+		NDATA_MBSTRING,	itemmall,			256,
+		NDATA_INT32,	&weight,			4,
+		NDATA_INT32,	&skilllevel,		4,
+		NDATA_INT32,	&makepbt,			4,
+		NDATA_INT32,	&incpbt,			4,
+		NDATA_INT32,	&condition,			4,
+		NDATA_INT32,	&siHnd,				4,
+		NDATA_INT32,	&child,				4,
+		NDATA_INT32,	&needrank,			4,
+		NDATA_INT32,	&durability,		4,
+		NDATA_INT32,	&usedate,			4,
+		//NDATA_INT32,	&ac, 4,
+		//NDATA_INT32,	&luck, 4,
+		NDATA_MBSTRING,	szincskilltype,		128,
+		NDATA_MBSTRING,	szIncSkillUnique,	128,
+		NDATA_INT32,	&incskillamount,	4,
+		//NDATA_INT32,	&sistr,4,
+		//NDATA_INT32,	&sidex,4,
+		//NDATA_INT32,	&sivit,4,
+		//NDATA_INT32,	&simag,4,
+		//NDATA_INT32,	&siluk,4,
+		NDATA_INT32,	&decdur,			4,
+		NDATA_INT32,	&man,				4,
+		NDATA_INT32,	&woman,				4,
+		NDATA_INT32,	&productunit,		4,
+		NDATA_MBSTRING,	szmaterial,			128,
+		NDATA_MBSTRING,	sztool,				128,
+		NDATA_INT32,	&siExplain,			4,
+		//NDATA_INT32,	&DefenE,	4,
+		//NDATA_INT32,	&DefenR,	4,
+		//NDATA_INT32,	&Grade,		4,
+		NDATA_INT32,	&MinNum,			4,
+		NDATA_INT32,	&NewMarket,			4,
+		0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+
+				//cltItemArmour clItemArmour;
+				//clItemArmour.Init(durability, ac, luck, incskillamount);
+
+				cltItemStatusArmour clItemStatusArmour;
+				clItemStatusArmour.Init(durability, incskillamount);
+
+				stElement element;
+				element.siType = DefenE;
+				element.siPower = DefenR;
+
+				//cltItem clitem(unique, usedate, &element, &clItemArmour);
+				cltItem clitem(unique, usedate, &element, &clItemStatusArmour);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("DRESS"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKEDRESS1, skilllevel, makepbt, incpbt,  siHnd, 0);
+				//cltItemSkillInfo clinfo(SKILL_MAKEAVATAR_DRESS, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				if ( man > 0 ) bMan = true ;
+				else bMan = false ;
+				if ( woman > 0 ) bWoman = true ;
+				else bWoman = false ;
+				cltItemConition clCondition(condition, 0, 0, 0, 0, 0, 0, 0, bMan, bWoman, 0, child);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 20, szname,		ITEMTYPE_DRESS, weight,  
+					&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+					ITEMSOUND_CLOTH, &clitem,Grade,MinNum, NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					pclItemInfo[ref]->siNeedRank			= needrank;
+					pclItemInfo[ref]->siUpgradeSkillUnique	= ConvertTextToSkillUnique( szIncSkillUnique );
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+
+					pclItemInfo[ref]->siDecDur				= decdur;
+
+					TCHAR* pstr = _tcstok( szincskilltype, "|");
+					while( pstr ) 
+					{
+						if(_tcscmp(pstr, TEXT("UPGRADESKILLTYPE_MAKE")) == 0)
+						{
+							pclItemInfo[ref]->siUpgradeSkillType |= UPGRADESKILLTYPE_MAKE;
+						}
+						if(_tcscmp(pstr, TEXT("UPGRADESKILLTYPE_USEWEAPON")) == 0)
+						{
+							pclItemInfo[ref]->siUpgradeSkillType |= UPGRADESKILLTYPE_USEWEAPON;
+						}
+						if(_tcscmp(pstr, TEXT("UPGRADESKILLTYPE_MAKENUSEWEAPON")) == 0)
+						{
+							pclItemInfo[ref]->siUpgradeSkillType |= UPGRADESKILLTYPE_USEWEAPON | UPGRADESKILLTYPE_MAKE;
+						}
+						if(_tcscmp(pstr, TEXT("UPGRADESKILLTYPE_USE_TABLE_VALUE")) == 0)
+						{
+							pclItemInfo[ref]->siUpgradeSkillType |= UPGRADESKILLTYPE_USE_TABLE_VALUE;
+						}
+						   
+						pstr = _tcstok( NULL, "|");
+					}
+				}
+
+			}
+		}
+	}
+}
+
+/////////////////
+// 아바타 의복 아이템을 추가한다. 
+void cltItemManagerCommon::AddAvatarDressItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddAvatarDressItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+	SI32	unique					= 0;
+	TCHAR	szname[60]				= TEXT("");
+	TCHAR	code[12]				= TEXT("");
+	TCHAR	iconcode[24]			= TEXT("");
+	TCHAR	armcode[12]				= TEXT("");
+	SI32	showlist				= 0;
+	TCHAR	itemmall[256]			= TEXT("");
+	SI32	weight					= 0;
+	SI32	skilllevel				= 0;	// 생산에 필요한 스킬 레벨 
+	SI32	makepbt					= 0;		// 기본 생산 확률. (퍼밀) 
+	SI32	incpbt					= 0;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32	condition				= 0;
+	SI32	siHnd					= 0;
+	SI32	child					= 0;
+	SI32	needrank				= 0;
+	SI32	durability				= 0;
+	//	SI32 ac;
+	//SI32 luck;
+	TCHAR	szIncSkillUnique[128]	= TEXT("");
+	TCHAR	szincskilltype[128]		= TEXT("");
+	SI32	incskillamount			= 0;
+	//	UI32 sistr;
+	//	UI32 sidex;
+	//	UI32 sivit;
+	//	UI32 simag;
+	//	UI32 siluk;
+	SI32	decdur					= 0;
+	SI32	man						= 0;
+	SI32	woman					= 0;
+	SI32	productunit				= 0;
+	TCHAR	szmaterial[128]			= TEXT("");
+	TCHAR	sztool[128]				= TEXT("");
+	SI32	siExplain				= 0;
+	bool	bMan					= false;
+	bool	bWoman					= false;
+	SI32	usedate					= 0;
+	//SI32	DefenE					= 0;
+	//SI32	DefenR					= 0;
+	//SI32	Grade					= 0;
+	SI32	MinNum					= 0;
+	SI32	NewMarket				= 0;
+	SI32	IncSkillAmount			= 0; // 스킬 증가치
+
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,			4,		
+			NDATA_MBSTRING,	szname,				128,
+			NDATA_MBSTRING,	code,				128,
+			NDATA_MBSTRING,	iconcode,			128,
+			NDATA_MBSTRING,	armcode,			128,
+			NDATA_INT32,	&showlist,			4,
+			NDATA_MBSTRING,	itemmall,			256,
+			NDATA_INT32,	&weight,			4,
+			NDATA_INT32,	&skilllevel,		4,
+			NDATA_INT32,	&makepbt,			4,
+			NDATA_INT32,	&incpbt,			4,
+			NDATA_INT32,	&condition,			4,
+			NDATA_INT32,	&siHnd,				4,
+			NDATA_INT32,	&child,				4,
+			NDATA_INT32,	&needrank,			4,
+			NDATA_INT32,	&durability,		4,
+			NDATA_INT32,	&usedate,			4,
+			//NDATA_INT32,	&ac, 4,
+			//NDATA_INT32,	&luck, 4,
+			NDATA_MBSTRING,	szincskilltype,		128,
+			NDATA_MBSTRING,	szIncSkillUnique,	128,
+			NDATA_INT32,	&incskillamount,	4,
+			//NDATA_INT32,	&sistr,4,
+			//NDATA_INT32,	&sidex,4,
+			//NDATA_INT32,	&sivit,4,
+			//NDATA_INT32,	&simag,4,
+			//NDATA_INT32,	&siluk,4,
+			NDATA_INT32,	&decdur,			4,
+			NDATA_INT32,	&man,				4,
+			NDATA_INT32,	&woman,				4,
+			NDATA_INT32,	&productunit,		4,
+			NDATA_MBSTRING,	szmaterial,			128,
+			NDATA_MBSTRING,	sztool,				128,
+			NDATA_INT32,	&siExplain,			4,
+			//NDATA_INT32,	&DefenE,	4,
+			//NDATA_INT32,	&DefenR,	4,
+			//NDATA_INT32,	&Grade,		4,
+			NDATA_INT32,	&MinNum,			4,
+			NDATA_INT32,	&NewMarket,			4,
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+
+				cltItemAvatarDress		clItemAvatarDress;
+				clItemAvatarDress.init(durability, IncSkillAmount);
+
+				stElement element;
+				//element.siType = DefenE;
+				//element.siPower = DefenR;
+
+				//cltItem clitem(unique, usedate, &element, &clItemArmour);
+				cltItem clitem(unique, usedate, &element, &clItemAvatarDress);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("DRESS"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. (스킬, 필요스킬레벨, 기본성공률, 추가성공률, 손재주, 도력)
+				cltItemSkillInfo clinfo(SKILL_MAKEAVATAR_DRESS, skilllevel, makepbt, incpbt,  siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				if ( man > 0 ) bMan = true ;
+				else bMan = false ;
+				if ( woman > 0 ) bWoman = true ;
+				else bWoman = false ;
+				cltItemConition clCondition(condition, 0, 0, 0, 0, 0, 0, 0, bMan, bWoman, 0, child);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 20, szname,	ITEMTYPE_AVATAR_DRESS, weight, 
+					&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+					ITEMSOUND_CLOTH, &clitem,0,MinNum, NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					pclItemInfo[ref]->siNeedRank			= needrank;		// 착용에 필요한 캐릭터의 등급(군주, 영주 등)
+					pclItemInfo[ref]->siUpgradeSkillUnique	= ConvertTextToSkillUnique( szIncSkillUnique );
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+
+					pclItemInfo[ref]->siDecDur				= decdur;
+
+					if(_tcscmp(szincskilltype, TEXT("UPGRADESKILLTYPE_MAKE")) == 0)
+					{
+						pclItemInfo[ref]->siUpgradeSkillType = UPGRADESKILLTYPE_MAKE;
+					}
+					if(_tcscmp(szincskilltype, TEXT("UPGRADESKILLTYPE_USEWEAPON")) == 0)
+					{
+						pclItemInfo[ref]->siUpgradeSkillType = UPGRADESKILLTYPE_USEWEAPON;
+					}
+					if(_tcscmp(szincskilltype, TEXT("UPGRADESKILLTYPE_MAKENUSEWEAPON")) == 0)
+					{
+						pclItemInfo[ref]->siUpgradeSkillType = UPGRADESKILLTYPE_USEWEAPON | UPGRADESKILLTYPE_MAKE;
+					}
+				}
+
+			}
+		}
+	}
+}
+////////////////
+
+// 모자  아이템을 추가한다. 
+void cltItemManagerCommon::AddHatItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+		//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddHatItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32	unique					= 0;
+	TCHAR	szname[60]				= TEXT("");
+	TCHAR	code[12]				= TEXT("");
+	TCHAR	iconcode[24]			= TEXT("");
+	TCHAR	armcode[12]				= TEXT("");
+	SI32	showlist				= 0;
+	TCHAR	itemmall[256]			= TEXT("");
+	SI32	weight					= 0;
+	SI32	skilllevel				= 0;		// 생산에 필요한 스킬 레벨 
+	SI32	makepbt					= 0;		// 기본 생산 확률. (퍼밀) 
+	SI32	incpbt					= 0;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32	condition				= 0;
+	SI32	siHnd					= 0;
+	SI32	child					= 0;
+	SI32	needrank				= 0;
+	SI32	durability				= 0;
+	//SI32 ac;
+	//SI32 luck;
+	TCHAR	szIncSkillUnique[128]	= TEXT("");
+	TCHAR	szincskilltype[128]		= TEXT("");
+	SI32	incskillamount			= 0;
+	//UI32 sistr;
+	//UI32 sidex;
+	//UI32 sivit;
+	//UI32 simag;
+	//UI32 siluk;
+
+	SI32	decdur					= 0;
+	SI32	man						= 0;
+	SI32	woman					= 0;
+	SI32	productunit				= 0;
+	TCHAR	szmaterial[128]			= TEXT("");
+	TCHAR	sztool[128]				= TEXT("");
+	SI32	siExplain				= 0;
+	bool	bMan					= false;
+	bool	bWoman					= false;
+	SI32	usedate					= 0;
+	SI32	DefenE					= 0;
+	SI32	DefenR					= 0;
+	SI32	Grade					= 0;
+	SI32	MinNum					= 0;
+	SI32	NewMarket				= 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,			4,		
+		NDATA_MBSTRING,	szname,				128,
+		NDATA_MBSTRING,	code,				128,
+		NDATA_MBSTRING,	iconcode,			128,
+		NDATA_MBSTRING,	armcode,			128,
+		NDATA_INT32,	&showlist,			4,
+		NDATA_MBSTRING,	itemmall,			256,
+		NDATA_INT32,	&weight,			4,
+		NDATA_INT32,	&skilllevel,		4,
+		NDATA_INT32,	&makepbt,			4,
+		NDATA_INT32,	&incpbt,			4,
+		NDATA_INT32,	&condition,			4,
+		NDATA_INT32,	&siHnd,				4,
+		NDATA_INT32,	&child,				4,
+		NDATA_INT32,	&needrank,			4,
+		NDATA_INT32,	&durability,		4,
+		NDATA_INT32,	&usedate,			4,
+		//NDATA_INT32,	&ac, 4,
+		//NDATA_INT32,	&luck, 4,
+		NDATA_MBSTRING,	szincskilltype,		128,
+		NDATA_MBSTRING,	szIncSkillUnique,	128,
+		NDATA_INT32,	&incskillamount,	4,
+		//NDATA_INT32,	&sistr,4,
+		//NDATA_INT32,	&sidex,4,
+		//NDATA_INT32,	&sivit,4,
+		//NDATA_INT32,	&simag,4,
+		//NDATA_INT32,	&siluk,4,
+		NDATA_INT32,	&decdur,			4,
+		NDATA_INT32,	&man,				4,
+		NDATA_INT32,	&woman,				4,
+		NDATA_INT32,	&productunit,		4,
+		NDATA_MBSTRING,	szmaterial,			128,
+		NDATA_MBSTRING,	sztool,				128,
+		NDATA_INT32,	&siExplain,			4,
+		NDATA_INT32,	&DefenE,			4,
+		NDATA_INT32,	&DefenR,			4,
+		NDATA_INT32,	&Grade,				4,
+		NDATA_INT32,	&MinNum,			4,
+		NDATA_INT32,	&NewMarket,			4,
+			
+		0,0,0
+	};
+
+	dataloader.RegDataType(pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				cltItemStatusArmour clItemStatusArmour;
+				//clItemStatusArmour.Init(durability, ac, incskillamount, sistr, sidex, sivit, simag, siluk);
+				clItemStatusArmour.Init(durability, incskillamount);
+
+				stElement element;
+				element.siType = DefenE;
+				element.siPower = DefenR;
+
+				cltItem clitem(unique, usedate,&element, &clItemStatusArmour);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("HAT"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKEHAT1, skilllevel, makepbt, incpbt,  siHnd, 0);
+				//cltItemSkillInfo clinfo(SKILL_MAKEAVATAR_HAT, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다.
+				if ( man > 0 ) bMan = true ;
+				else bMan = false ;
+				if ( woman > 0 ) bWoman = true ;
+				else bWoman = false ;
+				cltItemConition clCondition(condition, 0, 0, 0, 0, 0, 0, 0, bMan, bWoman, 0, child);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(	imageindex, 
+									20, 
+									szname,		
+									ITEMTYPE_HAT, 
+									weight,  
+									&clinfo, 
+									&clCondition, 
+									armcode, 
+									szmaterial, 
+									sztool, 
+									productunit, 
+									ITEMSOUND_CLOTH, 
+									&clitem, 
+									Grade, 
+									MinNum, 
+									NULL, 
+									NewMarket ? 1 : 0 );
+				if(ref >= 0)
+				{
+					pclItemInfo[ref]->siNeedRank			= needrank; 
+					pclItemInfo[ref]->siUpgradeSkillUnique	= ConvertTextToSkillUnique( szIncSkillUnique );
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+
+					TCHAR* pstr = _tcstok( szincskilltype, "|");
+					while( pstr ) 
+					{
+						if(_tcscmp(pstr, TEXT("UPGRADESKILLTYPE_MAKE")) == 0)
+						{
+							pclItemInfo[ref]->siUpgradeSkillType |= UPGRADESKILLTYPE_MAKE;
+						}
+						if(_tcscmp(pstr, TEXT("UPGRADESKILLTYPE_USEWEAPON")) == 0)
+						{
+							pclItemInfo[ref]->siUpgradeSkillType |= UPGRADESKILLTYPE_USEWEAPON;
+						}
+						if(_tcscmp(pstr, TEXT("UPGRADESKILLTYPE_MAKENUSEWEAPON")) == 0)
+						{
+							pclItemInfo[ref]->siUpgradeSkillType |= UPGRADESKILLTYPE_USEWEAPON | UPGRADESKILLTYPE_MAKE;
+						}
+						if(_tcscmp(pstr, TEXT("UPGRADESKILLTYPE_USE_TABLE_VALUE")) == 0)
+						{
+							pclItemInfo[ref]->siUpgradeSkillType |= UPGRADESKILLTYPE_USE_TABLE_VALUE;
+						}
+						if(_tcscmp(pstr, TEXT("UPGRADESKILLTYPE_STATUS_UP_20")) == 0)
+						{
+							pclItemInfo[ref]->siUpgradeSkillType |= UPGRADESKILLTYPE_STATUS_UP_20;
+						}
+						
+						
+						pstr = _tcstok( NULL, "|");
+					}
+					
+
+					pclItemInfo[ref]->siDecDur				= decdur;
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+///////////
+// 아바타 모자 아이템을 추가한다. 
+void cltItemManagerCommon::AddAvatarHatItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddAvatarHatItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32	unique					= 0;
+	TCHAR	szname[60]				= TEXT("");
+	TCHAR	code[12]				= TEXT("");
+	TCHAR	iconcode[24]			= TEXT("");
+	TCHAR	armcode[12]				= TEXT("");
+	SI32	showlist				= 0;
+	TCHAR	itemmall[256]			= TEXT("");
+	SI32	weight					= 0;
+	SI32	skilllevel				= 0;		// 생산에 필요한 스킬 레벨 
+	SI32	makepbt					= 0;		// 기본 생산 확률. (퍼밀) 
+	SI32	incpbt					= 0;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32	condition				= 0;
+	SI32	siHnd					= 0;
+	SI32	child					= 0;
+	SI32	needrank				= 0;
+	SI32	durability				= 0;
+	//SI32 ac;
+	//SI32 luck;
+	TCHAR	szIncSkillUnique[128]	= TEXT("");
+	TCHAR	szincskilltype[128]		= TEXT("");
+	SI32	incskillamount			= 0;
+	//UI32 sistr;
+	//UI32 sidex;
+	//UI32 sivit;
+	//UI32 simag;
+	//UI32 siluk;
+
+	SI32	decdur					= 0;
+	SI32	man						= 0;
+	SI32	woman					= 0;
+	SI32	productunit				= 0;
+	TCHAR	szmaterial[128]			= TEXT("");
+	TCHAR	sztool[128]				= TEXT("");
+	SI32	siExplain				= 0;
+	bool	bMan					= false;
+	bool	bWoman					= false;
+	SI32	usedate					= 0;
+	//SI32	DefenE					= 0;
+	//SI32	DefenR					= 0;
+	//SI32	Grade					= 0;
+	SI32	MinNum					= 0;
+	SI32	NewMarket				= 0;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,			4,		
+			NDATA_MBSTRING,	szname,				128,
+			NDATA_MBSTRING,	code,				128,
+			NDATA_MBSTRING,	iconcode,			128,
+			NDATA_MBSTRING,	armcode,			128,
+			NDATA_INT32,	&showlist,			4,
+			NDATA_MBSTRING,	itemmall,			256,
+			NDATA_INT32,	&weight,			4,
+			NDATA_INT32,	&skilllevel,		4,
+			NDATA_INT32,	&makepbt,			4,
+			NDATA_INT32,	&incpbt,			4,
+			NDATA_INT32,	&condition,			4,
+			NDATA_INT32,	&siHnd,				4,
+			NDATA_INT32,	&child,				4,
+			NDATA_INT32,	&needrank,			4,
+			NDATA_INT32,	&durability,		4,
+			NDATA_INT32,	&usedate,			4,
+			//NDATA_INT32,	&ac, 4,
+			//NDATA_INT32,	&luck, 4,
+			NDATA_MBSTRING,	szincskilltype,		128,
+			NDATA_MBSTRING,	szIncSkillUnique,	128,
+			NDATA_INT32,	&incskillamount,	4,
+			//NDATA_INT32,	&sistr,4,
+			//NDATA_INT32,	&sidex,4,
+			//NDATA_INT32,	&sivit,4,
+			//NDATA_INT32,	&simag,4,
+			//NDATA_INT32,	&siluk,4,
+			NDATA_INT32,	&decdur,			4,
+			NDATA_INT32,	&man,				4,
+			NDATA_INT32,	&woman,				4,
+			NDATA_INT32,	&productunit,		4,
+			NDATA_MBSTRING,	szmaterial,			128,
+			NDATA_MBSTRING,	sztool,				128,
+			NDATA_INT32,	&siExplain,			4,
+			//NDATA_INT32,	&DefenE,			4,
+			//NDATA_INT32,	&DefenR,			4,
+			//NDATA_INT32,	&Grade,				4,
+			NDATA_INT32,	&MinNum,			4,
+			NDATA_INT32,	&NewMarket,			4,
+			0,0,0
+	};
+
+	dataloader.RegDataType(pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				cltItemAvatarHat		clItemAvatarHat;
+				clItemAvatarHat.init(durability, incskillamount);
+
+				stElement element;
+				//element.siType = DefenE;
+				//element.siPower = DefenR;
+
+				cltItem clitem(unique, usedate,&element, &clItemAvatarHat);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("HAT"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKEAVATAR_HAT, skilllevel, makepbt, incpbt,  siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다.
+				if ( man > 0 ) bMan = true ;
+				else bMan = false ;
+				if ( woman > 0 ) bWoman = true ;
+				else bWoman = false ;
+				cltItemConition clCondition(condition, 0, 0, 0, 0, 0, 0, 0, bMan, bWoman, 0, child);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 20, szname, ITEMTYPE_AVATAR_HAT, weight,  
+					&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+					ITEMSOUND_CLOTH, &clitem, 0, MinNum, NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					pclItemInfo[ref]->siNeedRank			= needrank; 
+					pclItemInfo[ref]->siUpgradeSkillUnique	= ConvertTextToSkillUnique( szIncSkillUnique );
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					if(_tcscmp(szincskilltype, TEXT("UPGRADESKILLTYPE_MAKE")) == 0)
+					{
+						pclItemInfo[ref]->siUpgradeSkillType = UPGRADESKILLTYPE_MAKE;
+					}
+					if(_tcscmp(szincskilltype, TEXT("UPGRADESKILLTYPE_USEWEAPON")) == 0)
+					{
+						pclItemInfo[ref]->siUpgradeSkillType = UPGRADESKILLTYPE_USEWEAPON;
+					}
+					if(_tcscmp(szincskilltype, TEXT("UPGRADESKILLTYPE_MAKENUSEWEAPON")) == 0)
+					{
+						pclItemInfo[ref]->siUpgradeSkillType = UPGRADESKILLTYPE_USEWEAPON | UPGRADESKILLTYPE_MAKE;
+					}
+					
+					
+					pclItemInfo[ref]->siDecDur				= decdur;
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+///////////
+
+// 투구 아이템을 추가한다. 
+void cltItemManagerCommon::AddHelmetItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddHelmetItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[12];
+	TCHAR iconcode[24];
+	TCHAR armcode[12];
+	SI32 showlist;
+	SI32 weight;
+	SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 condition;
+	SI32 siStr;
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 ac;
+	TCHAR szincskilltype[64];
+	SI32 incskillamount;
+	SI32 productunit;
+	SI32 SetItemIndex;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 DefenE;
+	SI32 DefenR;
+	SI32 Grade;
+	SI32 NewMarket;
+
+	TCHAR szCanUseType[256];
+	SI32 MinNum = 0;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_MBSTRING,	armcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel, 4,
+			NDATA_INT32,	&makepbt,4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&condition, 4,
+			NDATA_INT32,	&siStr, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&ac, 128,
+			NDATA_MBSTRING,	szincskilltype, 128,
+			NDATA_INT32,	&incskillamount,4,
+			NDATA_INT32,	&productunit,  4,
+			NDATA_INT32,	&SetItemIndex,128,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain,  4,
+			NDATA_INT32,	&DefenE,	4,
+			NDATA_INT32,	&DefenR,	4,
+			NDATA_INT32,	&Grade,		4,
+			NDATA_MBSTRING,	szCanUseType,	256,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+
+				cltItemArmour clItemArmour;
+				clItemArmour.Init(durability, ac, 0, incskillamount);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("HELMET"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				stElement element;
+				element.siType = DefenE;
+				element.siPower = DefenR;
+
+				cltItem clitem(unique, usedate, &element, &clItemArmour);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKEHELMET1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(condition, siStr, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 10, szname,		ITEMTYPE_HELMET, weight,  
+					&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+					ITEMSOUND_HELMET, &clitem,Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(_tcscmp(szincskilltype, TEXT("UPGRADESKILLTYPE_MAKE")) == 0)
+					{
+						pclItemInfo[ref]->siUpgradeSkillType = UPGRADESKILLTYPE_MAKE;
+					}
+					if(_tcscmp(szincskilltype, TEXT("UPGRADESKILLTYPE_USEWEAPON")) == 0)
+					{
+						pclItemInfo[ref]->siUpgradeSkillType = UPGRADESKILLTYPE_USEWEAPON;
+					}
+					if(_tcscmp(szincskilltype, TEXT("UPGRADESKILLTYPE_MAKENUSEWEAPON")) == 0)
+					{
+						pclItemInfo[ref]->siUpgradeSkillType = UPGRADESKILLTYPE_USEWEAPON | UPGRADESKILLTYPE_MAKE;
+					}
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					pclItemInfo[ref]->SetSetItemIndex( SetItemIndex );
+
+					if (szCanUseType)
+					{
+						SI32 atb = ItemInfoAtbParser.GetValueByString(szCanUseType);
+
+						pclItemInfo[ref]->AddItemInfoAtb(atb);
+					}
+
+				}
+
+			}
+		}
+	}
+
+}
+
+// 요대 아이템을 추가한다. 
+void cltItemManagerCommon::AddBeltItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddBeltItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[24];
+	SI32 showlist;
+	TCHAR iconcode[24];
+	SI32 weight;
+	SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 condition;
+	SI32 siStr;
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 ac;
+	SI32 productunit;
+	SI32 SetItemIndex;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 DefenE;
+	SI32 DefenR;
+	SI32 Grade; 
+	TCHAR szCanUseType[256];
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,			
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel, 4,
+			NDATA_INT32,	&makepbt,4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&condition, 4,
+			NDATA_INT32,	&siStr, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&ac, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_INT32,	&SetItemIndex,4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain, 4,
+			NDATA_INT32,	&DefenE,	4,
+			NDATA_INT32,	&DefenR,	4,
+			NDATA_INT32,	&Grade,		4,
+			NDATA_MBSTRING,	szCanUseType,	256,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				cltItemArmour clItemArmour;
+				clItemArmour.Init(durability, ac, 0, 0);
+
+				stElement element;
+				element.siType = DefenE;
+				element.siPower = DefenR;
+
+				cltItem clitem(unique, usedate,&element, &clItemArmour);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("BELT"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKEBELT1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(condition, siStr, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 30, szname,		ITEMTYPE_BELT, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_BELT, &clitem,Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					pclItemInfo[ref]->SetSetItemIndex( SetItemIndex );
+					//pclItemInfo[ref]->SetAttackRange(8);
+					//pclItemInfo[ref]->SetAttackType(ATTACKTYPE_GUN);
+
+					if (szCanUseType)
+					{
+						SI32 atb = ItemInfoAtbParser.GetValueByString(szCanUseType);
+
+						pclItemInfo[ref]->AddItemInfoAtb(atb);
+					}
+
+				}
+
+			}
+		}
+	}
+}
+
+
+
+// 목걸이 아이템을 추가한다. 
+void cltItemManagerCommon::AddNeckItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddNeckItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[24];
+	TCHAR iconcode[24];
+	TCHAR itemmall[256];
+	SI32 showlist;
+	SI32 weight;
+	SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 siFameLevelCondition;
+	SI32 siHnd;
+	SI32 durability;		
+	SI32 usedate;
+	SI32 maxusedate;
+	TCHAR szIncSkillUnique[128];
+	SI32 siSkillPoint;
+	SI32 siMaxSkillPoint;
+	SI32 decdur;
+	SI32 productunit;
+	SI32 SetItemIndex;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 explain;
+	SI32 MinNum = 0;
+	SI32 Grade = 0;
+	SI32 immutableUseDate = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,			
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel, 4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siFameLevelCondition, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&usedate,4,
+			NDATA_INT32,	&maxusedate,4,
+			NDATA_MBSTRING,	szIncSkillUnique, 128,
+			NDATA_INT32,	&siSkillPoint, 4,
+			NDATA_INT32,	&siMaxSkillPoint, 4,
+			NDATA_INT32,	&decdur, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_INT32,	&SetItemIndex,4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&explain, 4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&immutableUseDate,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				cltItemNeck clItemNeck;
+				clItemNeck.Init(durability, siSkillPoint, maxusedate, siMaxSkillPoint);
+
+				cltItem clitem(unique, usedate ,&clItemNeck);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("NECK"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				//cltItemSkillInfo clinfo(SKILL_MAKENECK1, skilllevel, makepbt, incpbt, siHnd, 0);
+				cltItemSkillInfo clinfo(0, 0, 0, 0, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition( 0, 0, 0, 0, 0, 0, 0, 0, true, true, 0, siFameLevelCondition);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				bool tempImmutableUseDate = immutableUseDate > 0 ? true : false;
+
+				SI32 ref = AddItem(imageindex, 30, szname,		ITEMTYPE_NECK, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, ITEMSOUND_NECK, 
+					&clitem,Grade, MinNum, NULL, NewMarket ? 1 : 0,tempImmutableUseDate);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					pclItemInfo[ref]->siUpgradeSkillUnique	= ConvertTextToSkillUnique( szIncSkillUnique );
+					pclItemInfo[ref]->siDecDur				= decdur;
+					pclItemInfo[ref]->SetSetItemIndex( SetItemIndex );
+					pclItemInfo[ref]->siExplainUnique		= explain;
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+// 아바타 목걸이 아이템을 추가한다. 
+void cltItemManagerCommon::AddAvatarNeckItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddAvatarNeckItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[24];
+	TCHAR iconcode[24];
+	TCHAR itemmall[256];
+	SI32 showlist;
+	SI32 weight;
+	SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀)
+	SI32 condition;		// 필요 레벨
+	//SI32 siFameLevelCondition;
+	SI32 siHnd;
+	SI32 durability;		
+	SI32 usedate;
+	SI32 maxusedate;
+	TCHAR szIncSkillUnique[128];
+	SI32 siSkillPoint;
+	SI32 siMaxSkillPoint;
+	SI32 decdur;
+	SI32 productunit;
+	SI32 SetItemIndex;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 explain;
+	SI32 MinNum = 0;
+	SI32 Grade = 0;
+	SI32 immutableUseDate = 0;
+	SI32 NewMarket = 0;
+
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+		NDATA_MBSTRING,	szname, 128,
+		NDATA_MBSTRING,	code, 128,
+		NDATA_MBSTRING,	iconcode, 128,
+		NDATA_INT32,	&showlist, 4,
+		NDATA_MBSTRING,	itemmall, 256,			
+		NDATA_INT32,	&weight, 4,
+		NDATA_INT32,	&skilllevel, 4,
+		NDATA_INT32,	&makepbt, 4,
+		NDATA_INT32,	&incpbt, 4,
+		NDATA_INT32,	&condition, 4,	   // [지연] 착용 필요 레벨
+		//NDATA_INT32,	&siFameLevelCondition, 4,
+		NDATA_INT32,	&siHnd, 4,
+		NDATA_INT32,	&durability, 4,
+		NDATA_INT32,	&usedate,4,
+		NDATA_INT32,	&maxusedate,4,
+		NDATA_MBSTRING,	szIncSkillUnique, 128,
+		NDATA_INT32,	&siSkillPoint, 4,
+		NDATA_INT32,	&siMaxSkillPoint, 4,
+		NDATA_INT32,	&decdur, 4,
+		NDATA_INT32,	&productunit, 4,
+		NDATA_INT32,	&SetItemIndex,4,
+		NDATA_MBSTRING,	szmaterial, 128,
+		NDATA_MBSTRING,	sztool, 128,
+		NDATA_INT32,	&explain, 4,
+		NDATA_INT32,	&MinNum,		4,
+		NDATA_INT32,	&immutableUseDate,		4,
+		NDATA_INT32,	&NewMarket,		4,
+		0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				cltItemAvatarNeck clItemAvatarNeck;
+				UI32 uiBaseSkillUnique = ConvertTextToSkillTypeUnique( szIncSkillUnique );
+				
+				// 기본스킬
+				clItemAvatarNeck.init(durability,  siSkillPoint,siMaxSkillPoint ,maxusedate);	// (내구, 스킬 증가치,맥스 스킬치, 맥스 날짜 )
+
+
+				cltItem clitem(unique, usedate, &clItemAvatarNeck); // cltItem 함수 생성 후 변경해야함.
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("NECK"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKEAVATAR_NECK, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition( condition, 0, 0, 0, 0, 0, 0,siMaxSkillPoint, true, true, 0, 0, uiBaseSkillUnique );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				bool tempImmutableUseDate = immutableUseDate > 0 ? true : false;
+
+				SI32 ref = AddItem(imageindex, 30, szname,		ITEMTYPE_AVATAR_NECK, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, ITEMSOUND_NECK,
+					&clitem,Grade, MinNum, NULL, NewMarket ? 1 : 0,tempImmutableUseDate);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+
+					pclItemInfo[ref]->siUpgradeSkillUnique	= uiBaseSkillUnique; // 이 안에다가 기본 스킬을 넣어둔다.(변하지 않는 기본스킬이기에, 추후 제조시 최종스킬 선택)
+					pclItemInfo[ref]->siDecDur				= decdur;
+					pclItemInfo[ref]->SetSetItemIndex( SetItemIndex );
+					pclItemInfo[ref]->siExplainUnique		= explain;
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+// 신발아이템을 추가한다. 
+void cltItemManagerCommon::AddShoesItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddNeckItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[24];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	SI32 weight;
+	SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 condition;
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 ac;
+	SI32 movespeed;
+	SI32 productunit;
+	SI32 SetItemIndex;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 DefenE;
+	SI32 DefenR;
+	SI32 Grade;	
+	TCHAR szCanUseType[256];
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel, 4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&condition, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&ac, 4,
+			NDATA_INT32,	&movespeed, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_INT32,	&SetItemIndex,4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain , 4,
+			NDATA_INT32,	&DefenE,	4,
+			NDATA_INT32,	&DefenR,	4,
+			NDATA_INT32,	&Grade,		4,
+			NDATA_MBSTRING,	szCanUseType,	256,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				cltItemShoes clItemShoes;
+				clItemShoes.Init(durability, ac, movespeed);
+
+				stElement element;
+				element.siType = DefenE;
+				element.siPower = DefenR;
+
+				cltItem clitem(unique, usedate,&element, &clItemShoes);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("SHOES"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKESHOES1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(condition, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );	// 레벨 근력 순발력 도력 사용기술 사용기술포인트
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 70, szname,		ITEMTYPE_SHOES, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_SHOES, &clitem, Grade, MinNum ,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					pclItemInfo[ref]->SetSetItemIndex( SetItemIndex );
+					//pclItemInfo[ref]->SetAttackRange(8);
+					//pclItemInfo[ref]->SetAttackType(ATTACKTYPE_GUN);
+
+					if( szCanUseType )
+					{
+						SI32 atb = ItemInfoAtbParser.GetValueByString(szCanUseType);
+
+						pclItemInfo[ref]->AddItemInfoAtb(atb);
+					}
+				}
+			}
+		}
+	}
+
+
+}
+
+// 책 아이템을 추가한다. 
+void cltItemManagerCommon::AddBookItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddBookItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[24];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	TCHAR itemmall[256];
+	SI32 weight;
+	SI32 skill;
+	SI32 skilllevellimit;
+	SI32 siHnd;
+
+	SI32 ConLevel = 0;			// 레벨	  제약 조건
+	SI32 ConStr = 0;			// 근력	  제약 조건
+	SI32 ConDex = 0;			// 순발력 제약 조건
+	SI32 ConHnd = 0;			// 손재주 제약 조건
+	SI32 ConInt = 0;			// 마법력 제약 조건
+	SI32 ConVit = 0;			// 체력   제약 조건
+
+	SI32 makepbt = 0;			// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt = 0;			// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 level = 0;
+
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 explain;
+	SI32 Grade = 0;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+		NDATA_MBSTRING,	szname, 128,
+		NDATA_MBSTRING,	code, 128,
+		NDATA_MBSTRING,	iconcode, 128,
+		NDATA_INT32,	&showlist, 4,
+		NDATA_MBSTRING,	itemmall, 256,
+		NDATA_INT32,	&weight, 4,
+		NDATA_INT32,	&skill, 4,
+		NDATA_INT32,	&skilllevellimit, 4,
+		NDATA_INT32,	&siHnd, 4,
+		NDATA_INT32,	&ConStr, 4,
+		NDATA_INT32,	&ConDex, 4,
+		NDATA_INT32,	&ConHnd, 4,
+		NDATA_INT32,	&ConInt, 4,
+		NDATA_INT32,	&ConVit, 4,
+		NDATA_INT32,	&makepbt, 4,
+		NDATA_INT32,	&incpbt, 4,
+		NDATA_INT32,	&level, 4,
+		NDATA_INT32,	&productunit, 4,
+		NDATA_MBSTRING,	szmaterial, 128,
+		NDATA_MBSTRING,	sztool, 128,
+		NDATA_INT32,	&explain,4,
+		NDATA_INT32,	&MinNum,		4,
+		NDATA_INT32,	&NewMarket,		4,
+		
+		0,0,0
+	};
+
+	// 제한 레벨 추가 - By LEEKH 2007.07.30
+	NDataTypeInfo pDataTypeInfo_ManufactureRevitalize[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+		NDATA_MBSTRING,	szname, 128,
+		NDATA_MBSTRING,	code, 128,
+		NDATA_MBSTRING,	iconcode, 128,
+		NDATA_INT32,	&showlist, 4,
+		NDATA_MBSTRING,	itemmall, 256,
+		NDATA_INT32,	&weight, 4,
+		NDATA_INT32,	&skill, 4,
+		NDATA_INT32,	&skilllevellimit, 4,
+		NDATA_INT32,	&siHnd, 4,
+		NDATA_INT32,	&ConLevel, 4,
+		NDATA_INT32,	&ConStr, 4,
+		NDATA_INT32,	&ConDex, 4,
+		NDATA_INT32,	&ConHnd, 4,
+		NDATA_INT32,	&ConInt, 4,
+		NDATA_INT32,	&ConVit, 4,
+		NDATA_INT32,	&makepbt, 4,
+		NDATA_INT32,	&incpbt, 4,
+		NDATA_INT32,	&level, 4,
+		NDATA_INT32,	&productunit, 4,
+		NDATA_MBSTRING,	szmaterial, 128,
+		NDATA_MBSTRING,	sztool, 128,
+		NDATA_INT32,	&explain,4,
+		NDATA_INT32,	&MinNum,		4,
+		NDATA_INT32,	&NewMarket,		4,
+		
+		0,0,0
+	};
+
+	if(pclClient->IsCountrySwitch(Switch_ManufactureRevitalize))
+	{
+		dataloader.RegDataType( pDataTypeInfo_ManufactureRevitalize);
+	}
+	else
+	{
+		dataloader.RegDataType( pDataTypeInfo  );
+	}
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true) )
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				cltItem clitem(unique);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("BOOK"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(skill, level, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition( ConLevel, ConStr, ConDex, ConInt, ConVit, ConHnd, siHnd, 0 , true, true, 0, 0);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 60, szname,		ITEMTYPE_BOOK, weight,  
+					&clinfo, &clCondition,  NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_BOOK, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					pclItemInfo[ref]->SetSkillUnique(skill);
+					pclItemInfo[ref]->SetSkillLevelLimit(skilllevellimit);
+					pclItemInfo[ref]->siExplainUnique	= explain;
+					pclItemInfo[ref]->siItemInfoAtb		|=  ITEMINFOATB_CANUSEITEM;
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+// 동물 아이템을 추가한다. 
+void cltItemManagerCommon::AddAnimalItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddAnimalItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	SI32	showlist;
+	TCHAR itemmall[256];
+	SI32 weight;
+	SI32 grownup = 0;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 explain;
+	SI32 Grade = 0;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&grownup, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&explain,4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("ANIMAL"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				cltItem clitem(unique);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(0, 0, 0, 0, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(MIN_LEVEL_FOR_HORSE, 0, 0, 0, 0, 0, 0, 0, true, true, grownup, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 0, szname,		ITEMTYPE_ANIMAL, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 0, 
+					&clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					pclItemInfo[ref]->siExplainUnique	= explain;
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+
+					pclItemInfo[ref]->siItemInfoAtb		|=  ITEMINFOATB_CANUSEITEM;
+				}
+
+			}
+		}
+	}
+}
+
+
+// 문구 아이템을 추가한다. 
+void cltItemManagerCommon::AddPaperItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddPaperItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	SI32 weight;
+	SI32 skilllevel;		// 생산에 필요한 스킬 레벨
+	SI32 MountSkillPoint;	// 장착에 필요한 무기 사용술 스킬 포인트
+	SI32 makepbt;			// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;			// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain;
+	SI32 Grade = 0;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist,	4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel, 4,
+			NDATA_INT32,	&MountSkillPoint, 4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&productunit,4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain, 4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("PAPER"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				//cyj SI32 durability = 100;
+				cltItemTool clItemTool;
+				clItemTool.Init(durability);
+
+				cltItem clitem(unique, usedate, &clItemTool);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKETOOL1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(0, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 0, szname,		ITEMTYPE_PAPER, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_ETC, &clitem ,Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if( ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+				}
+			}
+		}
+	}
+
+}
+
+
+// 일반 아이템을 추가한다. 
+void cltItemManagerCommon::AddItem(TCHAR* datfilename, TCHAR* pname, SI32 itemtype)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	TCHAR itemmall[256];
+	SI32 weight;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];	
+	SI32 siExplain = 0;
+	SI32 Grade = 0 ;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain, 4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(pname, iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				cltItem clitem(unique);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(0, 0, 0, 0, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(0, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 0, szname,		itemtype, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_ETC, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+				
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					
+					}
+				}
+			}
+		}
+	}
+
+}
+
+// 기타 아이템을 추가한다. 
+void cltItemManagerCommon::AddEtcItem(TCHAR* datfilename, TCHAR* pname, SI32 itemtype)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+		//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddEtcItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	TCHAR itemmall[256];
+	SI32 makeskill;			// 생산에 필요한 기술.
+	SI32 makeskilllevel;	// 생산에 필요한 기술 레벨 
+	SI32 makepbt;
+	SI32 incpbt;
+	SI32 siuse;
+	SI32 weight;
+	SI32 grownup = 0;			// 성인 전용 아이템 - 군주 스페셜에서 사용
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 Grade = 0 ;
+	SI32 usedate;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,
+			NDATA_INT32,	&makeskill, 4,
+			NDATA_INT32,	&makeskilllevel,4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siuse, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&grownup, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(pname, iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				cltItem clitem(unique, usedate);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(makeskill, makeskilllevel, makepbt, incpbt, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(0, 0, 0, 0, 0, 0, 0, 0, true, true, (SI16)grownup, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 0, szname,		itemtype, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_ETC, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					bool bcanuse = false;
+					if(siuse)bcanuse = true;
+					if(bcanuse)
+					{
+						pclItemInfo[ref]->siItemInfoAtb		|=  ITEMINFOATB_CANUSEITEM;
+					}
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+// 반지 아이템을 추가한다. 
+void cltItemManagerCommon::AddRingItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddRingItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[24];
+	TCHAR iconcode[24];
+	TCHAR itemmall[256];
+	SI32 showlist;
+	SI32 fieldimg;
+	SI32 weight;
+	SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 siLevelCondition;
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 ac;
+	SI32 str;
+	SI32 dex;
+	SI32 vit;
+	SI32 mag;
+	SI32 luk;
+	SI32 hnd;
+	SI32 decdur;
+	SI32 productunit;
+	SI32 SetItemIndex;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 explain;
+	SI32 AttackE;
+	SI32 AttackR;
+	SI32 Grade;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,			
+			NDATA_INT32,	&fieldimg, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel, 4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siLevelCondition, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&ac,4,
+			NDATA_INT32,	&str, 4,
+			NDATA_INT32,	&dex, 4,
+			NDATA_INT32,	&vit, 4,
+			NDATA_INT32,	&mag, 4,
+			NDATA_INT32,	&luk, 4,
+			NDATA_INT32,	&hnd, 4,
+			NDATA_INT32,	&decdur, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_INT32,	&SetItemIndex,4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&explain, 4,
+			NDATA_INT32,	&AttackE,	4,
+			NDATA_INT32,	&AttackR,	4,
+			NDATA_INT32,	&Grade,		4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				cltItemRing clItemRing;
+				UI08 uistr = (UI08)str;
+				UI08 uidex = (UI08)dex;
+				UI08 uivit = (UI08)vit;
+				UI08 uimag = (UI08)mag;
+				UI08 uiluk = (UI08)luk;
+				UI08 uihnd = (UI08)hnd;
+
+				clItemRing.Init(durability, ac, uistr, uidex, uivit, uimag, uiluk, uihnd);
+
+				stElement element;
+				element.siType = AttackE;
+				element.siPower = AttackR;
+
+				cltItem clitem(unique, usedate,&element, &clItemRing);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("RING"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				//cyj 반지제작술 삭제
+				//cltItemSkillInfo clinfo(SKILL_MAKERING1, skilllevel, makepbt, incpbt, siHnd, 0);
+				cltItemSkillInfo clinfo(0, 0, 0, 0, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition( siLevelCondition, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, fieldimg, szname,		ITEMTYPE_RING, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_CLOTH, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					pclItemInfo[ref]->siDecDur				= decdur;
+					pclItemInfo[ref]->siExplainUnique		= explain;
+					pclItemInfo[ref]->SetSetItemIndex( SetItemIndex );
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+
+				}
+			}
+		}
+	}
+
+}
+
+// 아바타 반지 아이템을 추가한다. 
+void cltItemManagerCommon::AddAvatarRingItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddAvatarRingItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32  unique;
+	TCHAR szname[60];
+	TCHAR code[24];
+	TCHAR iconcode[24];
+	SI32  showlist;
+	TCHAR itemmall[256];
+	SI32 fieldimg;
+	SI32 weight;
+	SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt;		// 기본 생산 확률. (퍼밀)
+	SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀)
+	SI32 siLevelCondition;
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 ac;
+	SI32 str;
+	SI32 dex;
+	SI32 vit;
+	SI32 mag;	// 지력 (Int)
+	SI32 luk;
+	SI32 hnd;
+	SI32 wis;	// 지혜
+	SI32 decdur;
+	SI32 productunit;
+	SI32 SetItemIndex;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 explain;
+	SI32 AttackE;
+	SI32 AttackR;
+	SI32 Grade;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+			NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,
+			NDATA_INT32,	&fieldimg, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel, 4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siLevelCondition, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&ac,4,
+			NDATA_INT32,	&str, 4,
+			NDATA_INT32,	&dex, 4,
+			NDATA_INT32,	&vit, 4,
+			NDATA_INT32,	&mag, 4,
+			NDATA_INT32,	&luk, 4,
+			NDATA_INT32,	&hnd, 4,
+			NDATA_INT32,	&wis, 4,
+			NDATA_INT32,	&decdur, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_INT32,	&SetItemIndex,4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&explain, 4,
+			NDATA_INT32,	&AttackE,	4,
+			NDATA_INT32,	&AttackR,	4,
+			NDATA_INT32,	&Grade,		4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true) )
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				cltItemAvatarRing clItemAvatarRing;
+				UI08 uiAC		= (UI08)ac;
+				UI08 uistr		= (UI08)str;
+				UI08 uidex		= (UI08)dex;
+				UI08 uivit		= (UI08)vit;
+				UI08 uimag		= (UI08)mag;
+				UI08 uiwis		= (UI08)wis;
+				UI08 uiluk		= (UI08)luk;	
+				UI08 uihnd		= (UI08)hnd;
+				
+
+				clItemAvatarRing.Init(durability, ac, uistr, uidex, uivit, uimag, uiwis, uiluk, uihnd);
+
+				stElement element;
+				element.siType = AttackE;
+				element.siPower = AttackR;
+
+				cltItem clitem(unique, usedate,&element, &clItemAvatarRing);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("RING"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKEAVATAR_RING, skilllevel, makepbt, incpbt, siHnd, 0);
+		
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition( siLevelCondition, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, fieldimg, szname,		ITEMTYPE_AVATAR_RING, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_CLOTH, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+
+					pclItemInfo[ref]->siDecDur				= decdur;
+					pclItemInfo[ref]->siExplainUnique		= explain;
+					pclItemInfo[ref]->SetSetItemIndex( SetItemIndex );
+					
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+
+				}
+			}
+		}
+	}
+
+}
+/////////
+
+// 부적 아이템을 추가한다. 
+void cltItemManagerCommon::AddScrollItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddScrollItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[24];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	TCHAR itemmall[256];
+	SI32 weight;
+	SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	TCHAR adapt[128];	// 어느 장비에 적용되는가 ?
+	TCHAR function[128];	// 어떤 성능을 나타내는가?
+	SI32 ability;		// 얼마만큼의 능력을 발휘하는가?
+	SI32 maxability;	// 최대 능력 
+	SI32 durdec;		// 내구도는 얼마나 소모하는가 ?
+	SI32 siHnd;
+	SI32 mag;			// 도력 제한. 
+	SI32 productunit;
+	TCHAR szmaterial[256];
+	TCHAR sztool[128];
+	SI32 siexplain;
+	SI32 Grade = 0 ;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel, 4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_MBSTRING,	adapt, 128,
+			NDATA_MBSTRING,	function, 128,
+			NDATA_INT32,	&ability, 4,
+			NDATA_INT32,	&maxability, 4,
+			NDATA_INT32,	&durdec, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&mag, 4,
+			NDATA_INT32,	&productunit,4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siexplain,4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				cltItem clitem(unique);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("SCROLL"), iconcode); // 
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				//cltItemSkillInfo clinfo(SKILL_MAKESCROLL, skilllevel, makepbt, incpbt, siHnd, mag);
+				cltItemSkillInfo clinfo(0, 0, 0, 0, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition( 0, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 0, szname,		ITEMTYPE_SCROLL, weight,  
+					&clinfo, &clCondition,  NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_BOOK, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					// 모든 무기에 적용되는 경우에.
+					if(_tcscmp(function, TEXT("SCROLL_FUNCTION_UPHITRATE")) == 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_UPHITRATE);
+					}
+					// 모든 방어구에 적용되는 경우에.
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_REDUCEDAMAGE")) == 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_REDUCEDAMAGE);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_UPCRITICAL"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_UPCRITICAL);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_POISON"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_POISON);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_ICE"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_ICE);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_DRAIN"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_DRAIN);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPAXE"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPAXE);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPSPEAR"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPSPEAR);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPSWORD"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPSWORD);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPSTAFF"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPSTAFF);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPBOW"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPBOW);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPGUN"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPGUN);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPARMOUR"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPARMOUR);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPHELMET"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPHELMET);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPDRESS"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPDRESS);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPHAT"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPHAT);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPSHOES"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPSHOES);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPBELT"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPBELT);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPNECK"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPNECK);
+					}
+					/*cyj 반지제작술 삭제
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_MAKESKILLUPRING"))== 0)
+					{
+					pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPRING);
+					}
+					*/
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_UPMAXDURABILITY"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_UPMAXDURABILITY);
+					}
+
+					// 무기 사용술 향상 
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_USESKILLUP_SWORD"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_USESKILLUP_SWORD);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_USESKILLUP_SPEAR"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_USESKILLUP_SPEAR);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_USESKILLUP_AXE"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_USESKILLUP_AXE);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_USESKILLUP_BOW"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_USESKILLUP_BOW);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_USESKILLUP_GUN"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_USESKILLUP_GUN);
+					}
+					else if(_tcscmp(function, TEXT("SCROLL_FUNCTION_USESKILLUP_STAFF"))== 0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_USESKILLUP_STAFF);
+					}
+					else if(_tcscmp(function,"SCROLL_UNIQUE_FUNCTION_USESKILLUP_WEAPON")==0)
+					{
+						pclItemInfo[ref]->SetScrollFunction(SCROLL_UNIQUE_FUNCTION_USESKILLUP_WEAPON);
+					}
+					//else if(_tcscmp(adapt, TEXT("SCROLL_UNIQUE_FUNCTION_MAKESKILLUPATIFACT")) == 0)
+					//{
+					//	pclItemInfo[ref]->SetScrollAdaptAttach(SCROLL_UNIQUE_FUNCTION_MAKESKILLUPATIFACT);//아티팩트
+					//}
+					else
+					{
+						MsgBox(TEXT("312fsd93jf"), TEXT("fd3fef:%s"), function);
+
+					}
+					if(_tcscmp(adapt, TEXT("ALLWEAPON")) == 0)
+					{
+						pclItemInfo[ref]->SetScrollAdaptAttach(ITEMATTACH_WEAPON);
+					}
+					else if(_tcscmp(adapt, TEXT("ALLARMOUR")) == 0)
+					{
+						pclItemInfo[ref]->SetScrollAdaptAttach(ITEMATTACH_ARMOUR);
+					}
+					else if(_tcscmp(adapt, TEXT("NEARWEAPON")) == 0)
+					{
+						pclItemInfo[ref]->SetScrollAdaptAttach(ITEMATTACH_NEARWEAPON);
+					}
+					else if(_tcscmp(adapt, TEXT("FARWEAPON")) == 0)
+					{
+						pclItemInfo[ref]->SetScrollAdaptAttach(ITEMATTACH_FARWEAPON);
+					}
+					else if(_tcscmp(adapt, TEXT("ALLSHOES")) == 0)
+					{
+						pclItemInfo[ref]->SetScrollAdaptAttach(ITEMATTACH_SHOES);
+					}
+					else if(_tcscmp(adapt, TEXT("UPARMOUR")) == 0)
+					{
+						pclItemInfo[ref]->SetScrollAdaptAttach(ITEMATTACH_UPARMOUR);
+					}
+					else if(_tcscmp(adapt, TEXT("BELT")) == 0)
+					{
+						pclItemInfo[ref]->SetScrollAdaptAttach(ITEMATTACH_BELT);
+					}
+					else if(_tcscmp(adapt, TEXT("SKILLUPDRESS")) == 0)
+					{
+						pclItemInfo[ref]->SetScrollAdaptAttach(ITEMATTACH_SKILLUPDRESS);
+					}
+					else if(_tcscmp(adapt, TEXT("USEWEAPONUPDRESS")) == 0)
+					{
+						pclItemInfo[ref]->SetScrollAdaptAttach(ITEMATTACH_USEWEAPONUPDRESS);
+					}
+					else if(_tcscmp(adapt, TEXT("DURABLE")) == 0)
+					{
+						pclItemInfo[ref]->SetScrollAdaptAttach(ITEMATTACH_DURABLE);
+					}					
+					else
+					{
+						MsgBox(TEXT("fsd93jf"), TEXT("fd3fef:%s"), adapt);
+					}
+
+					pclItemInfo[ref]->SetScrollAbility(ability);
+					pclItemInfo[ref]->SetScrollDecDuration(durdec);
+					pclItemInfo[ref]->siScrollMax = maxability;
+					pclItemInfo[ref]->siExplainUnique	= siexplain;
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+// 철물  아이템을 추가한다. 
+void cltItemManagerCommon::AddIronItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddIronItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	TCHAR armcode[12]	=	TEXT("");
+	SI32 showlist;
+	SI32 weight;
+	SI32 farmtool;
+	SI32 minetool;
+	SI32 skilllevel;		// 생산에 필요한 스킬 레벨
+	SI32 MountSkillPoint;	// 장착에 필요한 무기 사용술 스킬 포인트
+	SI32 makepbt;			// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;			// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 mindamage = 0 , maxdamage = 0 ;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 Grade = 0 ;
+    SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_MBSTRING,	armcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&farmtool, 4,
+			NDATA_INT32,	&minetool, 4,
+			NDATA_INT32,	&skilllevel, 4,
+			NDATA_INT32,	&MountSkillPoint, 4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain,4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("IRON"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				cltItemTool clItemTool;
+				clItemTool.Init(durability);
+
+				cltItem clitem(unique, usedate, &clItemTool);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(SKILL_MAKEIRON1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(0, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 0, szname,		ITEMTYPE_IRON, weight, &clinfo, &clCondition,
+					armcode, szmaterial, sztool, productunit, ITEMSOUND_SWORD, 
+					&clitem ,  Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+					pclItemInfo[ref]->SetAttackType(ATTACKTYPE_HAND);
+					pclItemInfo[ref]->SetAttackRange(1);
+					pclItemInfo[ref]->SetAttackInterval(2000);
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+				
+					pclItemInfo[ref]->bCanEquipSwitch		= false;		// 장착 가능한 물품인가 ?
+					if(farmtool)
+					{
+						pclItemInfo[ref]->bCanEquipSwitch		= true;		// 장착 가능한 물품인가 ?
+						pclItemInfo[ref]->siItemInfoAtb			|= ITEMINFOATB_FARMTOOL;
+					}
+
+					if(minetool)
+					{
+						pclItemInfo[ref]->bCanEquipSwitch		= true;		// 장착 가능한 물품인가 ?
+						pclItemInfo[ref]->siItemInfoAtb			|= ITEMINFOATB_MINETOOL;
+					}
+
+				}
+
+
+			}
+		}
+	}
+
+}
+
+
+// 도기  아이템을 추가한다. 
+void cltItemManagerCommon::AddDishItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddDishItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	SI32 weight;
+	SI32 skilllevel;		// 생산에 필요한 스킬 레벨
+	SI32 MountSkillPoint;	// 장착에 필요한 무기 사용술 스킬 포인트
+	SI32 makepbt;			// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;			// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 mindamage = 0 , maxdamage = 0 ;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 Grade = 0 ;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel, 4,
+			NDATA_INT32,	&MountSkillPoint, 4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain, 4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("DISH"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				cltItemTool clItemTool;
+				clItemTool.Init(durability);
+
+				cltItem clitem(unique, usedate, &clItemTool);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				//cyj 도기/문방구/어구 제작술 통합
+				//cltItemSkillInfo clinfo(SKILL_MAKEDISH1, skilllevel, makepbt, incpbt, siHnd, 0);
+				cltItemSkillInfo clinfo(SKILL_MAKETOOL1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(0, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 0, szname,		ITEMTYPE_DISH, weight, 
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_CERAMIC, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					//			pclItemInfo[ref]->SetAttackRange(1);
+					//			pclItemInfo[ref]->SetAttackType(ATTACKTYPE_SWORD);
+					//			pclItemInfo[ref]->SetAttackInterval(AttackDelay);
+				}
+
+
+			}
+		}
+	}
+
+}
+
+// 어구  아이템을 추가한다. 
+void cltItemManagerCommon::AddFishingRodItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+		//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddFishingRodItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	TCHAR armcode[12]	=	TEXT("");
+	SI32 showlist;
+	SI32 classification;
+	SI32 canequip;
+	SI32 weight;
+	SI32 skilllevel;		// 생산에 필요한 스킬 레벨
+	SI32 MountSkillPoint;	// 장착에 필요한 무기 사용술 스킬 포인트
+	SI32 makepbt;			// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;			// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 siHnd;
+	SI32 durability;
+	SI32 usedate;
+	SI32 mindamage = 0 , maxdamage = 0 ;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 Grade = 0 ;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_MBSTRING,	armcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_INT32,	&classification, 4,
+			NDATA_INT32,	&canequip, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel, 4,
+			NDATA_INT32,	&MountSkillPoint, 4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain, 4 ,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("FISHINGROD"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				cltItemTool clItemTool;
+				clItemTool.Init(durability);
+
+				cltItem clitem(unique, usedate, &clItemTool);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				//cyj 도기/어구/문방구 제작술 통합
+				//cltItemSkillInfo clinfo(SKILL_MAKEFISHINGROD, skilllevel, makepbt, incpbt, siHnd, 0);
+				cltItemSkillInfo clinfo(SKILL_MAKETOOL1, skilllevel, makepbt, incpbt, siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(0, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 0, szname,		ITEMTYPE_FISHINGROD, weight, &clinfo, &clCondition, 
+					armcode, szmaterial, sztool, productunit, ITEMSOUND_SWORD, 
+					&clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+				
+					pclItemInfo[ref]->siFishClassification	= classification;
+					pclItemInfo[ref]->bCanEquipSwitch		= DATA_TO_BOOL(canequip);	// 장착 가능한 물품인가 ?
+
+					pclItemInfo[ref]->SetAttackType(ATTACKTYPE_HAND);
+					pclItemInfo[ref]->SetAttackRange(1);
+					pclItemInfo[ref]->SetAttackInterval(2000);
+				}
+
+			}
+		}
+	}
+}
+
+
+// 가방  아이템을 추가한다. 
+void cltItemManagerCommon::AddBagItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+		//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddBagItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60]		=	TEXT("");;
+	TCHAR code[12]		=	TEXT("");;
+	TCHAR iconcode[24]	=	TEXT("");;
+	TCHAR armcode[12]	=	TEXT("");;
+	SI32 showlist;
+	TCHAR itemmall[256];
+	SI32 weight;
+	SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 condition;
+	SI32 siHnd;
+	SI32 child;
+	SI32 needrank;
+	SI32 durability;
+	SI32 usedate;
+	TCHAR use[64];
+	SI32 luck;
+	SI32 man;
+	SI32 woman;
+	SI32 productunit;
+	TCHAR szmaterial[128]	=	TEXT("");
+	TCHAR sztool[128]		=	TEXT("");
+	SI32 explain;
+	bool bMan , bWoman ;
+	SI32 Grade = 0 ;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_MBSTRING,	armcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel, 4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&condition, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&child, 4,
+			NDATA_INT32,	&needrank, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_MBSTRING,	use, 128,
+			NDATA_INT32,	&luck, 4,
+			NDATA_INT32,	&man, 4,
+			NDATA_INT32,	&woman, 4,
+			NDATA_INT32,	&productunit,4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&explain,4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				SI32 useitemtype = FindItemTypeUniqueFromTypeCode(use);
+
+				cltItemBag clItemBag;
+				clItemBag.Init(durability, 0);
+
+				cltItem clitem(unique, usedate, &clItemBag);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("BAG"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(0, skilllevel, makepbt, incpbt,  siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				if ( man > 0 ) bMan = true ;
+				else bMan = false ;
+				if ( woman > 0 ) bWoman = true ;
+				else bWoman = false ;
+				cltItemConition clCondition(condition, 0, 0, 0, 0, 0, 0, 0, bMan, bWoman, 0, child);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 20, szname,		ITEMTYPE_BAG, weight,  
+					&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+					ITEMSOUND_CLOTH, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					pclItemInfo[ref]->siNeedRank		= needrank; 
+					pclItemInfo[ref]->BagUseItemType	= useitemtype;
+					pclItemInfo[ref]->siExplainUnique	= explain;
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+// 망토 아이템을 추가한다. 
+void cltItemManagerCommon::AddMantleItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddMantleItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[128]		=	TEXT("");;
+	TCHAR code[128]		=	TEXT("");;
+	TCHAR iconcode[128]	=	TEXT("");;
+	TCHAR armcode[128]	=	TEXT("");;
+	SI32 showlist;
+	TCHAR itemmall[256];
+	SI32 weight;
+	SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 condition;
+	SI32 siHnd;
+	SI32 child;
+	SI32 needrank;
+	SI32 durability;
+	SI32 ac;
+	SI32 str;
+	SI32 dex;
+	SI32 vit;
+	SI32 man;
+	SI32 woman;
+	SI32 useDate;
+	SI32 productunit;
+	SI32 SetItemIndex;
+	TCHAR szmaterial[128]	=	TEXT("");
+	TCHAR sztool[128]		=	TEXT("");
+
+	SI32 siExplain = 0;
+
+	bool bMan , bWoman ;
+	SI32 AttackE = 0;
+	SI32 AttackR = 0;
+	SI32 Grade = 0 ;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_MBSTRING,	armcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel,4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&condition, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&child, 4,
+			NDATA_INT32,	&needrank, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&ac, 4,
+			NDATA_INT32,	&str, 4,
+			NDATA_INT32,	&dex, 4,
+			NDATA_INT32,	&vit,4,
+			NDATA_INT32,	&man, 4,
+			NDATA_INT32,	&woman,4,
+			NDATA_INT32,	&useDate, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_INT32,	&SetItemIndex,4,
+			NDATA_MBSTRING,	szmaterial,128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain, 4,
+			//NDATA_INT32,	&AttackE,	4,
+			//NDATA_INT32,	&AttackR,	4,
+			//NDATA_INT32,	&Grade,		4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				cltItemMantle clItemMantle;
+				clItemMantle.Init(durability, ac, str, dex, vit);
+
+				stElement element;
+				element.siType = AttackE;
+				element.siPower = AttackR;
+
+				cltItem clitem(unique, useDate, &element ,&clItemMantle);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("MANTLE"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다.
+				cltItemSkillInfo clinfo(0, skilllevel, makepbt, incpbt,  siHnd, 0);
+	
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				if ( man > 0 ) bMan = true ;
+				else bMan = false ;
+				if ( woman > 0 ) bWoman = true ;
+				else bWoman = false ;
+				cltItemConition clCondition(condition, 0, 0, 0, 0, 0, 0, 0, bMan, bWoman, 0, child);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 20, szname,		ITEMTYPE_MANTLE, weight,  
+					&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+					ITEMSOUND_CLOTH, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					pclItemInfo[ref]->siNeedRank			= needrank;
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+					
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+						
+					}
+
+
+					pclItemInfo[ref]->SetSetItemIndex( SetItemIndex );
+				}
+
+			}
+		}
+	}
+}
+
+// 아바타 망토
+void cltItemManagerCommon::AddAvatarMantleItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddAvatarMantleItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[128]		=	TEXT("");;
+	TCHAR code[128]		=	TEXT("");;
+	TCHAR iconcode[128]	=	TEXT("");;
+	TCHAR armcode[128]	=	TEXT("");;
+	SI32 showlist;
+	TCHAR itemmall[256];
+	SI32 weight;
+	SI32 skilllevel;	// 생산에 필요한 스킬 레벨 
+	SI32 makepbt;		// 기본 생산 확률. (퍼밀) 
+	SI32 incpbt;		// 기술 향상에 따른 생산 확률증대(퍼밀) 
+	SI32 condition;
+	SI32 siHnd;
+	SI32 child;
+	SI32 needrank;
+	SI32 durability;
+	SI32 ac;
+	SI32 str;
+	SI32 dex;
+	SI32 vit;
+	SI32 man;
+	SI32 woman;
+	SI32 useDate;
+	SI32 productunit;
+	SI32 SetItemIndex;
+	TCHAR szmaterial[128]	=	TEXT("");
+	TCHAR sztool[128]		=	TEXT("");
+
+	SI32 siExplain = 0;
+
+	bool bMan , bWoman ;
+	SI32 AttackE = 0;
+	SI32 AttackR = 0;
+	SI32 Grade = 0 ;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+
+	//SI32 incskillamount; // 스킬 증가치
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+			NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_MBSTRING,	armcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&skilllevel,4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&condition, 4,
+			NDATA_INT32,	&siHnd, 4,
+			NDATA_INT32,	&child, 4,
+			NDATA_INT32,	&needrank, 4,
+			NDATA_INT32,	&durability, 4,
+			NDATA_INT32,	&ac, 4,
+			NDATA_INT32,	&str, 4,
+			NDATA_INT32,	&dex, 4,
+			NDATA_INT32,	&vit,4,
+			NDATA_INT32,	&man, 4,
+			NDATA_INT32,	&woman,4,
+			NDATA_INT32,	&useDate, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_INT32,	&SetItemIndex,4,
+			NDATA_MBSTRING,	szmaterial,128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain, 4,
+			//NDATA_INT32,	&AttackE,	4,
+			//NDATA_INT32,	&AttackR,	4,
+			//NDATA_INT32,	&Grade,		4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				cltItemAvatarMantle clItemAvatarMantle;
+				clItemAvatarMantle.init(durability, ac, str, dex, vit); //(제이)
+
+				stElement element;
+				element.siType = AttackE;
+				element.siPower = AttackR;
+
+				cltItem clitem(unique, useDate, &element, &clItemAvatarMantle);
+
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("MANTLE"), iconcode); // MTL02
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다.
+				cltItemSkillInfo clinfo(SKILL_MAKEAVATAR_MANTLE, skilllevel, makepbt, incpbt,  siHnd, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				if ( man > 0 ) bMan = true ;
+				else bMan = false ;
+				if ( woman > 0 ) bWoman = true ;
+				else bWoman = false ;
+				cltItemConition clCondition(condition, 0, 0, 0, 0, 0, 0, 0, bMan, bWoman, 0, child);
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 20, szname,		ITEMTYPE_AVATAR_MANTLE, weight,
+					&clinfo, &clCondition, armcode, szmaterial, sztool, productunit, 
+					ITEMSOUND_CLOTH, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					pclItemInfo[ref]->siNeedRank			= needrank;
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+
+					}
+
+					pclItemInfo[ref]->SetSetItemIndex( SetItemIndex );
+				}
+
+			}
+		}
+	}
+
+}
+//KHY - 0227 - 결정체 (크리스탈) 제조 추가. - 결정체 타입.
+void cltItemManagerCommon::AddCrystalItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddCrystalItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	TCHAR itemmall[256];
+	SI32 makeskill;			// 생산에 필요한 기술.
+	SI32 makeskilllevel;	// 생산에 필요한 기술 레벨 
+	SI32 makepbt;
+	SI32 incpbt;
+	SI32 weight;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 Grade = 0 ;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+	
+	SI32 siLevelCondition = 0;
+	cltCrystalItemData	clCrystalItemData[MAX_CAN_CRYSTALABILITY_NUM] ;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,
+			NDATA_INT32,	&makeskill, 4,
+			NDATA_INT32,	&makeskilllevel,4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain, 4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&siLevelCondition, 4,
+			NDATA_INT32,	&clCrystalItemData[0].siCrystalType,		4,
+			NDATA_INT32,	&clCrystalItemData[0].siMinValue,		4,
+			NDATA_INT32,	&clCrystalItemData[0].siMaxValue,		4,
+			NDATA_INT32,	&clCrystalItemData[0].siTypeRate,		4,
+			NDATA_INT32,	&clCrystalItemData[1].siCrystalType,		4,
+			NDATA_INT32,	&clCrystalItemData[1].siMinValue,		4,
+			NDATA_INT32,	&clCrystalItemData[1].siMaxValue,		4,
+			NDATA_INT32,	&clCrystalItemData[1].siTypeRate,		4,
+			NDATA_INT32,	&clCrystalItemData[2].siCrystalType,		4,
+			NDATA_INT32,	&clCrystalItemData[2].siMinValue,		4,
+			NDATA_INT32,	&clCrystalItemData[2].siMaxValue,		4,
+			NDATA_INT32,	&clCrystalItemData[2].siTypeRate,		4,
+			NDATA_INT32,	&clCrystalItemData[3].siCrystalType,		4,
+			NDATA_INT32,	&clCrystalItemData[3].siMinValue,		4,
+			NDATA_INT32,	&clCrystalItemData[3].siMaxValue,		4,
+			NDATA_INT32,	&clCrystalItemData[3].siTypeRate,		4,
+			NDATA_INT32,	&clCrystalItemData[4].siCrystalType,		4,
+			NDATA_INT32,	&clCrystalItemData[4].siMinValue,		4,
+			NDATA_INT32,	&clCrystalItemData[4].siMaxValue,		4,
+			NDATA_INT32,	&clCrystalItemData[4].siTypeRate,		4,
+			NDATA_INT32,	&clCrystalItemData[5].siCrystalType,		4,
+			NDATA_INT32,	&clCrystalItemData[5].siMinValue,		4,
+			NDATA_INT32,	&clCrystalItemData[5].siMaxValue,		4,
+			NDATA_INT32,	&clCrystalItemData[5].siTypeRate,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData( true ))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(TEXT("CRYSTAL"), iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				cltItem clitem(unique);
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(makeskill, makeskilllevel, makepbt, incpbt, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(siLevelCondition, 0, 0, 0, 0, 0, 0, 0, true, true, 0 , 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 
+									0, 
+									szname, 
+									ITEMTYPE_CRYSTAL, 
+									weight,  
+									&clinfo,
+									&clCondition, 
+									NULL, 
+									szmaterial, 
+									sztool, 
+									productunit, 
+									ITEMSOUND_ETC, 
+									&clitem, 
+									Grade, 
+									MinNum,
+									clCrystalItemData,
+									NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+void cltItemManagerCommon::AddQuestItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddQuestItem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR type[24];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	SI32 makeskill;			// 생산에 필요한 기술.
+	SI32 makeskilllevel;	// 생산에 필요한 기술 레벨 
+	SI32 makepbt;
+	SI32 incpbt;
+	SI32 siuse;
+	SI32 weight;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 Grade= 0;
+	TCHAR itemmall[256] ;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	type,	128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_INT32,	&makeskill, 4,
+			NDATA_INT32,	&makeskilllevel,4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siuse, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain,4,
+			NDATA_MBSTRING, itemmall,256,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(type, iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				cltItem clitem(unique);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(makeskill, makeskilllevel, makepbt, incpbt, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(0, 0, 0, 0, 0, 0, 0, 0, true, true, 0, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 0, szname,		ITEMTYPE_QUEST , weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_ETC, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+
+					}
+				//	pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_NOTTRADE | ITEMINFOATB_NOTWENNYOLDMAN | ITEMINFOATB_NOTDAILYQUEST | ITEMINFOATB_TYPE_QUESTITEM );
+				}
+			}
+		}
+	}
+}
+
+void cltItemManagerCommon::AddCompositionManterial(TCHAR* datfilename, TCHAR* pname, SI32 itemtype)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddCompositionManterial()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	TCHAR itemmall[256];
+	SI32 makeskill;			// 생산에 필요한 기술.
+	SI32 makeskilllevel;	// 생산에 필요한 기술 레벨 
+	SI32 makepbt;
+	SI32 incpbt;
+	SI32 siuse;
+	SI32 weight;
+	SI32 grownup = 0;			// 성인 전용 아이템 - 군주 스페셜에서 사용
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 Grade = 0 ;
+	SI32 usedate;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,
+			NDATA_INT32,	&makeskill, 4,
+			NDATA_INT32,	&makeskilllevel,4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siuse, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&grownup, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(pname, iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				cltItem clitem(unique, usedate);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(makeskill, makeskilllevel, makepbt, incpbt, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(0, 0, 0, 0, 0, 0, 0, 0, true, true, (SI16)(grownup), 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 0, szname,		itemtype, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit,
+					ITEMSOUND_ETC, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					bool bcanuse = false;
+					if(siuse)bcanuse = true;
+					if(bcanuse)
+					{
+						pclItemInfo[ref]->siItemInfoAtb		|=  ITEMINFOATB_CANUSEITEM;
+					}
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+void cltItemManagerCommon::AddEventitem(TCHAR* datfilename, TCHAR* pname, SI32 itemtype)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddEventitem()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	TCHAR itemmall[256];
+	SI32 makeskill;			// 생산에 필요한 기술.
+	SI32 makeskilllevel;	// 생산에 필요한 기술 레벨 
+	SI32 makepbt;
+	SI32 incpbt;
+	SI32 siuse;
+	SI32 weight;
+	SI32 grownup = 0;			// 성인 전용 아이템 - 군주 스페셜에서 사용
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 Grade = 0 ;
+	SI32 usedate;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,
+			NDATA_INT32,	&makeskill, 4,
+			NDATA_INT32,	&makeskilllevel,4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siuse, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&grownup, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(pname, iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				cltItem clitem(unique, usedate);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(makeskill, makeskilllevel, makepbt, incpbt, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(0, 0, 0, 0, 0, 0, 0, 0, true, true, (SI16)(grownup), 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 0, szname,		itemtype, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_ETC, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					bool bcanuse = false;
+					if(siuse)bcanuse = true;
+					if(bcanuse)
+					{
+						pclItemInfo[ref]->siItemInfoAtb		|=  ITEMINFOATB_CANUSEITEM;
+					}
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+void cltItemManagerCommon::AddBox(TCHAR* datfilename, TCHAR* pname, SI32 itemtype)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddBox()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	TCHAR itemmall[256];
+	SI32 makeskill;			// 생산에 필요한 기술.
+	SI32 makeskilllevel;	// 생산에 필요한 기술 레벨 
+	SI32 makepbt;
+	SI32 incpbt;
+	SI32 siuse;
+	SI32 weight;
+	SI32 grownup = 0;			// 성인 전용 아이템 - 군주 스페셜에서 사용
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 Grade = 0 ;
+	SI32 usedate;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,
+			NDATA_INT32,	&makeskill, 4,
+			NDATA_INT32,	&makeskilllevel,4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siuse, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&grownup, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(pname, iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				cltItem clitem(unique, usedate);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(makeskill, makeskilllevel, makepbt, incpbt, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(0, 0, 0, 0, 0, 0, 0, 0, true, true, (SI16)(grownup), 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 0, szname,		itemtype, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_ETC, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					bool bcanuse = false;
+					if(siuse)bcanuse = true;
+					if(bcanuse)
+					{
+						pclItemInfo[ref]->siItemInfoAtb		|=  ITEMINFOATB_CANUSEITEM;
+					}
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+void cltItemManagerCommon::AddPremium(TCHAR* datfilename, TCHAR* pname, SI32 itemtype)
+{
+
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddPremium()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	TCHAR itemmall[256];
+	SI32 makeskill;			// 생산에 필요한 기술.
+	SI32 makeskilllevel;	// 생산에 필요한 기술 레벨 
+	SI32 makepbt;
+	SI32 incpbt;
+	SI32 siuse;
+	SI32 weight;
+	SI32 grownup = 0;			// 성인 전용 아이템 - 군주 스페셜에서 사용
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];
+	SI32 siExplain = 0;
+	SI32 Grade = 0 ;
+	SI32 usedate;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique, 4,		
+			NDATA_MBSTRING,	szname, 128,
+			NDATA_MBSTRING,	code, 128,
+			NDATA_MBSTRING,	iconcode, 128,
+			NDATA_INT32,	&showlist, 4,
+			NDATA_MBSTRING,	itemmall, 256,
+			NDATA_INT32,	&makeskill, 4,
+			NDATA_INT32,	&makeskilllevel,4,
+			NDATA_INT32,	&makepbt, 4,
+			NDATA_INT32,	&incpbt, 4,
+			NDATA_INT32,	&siuse, 4,
+			NDATA_INT32,	&weight, 4,
+			NDATA_INT32,	&grownup, 4,
+			NDATA_INT32,	&productunit, 4,
+			NDATA_MBSTRING,	szmaterial, 128,
+			NDATA_MBSTRING,	sztool, 128,
+			NDATA_INT32,	&siExplain, 4,
+			NDATA_INT32,	&usedate, 4,
+			NDATA_INT32,	&MinNum,		4,
+			NDATA_INT32,	&NewMarket,		4,
+			
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+		if( dataloader.ReadData(true))
+		{
+			if ( szname[ 0 ] != NULL)
+			{
+				// 이미지리스트에서의 순서를 찾는다. 
+				SI32 imageindex = FindBitmapIndex(pname, iconcode);
+				if(imageindex < 0)imageindex = 0;
+
+				if(imageindex < 0)imageindex = 0;
+
+				cltItem clitem(unique, usedate);
+
+				// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+				cltItemSkillInfo clinfo(makeskill, makeskilllevel, makepbt, incpbt, 0, 0);
+
+				// 아이템 장착에 필요한 조건을 파악한다. 
+				cltItemConition clCondition(0, 0, 0, 0, 0, 0, 0, 0, true, true, (SI16)grownup, 0 );
+
+				// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+				StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+				SI32 ref = AddItem(imageindex, 0, szname,		itemtype, weight,  
+					&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+					ITEMSOUND_ETC, &clitem, Grade, MinNum,NULL, NewMarket ? 1 : 0);
+				if(ref >= 0)
+				{
+
+					if(showlist)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+					}
+
+					pclItemInfo[ref]->siExplainUnique = siExplain;
+
+					bool bcanuse = false;
+					if(siuse)bcanuse = true;
+					if(bcanuse)
+					{
+						pclItemInfo[ref]->siItemInfoAtb		|=  ITEMINFOATB_CANUSEITEM;
+					}
+
+					SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+
+					if(iteminfoatb)
+					{
+						pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+					}
+				}
+			}
+		}
+	}
+}
+
+// 광석 아이템을 추가한다. 
+void cltItemManagerCommon::AddMineralItem(TCHAR* datfilename)
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	//KHY - 0809 - 텍스트 리소스 암호화.
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("AddMineral()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	SI32 unique;
+	TCHAR szname[60];
+	TCHAR code[10];
+	TCHAR iconcode[24];
+	SI32 showlist;
+	TCHAR itemmall[256];
+	SI32 weight;
+	SI32 grownup = 0;
+	SI32 productunit;
+	TCHAR szmaterial[128];
+	TCHAR sztool[128];	
+	SI32 siExplain = 0;
+	SI32 Grade = 0 ;
+	SI32 MinNum = 0;
+	SI32 NewMarket = 0;
+	
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+		NDATA_INT32,	&unique,		4,		
+		NDATA_MBSTRING,	szname,			128,
+		NDATA_MBSTRING,	code,			128,
+		NDATA_MBSTRING,	iconcode,		128,
+		NDATA_INT32,	&showlist,		4,
+		NDATA_MBSTRING,	itemmall,		256,
+		NDATA_INT32,	&weight,		4,
+		NDATA_INT32,	&grownup,		4,
+		NDATA_INT32,	&productunit,	4,
+		NDATA_MBSTRING,	szmaterial,		128,
+		NDATA_MBSTRING,	sztool,			128,
+		NDATA_INT32,	&siExplain,		4,
+		NDATA_INT32,	&MinNum,		4,
+		NDATA_INT32,	&NewMarket,		4,
+		
+		0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() )
+	{
+		while( !dataloader.IsEndOfData() ) {
+
+			if( dataloader.ReadData(true))
+			{
+				if ( szname[ 0 ] != NULL)
+				{
+					// 이미지리스트에서의 순서를 찾는다. 
+					SI32 imageindex = FindBitmapIndex("MINERAL", iconcode);
+					if(imageindex < 0)imageindex = 0;
+
+					cltItem clitem(unique);
+					// 아이템 생산에 필요한 스킬의 정보를 파악한다. 
+					cltItemSkillInfo clinfo(0, 0, 0, 0, 0, 0);
+
+					// 아이템 장착에 필요한 조건을 파악한다. 
+					cltItemConition clCondition(0, 0, 0, 0, 0, 0, 0, 0, true, true, (SI16)grownup, 0 );
+
+					// 이름을 아이템 텍스트 메니져에서 가져오는 것으로 변경 - by LEEKH 2009-02-13
+					StringCchCopy(szname, sizeof(szname), GetItemTxtFromMgr(unique) );
+
+					SI32 ref = AddItem(imageindex, 0, szname,		ITEMTYPE_MINERAL, weight,  
+						&clinfo, &clCondition, NULL, szmaterial, sztool, productunit, 
+						ITEMSOUND_ETC, &clitem, Grade, MinNum, NULL, NewMarket ? 1 : 0);
+					if(ref >= 0)
+					{
+						SI32 iteminfoatb = ItemInfoAtbParser.GetValueByString(itemmall);
+						pclItemInfo[ref]->siExplainUnique = siExplain;
+
+						if(showlist)
+						{
+							pclItemInfo[ref]->AddItemInfoAtb(ITEMINFOATB_SHOWLIST);
+						}
+
+						if(iteminfoatb)
+						{
+							pclItemInfo[ref]->AddItemInfoAtb(iteminfoatb);
+
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+// TradeServer
+void cltItemManagerCommon::AddTradeServerRank(TCHAR *filename)
+{
+	/*	siTradeServerObejectRank[0]  = 100; 0
+	siTradeServerObejectRank[1]  = 103; 3 
+	siTradeServerObejectRank[2]  = 106; 6
+	siTradeServerObejectRank[3]	 = 109; 9
+	siTradeServerObejectRank[4]	 = 112; 12
+	siTradeServerObejectRank[5]	 = 115; 15
+	siTradeServerObejectRank[6]	 = 118; 18
+	siTradeServerObejectRank[7]	 = 121; 21
+	siTradeServerObejectRank[8]	 = 124; 24
+	siTradeServerObejectRank[9]	 = 127; 27
+	siTradeServerObejectRank[10] = 130; 30
+	siTradeServerObejectRank[11] = 133; 33
+	siTradeServerObejectRank[12] = 136; 36
+	siTradeServerObejectRank[13] = 139; 39
+	siTradeServerObejectRank[14] = 142; 42
+	siTradeServerObejectRank[15] = 145; 45
+	siTradeServerObejectRank[16] = 148; 48
+	siTradeServerObejectRank[17] = 151; 51
+	siTradeServerObejectRank[18] = 154; 54
+	siTradeServerObejectRank[19] = 200; 100
+	siTradeServerObejectRank[20] = 203; 103
+	siTradeServerObejectRank[21] = 206; 106
+	siTradeServerObejectRank[22] = 209; 109
+	siTradeServerObejectRank[23] = 212; 112
+	siTradeServerObejectRank[24] = 215; 115
+	siTradeServerObejectRank[25] = 218; 118
+	siTradeServerObejectRank[26] = 221; 121
+	siTradeServerObejectRank[27] = 224; 124
+	siTradeServerObejectRank[28] = 227; 127
+	siTradeServerObejectRank[29] = 230; 130
+	siTradeServerObejectRank[30] = 233; 133
+	siTradeServerObejectRank[31] = 236; 136
+	siTradeServerObejectRank[32] = 239; 139
+	siTradeServerObejectRank[33] = 242; 142
+	siTradeServerObejectRank[34] = 245; 145
+	siTradeServerObejectRank[35] = 248; 148
+	siTradeServerObejectRank[36] = 251; 151
+	siTradeServerObejectRank[37] = 254; 154
+	siTradeServerObejectRank[38] = 257; 157
+	siTradeServerObejectRank[39] = 260; 160
+	siTradeServerObejectRank[40] = 263; 163
+	siTradeServerObejectRank[41] = 266; 166
+	siTradeServerObejectRank[42] = 269; 169
+	siTradeServerObejectRank[43] = 272; 172
+	siTradeServerObejectRank[44] = 275; 175
+	siTradeServerObejectRank[45] = 278; 178
+	siTradeServerObejectRank[46] = 281; 181
+	siTradeServerObejectRank[47] = 284; 184
+	siTradeServerObejectRank[48] = 287; 187
+	siTradeServerObejectRank[49] = 290; 190
+	siTradeServerObejectRank[50] = 293; 193
+	siTradeServerObejectRank[51] = 296; 196
+	siTradeServerObejectRank[52] = 299; 199
+	siTradeServerObejectRank[53] = 302; 202
+	siTradeServerObejectRank[54] = 305; 205
+	siTradeServerObejectRank[55] = 308; 208
+	siTradeServerObejectRank[56] = 311; 211
+	siTradeServerObejectRank[57] = 314; 214
+	siTradeServerObejectRank[58] = 317; 217
+	siTradeServerObejectRank[59] = 320; 220
+	siTradeServerObejectRank[60] = 323; 223
+	siTradeServerObejectRank[61] = 326; 226
+	*/
+	/*
+	//char buffer[1024 * 100] = { '\0' };
+
+	for ( SI32 i = 0 ; i < MAX_TRADESERVER_OBJECT_RANK ; i ++ )
+	siTradeServerObejectRank[i] = 0 ;
+
+	NDataLoader	dataloader;
+	BOOL bLoadFile=FALSE;
+
+	bLoadFile = dataloader.LoadDataFromFile( filename );
+
+	if (!bLoadFile)
+	{
+	MsgBox(TEXT("AddTradeServerRank()"), TEXT("LoadError:[%s]"), filename);
+	return;
+	}
+
+	SI32 rankindex = 0 ;
+	SI32 quality = 0;
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+	NDATA_INT32,	&rankindex, 4,		
+	NDATA_INT32,	&quality, 4,
+	0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	while( !dataloader.IsEndOfData() ) {
+
+	if( dataloader.ReadData())
+	{
+
+	if ( rankindex > 0 && rankindex < MAX_TRADESERVER_OBJECT_RANK )
+	{
+	siTradeServerObejectRank[rankindex-1] = quality ;
+	}
+	}
+	}*/
+
+	//NFile file; 
+
+	//file.LoadFile( TEXT(filename) );
+
+	//NCryptHeader *pHeader = (NCryptHeader *)file.GetBuffer();
+
+	//if( pHeader == NULL )
+	//{
+	//	char buffer[256] = {'\0'};
+
+	//	sprintf(buffer, "AddTradeServerRank()", "LoadError:[%s]", filename);
+	//	MessageBox(NULL, "Error", buffer, MB_OK|MB_TOPMOST);
+	//	return ;
+	//}
+
+	//if( pHeader->id[ 0 ] == 'N' &&
+	//	pHeader->id[ 1 ] == 'C' &&
+	//	pHeader->id[ 2 ] == 'R' ) 
+	//{
+
+	//	NLoadCryptFile( TEXT(filename),  (BYTE*)buffer );
+	//	buffer[ pHeader->dwDataSize ] = NULL;
+
+	//	TCHAR *pStart = &buffer[ 0 ];
+	//	int pos = 0;
+	//	int lc = 0;
+
+	//	while( pos < pHeader->dwDataSize && lc < 4 ) 
+	//	{
+
+	//		if( buffer[ pos ] == 13 ) 
+	//		{
+	//			++lc; 
+	//			pos+=2;
+	//		}
+	//		else ++pos;
+	//	}
+
+	//	lc = 0;
+	//	pStart = &buffer[ pos ];
+	//	while( pos < pHeader->dwDataSize ) 
+	//	{
+	//		SI32 rankindex = 0 ;
+	//		SI32 quality = 0 ;
+
+	//		if( buffer[ pos ] == 13 ) 
+	//		{ 
+	//			pos+=2;
+	//			pStart = &buffer[ pos ]; 
+	//			if( strcmp( pStart, "") != 0 )
+	//			{
+	//				_stscanf( pStart, TEXT("%d %d") , &rankindex, &quality);
+
+	//				if ( rankindex > 0 && rankindex < MAX_TRADESERVER_OBJECT_RANK )
+	//				{
+	//					siTradeServerObejectRank[rankindex-1] = quality ;
+	//				}
+	//			}
+	//		}
+	//		else
+	//			++pos;
+	//	}
+	//}
+	//else
+	//{
+	//	char buffer[256] = {'\0'};
+
+	//	sprintf(buffer, "AddTradeServerRank()", "LoadError:[%s]", filename);
+	//	MessageBox(NULL, "Error", buffer, MB_OK|MB_TOPMOST);
+	//	return ;
+	//}
+}
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//
+//	[진성] 세트 아이템 능력치 정보
+//
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+cltSetItemAbilityManager::cltSetItemAbilityManager()
+{
+	ZeroMemory( this, sizeof(*this) );
+}
+cltSetItemAbilityManager::~cltSetItemAbilityManager()
+{
+
+}
+
+void cltSetItemAbilityManager::Init( void )
+{
+	FileLoad();	
+}
+
+void cltSetItemAbilityManager::FileLoad( void )
+{
+	NDataLoader	dataloader;
+	BOOL bLoadFile = FALSE;
+
+	TCHAR datfilename[MAX_PATH] = {0,};
+	StringCchPrintf( datfilename,  MAX_PATH, TEXT("Item/Data/SetItemStepInfo.txt") );
+
+
+	if( pclClient->IsWhereServiceArea( ConstSwitch_TextEncryption ) )
+	{
+		bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);		
+	}
+	else
+	{
+		if ( pclClient->IsWhereServiceArea(ConstServiceArea_China) )
+		{
+			bLoadFile = dataloader.LoadDataFromCryptFile( datfilename);
+		}
+		else
+		{
+			bLoadFile = dataloader.LoadDataFromFile( datfilename);
+		}
+	}
+
+
+	if (!bLoadFile)
+	{
+		MsgBox(TEXT("LoadSetItemStepInfo()"), TEXT("LoadError:[%s]"), datfilename);
+		return;
+	}
+
+	TCHAR	szName[60]				= "";
+	SI32	siEffect				= 0;	// 이펙트
+	SI32	siAttack				= 0;	// 공격력.
+	SI32	siDefensive				= 0;	// 방어력.
+	SI32	siStr 					= 0;	// 근력.	
+	SI32	siDex 					= 0;	// 순발력
+	SI32	siVit 					= 0;	// 생명력 
+	SI32	siMag 					= 0;	// 도력. 
+	SI32	siHnd 					= 0;	// 손재주. 
+	SI32	siLuk 					= 0;	// 행운. 
+	SI32	siWis 					= 0;	// 지혜. 
+	SI32	siFireEnchantDefensive	= 0;	// 불   속성 방어력.
+	SI32	siWaterEnchantDefensive	= 0;	// 물   속성 방어력.
+	SI32	siWindEnchantDefensive	= 0;	// 바람 속성 방어력.
+	SI32	siLandEnchantDefensive	= 0;	// 땅   속성 방어력.
+	SI32	siDrainSuccessPercent	= 0;	// 데미지로 에너지 뽑아내기 확률.
+	SI32	siDrain					= 0;	// 데미지로 에너지 뽑아내기.
+	SI32	siHitRate				= 0;	// 명중률
+	SI32	siWeaponUseSkill		= 0;	// 무기 사용술
+	SI32	siHP					= 0;	// hp 변경
+	SI32	siMP					= 0;	// mp 변경
+	SI32	siCritical				= 0;	// 크리티컬
+	SI32	siIceMagicTargetAttack	= 0;	// 공격시 상대를 얼려버리는 확률
+	SI32	siPoisonMagicTargetAttack = 0;		// [지연] 공격시 상대를 중독시켜버릴 확률
+	SI32	siIceMagicGetAttack		= 0;	// 내가 얼음 공격을 당할 때 어는 확률
+	SI32	siMagicAttack			= 0;	// 마법 공격력.
+	SI32	siMagicDefence			= 0;		// [지연] 마법 방어력
+	SI32	siNoFirstAttack			= 0;	// 선공방지
+	SI32	siNature				= 0;	// 물리 속성 방어력.			
+	SI32	siFireEnchantAttack		= 0;	// 불   속성 공격력.
+	SI32	siWaterEnchantAttack	= 0;	// 물   속성 공격력.
+	SI32	siWindEnchantAttack		= 0;	// 바람 속성 공격력.
+	SI32	siLandEnchantAttack		= 0;	// 땅   속성 공격력.
+
+
+	NDataTypeInfo pDataTypeInfo[] =
+	{
+			NDATA_MBSTRING,	szName,						   60,
+			NDATA_INT32,	&siEffect,						4,
+			NDATA_INT32,	&siAttack,						4,
+			NDATA_INT32,	&siDefensive,					4,
+			NDATA_INT32,	&siStr,							4,
+			NDATA_INT32,	&siDex, 						4,
+			NDATA_INT32,	&siVit,							4,
+			NDATA_INT32,	&siMag,							4,
+			NDATA_INT32,	&siHnd,							4,
+			NDATA_INT32,	&siLuk,							4,
+			NDATA_INT32,	&siWis,							4,
+			NDATA_INT32,	&siFireEnchantDefensive,		4,
+			NDATA_INT32,	&siWaterEnchantDefensive,		4,
+			NDATA_INT32,	&siWindEnchantDefensive,		4,
+			NDATA_INT32,	&siLandEnchantDefensive,		4,
+			NDATA_INT32,	&siDrainSuccessPercent,			4,
+			NDATA_INT32,	&siDrain,						4,
+			NDATA_INT32,	&siHitRate,						4,
+			NDATA_INT32,	&siWeaponUseSkill,				4,
+			NDATA_INT32,	&siHP,							4,
+			NDATA_INT32,	&siMP,							4,
+			NDATA_INT32,	&siCritical,					4,
+			NDATA_INT32,	&siIceMagicTargetAttack,		4,
+			NDATA_INT32,	&siPoisonMagicTargetAttack,		4,
+			NDATA_INT32,	&siIceMagicGetAttack,			4,
+			NDATA_INT32,	&siMagicAttack,					4,
+			NDATA_INT32,	&siMagicDefence,				4,
+			NDATA_INT32,	&siNoFirstAttack,				4,
+			NDATA_INT32,	&siNature,						4,
+			NDATA_INT32,	&siFireEnchantAttack,			4,
+			NDATA_INT32,	&siWaterEnchantAttack,			4,
+			NDATA_INT32,	&siWindEnchantAttack,			4,
+			NDATA_INT32,	&siLandEnchantAttack,			4,
+			0,0,0
+	};
+
+	dataloader.RegDataType( pDataTypeInfo );
+
+	SI32 siArrayCount = MAX_STEP_NUM; // 세트 아이템이 1부터 시작 되므로 세트 아이템 한계당 6개의 단계를 가지므로 앞의 6개는 빈칸으로 두자. 리소스에 한 세트당 6단계가 반드시 있어야 한다.
+	cltSetItemAbility*	pclSetItemAbility = m_clSetItemAbility[0];
+	while( !dataloader.IsEndOfData() ) 
+	{
+		if( dataloader.ReadData())
+		{
+			pclSetItemAbility[ siArrayCount ].m_siEffect				= siEffect;
+			pclSetItemAbility[ siArrayCount ].m_siAttack				= siAttack;
+			pclSetItemAbility[ siArrayCount ].m_siDefensive				= siDefensive;
+			pclSetItemAbility[ siArrayCount ].m_siStr					= siStr;					
+			pclSetItemAbility[ siArrayCount ].m_siDex					= siDex;				
+			pclSetItemAbility[ siArrayCount ].m_siVit					= siVit;					
+			pclSetItemAbility[ siArrayCount ].m_siMag					= siMag;					
+			pclSetItemAbility[ siArrayCount ].m_siHnd					= siHnd;					
+			pclSetItemAbility[ siArrayCount ].m_siLuk					= siLuk;					
+			pclSetItemAbility[ siArrayCount ].m_siWis					= siWis;			
+			pclSetItemAbility[ siArrayCount ].m_siFireEnchantDefensive	= siFireEnchantDefensive;
+			pclSetItemAbility[ siArrayCount ].m_siWaterEnchantDefensive	= siWaterEnchantDefensive;
+			pclSetItemAbility[ siArrayCount ].m_siWindEnchantDefensive	= siWindEnchantDefensive;
+			pclSetItemAbility[ siArrayCount ].m_siLandEnchantDefensive	= siLandEnchantDefensive;
+			pclSetItemAbility[ siArrayCount ].m_siDrainSuccessPercent	= siDrainSuccessPercent;
+			pclSetItemAbility[ siArrayCount ].m_siDrain					= siDrain;
+			pclSetItemAbility[ siArrayCount ].m_siHitRate				= siHitRate;						
+			pclSetItemAbility[ siArrayCount ].m_siWeaponUseSkill		= siWeaponUseSkill;		
+			pclSetItemAbility[ siArrayCount ].m_siHP					= siHP;					
+			pclSetItemAbility[ siArrayCount ].m_siMP					= siMP;					
+			pclSetItemAbility[ siArrayCount ].m_siCritical				= siCritical;				
+			pclSetItemAbility[ siArrayCount ].m_siIceMagicTargetAttack	= siIceMagicTargetAttack;	
+			pclSetItemAbility[ siArrayCount ].m_siPoisonMagicTargetAttack	= siPoisonMagicTargetAttack;	
+			pclSetItemAbility[ siArrayCount ].m_siIceMagicGetAttack		= siIceMagicGetAttack;		
+			pclSetItemAbility[ siArrayCount ].m_siMagicAttack			= siMagicAttack;
+			pclSetItemAbility[ siArrayCount ].m_siMagicDefence			= siMagicDefence;
+			pclSetItemAbility[ siArrayCount ].m_siNoFirstAttack			= siNoFirstAttack;			
+			pclSetItemAbility[ siArrayCount ].m_siNature				= siNature;				
+			pclSetItemAbility[ siArrayCount ].m_siFireEnchantAttack		= siFireEnchantAttack;		
+			pclSetItemAbility[ siArrayCount ].m_siWaterEnchantAttack	= siWaterEnchantAttack;		
+			pclSetItemAbility[ siArrayCount ].m_siWindEnchantAttack		= siWindEnchantAttack;		
+			pclSetItemAbility[ siArrayCount ].m_siLandEnchantAttack		= siLandEnchantAttack;	
+
+			++siArrayCount;
+		}
+	}
+
+	SI16 SetItemNum = (siArrayCount - MAX_STEP_NUM) / MAX_STEP_NUM;
+	if( SETITEM_NUM <= SetItemNum ) 
+	{
+		MessageBox(NULL, TEXT("Item/Data/SetItemStepInfo.txt"), TEXT("Error"), 0 );
+	}
+}
+
+cltSetItemAbility*	cltSetItemAbilityManager::GetSetItemAbility( SI16 _SetItemType )
+{	
+	cltSetItemAbility*	pclSetItemAbility = m_clSetItemAbility[0];
+
+	if( 0 > _SetItemType || SETITEM_NUM <= _SetItemType )
+		return &pclSetItemAbility[_SetItemType];
+	else
+		return NULL;
+}
+
+cltSetItemAbility* cltSetItemAbilityManager::GetSetItemAbilityData( cltCharCommon* _pclchar, SI32 _UseSetItem )
+{
+	SI16 siSetItemType = 0;
+	SI16 siSetItemStep = 0;
+	if( USE_SETITEM_1 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType; 
+		siSetItemStep = _pclchar->m_siSetItemStep;
+		
+	}
+	else if( USE_SETITEM_2 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType2; 
+		siSetItemStep = _pclchar->m_siSetItemStep2;
+	}
+
+	else if( USE_SETITEM_3 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType3; 
+		siSetItemStep = _pclchar->m_siSetItemStep3;
+	}
+
+	else if( USE_SETITEM_4 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType4; 
+		siSetItemStep = _pclchar->m_siSetItemStep4;
+	}
+
+	else if( USE_SETITEM_5 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType5; 
+		siSetItemStep = _pclchar->m_siSetItemStep5;
+	}
+
+	else
+		return &m_clSetItemAbility[0][0];	// 데이타가 모두 0이다.
+
+	// [종호_SETITEM] 세트아이템타입의 유효데이터 범위는 0 < siSetItemType < SETITEM_NUM 이다.
+	// [종호_SETITEM] 세트아이템스텝의 유효데이터 범위는 TWO_STEP <= siSetItemStep <= SEVEN_STEP 이다.
+	if((0 >= siSetItemType || SETITEM_NUM <= siSetItemType) || (TWO_STEP > siSetItemStep || SEVEN_STEP < siSetItemStep))
+	{
+		return &m_clSetItemAbility[0][0];	
+	}
+	else
+	{
+		cltSetItemAbility*	pclSetItemAbility = m_clSetItemAbility[0];
+
+		SI16 siIndex = (siSetItemType * MAX_STEP_NUM) + (siSetItemStep - TWO_STEP);
+
+		//	[종호_SETITEM] 배열 MAX범위 체크
+		if( SETITEM_NUM * (MAX_STEP_NUM) <= siIndex )	
+			return NULL;
+
+		return &pclSetItemAbility[ siIndex ];
+	}
+}
+
+SI32 cltSetItemAbilityManager::GetSetItemAbilityValue( cltCharCommon* _pclchar, SI16 _siAbilityType, SI32 _UseSetItem )
+{
+	SI16 siSetItemType = 0;
+	SI16 siSetItemStep = 0;
+	if( USE_SETITEM_1 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType; 
+		siSetItemStep = _pclchar->m_siSetItemStep;
+
+	}
+	else if( USE_SETITEM_2 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType2; 
+		siSetItemStep = _pclchar->m_siSetItemStep2;
+	}
+
+	else if( USE_SETITEM_3 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType3; 
+		siSetItemStep = _pclchar->m_siSetItemStep3;
+	}
+
+	else if( USE_SETITEM_4 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType4; 
+		siSetItemStep = _pclchar->m_siSetItemStep4;
+	}
+
+	else if( USE_SETITEM_5 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType5; 
+		siSetItemStep = _pclchar->m_siSetItemStep5;
+	}
+
+	else
+		return NULL;
+
+	if( VAMPIRE_SETITEM  > siSetItemType  || SETITEM_NUM <= siSetItemType )		return 0;
+	if( TWO_STEP		 > siSetItemStep  || SEVEN_STEP  <  siSetItemStep  )	return 0;
+
+	cltSetItemAbility* pcltSetItemAbility = GetSetItemAbilityData( _pclchar, _UseSetItem );
+	if( NULL == pcltSetItemAbility ) return 0;
+	
+	SI32 DataValue = 0;
+	switch( _siAbilityType )
+	{
+		case SETITEM_ABILITY_TYPE_EFFECT:					DataValue = pcltSetItemAbility->m_siEffect;					break;
+		case SETITEM_ABILITY_TYPE_ATTACK:					DataValue = pcltSetItemAbility->m_siAttack;					break;
+		case SETITEM_ABILITY_TYPE_DEFENSIVE:				DataValue = pcltSetItemAbility->m_siDefensive;				break;
+		case SETITEM_ABILITY_TYPE_STR:						DataValue = pcltSetItemAbility->m_siStr;					break;	
+		case SETITEM_ABILITY_TYPE_DEX:						DataValue = pcltSetItemAbility->m_siDex;					break;
+		case SETITEM_ABILITY_TYPE_VIT:						DataValue = pcltSetItemAbility->m_siVit;					break;
+		case SETITEM_ABILITY_TYPE_MAG:						DataValue = pcltSetItemAbility->m_siMag;					break;
+		case SETITEM_ABILITY_TYPE_HAND:						DataValue = pcltSetItemAbility->m_siHnd;					break;
+		case SETITEM_ABILITY_TYPE_LUK:						DataValue = pcltSetItemAbility->m_siLuk;					break;
+		case SETITEM_ABILITY_TYPE_WIS:						DataValue = pcltSetItemAbility->m_siWis;					break;
+		case SETITEM_ABILITY_TYPE_FIRE_ENCHANT_DEFENSIVE:	DataValue = pcltSetItemAbility->m_siFireEnchantDefensive;	break;
+		case SETITEM_ABILITY_TYPE_WATER_ENCHANT_DEFENSIVE:	DataValue = pcltSetItemAbility->m_siWaterEnchantDefensive;	break;
+		case SETITEM_ABILITY_TYPE_WIND_ENCHANT_DEFENSIVE:	DataValue = pcltSetItemAbility->m_siWindEnchantDefensive;	break;
+		case SETITEM_ABILITY_TYPE_LAND_ENCHANT_DEFENSIVE:	DataValue = pcltSetItemAbility->m_siLandEnchantDefensive;	break;
+		case SETITEM_ABILITY_TYPE_DRAIN_SUCCESS_PERCENT:	DataValue = pcltSetItemAbility->m_siDrainSuccessPercent;	break;
+		case SETITEM_ABILITY_TYPE_DRAIN:					
+			{
+				if( rand()%100 < pcltSetItemAbility->m_siDrainSuccessPercent ) 
+					DataValue = pcltSetItemAbility->m_siDrain;					
+				else
+					DataValue = 0;
+			}
+			break;
+		case SETITEM_ABILITY_TYPE_HIT_RATE:					DataValue = pcltSetItemAbility->m_siHitRate;				break;			
+		case SETITEM_ABILITY_TYPE_WEAPON_USE_SKILL:			DataValue = pcltSetItemAbility->m_siWeaponUseSkill;			break;
+		case SETITEM_ABILITY_TYPE_HP:						DataValue = pcltSetItemAbility->m_siHP;						break;
+		case SETITEM_ABILITY_TYPE_MP:						DataValue = pcltSetItemAbility->m_siMP;						break;
+		case SETITEM_ABILITY_TYPE_CRITICAL:					
+			{
+				if( rand()%100 < pcltSetItemAbility->m_siCritical ) 
+					DataValue = pcltSetItemAbility->m_siCritical;					
+				else
+					DataValue = 0;
+			}
+			break;
+		case SETITEM_ABILITY_TYPE_ICE_MAGIC_TARGET_ATTACK:	
+			{
+				if( rand()%100 < pcltSetItemAbility->m_siIceMagicTargetAttack ) 
+					DataValue = pcltSetItemAbility->m_siIceMagicTargetAttack;					
+				else
+					DataValue = 0;
+			}
+			break;
+		case SETITEM_ABILITY_TYPE_POISON_MAGIC_TARGET_ATTACK:
+			{
+				if( rand()%100 < pcltSetItemAbility->m_siPoisonMagicTargetAttack ) 
+					DataValue = pcltSetItemAbility->m_siPoisonMagicTargetAttack;					
+				else
+					DataValue = 0;
+			}
+			break;
+		case SETITEM_ABILITY_TYPE_ICE_MAGIC_GET_ATTACK:		
+			{
+				if( rand()%100 < pcltSetItemAbility->m_siIceMagicGetAttack ) 
+					DataValue = pcltSetItemAbility->m_siIceMagicGetAttack;					
+				else
+					DataValue = 0;
+			}
+			break;
+		case SETITEM_ABILITY_TYPE_MAGIC_ATTACK:				DataValue = pcltSetItemAbility->m_siMagicAttack;			break;			
+		case SETITEM_ABILITY_TYPE_MAGIC_DEFENCE:			DataValue = pcltSetItemAbility->m_siMagicDefence;			break;
+		case SETITEM_ABILITY_TYPE_NO_FIRST_ATTACK:			DataValue = pcltSetItemAbility->m_siNoFirstAttack;			break;
+		case SETITEM_ABILITY_TYPE_NATURE:					DataValue = pcltSetItemAbility->m_siNature;					break;			
+		case SETITEM_ABILITY_TYPE_FIRE_ENCHANT_ATTACK:		DataValue = pcltSetItemAbility->m_siFireEnchantAttack;		break;			
+		case SETITEM_ABILITY_TYPE_WATER_ENCHANT_ATTACK:		DataValue = pcltSetItemAbility->m_siWaterEnchantAttack;		break;			
+		case SETITEM_ABILITY_TYPE_WIND_ENCHANT_ATTACK:		DataValue = pcltSetItemAbility->m_siWindEnchantAttack;		break;			
+		case SETITEM_ABILITY_TYPE_LAND_ENCHANT_ATTACK:		DataValue = pcltSetItemAbility->m_siLandEnchantAttack;		break;			
+
+		default: DataValue = 0; break;
+	}
+
+	return DataValue;
+}
+
+
+// [종호_SETITEM] 캐릭터의 몸을 감싸는 작은 회오리
+SI32 cltSetItemAbilityManager::GetSetItemE( cltCharCommon* _pclchar, SI32 _UseSetItem )
+{
+	SI16 siSetItemType = 0;
+	SI16 siSetItemStep = 0;
+	SI32 siSetItemEffect = 0;
+
+	if( USE_SETITEM_1 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType; 
+		siSetItemStep = _pclchar->m_siSetItemStep;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_1);
+
+	}
+	else if( USE_SETITEM_2 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType2; 
+		siSetItemStep = _pclchar->m_siSetItemStep2;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_2);
+	}
+
+	else if( USE_SETITEM_3 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType3; 
+		siSetItemStep = _pclchar->m_siSetItemStep3;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_3);
+	}
+
+	else if( USE_SETITEM_4 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType4; 
+		siSetItemStep = _pclchar->m_siSetItemStep4;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_4);
+	}
+
+	else if( USE_SETITEM_5 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType5; 
+		siSetItemStep = _pclchar->m_siSetItemStep5;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_5);
+	}
+	else
+		return -1;
+
+
+	//	[종호_SETITEM] 리소스상의 이펙트 단계를 기준으로 체크
+	if(siSetItemEffect <= SETITEM_EFFECT_NONE || siSetItemEffect >= SETITEM_EFFECT_END)
+		return -1;
+
+	if(siSetItemEffect < SETITEM_EFFECT_SMALL_WIND)
+		return -1;
+
+	switch( siSetItemType )
+	{
+	case VAMPIRE_SETITEM:			return GIMG_SETITEME2;
+	case BLACKKNIGHT_SETITEM_STEP:	return GIMG_SETITEME7; //2
+	case XMAS_SETITEM:				return GIMG_SETITEME2;
+	case BOY_SULBIM_SETITEM:		return GIMG_SETITEME2;
+	case GIRL_SULBIM_SETITEM:		return GIMG_SETITEME2;
+	case HALLOWEEN1_SETITEM:		return GIMG_SETITEME2;
+	case HALLOWEEN2_SETITEM:		return GIMG_SETITEME2;
+	case HALLOWEEN3_SETITEM:		return GIMG_SETITEME2;
+	case HALLOWEEN4_SETITEM:		return GIMG_SETITEME2;
+	case FROZEN_SETITEM_STEP:		return GIMG_SETITEME4;
+	case FLAME_SETITEM_STEP:		return GIMG_SETITEME5;
+	case DEMON_SETITEM_STEP:		return GIMG_SETITEME6;
+	case ABEL_SETITEM_STEP:			return GIMG_SETITEME3;
+	case DEVIL_MAN:					return GIMG_SETITEME2;
+	case DEVIL_WOMAN:				return GIMG_SETITEME2;
+	}
+
+	return -1;
+}
+
+
+// [종호_SETITEM] 캐릭터의 몸을 감싸는 큰 회오리
+SI32 cltSetItemAbilityManager::GetSetItemEffet( cltCharCommon* _pclchar, SI32 _UseSetItem )
+{
+	SI16 siSetItemType = 0;
+	SI16 siSetItemStep = 0;
+	SI32 siSetItemEffect = 0;
+
+	if( USE_SETITEM_1 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType; 
+		siSetItemStep = _pclchar->m_siSetItemStep;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_1);
+
+	}
+	else if( USE_SETITEM_2 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType2; 
+		siSetItemStep = _pclchar->m_siSetItemStep2;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_2);
+	}
+
+	else if( USE_SETITEM_3 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType3; 
+		siSetItemStep = _pclchar->m_siSetItemStep3;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_3);
+	}
+
+	else if( USE_SETITEM_4 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType4; 
+		siSetItemStep = _pclchar->m_siSetItemStep4;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_4);
+	}
+
+	else if( USE_SETITEM_5 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType5; 
+		siSetItemStep = _pclchar->m_siSetItemStep5;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_5);
+	}
+	else
+		return -1;
+
+	//	[종호_SETITEM] 리소스상의 이펙트 단계를 기준으로 체크
+	if(siSetItemEffect <= SETITEM_EFFECT_NONE || siSetItemEffect >= SETITEM_EFFECT_END)
+		return -1;
+
+	if(siSetItemEffect < SETITEM_EFFECT_LARGE_WIND)
+		return -1;
+
+	switch( siSetItemType )
+	{
+	case VAMPIRE_SETITEM:			return GIMG_SETITEMEFFECT2;
+	case BLACKKNIGHT_SETITEM_STEP:	return GIMG_SETITEMEFFECT7;
+	case XMAS_SETITEM:				return GIMG_SETITEMEFFECT2;
+	case BOY_SULBIM_SETITEM:		return GIMG_SETITEMEFFECT2;
+	case GIRL_SULBIM_SETITEM:		return GIMG_SETITEMEFFECT2;
+	case HALLOWEEN1_SETITEM:		return GIMG_SETITEMEFFECT2;
+	case HALLOWEEN2_SETITEM:		return GIMG_SETITEMEFFECT2;
+	case HALLOWEEN3_SETITEM:		return GIMG_SETITEMEFFECT2;
+	case HALLOWEEN4_SETITEM:		return GIMG_SETITEMEFFECT2;
+	case FROZEN_SETITEM_STEP:		return GIMG_SETITEMEFFECT4;
+	case FLAME_SETITEM_STEP:		return GIMG_SETITEMEFFECT5;
+	case DEMON_SETITEM_STEP:		return GIMG_SETITEMEFFECT6;
+	case ABEL_SETITEM_STEP:			return GIMG_SETITEMEFFECT3;
+	case DEVIL_MAN:					return GIMG_SETITEMEFFECT2;
+	case DEVIL_WOMAN:				return GIMG_SETITEMEFFECT2;
+	}
+
+	return -1;
+}
+
+
+// [종호_SETITEM] 캐릭터의 바닥에 깔리는 타원형 이펙트
+SI32 cltSetItemAbilityManager::GetSetItemHumanEffect( cltCharCommon* _pclchar, SI32 _UseSetItem )
+{
+	SI16 siSetItemType = 0;
+	SI16 siSetItemStep = 0;
+	SI32 siSetItemEffect = 0;
+
+	if( USE_SETITEM_1 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType; 
+		siSetItemStep = _pclchar->m_siSetItemStep;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_1);
+
+	}
+	else if( USE_SETITEM_2 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType2; 
+		siSetItemStep = _pclchar->m_siSetItemStep2;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_2);
+	}
+
+	else if( USE_SETITEM_3 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType3; 
+		siSetItemStep = _pclchar->m_siSetItemStep3;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_3);
+	}
+
+	else if( USE_SETITEM_4 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType4; 
+		siSetItemStep = _pclchar->m_siSetItemStep4;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_4);
+	}
+
+	else if( USE_SETITEM_5 == _UseSetItem )
+	{
+		siSetItemType = _pclchar->m_siSetItemType5; 
+		siSetItemStep = _pclchar->m_siSetItemStep5;
+		siSetItemEffect = GetSetItemAbilityValue(_pclchar, SETITEM_ABILITY_TYPE_EFFECT, USE_SETITEM_5);
+	}
+	else
+		return -1;
+
+
+	//	[종호_SETITEM] 리소스상의 이펙트 단계를 기준으로 체크
+	if(siSetItemEffect <= SETITEM_EFFECT_NONE || siSetItemEffect >= SETITEM_EFFECT_END)
+		return -1;
+
+	if(siSetItemEffect < SETITEM_EFFECT_BASE_AURA)
+		return -1;
+
+	// 바닥에 깔리는 타원형 이펙트는 상위단계 이펙트인 작은회오리나 큰회오리가 적용되어있다면 보여주지 않습니다.
+	if(GetSetItemE(_pclchar, _UseSetItem) >= 0 || GetSetItemEffet(_pclchar, _UseSetItem) >= 0)
+		return -1;
+
+
+	switch( siSetItemType )
+	{
+	case VAMPIRE_SETITEM:			return GIMG_HUMAN_EFFECT2;
+	case BLACKKNIGHT_SETITEM_STEP:	return GIMG_HUMAN_EFFECT7;
+	case XMAS_SETITEM:				return GIMG_HUMAN_EFFECT2;
+	case BOY_SULBIM_SETITEM:		return GIMG_HUMAN_EFFECT2;
+	case GIRL_SULBIM_SETITEM:		return GIMG_HUMAN_EFFECT2;
+	case HALLOWEEN1_SETITEM:		return GIMG_HUMAN_EFFECT2;
+	case HALLOWEEN2_SETITEM:		return GIMG_HUMAN_EFFECT2;
+	case HALLOWEEN3_SETITEM:		return GIMG_HUMAN_EFFECT2;
+	case HALLOWEEN4_SETITEM:		return GIMG_HUMAN_EFFECT2;
+	case FROZEN_SETITEM_STEP:		return GIMG_HUMAN_EFFECT4;
+	case FLAME_SETITEM_STEP:		return GIMG_HUMAN_EFFECT5;
+	case DEMON_SETITEM_STEP:		return GIMG_HUMAN_EFFECT6;
+	case ABEL_SETITEM_STEP:			return GIMG_HUMAN_EFFECT3;
+	case DEVIL_MAN:					return GIMG_HUMAN_EFFECT2;
+	case DEVIL_WOMAN:				return GIMG_HUMAN_EFFECT2;
+	}
+
+	return -1;
+}

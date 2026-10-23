@@ -1,0 +1,29 @@
+Date	2006.01.24				
+ActionNum	24				
+ActionIndex	ActionCode	ActionName	ActionFrameNum	TotalFrameNum	Direction
+0	1HSU	한손휘두르기(말X)	8	40	5
+1	2HTU	양손찌르기(말X)	8	40	5
+2	2HBU	활(말X)	8	40	5
+3	2HGU	총(말X)	8	40	5
+4	HITU	피격(말X)	1	5	5
+5	MOVU	이동(말X)	8	40	5
+6	WT1U	정지1(말X)	1	5	5
+7	WT2U	정지2(말X)	20	100	5
+8	DTHU	죽기(말X)	12	12	1
+9	SPCU	특수동작(X)	12	60	5
+10	1HSR	한손휘두르기(말O)	8	40	5
+11	2HTR	양손찌르기(말O)	8	40	5
+12	2HBR	활(말O)	8	40	5
+13	2HGR	총(말O)	8	40	5
+14	HITR	피격(말O)	1	5	5
+15	MOVR	이동(말O)	8	40	5
+16	WT1R	정지1(말O)	1	5	5
+17	WT2R	정지2(말O)	8	40	5
+18	DTHR	죽기(말O)	11	11	1
+19	SPCR	특수동작(말O)	17	85	5
+20	SITU	앉기(말X)	1	5	5
+21	FSHU	낚시(말X)	48	240	5
+22	FAMU	농경(말X)	47	235	5
+23	MINU	채광(말X)	37	185	5
+
+     

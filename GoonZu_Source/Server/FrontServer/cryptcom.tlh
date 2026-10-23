@@ -1,0 +1,75 @@
+// Created by Microsoft (R) C/C++ Compiler Version 13.10.3077 (f6c3ab16).
+//
+// c:\maketlh\debug\cryptcom.tlh
+//
+// C++ source equivalent of Win32 type library c:\cryptcom.tlb
+// compiler-generated file created 04/17/06 at 21:11:47 - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+namespace CRYPTCOMLib {
+
+//
+// Forward references and typedefs
+//
+
+struct __declspec(uuid("7b66374d-6b66-439e-b6bf-f77fbb6cdf06"))
+/* LIBID */ __CRYPTCOMLib;
+struct __declspec(uuid("fee2b996-789c-499b-9fc4-500575d4615f"))
+/* dual interface */ ISimpleCrypt;
+struct /* coclass */ SimpleCrypt;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(ISimpleCrypt, __uuidof(ISimpleCrypt));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("fee2b996-789c-499b-9fc4-500575d4615f"))
+ISimpleCrypt : IDispatch
+{
+    //
+    // Wrapper methods for error-handling
+    //
+
+    _bstr_t Encode (
+        _bstr_t sSource,
+        _bstr_t sKey );
+    _bstr_t Decode (
+        _bstr_t sSource,
+        _bstr_t sKey );
+
+    //
+    // Raw methods provided by interface
+    //
+
+      virtual HRESULT __stdcall raw_Encode (
+        /*[in]*/ BSTR sSource,
+        /*[in]*/ BSTR sKey,
+        /*[out,retval]*/ BSTR * psResult ) = 0;
+      virtual HRESULT __stdcall raw_Decode (
+        /*[in]*/ BSTR sSource,
+        /*[in]*/ BSTR sKey,
+        /*[out,retval]*/ BSTR * psResult ) = 0;
+};
+
+struct __declspec(uuid("bb6b1123-a4b9-4a75-87e4-bd62c3a69f90"))
+SimpleCrypt;
+    // [ default ] interface ISimpleCrypt
+
+//
+// Wrapper method implementations
+//
+
+#include "c:\maketlh\debug\cryptcom.tli"
+
+} // namespace CRYPTCOMLib
+
+#pragma pack(pop)

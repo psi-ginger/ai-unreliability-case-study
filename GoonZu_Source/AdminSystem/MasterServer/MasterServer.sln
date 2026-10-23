@@ -1,0 +1,47 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MasterServer", "MasterServer.vcproj", "{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Debug_China = Debug_China
+		Debug_Korea = Debug_Korea
+		Release = Release
+		Release_China = Release_China
+		Release_English = Release_English
+		Release_Europe = Release_Europe
+		Release_Japan = Release_Japan
+		Release_Korea = Release_Korea
+		Release_Taiwan = Release_Taiwan
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Debug.ActiveCfg = Debug|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Debug.Build.0 = Debug|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Debug_China.ActiveCfg = Debug_China|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Debug_China.Build.0 = Debug_China|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Debug_Korea.ActiveCfg = Debug_Korea|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Debug_Korea.Build.0 = Debug_Korea|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release.ActiveCfg = Release|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release.Build.0 = Release|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release_China.ActiveCfg = Release_China|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release_China.Build.0 = Release_China|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release_English.ActiveCfg = Release_English|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release_English.Build.0 = Release_English|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release_Europe.ActiveCfg = Release_Europe|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release_Europe.Build.0 = Release_Europe|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release_Japan.ActiveCfg = Release_Japan|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release_Japan.Build.0 = Release_Japan|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release_Korea.ActiveCfg = Release_Korea|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release_Korea.Build.0 = Release_Korea|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release_Taiwan.ActiveCfg = Release_Taiwan|Win32
+		{D7648C5A-F9D0-474A-AD09-4D31ACE4CF06}.Release_Taiwan.Build.0 = Release_Taiwan|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

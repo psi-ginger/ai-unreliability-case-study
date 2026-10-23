@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JapanAuth", "JapanAuth.vcproj", "{D6B02EE7-043B-43A7-9C76-BF87CF6E3BB2}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AuthDLLTest", "..\AuthDLLTest\AuthDLLTest.vcproj", "{1C63EDF1-275A-4A73-B2C6-5480E85EBBEE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{D6B02EE7-043B-43A7-9C76-BF87CF6E3BB2}.Debug.ActiveCfg = Debug|Win32
+		{D6B02EE7-043B-43A7-9C76-BF87CF6E3BB2}.Debug.Build.0 = Debug|Win32
+		{D6B02EE7-043B-43A7-9C76-BF87CF6E3BB2}.Release.ActiveCfg = Release|Win32
+		{D6B02EE7-043B-43A7-9C76-BF87CF6E3BB2}.Release.Build.0 = Release|Win32
+		{1C63EDF1-275A-4A73-B2C6-5480E85EBBEE}.Debug.ActiveCfg = Debug|Win32
+		{1C63EDF1-275A-4A73-B2C6-5480E85EBBEE}.Debug.Build.0 = Debug|Win32
+		{1C63EDF1-275A-4A73-B2C6-5480E85EBBEE}.Release.ActiveCfg = Release|Win32
+		{1C63EDF1-275A-4A73-B2C6-5480E85EBBEE}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

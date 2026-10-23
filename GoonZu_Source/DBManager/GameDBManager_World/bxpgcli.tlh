@@ -1,0 +1,201 @@
+// Created by Microsoft (R) C/C++ Compiler Version 13.10.3077 (c424d905).
+//
+// d:\myproject\test3\test3\test3\debug\bxpgcli.tlh
+//
+// C++ source equivalent of Win32 type library bxPGCLI.tlb
+// compiler-generated file created 11/28/05 at 22:16:26 - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+namespace BXPGCLILib {
+
+//
+// Forward references and typedefs
+//
+
+struct __declspec(uuid("eed20720-e5a4-4096-bfe7-258efce5880d"))
+/* LIBID */ __BXPGCLILib;
+struct __declspec(uuid("1e15be4b-0c6f-4762-898c-2f80ea085a3f"))
+/* dual interface */ IIPGCli;
+struct /* coclass */ IPGCli;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(IIPGCli, __uuidof(IIPGCli));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("1e15be4b-0c6f-4762-898c-2f80ea085a3f"))
+IIPGCli : IDispatch
+{
+    //
+    // Wrapper methods for error-handling
+    //
+
+    _variant_t Get_Approve (
+        VARIANT * vsMenu_id,
+        VARIANT * vsCompany_cd,
+        VARIANT * vsUser_id,
+        VARIANT * vsUser_no,
+        VARIANT * vsAgTxNo,
+        VARIANT * vIAmount,
+        VARIANT * vsBxTxNo,
+        VARIANT * vsRetVal,
+        VARIANT * vsRetMessage );
+    _variant_t ConfirmTX (
+        VARIANT * vsMenu_id,
+        VARIANT * vsCompany_cd,
+        VARIANT * vsUser_id,
+        VARIANT * vsUser_no,
+        VARIANT * vIAmount,
+        VARIANT * vsBxTxNo,
+        VARIANT * vsUsedUrl,
+        VARIANT * vsRetVal,
+        VARIANT * vsRetMessage );
+    _variant_t CancelTX (
+        VARIANT * vsMenu_id,
+        VARIANT * vsCompany_cd,
+        VARIANT * vsUser_id,
+        VARIANT * vsUser_no,
+        VARIANT * vIAmount,
+        VARIANT * vsBxTxNo,
+        VARIANT * vsRetVal,
+        VARIANT * vsRetMessage );
+    _variant_t GetUserCash (
+        VARIANT * vsUser_no,
+        VARIANT * vsCompanyCd,
+        VARIANT * vsUser_id,
+        VARIANT * vIRemainAmt,
+        VARIANT * vICashShop,
+        VARIANT * vICashContents,
+        VARIANT * vICashBonus,
+        VARIANT * vICashEtc,
+        VARIANT * vIMileageShop,
+        VARIANT * vIMileageContents,
+        VARIANT * vIRetVal,
+        VARIANT * vsRetMessage );
+    _variant_t CheckHnf (
+        VARIANT * vsUserNo,
+        VARIANT * vsCompanyCd,
+        VARIANT * vsUserId,
+        VARIANT * vsMenuId,
+        VARIANT * vIMixBillNo,
+        VARIANT * vIVerNo,
+        VARIANT * vsRegDateTime,
+        VARIANT * vsStartDateTime,
+        VARIANT * vsEndDateTime,
+        VARIANT * vsKeyValue,
+        VARIANT * vIRetVal,
+        VARIANT * vsRetMessage );
+    _variant_t CheckFix (
+        VARIANT * vsUserNo,
+        VARIANT * vsCompanyCd,
+        VARIANT * vsUserId,
+        VARIANT * vsMenuId,
+        VARIANT * vIMixBillNo,
+        VARIANT * vIVerNo,
+        VARIANT * vsRegDateTime,
+        VARIANT * vsStartDateTime,
+        VARIANT * vsEndDateTime,
+        VARIANT * vIRetVal,
+        VARIANT * vsRetMessage );
+
+    //
+    // Raw methods provided by interface
+    //
+
+      virtual HRESULT __stdcall raw_Get_Approve (
+        /*[in]*/ VARIANT * vsMenu_id,
+        /*[in]*/ VARIANT * vsCompany_cd,
+        /*[in]*/ VARIANT * vsUser_id,
+        /*[in]*/ VARIANT * vsUser_no,
+        /*[in]*/ VARIANT * vsAgTxNo,
+        /*[in,out]*/ VARIANT * vIAmount,
+        /*[out]*/ VARIANT * vsBxTxNo,
+        /*[out]*/ VARIANT * vsRetVal,
+        /*[out]*/ VARIANT * vsRetMessage,
+        /*[out,retval]*/ VARIANT * pbstrReturn ) = 0;
+      virtual HRESULT __stdcall raw_ConfirmTX (
+        /*[in]*/ VARIANT * vsMenu_id,
+        /*[in]*/ VARIANT * vsCompany_cd,
+        /*[in]*/ VARIANT * vsUser_id,
+        /*[in]*/ VARIANT * vsUser_no,
+        /*[in]*/ VARIANT * vIAmount,
+        /*[in]*/ VARIANT * vsBxTxNo,
+        /*[in]*/ VARIANT * vsUsedUrl,
+        /*[out]*/ VARIANT * vsRetVal,
+        /*[out]*/ VARIANT * vsRetMessage,
+        /*[out,retval]*/ VARIANT * pbstrReturn ) = 0;
+      virtual HRESULT __stdcall raw_CancelTX (
+        /*[in]*/ VARIANT * vsMenu_id,
+        /*[in]*/ VARIANT * vsCompany_cd,
+        /*[in]*/ VARIANT * vsUser_id,
+        /*[in]*/ VARIANT * vsUser_no,
+        /*[in]*/ VARIANT * vIAmount,
+        /*[in]*/ VARIANT * vsBxTxNo,
+        /*[out]*/ VARIANT * vsRetVal,
+        /*[out]*/ VARIANT * vsRetMessage,
+        /*[out,retval]*/ VARIANT * pbstrReturn ) = 0;
+      virtual HRESULT __stdcall raw_GetUserCash (
+        /*[in]*/ VARIANT * vsUser_no,
+        /*[in]*/ VARIANT * vsCompanyCd,
+        /*[in]*/ VARIANT * vsUser_id,
+        /*[out]*/ VARIANT * vIRemainAmt,
+        /*[out]*/ VARIANT * vICashShop,
+        /*[out]*/ VARIANT * vICashContents,
+        /*[out]*/ VARIANT * vICashBonus,
+        /*[out]*/ VARIANT * vICashEtc,
+        /*[out]*/ VARIANT * vIMileageShop,
+        /*[out]*/ VARIANT * vIMileageContents,
+        /*[out]*/ VARIANT * vIRetVal,
+        /*[out]*/ VARIANT * vsRetMessage,
+        /*[out,retval]*/ VARIANT * pbstrReturn ) = 0;
+      virtual HRESULT __stdcall raw_CheckHnf (
+        /*[in]*/ VARIANT * vsUserNo,
+        /*[in]*/ VARIANT * vsCompanyCd,
+        /*[in]*/ VARIANT * vsUserId,
+        /*[in]*/ VARIANT * vsMenuId,
+        /*[out]*/ VARIANT * vIMixBillNo,
+        /*[out]*/ VARIANT * vIVerNo,
+        /*[out]*/ VARIANT * vsRegDateTime,
+        /*[out]*/ VARIANT * vsStartDateTime,
+        /*[out]*/ VARIANT * vsEndDateTime,
+        /*[in]*/ VARIANT * vsKeyValue,
+        /*[out]*/ VARIANT * vIRetVal,
+        /*[out]*/ VARIANT * vsRetMessage,
+        /*[out,retval]*/ VARIANT * pbstrReturn ) = 0;
+      virtual HRESULT __stdcall raw_CheckFix (
+        /*[in]*/ VARIANT * vsUserNo,
+        /*[in]*/ VARIANT * vsCompanyCd,
+        /*[in]*/ VARIANT * vsUserId,
+        /*[in]*/ VARIANT * vsMenuId,
+        /*[out]*/ VARIANT * vIMixBillNo,
+        /*[out]*/ VARIANT * vIVerNo,
+        /*[out]*/ VARIANT * vsRegDateTime,
+        /*[out]*/ VARIANT * vsStartDateTime,
+        /*[out]*/ VARIANT * vsEndDateTime,
+        /*[out]*/ VARIANT * vIRetVal,
+        /*[out]*/ VARIANT * vsRetMessage,
+        /*[out,retval]*/ VARIANT * pbstrReturn ) = 0;
+};
+
+struct __declspec(uuid("cf533a58-f24a-4784-a1e0-a0eaa0e3e5ba"))
+IPGCli;
+    // [ default ] interface IIPGCli
+
+//
+// Wrapper method implementations
+//
+
+#include "d:\myproject\test3\test3\test3\debug\bxpgcli.tli"
+
+} // namespace BXPGCLILib
+
+#pragma pack(pop)

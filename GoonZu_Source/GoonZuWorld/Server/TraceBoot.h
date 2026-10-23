@@ -1,0 +1,47 @@
+#pragma once
+#ifndef _TRACEBOOT_H
+#define _TRACEBOOT_H
+
+#include <stdio.h>
+#include <stdarg.h>
+#include <windows.h>
+
+// Perf fix: the original TraceBoot() did fopen/append/fclose on EVERY call.
+// Boot-trace calls sit inside ServerAction()/main loop, which run hundreds of
+// times per real second, so the log grew to ~800MB and disk I/O throttled the
+// whole server loop. The in-game clock is frame-driven (1 game-minute per 40
+// frames, frame = main loop iteration), so a slow loop = slow game clock =
+// wrong hunger/day/buff timings. Now we log the first 20000 calls (boot phase)
+// and then only every 2000th call.
+
+inline void TraceBoot(const char* fmt, ...)
+{
+	static int s_count = 0;
+	if (s_count++ > 20000 && (s_count % 2000) != 1) return;
+
+	FILE* f = fopen("Config\\TraceBoot.log", "a");
+	if (f == NULL) return;
+
+	va_list ap;
+	va_start(ap, fmt);
+	fprintf(f, "[%u] ", (unsigned)GetTickCount());
+	vfprintf(f, fmt, ap);
+	fprintf(f, "\n");
+	va_end(ap);
+	fclose(f);
+}
+
+
+inline void TraceKey(const char* fmt, ...)
+{
+	FILE* f = fopen("Config\\TraceKey.log", "a");
+	if (f == NULL) return;
+	va_list ap;
+	va_start(ap, fmt);
+	fprintf(f, "[%u] ", (unsigned)GetTickCount());
+	vfprintf(f, fmt, ap);
+	fprintf(f, "\n");
+	va_end(ap);
+	fclose(f);
+}
+#endif

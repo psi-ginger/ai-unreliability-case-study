@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: NConvert - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x412 /fo"Debug/NConvert.res" /d "_DEBUG" /d "_AFXDLL" "C:\Project\GoonZu\NConvert\NConvert.rc"" 
+Creating temporary file "C:\DOCUME~1\이제완\LOCALS~1\Temp\RSP80.tmp" with contents
+[
+/nologo /Zp1 /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Project\GoonZu\NConvert\Common.cpp"
+"C:\Project\GoonZu\NConvert\NConvert.cpp"
+"C:\Project\GoonZu\NConvert\NConvertDlg.cpp"
+"C:\Project\GoonZu\NConvert\SelectPCXFileDlg.cpp"
+]
+Creating command line "cl.exe @"C:\DOCUME~1\이제완\LOCALS~1\Temp\RSP80.tmp"" 
+Creating temporary file "C:\DOCUME~1\이제완\LOCALS~1\Temp\RSP82.tmp" with contents
+[
+/nologo /Zp1 /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/NConvert.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Project\GoonZu\NConvert\StdAfx.cpp"
+]
+Creating command line "cl.exe @"C:\DOCUME~1\이제완\LOCALS~1\Temp\RSP82.tmp"" 
+Creating temporary file "C:\DOCUME~1\이제완\LOCALS~1\Temp\RSP83.tmp" with contents
+[
+ddraw.lib dsound.lib dxguid.lib ws2_32.lib dxerr8.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/NConvert.pdb" /debug /machine:I386 /out:"Debug/NConvert.exe" /pdbtype:sept 
+.\Debug\Common.obj
+.\Debug\NConvert.obj
+.\Debug\NConvertDlg.obj
+.\Debug\SelectPCXFileDlg.obj
+.\Debug\StdAfx.obj
+.\Debug\NConvert.res
+]
+Creating command line "link.exe @"C:\DOCUME~1\이제완\LOCALS~1\Temp\RSP83.tmp""
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+Common.cpp
+NConvert.cpp
+NConvertDlg.cpp
+SelectPCXFileDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+NConvert.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

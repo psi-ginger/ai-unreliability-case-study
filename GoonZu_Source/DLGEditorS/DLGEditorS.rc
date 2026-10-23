@@ -1,0 +1,1649 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\DLGEditorS.rc2""  // Microsoft Visual C++에서 편집되지 않은 리소스\r\n"
+    "#include ""afxres.rc""         // 표준 구성 요소\r\n"
+    "#include ""afxprint.rc""       // 인쇄 미리 보기 리소스\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\DLGEditorS.ico"
+IDR_DLGEditorSTYPE      ICON                    "res\\DLGEditorSDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_ZOOM_IN
+    BUTTON      ID_ZOOM_OUT
+    SEPARATOR
+    BUTTON      IDC_SETTINGS
+    SEPARATOR
+    BUTTON      ID_RESTRAIN
+    BUTTON      ID_MARGINS
+    SEPARATOR
+    BUTTON      ID_SNAP_TO_GRID
+    BUTTON      ID_SHOW_GRID
+    SEPARATOR
+    BUTTON      ID_BUTTON_MULTIDRAW
+    SEPARATOR
+    BUTTON      ID_ADD_NONE
+    BUTTON      ID_ADD_BUTTON
+    BUTTON      ID_ADD_EDIT
+    BUTTON      ID_ADD_STATIC
+    BUTTON      ID_ADD_COMBOBOX
+    BUTTON      ID_ADD_LISTBOX
+    BUTTON      ID_ADD_IMAGESTATIC
+    BUTTON      ID_ADD_LISTVIEW
+    BUTTON      ID_ADD_CHECKBOX
+    BUTTON      ID_ADD_RADIOBUTTON
+    BUTTON      ID_ADD_OUTLINE
+    BUTTON      ID_ADD_CHATEDIT
+    SEPARATOR
+    BUTTON      ID_ADD_GROUPBOX
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM "Export",                      ID_EXPORT
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit", INACTIVE
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM SEPARATOR
+        MENUITEM "Select all\tCtrl+A",          IDC_SELECT_ALL
+    END
+    POPUP "&Paper"
+    BEGIN
+        MENUITEM "Show grid",                   ID_SHOW_GRID
+        MENUITEM "Snap to grid",                ID_SNAP_TO_GRID
+        MENUITEM "Show margin",                 ID_MARGINS
+        MENUITEM "Snap to margin",              ID_RESTRAIN
+        MENUITEM SEPARATOR
+        MENUITEM "Settings",                    IDC_SETTINGS
+        MENUITEM "Dialog Property",             ID_DLG_PROPERTY
+    END
+    POPUP "&Controls"
+    BEGIN
+        MENUITEM "Button\tCtrl+B",              ID_ADD_BUTTON
+        MENUITEM "Editbox\tCtrl+E",             ID_ADD_EDIT
+        MENUITEM "Listbox\tCtrl+L",             ID_ADD_LISTBOX
+        MENUITEM "Combobox\tCtrl+M",            ID_ADD_COMBOBOX
+        MENUITEM "Static label\tCtrl+T",        ID_ADD_STATIC
+        MENUITEM "Image Static\tCtrl+I",        ID_ADD_IMAGESTATIC
+        MENUITEM "Listview\tCtrl+V",            ID_ADD_LISTVIEW
+        MENUITEM "Checkbox\tCtrl+H",            ID_ADD_CHECKBOX
+        MENUITEM "Radiobutton\tCtrl+R",         ID_ADD_RADIOBUTTON
+        MENUITEM "OutLine\tCtrl+U",             ID_ADD_OUTLINE
+        MENUITEM "ChatEdit\tCtrl+D",            ID_ADD_CHATEDIT
+        MENUITEM "Groupbox\tCtrl+G",            ID_ADD_GROUPBOX, INACTIVE
+    END
+    POPUP "&Layout"
+    BEGIN
+        MENUITEM "Left align",                  ID_LEFT_ALIGN
+        MENUITEM "Right align",                 ID_RIGHT_ALIGN
+        MENUITEM "Top align",                   ID_TOP_ALIGN
+        MENUITEM "Bottom align",                ID_BOTTOM_ALIGN
+        MENUITEM SEPARATOR
+        MENUITEM "Make same size",              ID_MAKE_SAME_SIZE
+        MENUITEM SEPARATOR
+        MENUITEM "Up",                          ID_UP
+        MENUITEM "Down",                        ID_DOWN
+        MENUITEM "To front",                    ID_FRONT
+        MENUITEM "To bottom",                   ID_BOTTOM
+        MENUITEM SEPARATOR
+        MENUITEM "Properties...",               IDC_PROPERTIES
+    END
+    POPUP "&View"
+    BEGIN
+        POPUP "Zoom", INACTIVE
+        BEGIN
+            MENUITEM "25%",                         IDC_25PERC
+            MENUITEM "50%",                         IDC_50PERC
+            MENUITEM "60%",                         IDC_60PERC
+            MENUITEM "70%",                         IDC_70PERC
+            MENUITEM "80%",                         IDC_80PERC
+            MENUITEM "90%",                         IDC_90PERC
+            MENUITEM "100%",                        IDC_100PERC
+            MENUITEM "110%",                        IDC_110PERC
+            MENUITEM "120%",                        IDC_120PERC
+            MENUITEM "130%",                        IDC_130PERC
+            MENUITEM "140%",                        IDC_140PERC
+            MENUITEM "150%",                        IDC_150PERC
+            MENUITEM "200%",                        IDC_200PERC
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "Magnet Mode",                 ID_VIEW_MAGNET_MODE, CHECKED
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About DialogEditorDemo...",  ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "B",            ID_ADD_BUTTON,          VIRTKEY, CONTROL, NOINVERT
+    "H",            ID_ADD_CHECKBOX,        VIRTKEY, CONTROL, NOINVERT
+    "M",            ID_ADD_COMBOBOX,        VIRTKEY, CONTROL, NOINVERT
+    "E",            ID_ADD_EDIT,            VIRTKEY, CONTROL, NOINVERT
+    "G",            ID_ADD_GROUPBOX,        VIRTKEY, CONTROL, NOINVERT
+    "I",            ID_ADD_IMAGESTATIC,     VIRTKEY, CONTROL, NOINVERT
+    "L",            ID_ADD_LISTBOX,         VIRTKEY, CONTROL, NOINVERT
+    "W",            ID_ADD_LISTVIEW,        VIRTKEY, CONTROL, NOINVERT
+    "R",            ID_ADD_RADIOBUTTON,     VIRTKEY, CONTROL, NOINVERT
+    "T",            ID_ADD_STATIC,          VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    "A",            IDC_SELECT_ALL,         VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "DLGEditorS 정보"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "DLGEditorS Version 1.0",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2005",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "확인",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_SPLITTERWNDVIEW DIALOGEX 0, 0, 103, 245
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 9, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+END
+
+IDD_DLGBAR_BASE DIALOGEX 0, 0, 130, 325
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+EXSTYLE WS_EX_STATICEDGE
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_DIALOG_SETTINGS DIALOGEX 0, 0, 235, 225
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Settings"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,4,207,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,59,207,50,14
+    GROUPBOX        "Grid size",IDC_STATIC,4,9,227,32
+    LTEXT           "Width:",IDC_STATIC,11,19,20,10
+    EDITTEXT        IDC_EDIT_GRID_WIDTH,41,19,54,15,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "Height:",IDC_STATIC,102,19,25,8
+    EDITTEXT        IDC_EDIT_GRID_HEIGHT,132,19,54,15,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    GROUPBOX        "Margins",IDC_STATIC,4,41,226,50
+    LTEXT           "Left:",IDC_STATIC,10,51,30,10
+    LTEXT           "Top:",IDC_STATIC,10,72,30,10
+    EDITTEXT        IDC_EDIT_LEFT,40,51,54,15,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_TOP,40,72,54,15,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Right:",IDC_STATIC,102,51,30,10
+    LTEXT           "Bottom:",IDC_STATIC,102,72,30,10
+    EDITTEXT        IDC_EDIT_RIGHT,132,51,54,15,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_BOTTOM,132,72,54,15,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "디폴트 시작 경로",IDC_STATIC,4,92,226,50
+    CTEXT           "군주 설치 루트 경로명:",IDC_STATIC,11,114,71,13
+    EDITTEXT        IDC_EDIT_DEFAULT_PATH,88,113,134,15,ES_AUTOHSCROLL
+    GROUPBOX        "텍스트 매니져",IDC_STATIC,4,146,226,50
+    CTEXT           "파일전체경로 :",IDC_STATIC,11,167,56,17
+    EDITTEXT        IDC_EDIT_DEFAULT_TEXTMGR_PATH,72,166,150,15,
+                    ES_AUTOHSCROLL
+END
+
+IDD_DIALOG_BUTTON_PROPERTIES DIALOGEX 350, 0, 198, 428
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "버튼 컨트롤 속성"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_BTN_ID,48,23,144,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_BTN_X_COORD,48,38,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_BTN_Y_COORD,48,52,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_BTN_WIDTH,48,67,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_BTN_HEIGHT,48,81,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "없음",IDC_BUTTON_BTN_PATH_EMPTY,47,95,28,15
+    EDITTEXT        IDC_EDIT_BTN_IMAGE_FULLPATH,76,95,88,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "찾기...",IDC_BUTTON_BTN_SEARCH,164,95,28,15
+    EDITTEXT        IDC_EDIT_BTN_BG_WIDTH,48,197,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_BTN_BG_HEIGHT,48,212,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_BTN_BG_TILE,48,227,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_BTN_BG_TILE_IMAGE_NUM,71,242,121,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_BTN_START_FONT,48,257,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_BTN_ANIMATION,50,399,142,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_BTN_TEXT_STYLE,48,304,116,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_BTN_TEXT_SIZE,48,318,116,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "글꼴...",IDC_BUTTON_BTN_TEXT_SEARCH,167,273,25,40,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_BTN_GROUP_NUM,48,365,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_BTN_TEXT,48,385,144,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "적용",IDC_BUTTON_BTN_APPLY,75,412,35,15
+    PUSHBUTTON      "닫기",IDC_BUTTON_BTN_HIDE,157,412,35,15
+    EDITTEXT        IDC_EDIT_BTN_KIND_NAME,48,9,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "텍스트:",IDC_STATIC,5,387,42,10
+    LTEXT           "ID :",IDC_STATIC,5,26,42,10
+    LTEXT           "배경 경로:",IDC_STATIC,5,97,42,10
+    LTEXT           "X 좌표 :",IDC_STATIC,5,40,42,10
+    LTEXT           "Y 좌표 :",IDC_STATIC,5,56,42,10
+    LTEXT           "버튼 폭 :",IDC_STATIC,5,69,42,10
+    LTEXT           "버튼 높이 :",IDC_STATIC,5,83,42,10
+    LTEXT           "타일 여부:",IDC_STATIC,5,229,42,10
+    LTEXT           "시작 폰트:",IDC_STATIC,5,259,42,10
+    LTEXT           "최대 폭:",IDC_STATIC,5,199,42,10
+    LTEXT           "최대 높이:",IDC_STATIC,5,215,39,10
+    LTEXT           "종류 :",IDC_STATIC,5,12,42,10
+    LTEXT           "그룹:",IDC_STATIC,5,368,42,10
+    LTEXT           "타일 이미지 개수:",IDC_STATIC,5,244,63,10
+    LTEXT           "글자색:",IDC_STATIC,5,274,36,10
+    LTEXT           "글자체:",IDC_STATIC,5,305,36,10
+    LTEXT           "글자크기:",IDC_STATIC,5,320,36,10
+    EDITTEXT        IDC_EDIT_BTN_TEXT_COLOR,47,272,117,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    LTEXT           "애니메이션:",IDC_STATIC,5,400,43,10
+    EDITTEXT        IDC_EDIT_BTN_R,48,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_BTN_G,86,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_BTN_B,124,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "RGB 값",IDC_STATIC,5,290,42,10
+    LTEXT           "글자굵기",IDC_STATIC,5,336,35,10
+    EDITTEXT        IDC_EDIT_BTN_WEIGHT,47,332,117,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "예) 얇게-100, 보통-400, 굵게-700 ...",IDC_STATIC,47,348,
+                    131,13
+END
+
+IDD_DIALOG_EDITBOX DIALOGEX 0, 0, 167, 145
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Control properties"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Apply",IDC_BUTTON_APPLY,125,124,35,15
+    LTEXT           "Name:",IDC_STATIC,5,5,20,10
+    EDITTEXT        IDC_EDIT_ID,30,5,130,12,ES_AUTOHSCROLL
+    LTEXT           "Picture:",IDC_STATIC,5,23,25,10
+    EDITTEXT        IDC_EDIT_IMAGE_FULLPATH,30,22,96,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Search...",IDC_BUTTON_SEARCH,127,22,33,15
+END
+
+IDD_DLGPROPERTYDLG DIALOGEX 430, 0, 195, 410
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "다이얼로그 속성창"
+FONT 9, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_EDIT_DLG_ID,44,18,144,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DLG_X_COORD,44,29,144,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_DLG_Y_COORD,44,40,144,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_DLG_WIDTH,44,52,144,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_DLG_HEIGHT,44,63,144,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "없음",IDC_BUTTON_DLG_PATH_EMPTY2,42,75,24,14
+    EDITTEXT        IDC_EDIT_DLG_IMAGE_FULLPATH,67,75,88,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "찾기...",IDC_BUTTON_DLG_SEARCH,155,75,33,12
+    EDITTEXT        IDC_EDIT_DLG_BG_WIDTH,44,186,144,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_DLG_BG_HEIGHT,44,198,144,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_DLG_BG_TILE,44,210,144,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DLG_BG_TILE_IMAGE_NUM,61,225,127,12,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_DLG_START_FONT,44,240,144,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_DLG_TEXT_COLOR,44,253,99,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DLG_TEXT_STYLE,44,266,99,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DLG_TEXT_SIZE,44,279,99,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "글꼴...",IDC_BUTTON_DLG_TEXT_SEARCH,146,254,42,37,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_DLG_CALLBACK_POINTER,44,298,144,12,
+                    ES_AUTOHSCROLL | NOT WS_VISIBLE | WS_DISABLED
+    EDITTEXT        IDC_EDIT_DLG_TITLE_STR,44,310,144,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DLG_TITLE_VISIBLE,44,321,144,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_DLG_MOVABLE,44,333,144,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_DLG_CLOSABLE,44,344,144,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_DLG_CHILD_FILENAMES,50,359,138,12,
+                    ES_AUTOHSCROLL | NOT WS_VISIBLE | WS_DISABLED
+    PUSHBUTTON      "적용",IDC_BUTTON_DLG_APPLY,74,389,53,14
+    PUSHBUTTON      "닫기",IDC_BUTTON_DLG_CLOSE,140,388,48,15
+    EDITTEXT        IDC_EDIT_DLG_KIND_NAME,44,7,144,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "ID :",IDC_STATIC,5,20,37,8
+    LTEXT           "배경 경로:",IDC_STATIC,5,76,37,8
+    LTEXT           "X 좌표 :",IDC_STATIC,5,31,37,8
+    LTEXT           "Y 좌표 :",IDC_STATIC,5,44,37,8
+    LTEXT           "Dialog 폭 :",IDC_STATIC,5,54,37,8
+    LTEXT           "Dialog높이:",IDC_STATIC,5,65,36,8
+    LTEXT           "타일 여부:",IDC_STATIC,5,211,37,8
+    LTEXT           "시작 폰트:",IDC_STATIC,5,241,37,8
+    LTEXT           "최대 폭:",IDC_STATIC,5,188,37,8
+    LTEXT           "최대 높이:",IDC_STATIC,5,200,37,8
+    LTEXT           "종류 :",IDC_STATIC,5,9,37,8
+    LTEXT           "콜백포인터:",IDC_STATIC,5,300,37,8,NOT WS_VISIBLE | 
+                    WS_DISABLED
+    LTEXT           "제목:",IDC_STATIC,5,312,37,8
+    LTEXT           "제목표시:",IDC_STATIC,5,323,37,8
+    LTEXT           "이동여부:",IDC_STATIC,5,334,37,8
+    LTEXT           "닫기여부:",IDC_STATIC,5,346,37,8
+    LTEXT           "글자색:",IDC_STATIC,5,254,31,9
+    LTEXT           "글자체:",IDC_STATIC,5,267,31,9
+    LTEXT           "글자크기:",IDC_STATIC,5,281,31,9
+    LTEXT           "타일 이미지 개수:",IDC_STATIC,5,227,57,9
+    LTEXT           "자식창파일명(10개):",IDC_STATIC,5,358,43,16,NOT 
+                    WS_VISIBLE | WS_DISABLED
+    LTEXT           "예) 파일명1,파일명2,파일명3,...파일명10",IDC_STATIC,50,
+                    374,131,12,NOT WS_VISIBLE | WS_DISABLED
+END
+
+IDD_DIALOG_COMBOBOX_PROPERTIES DIALOGEX 350, 0, 202, 439
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "콤보박스 컨트롤 속성"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_CBX_ID,50,25,143,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CBX_X_COORD,50,39,143,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CBX_Y_COORD,50,52,143,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CBX_WIDTH,50,66,143,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CBX_HEIGHT,50,80,143,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    PUSHBUTTON      "없음",IDC_BUTTON_CBX_PATH_EMPTY,47,95,28,15
+    EDITTEXT        IDC_EDIT_CBX_IMAGE_FULLPATH,75,95,88,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "찾기...",IDC_BUTTON_CBX_SEARCH,165,95,28,13
+    EDITTEXT        IDC_EDIT_CBX_BG_WIDTH,50,200,143,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CBX_BG_HEIGHT,50,215,143,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CBX_BG_TILE,50,229,143,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CBX_BG_TILE_IMAGE_NUM,71,243,121,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CBX_START_FONT,48,258,145,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CBX_TEXT_COLOR,48,272,116,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_CBX_TEXT_STYLE,48,306,116,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CBX_TEXT_SIZE,48,320,116,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "글꼴...",IDC_BUTTON_CBX_TEXT_SEARCH,167,273,25,40,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_CBX_GROUP_NUM,48,361,145,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_CBX_POPUP_HEIGHT,48,385,145,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CBX_LINE_HEIGHT,48,399,145,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    PUSHBUTTON      "적용",IDC_BUTTON_CBX_APPLY,87,423,41,13
+    PUSHBUTTON      "닫기",IDC_BUTTON_CBX_HIDE,154,423,41,13
+    EDITTEXT        IDC_EDIT_CBX_KIND_NAME,50,11,143,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "팝업높이:",IDC_STATIC,6,388,39,9
+    LTEXT           "ID :",IDC_STATIC,6,27,39,9
+    LTEXT           "배경 경로:",IDC_STATIC,6,96,39,9
+    LTEXT           "X 좌표 :",IDC_STATIC,6,41,39,9
+    LTEXT           "Y 좌표 :",IDC_STATIC,6,56,39,9
+    LTEXT           "버튼 폭 :",IDC_STATIC,6,69,39,9
+    LTEXT           "버튼 높이 :",IDC_STATIC,6,83,39,9
+    LTEXT           "타일 여부:",IDC_STATIC,6,231,39,9
+    LTEXT           "시작 폰트:",IDC_STATIC,4,260,39,9
+    LTEXT           "최대 폭:",IDC_STATIC,6,202,39,9
+    LTEXT           "최대 높이:",IDC_STATIC,6,217,39,9
+    LTEXT           "종류 :",IDC_STATIC,6,14,39,9
+    LTEXT           "Group:",IDC_STATIC,6,364,39,9
+    LTEXT           "줄 높이:",IDC_STATIC,6,402,39,9
+    LTEXT           "타일 이미지 개수:",IDC_STATIC,5,245,63,10
+    LTEXT           "글자색:",IDC_STATIC,5,274,36,10
+    LTEXT           "글자체:",IDC_STATIC,5,307,36,10
+    LTEXT           "글자크기:",IDC_STATIC,5,322,36,10
+    EDITTEXT        IDC_EDIT_CBX_R,48,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CBX_G,86,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CBX_B,124,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "RGB 값",IDC_STATIC,5,290,42,10
+    LTEXT           "글자굵기",IDC_STATIC,5,338,35,10
+    EDITTEXT        IDC_EDIT_CBX_WEIGHT,47,334,117,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "예) 얇게-100, 보통-400, 굵게-700 ...",IDC_STATIC,47,350,
+                    131,10
+END
+
+IDD_DIALOG_EDITBOX_PROPERTIES DIALOGEX 300, 0, 214, 441
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "에디트박스 컨트롤 속성"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_ETB_ID,50,25,153,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ETB_X_COORD,50,39,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_ETB_Y_COORD,50,52,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_ETB_WIDTH,50,66,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_ETB_HEIGHT,50,80,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "없음",IDC_BUTTON_ETB_PATH_EMPTY,47,95,28,15
+    EDITTEXT        IDC_EDIT_ETB_IMAGE_FULLPATH,77,95,86,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "찾기...",IDC_BUTTON_ETB_SEARCH,165,95,39,13
+    EDITTEXT        IDC_EDIT_ETB_BG_WIDTH,50,200,153,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_ETB_BG_HEIGHT,50,215,153,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_ETB_BG_TILE,50,229,153,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ETB_BG_TILE_IMAGE_NUM,70,243,133,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_ETB_START_FONT,50,257,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_ETB_TEXT_COLOR,48,272,116,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_ETB_TEXT_STYLE,48,306,116,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ETB_TEXT_SIZE,48,320,116,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "글꼴...",IDC_BUTTON_ETB_TEXT_SEARCH,168,273,35,40,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_ETB_GROUP_NUM,50,361,153,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_ETB_TEXT,50,382,153,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ETB_MULTILINE,50,396,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_ETB_READONLY,50,411,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "적용",IDC_BUTTON_ETB_APPLY,87,426,41,13
+    PUSHBUTTON      "닫기",IDC_BUTTON_ETB_HIDE,163,426,41,13
+    EDITTEXT        IDC_EDIT_ETB_KIND_NAME,50,11,153,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "텍스트:",IDC_STATIC,6,385,39,9
+    LTEXT           "ID :",IDC_STATIC,6,27,39,9
+    LTEXT           "배경 경로:",IDC_STATIC,6,96,39,9
+    LTEXT           "X 좌표 :",IDC_STATIC,6,41,39,9
+    LTEXT           "Y 좌표 :",IDC_STATIC,6,56,39,9
+    LTEXT           "버튼 폭 :",IDC_STATIC,6,69,39,9
+    LTEXT           "버튼 높이 :",IDC_STATIC,6,83,39,9
+    LTEXT           "타일 여부:",IDC_STATIC,6,231,39,9
+    LTEXT           "시작 폰트:",IDC_STATIC,6,259,39,9
+    LTEXT           "최대 폭:",IDC_STATIC,6,202,39,9
+    LTEXT           "최대 높이:",IDC_STATIC,6,217,39,9
+    LTEXT           "종류 :",IDC_STATIC,6,14,39,9
+    LTEXT           "Group:",IDC_STATIC,6,364,39,9
+    LTEXT           "멀티라인:",IDC_STATIC,6,399,39,9
+    LTEXT           "읽기전용:",IDC_STATIC,6,413,39,9
+    LTEXT           "타일 이미지 개수:",IDC_STATIC,5,245,63,10
+    LTEXT           "글자색:",IDC_STATIC,5,274,36,10
+    LTEXT           "글자체:",IDC_STATIC,5,307,36,10
+    LTEXT           "글자크기:",IDC_STATIC,5,322,36,10
+    EDITTEXT        IDC_EDIT_ETB_R,48,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_ETB_G,86,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_ETB_B,124,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "RGB 값",IDC_STATIC,5,290,42,10
+    LTEXT           "글자굵기",IDC_STATIC,5,338,35,10
+    EDITTEXT        IDC_EDIT_ETB_WEIGHT,47,334,117,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "예) 얇게-100, 보통-400, 굵게-700 ...",IDC_STATIC,47,348,
+                    131,12
+END
+
+IDD_DIALOG_STATIC_TEXT_PROPERTIES DIALOGEX 300, 0, 200, 425
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "고정 텍스트 속성"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_STATT_ID,48,23,144,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_STATT_X_COORD,48,38,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_STATT_Y_COORD,48,52,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_STATT_WIDTH,48,67,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_STATT_HEIGHT,48,81,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "없음",IDC_BUTTON_STATT_PATH_EMPTY,47,95,28,15
+    EDITTEXT        IDC_EDIT_STATT_IMAGE_FULLPATH,75,95,84,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "찾기...",IDC_BUTTON_STATT_SEARCH,159,95,33,15
+    EDITTEXT        IDC_EDIT_STATT_BG_WIDTH,48,197,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_STATT_BG_HEIGHT,48,212,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_STATT_BG_TILE,48,227,144,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_STATT_BG_TILE_IMAGE_NUM,71,242,121,13,
+                    ES_LOWERCASE | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_STATT_START_FONT,48,257,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_STATT_TEXT_COLOR,48,272,116,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_STATT_TEXT_STYLE,48,303,116,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_STATT_TEXT_SIZE,48,317,116,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "글꼴...",IDC_BUTTON_STATT_TEXT_SEARCH,167,273,25,40,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_STATT_GROUP_NUM,48,366,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_STATT_TEXT,48,389,144,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "적용",IDC_BUTTON_STATT_APPLY,85,403,35,15
+    PUSHBUTTON      "닫기",IDC_BUTTON_STATT_HIDE,157,403,35,15
+    EDITTEXT        IDC_EDIT_STATT_KIND_NAME,48,9,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "텍스트:",IDC_STATIC,5,392,42,10
+    LTEXT           "ID :",IDC_STATIC,5,26,42,10
+    LTEXT           "배경 경로:",IDC_STATIC,5,97,42,10
+    LTEXT           "X 좌표 :",IDC_STATIC,5,40,42,10
+    LTEXT           "Y 좌표 :",IDC_STATIC,5,56,42,10
+    LTEXT           "버튼 폭 :",IDC_STATIC,5,69,42,10
+    LTEXT           "버튼 높이 :",IDC_STATIC,5,83,42,10
+    LTEXT           "타일 여부:",IDC_STATIC,5,229,42,10
+    LTEXT           "시작 폰트:",IDC_STATIC,5,259,42,10
+    LTEXT           "최대 폭:",IDC_STATIC,5,199,42,10
+    LTEXT           "최대 높이:",IDC_STATIC,5,215,42,10
+    LTEXT           "종류 :",IDC_STATIC,5,12,42,10
+    LTEXT           "그룹:",IDC_STATIC,5,369,42,10
+    LTEXT           "타일 이미지 개수:",IDC_STATIC,5,244,63,10
+    LTEXT           "글자색:",IDC_STATIC,5,274,36,10
+    LTEXT           "글자체:",IDC_STATIC,5,304,36,10
+    LTEXT           "글자크기:",IDC_STATIC,5,319,36,10
+    EDITTEXT        IDC_EDIT_STATT_R,48,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_STATT_G,86,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_STATT_B,124,287,31,16,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "RGB 값",IDC_STATIC,5,290,42,10
+    LTEXT           "글자굵기",IDC_STATIC,5,338,35,10
+    EDITTEXT        IDC_EDIT_STATT_WEIGHT,47,334,117,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "예) 얇게-100, 보통-400, 굵게-700 ...",IDC_STATIC,47,351,
+                    131,12
+END
+
+IDD_DIALOG_LISTBOX_PROPERTIES DIALOGEX 300, 0, 210, 450
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "리스트박스 컨트롤 속성"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_LSTB_ID,44,25,153,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LSTB_X_COORD,44,38,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTB_Y_COORD,44,52,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTB_WIDTH,44,65,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTB_HEIGHT,44,80,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "없음",IDC_BUTTON_LSTB_PATH_EMPTY,43,95,28,15
+    EDITTEXT        IDC_EDIT_LSTB_IMAGE_FULLPATH,72,94,85,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "찾기...",IDC_BUTTON_LSTB_SEARCH,159,94,39,13
+    EDITTEXT        IDC_EDIT_LSTB_BG_WIDTH,44,200,153,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTB_BG_HEIGHT,44,214,153,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTB_BG_TILE,44,229,153,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LSTB_BG_TILE_IMAGE_NUM,67,243,130,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTB_START_FONT,44,258,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTB_TEXT_COLOR,43,273,112,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_LSTB_TEXT_STYLE,43,303,112,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LSTB_TEXT_SIZE,43,317,112,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "글꼴...",IDC_BUTTON_LSTB_TEXT_SEARCH,163,274,38,40,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_LSTB_GROUP_NUM,44,359,153,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_LSTB_MULTILINE,44,374,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTB_MULTISELECTION,44,389,153,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTB_LINE_HEIGHT,44,403,153,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTB_FIXED_ROW_VISIBLE,44,417,153,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "적용",IDC_BUTTON_LSTB_APPLY,81,435,41,13
+    PUSHBUTTON      "닫기",IDC_BUTTON_LSTB_HIDE,159,435,41,13
+    EDITTEXT        IDC_EDIT_LSTB_KIND_NAME,44,11,153,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "줄높이:",IDC_STATIC,0,406,39,9
+    LTEXT           "ID :",IDC_STATIC,0,27,39,9
+    LTEXT           "배경 경로:",IDC_STATIC,0,96,39,9
+    LTEXT           "X 좌표 :",IDC_STATIC,0,41,39,9
+    LTEXT           "Y 좌표 :",IDC_STATIC,0,56,39,9
+    LTEXT           "버튼 폭 :",IDC_STATIC,0,69,39,9
+    LTEXT           "버튼 높이 :",IDC_STATIC,0,83,39,9
+    LTEXT           "타일 여부:",IDC_STATIC,0,230,39,9
+    LTEXT           "시작 폰트:",IDC_STATIC,0,260,39,9
+    LTEXT           "최대 폭:",IDC_STATIC,0,201,39,9
+    LTEXT           "최대 높이:",IDC_STATIC,0,217,39,9
+    LTEXT           "종류 :",IDC_STATIC,0,14,39,9
+    LTEXT           "Group:",IDC_STATIC,0,362,39,9
+    LTEXT           "멀티라인:",IDC_STATIC,0,376,39,9
+    LTEXT           "여러선택:",IDC_STATIC,0,391,39,9
+    LTEXT           "헤더표시:",IDC_STATIC,0,420,39,9
+    LTEXT           "타일 이미지 개수:",IDC_STATIC,0,245,63,10
+    LTEXT           "글자색:",IDC_STATIC,0,275,36,10
+    LTEXT           "글자체:",IDC_STATIC,0,304,36,10
+    LTEXT           "글자크기:",IDC_STATIC,0,319,36,10
+    EDITTEXT        IDC_EDIT_LSTB_R,48,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTB_G,86,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTB_B,124,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "RGB 값",IDC_STATIC,5,290,42,10
+    LTEXT           "글자굵기",IDC_STATIC,5,335,35,10
+    EDITTEXT        IDC_EDIT_LSTB_WEIGHT,47,331,117,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "예) 얇게-100, 보통-400, 굵게-700 ...",IDC_STATIC,47,345,
+                    131,12
+END
+
+IDD_DIALOG_IMAGE_STATIC_PROPERTIES DIALOGEX 300, 0, 200, 404
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "고정 이미지 컨트롤 속성"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_IMGSTT_ID,48,23,144,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_IMGSTT_X_COORD,48,38,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_IMGSTT_Y_COORD,48,52,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_IMGSTT_WIDTH,48,67,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_IMGSTT_HEIGHT,48,81,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "없음",IDC_BUTTON_IMGSTT_PATH_EMPTY,47,95,28,15
+    EDITTEXT        IDC_EDIT_IMGSTT_IMAGE_FULLPATH,75,95,84,13,
+                    ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "찾기...",IDC_BUTTON_IMGSTT_SEARCH,159,95,33,15
+    EDITTEXT        IDC_EDIT_IMGSTT_BG_WIDTH,48,197,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_IMGSTT_BG_HEIGHT,48,212,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_IMGSTT_BG_TILE,48,227,144,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_IMGSTT_BG_TILE_IMAGE_NUM,72,242,121,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_IMGSTT_START_FONT,47,257,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_IMGSTT_TEXT_COLOR,48,272,112,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_IMGSTT_TEXT_STYLE,48,305,112,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_IMGSTT_TEXT_SIZE,48,319,112,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "글꼴...",IDC_BUTTON_IMGSTT_TEXT_SEARCH,164,273,29,40,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_IMGSTT_GROUP_NUM,48,364,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "적용",IDC_BUTTON_IMGSTT_APPLY,75,382,35,15
+    PUSHBUTTON      "닫기",IDC_BUTTON_IMGSTT_HIDE,157,382,35,15
+    EDITTEXT        IDC_EDIT_IMGSTT_KIND_NAME,48,9,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "ID :",IDC_STATIC,5,26,42,10
+    LTEXT           "배경 경로:",IDC_STATIC,5,97,42,10
+    LTEXT           "X 좌표 :",IDC_STATIC,5,40,42,10
+    LTEXT           "Y 좌표 :",IDC_STATIC,5,56,42,10
+    LTEXT           "버튼 폭 :",IDC_STATIC,5,69,42,10
+    LTEXT           "버튼 높이 :",IDC_STATIC,5,83,42,10
+    LTEXT           "타일 여부:",IDC_STATIC,5,229,42,10
+    LTEXT           "시작 폰트:",IDC_STATIC,5,259,42,10
+    LTEXT           "최대 폭:",IDC_STATIC,5,199,42,10
+    LTEXT           "최대 높이:",IDC_STATIC,5,215,42,10
+    LTEXT           "종류 :",IDC_STATIC,5,12,42,10
+    LTEXT           "Group:",IDC_STATIC,5,367,42,10
+    LTEXT           "타일 이미지 개수:",IDC_STATIC,6,244,63,10
+    LTEXT           "글자색:",IDC_STATIC,6,274,36,10
+    LTEXT           "글자체:",IDC_STATIC,6,306,36,10
+    LTEXT           "글자크기:",IDC_STATIC,6,321,36,10
+    EDITTEXT        IDC_EDIT_IMGSTT_R,48,287,31,16,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_IMGSTT_G,86,287,31,16,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_IMGSTT_B,124,287,31,16,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "RGB 값",IDC_STATIC,5,290,42,10
+    LTEXT           "글자굵기",IDC_STATIC,5,338,35,10
+    EDITTEXT        IDC_EDIT_IMGSTT_WEIGHT,47,334,117,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "예) 얇게-100, 보통-400, 굵게-700 ...",IDC_STATIC,47,352,
+                    131,12
+END
+
+IDD_DIALOG_LISTVIEW_PROPERTIES DIALOGEX 300, 0, 199, 569
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOPMOST | WS_EX_TOOLWINDOW
+CAPTION "리스트뷰 컨트롤 속성"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_LSTV_ID,48,23,144,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LSTV_X_COORD,48,38,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_Y_COORD,48,52,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_WIDTH,48,67,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_HEIGHT,48,81,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "없음",IDC_BUTTON_LSTV_PATH_EMPTY,47,95,28,15
+    EDITTEXT        IDC_EDIT_LSTV_IMAGE_FULLPATH,77,95,82,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "찾기...",IDC_BUTTON_LSTV_SEARCH,159,95,33,15
+    EDITTEXT        IDC_EDIT_LSTV_BG_WIDTH,48,197,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_BG_HEIGHT,48,212,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_BG_TILE,48,227,144,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LSTV_BG_TILE_IMAGE_NUM,71,244,121,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_START_FONT,48,260,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_TEXT_COLOR,48,275,116,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_LSTV_TEXT_STYLE,48,305,116,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LSTV_TEXT_SIZE,48,319,116,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "글꼴...",IDC_BUTTON_LSTV_TEXT_SEARCH,167,276,25,40,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_LSTV_GROUP_NUM,48,364,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_LSTV_ITEM_EMPTY,64,385,128,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_ITEM_COUNT_VISIBLE,64,399,128,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_ITEM_TOOLTIP_USABLE,63,414,128,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_ITEM_TOOLTIP_WIDTH,63,429,128,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_ITEM_TOOLTIP_HEIGHT,63,444,128,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_ITEM_START_X,81,459,110,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_ITEM_START_Y,82,473,110,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_ITEM_OFFSET_X,81,488,110,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_ITEM_OFFSET_Y,81,503,110,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_ITEM_SIZE_X,81,518,110,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_ITEM_SIZE_Y,81,532,110,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "적용",IDC_BUTTON_LSTV_APPLY,75,547,35,15
+    PUSHBUTTON      "닫기",IDC_BUTTON_LSTV_HIDE,157,547,35,15
+    EDITTEXT        IDC_EDIT_LSTV_KIND_NAME,48,9,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "ID :",IDC_STATIC,5,26,42,10
+    LTEXT           "배경 경로:",IDC_STATIC,5,97,42,10
+    LTEXT           "X 좌표 :",IDC_STATIC,5,40,42,10
+    LTEXT           "Y 좌표 :",IDC_STATIC,5,56,42,10
+    LTEXT           "버튼 폭 :",IDC_STATIC,5,69,42,10
+    LTEXT           "버튼 높이 :",IDC_STATIC,5,83,42,10
+    LTEXT           "타일 여부:",IDC_STATIC,5,229,42,10
+    LTEXT           "시작 폰트:",IDC_STATIC,5,262,42,10
+    LTEXT           "최대 폭:",IDC_STATIC,5,199,42,10
+    LTEXT           "최대 높이:",IDC_STATIC,5,215,42,10
+    LTEXT           "종류 :",IDC_STATIC,5,12,42,10
+    LTEXT           "Group:",IDC_STATIC,5,367,42,10
+    LTEXT           "빈 공간 여부:",IDC_STATIC,5,387,50,10
+    LTEXT           "개수보임 여부:",IDC_STATIC,6,400,56,10
+    LTEXT           "툴팁 사용 여부:",IDC_STATIC,5,414,56,10
+    LTEXT           "툴팁 폭:",IDC_STATIC,5,429,56,10
+    LTEXT           "툴팁 높이:",IDC_STATIC,5,444,56,10
+    LTEXT           "아이템 시작위치 X:",IDC_STATIC,5,459,70,10
+    LTEXT           "아이템 시작위치 Y:",IDC_STATIC,6,473,70,10
+    LTEXT           "아이템 오프셋 X:",IDC_STATIC,5,488,70,10
+    LTEXT           "아이템 오프셋 Y:",IDC_STATIC,5,503,70,10
+    LTEXT           "타일 이미지 개수:",IDC_STATIC,5,246,63,10
+    LTEXT           "글자색:",IDC_STATIC,5,277,36,10
+    LTEXT           "글자체:",IDC_STATIC,5,306,36,10
+    LTEXT           "글자크기:",IDC_STATIC,5,321,36,10
+    LTEXT           "아이템사이즈X:",IDC_STATIC,5,518,70,10
+    LTEXT           "아이템사이즈Y:",IDC_STATIC,5,532,70,10
+    EDITTEXT        IDC_EDIT_LSTV_R,48,289,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_G,86,289,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LSTV_B,124,289,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "RGB 값",IDC_STATIC,5,292,42,10
+    LTEXT           "글자굵기",IDC_STATIC,5,338,35,10
+    EDITTEXT        IDC_EDIT_LSTV_WEIGHT,47,334,117,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "예) 얇게-100, 보통-400, 굵게-700 ...",IDC_STATIC,47,350,
+                    131,12
+END
+
+IDD_DIALOG_CHECKBOX_PROPERTIES DIALOGEX 300, 0, 199, 420
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "체크박스 컨트롤 속성"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_CHKB_ID,48,24,144,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CHKB_X_COORD,48,39,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHKB_Y_COORD,48,53,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHKB_WIDTH,48,68,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHKB_HEIGHT,48,82,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "없음",IDC_BUTTON_CHKB_PATH_EMPTY,47,96,28,15
+    EDITTEXT        IDC_EDIT_CHKB_IMAGE_FULLPATH,76,96,88,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "찾기...",IDC_BUTTON_CHKB_SEARCH,164,96,28,15
+    EDITTEXT        IDC_EDIT_CHKB_BG_WIDTH,48,198,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHKB_BG_HEIGHT,48,213,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHKB_BG_TILE,48,228,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHKB_BG_TILE_IMAGE_NUM,71,243,121,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHKB_START_FONT,48,258,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHKB_TEXT_COLOR,48,273,116,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_CHKB_TEXT_STYLE,48,305,116,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CHKB_TEXT_SIZE,48,320,116,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "글꼴...",IDC_BUTTON_CHKB_TEXT_SEARCH,167,274,25,40,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_CHKB_GROUP_NUM,48,366,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_CHKB_TEXT,48,389,144,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "적용",IDC_BUTTON_CHKB_APPLY,75,404,35,15
+    PUSHBUTTON      "닫기",IDC_BUTTON_CHKB_HIDE,157,404,35,15
+    EDITTEXT        IDC_EDIT_CHKB_KIND_NAME,48,10,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "텍스트:",IDC_STATIC,5,392,42,10
+    LTEXT           "ID :",IDC_STATIC,5,27,42,10
+    LTEXT           "배경 경로:",IDC_STATIC,5,98,42,10
+    LTEXT           "X 좌표 :",IDC_STATIC,5,41,42,10
+    LTEXT           "Y 좌표 :",IDC_STATIC,5,57,42,10
+    LTEXT           "버튼 폭 :",IDC_STATIC,5,70,42,10
+    LTEXT           "버튼 높이 :",IDC_STATIC,5,84,42,10
+    LTEXT           "타일 여부:",IDC_STATIC,5,230,42,10
+    LTEXT           "시작 폰트:",IDC_STATIC,5,260,42,10
+    LTEXT           "최대 폭:",IDC_STATIC,5,200,42,10
+    LTEXT           "최대 높이:",IDC_STATIC,5,216,39,10
+    LTEXT           "종류 :",IDC_STATIC,5,13,42,10
+    LTEXT           "그룹:",IDC_STATIC,5,369,42,10
+    LTEXT           "타일 이미지 개수:",IDC_STATIC,5,245,63,10
+    LTEXT           "글자색:",IDC_STATIC,5,275,36,10
+    LTEXT           "글자체:",IDC_STATIC,5,307,36,10
+    LTEXT           "글자크기:",IDC_STATIC,5,322,36,10
+    EDITTEXT        IDC_EDIT_CHKB_R,48,288,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHKB_G,86,288,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHKB_B,124,288,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "RGB 값",IDC_STATIC,5,291,42,10
+    LTEXT           "글자굵기",IDC_STATIC,5,339,35,10
+    EDITTEXT        IDC_EDIT_CHKB_WEIGHT,47,335,117,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "예) 얇게-100, 보통-400, 굵게-700 ...",IDC_STATIC,47,351,
+                    131,13
+END
+
+IDD_DIALOG_RADIOBUTTON_PROPERTIES DIALOGEX 300, 100, 200, 441
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "라디오버튼 컨트롤 속성"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_RADB_ID,48,24,144,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_RADB_X_COORD,48,39,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_RADB_Y_COORD,48,53,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_RADB_WIDTH,48,68,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_RADB_HEIGHT,48,82,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "없음",IDC_BUTTON_RADB_PATH_EMPTY,47,96,28,15
+    EDITTEXT        IDC_EDIT_RADB_IMAGE_FULLPATH,76,96,88,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    PUSHBUTTON      "찾기...",IDC_BUTTON_RADB_SEARCH,164,96,28,15
+    EDITTEXT        IDC_EDIT_RADB_BG_WIDTH,48,198,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_RADB_BG_HEIGHT,48,213,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_RADB_BG_TILE,48,228,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_RADB_START_FONT,48,258,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_RADB_GROUP_NUM,48,364,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_RADB_TEXT,48,389,144,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "적용",IDC_BUTTON_RADB_APPLY,75,419,35,15
+    PUSHBUTTON      "닫기",IDC_BUTTON_RADB_HIDE,157,419,35,15
+    LTEXT           "텍스트:",IDC_STATIC,5,392,42,10
+    LTEXT           "ID :",IDC_STATIC,5,27,42,10
+    LTEXT           "배경 경로:",IDC_STATIC,5,98,42,10
+    LTEXT           "X 좌표 :",IDC_STATIC,5,41,42,10
+    LTEXT           "Y 좌표 :",IDC_STATIC,5,57,42,10
+    LTEXT           "버튼 폭 :",IDC_STATIC,5,70,42,10
+    LTEXT           "버튼 높이 :",IDC_STATIC,5,84,42,10
+    LTEXT           "타일 여부:",IDC_STATIC,5,230,42,10
+    LTEXT           "시작 폰트:",IDC_STATIC,5,260,42,10
+    LTEXT           "최대 폭:",IDC_STATIC,5,200,42,10
+    LTEXT           "최대 높이:",IDC_STATIC,5,216,39,10
+    EDITTEXT        IDC_EDIT_RADB_KIND_NAME,48,10,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "종류 :",IDC_STATIC,5,13,42,10
+    LTEXT           "그룹:",IDC_STATIC,5,367,42,10
+    EDITTEXT        IDC_EDIT_RADB_BG_TILE_IMAGE_NUM,71,243,121,13,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "타일 이미지 개수:",IDC_STATIC,5,245,63,10
+    EDITTEXT        IDC_EDIT_RADB_TEXT_COLOR,48,273,116,13,ES_AUTOHSCROLL
+    LTEXT           "글자색:",IDC_STATIC,5,275,36,10
+    EDITTEXT        IDC_EDIT_RADB_TEXT_STYLE,48,305,116,13,ES_AUTOHSCROLL
+    LTEXT           "글자체:",IDC_STATIC,5,306,36,10
+    EDITTEXT        IDC_EDIT_RADB_TEXT_SIZE,48,319,116,13,ES_AUTOHSCROLL
+    LTEXT           "글자크기:",IDC_STATIC,5,321,36,10
+    PUSHBUTTON      "글꼴...",IDC_BUTTON_RADB_TEXT_SEARCH,167,274,25,40,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_RADB_GROUP_ID,48,404,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "그룹 ID:",IDC_STATIC,5,407,42,10
+    EDITTEXT        IDC_EDIT_RADB_R,48,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_RADB_G,86,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_RADB_B,124,287,31,16,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "RGB 값",IDC_STATIC,5,290,42,10
+    LTEXT           "글자굵기",IDC_STATIC,5,338,35,10
+    EDITTEXT        IDC_EDIT_RADB_WEIGHT,47,334,117,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "예) 얇게-100, 보통-400, 굵게-700 ...",IDC_STATIC,47,350,
+                    131,9
+END
+
+IDD_DIALOG_OUTLINE_PROPERTIES DIALOGEX 300, 0, 211, 407
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "외곽선 그리기 속성"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_OUTLNE_ID,48,23,144,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_OUTLNE_X_COORD,48,38,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_OUTLNE_Y_COORD,48,52,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_OUTLNE_WIDTH,48,67,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_OUTLNE_HEIGHT,48,81,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "없음",IDC_BUTTON_OUTLNE_PATH_EMPTY,47,95,28,15
+    EDITTEXT        IDC_EDIT_OUTLNE_IMAGE_FULLPATH,75,95,84,13,
+                    ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "찾기...",IDC_BUTTON_OUTLNE_SEARCH,159,95,33,15
+    EDITTEXT        IDC_EDIT_OUTLNE_BG_WIDTH,48,197,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_OUTLNE_BG_HEIGHT,48,212,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_OUTLNE_BG_TILE,48,227,144,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_OUTLNE_BG_TILE_IMAGE_NUM,71,242,121,13,
+                    ES_LOWERCASE | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_OUTLNE_START_FONT,48,257,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_OUTLNE_TEXT_COLOR,48,272,116,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_OUTLNE_TEXT_STYLE,48,305,116,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_OUTLNE_TEXT_SIZE,48,319,116,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "글꼴...",IDC_BUTTON_OUTLNE_TEXT_SEARCH,167,273,25,40,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_OUTLNE_GROUP_NUM,48,362,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_OUTLNE_TEXT,48,376,144,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "적용",IDC_BUTTON_OUTLNE_APPLY,85,391,35,15
+    PUSHBUTTON      "닫기",IDC_BUTTON_OUTLNE_HIDE,157,391,35,15
+    EDITTEXT        IDC_EDIT_OUTLNE_KIND_NAME,48,9,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "텍스트:",IDC_STATIC,5,379,42,10
+    LTEXT           "ID :",IDC_STATIC,5,26,42,10
+    LTEXT           "배경 경로:",IDC_STATIC,5,97,42,10
+    LTEXT           "X 좌표 :",IDC_STATIC,5,40,42,10
+    LTEXT           "Y 좌표 :",IDC_STATIC,5,56,42,10
+    LTEXT           "버튼 폭 :",IDC_STATIC,5,69,42,10
+    LTEXT           "버튼 높이 :",IDC_STATIC,5,83,42,10
+    LTEXT           "타일 여부:",IDC_STATIC,5,229,42,10
+    LTEXT           "시작 폰트:",IDC_STATIC,5,259,42,10
+    LTEXT           "최대 폭:",IDC_STATIC,5,199,42,10
+    LTEXT           "최대 높이:",IDC_STATIC,5,215,42,10
+    LTEXT           "종류 :",IDC_STATIC,5,12,42,10
+    LTEXT           "그룹:",IDC_STATIC,5,365,42,10
+    LTEXT           "타일 이미지 개수:",IDC_STATIC,5,244,63,10
+    LTEXT           "글자색:",IDC_STATIC,5,274,36,10
+    LTEXT           "글자체:",IDC_STATIC,5,306,36,10
+    LTEXT           "글자크기:",IDC_STATIC,5,321,36,10
+    EDITTEXT        IDC_EDIT_OUTLNE_R,48,287,31,16,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_OUTLNE_G,86,287,31,16,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_OUTLNE_B,124,287,31,16,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "RGB 값",IDC_STATIC,5,290,42,10
+    LTEXT           "글자굵기",IDC_STATIC,5,336,35,10
+    EDITTEXT        IDC_EDIT_OUTLNE_WEIGHT,47,332,117,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "예) 얇게-100, 보통-400, 굵게-700 ...",IDC_STATIC,47,348,
+                    131,10
+END
+
+IDD_DIALOG_CHATEDIT_PROPERTIES DIALOGEX 300, 0, 205, 473
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "채팅 에디트 속성"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_CHTETB_ID,48,23,144,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CHTETB_X_COORD,48,38,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHTETB_Y_COORD,48,52,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHTETB_WIDTH,48,67,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHTETB_HEIGHT,48,81,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "없음",IDC_BUTTON_CHTETB_PATH_EMPTY,47,95,28,15
+    EDITTEXT        IDC_EDIT_CHTETB_IMAGE_FULLPATH,75,95,84,13,
+                    ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "찾기...",IDC_BUTTON_CHTETB_SEARCH,159,95,33,15
+    EDITTEXT        IDC_EDIT_CHTETB_BG_WIDTH,48,197,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHTETB_BG_HEIGHT,48,212,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHTETB_BG_TILE,48,227,144,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CHTETB_BG_TILE_IMAGE_NUM,71,242,121,13,
+                    ES_LOWERCASE | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHTETB_START_FONT,48,257,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHTETB_TEXT_COLOR,48,272,116,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_CHTETB_TEXT_STYLE,48,305,116,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CHTETB_TEXT_SIZE,48,320,116,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "글꼴...",IDC_BUTTON_CHTETB_TEXT_SEARCH,167,273,25,40,
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_CHTETB_GROUP_NUM,48,366,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    EDITTEXT        IDC_EDIT_CHTETB_LINE_HEIGHT,48,396,144,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "적용",IDC_BUTTON_CHTETB_APPLY,85,457,35,15
+    PUSHBUTTON      "닫기",IDC_BUTTON_CHTETB_HIDE,157,457,35,15
+    EDITTEXT        IDC_EDIT_CHTETB_KIND_NAME,48,9,144,13,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    LTEXT           "줄높이:",IDC_STATIC,5,399,42,10
+    LTEXT           "ID :",IDC_STATIC,5,26,42,10
+    LTEXT           "배경 경로:",IDC_STATIC,5,97,42,10
+    LTEXT           "X 좌표 :",IDC_STATIC,5,40,42,10
+    LTEXT           "Y 좌표 :",IDC_STATIC,5,56,42,10
+    LTEXT           "버튼 폭 :",IDC_STATIC,5,69,42,10
+    LTEXT           "버튼 높이 :",IDC_STATIC,5,83,42,10
+    LTEXT           "타일 여부:",IDC_STATIC,5,229,42,10
+    LTEXT           "시작 폰트:",IDC_STATIC,5,259,42,10
+    LTEXT           "최대 폭:",IDC_STATIC,5,199,42,10
+    LTEXT           "최대 높이:",IDC_STATIC,5,215,42,10
+    LTEXT           "종류 :",IDC_STATIC,5,12,42,10
+    LTEXT           "그룹:",IDC_STATIC,5,369,42,10
+    LTEXT           "타일 이미지 개수:",IDC_STATIC,5,244,63,10
+    LTEXT           "글자색:",IDC_STATIC,5,274,36,10
+    LTEXT           "글자체:",IDC_STATIC,5,308,36,10
+    LTEXT           "글자크기:",IDC_STATIC,5,322,36,10
+    EDITTEXT        IDC_EDIT_CHTETB_AUTOSCROLL,55,411,136,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHTETB_OFFSET_X,48,426,143,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "오토스크롤:",IDC_STATIC,6,414,45,9
+    LTEXT           "오프셋 X:",IDC_STATIC,6,428,39,9
+    EDITTEXT        IDC_EDIT_CHTETB_OFFSET_Y,48,441,143,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "오프셋 Y:",IDC_STATIC,6,443,39,9
+    EDITTEXT        IDC_EDIT_OUTLINE_TEXT,47,381,144,13,ES_AUTOHSCROLL
+    LTEXT           "텍스트:",IDC_STATIC,5,384,42,10
+    EDITTEXT        IDC_EDIT_CHTETB_R,48,287,31,16,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHTETB_G,86,287,31,16,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        IDC_EDIT_CHTETB_B,124,287,31,16,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "RGB 값",IDC_STATIC,5,290,42,10
+    LTEXT           "글자굵기",IDC_STATIC,5,338,35,10
+    EDITTEXT        IDC_EDIT_CHTETB_WEIGHT,47,334,117,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "예) 얇게-100, 보통-400, 굵게-700 ...",IDC_STATIC,47,350,
+                    131,13
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "TODO: <회사 이름>"
+            VALUE "FileDescription", "TODO: <파일 설명>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "DLGEditorS.exe"
+            VALUE "LegalCopyright", "TODO: (c) <회사 이름>.  All rights reserved."
+            VALUE "OriginalFilename", "DLGEditorS.exe"
+            VALUE "ProductName", "TODO: <제품 이름>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "변환", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_SPLITTERWNDVIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 95
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 238
+    END
+
+    IDD_DLGBAR_BASE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 123
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 318
+    END
+
+    IDD_DIALOG_SETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 4
+        RIGHTMARGIN, 230
+    END
+
+    IDD_DIALOG_BUTTON_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 192
+        BOTTOMMARGIN, 425
+    END
+
+    IDD_DIALOG_EDITBOX, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 137
+    END
+
+    IDD_DLGPROPERTYDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 188
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 403
+    END
+
+    IDD_DIALOG_COMBOBOX_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 195
+        BOTTOMMARGIN, 436
+    END
+
+    IDD_DIALOG_EDITBOX_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 204
+        BOTTOMMARGIN, 439
+    END
+
+    IDD_DIALOG_STATIC_TEXT_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 192
+        BOTTOMMARGIN, 418
+    END
+
+    IDD_DIALOG_LISTBOX_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 203
+        BOTTOMMARGIN, 443
+    END
+
+    IDD_DIALOG_IMAGE_STATIC_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 193
+        BOTTOMMARGIN, 397
+    END
+
+    IDD_DIALOG_LISTVIEW_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 192
+        BOTTOMMARGIN, 562
+    END
+
+    IDD_DIALOG_CHECKBOX_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 192
+        BOTTOMMARGIN, 416
+    END
+
+    IDD_DIALOG_RADIOBUTTON_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 193
+        BOTTOMMARGIN, 434
+    END
+
+    IDD_DIALOG_OUTLINE_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 204
+        BOTTOMMARGIN, 400
+    END
+
+    IDD_DIALOG_CHATEDIT_PROPERTIES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 198
+        BOTTOMMARGIN, 466
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "DLGEditorS\n\nDLGEditorS\n\n\nDLGEditorS.Document\nDLGEditorS.Document"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "DLGEditorS"
+    AFX_IDS_IDLEMESSAGE     "준비"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_PROPERTIES          "Change the properties for the selected object\nProperties"
+    IDC_SETTINGS            "Change the settings for the application\nSettings"
+    ID_ADD_BUTTON           "Add a button\nButton"
+    ID_ADD_EDIT             "Add an editbox\nEditbox"
+    ID_ADD_STATIC           "Add a static label\nStatic"
+    IDC_90PERC              "90% zoom"
+    IDC_80PERS              "80% zoom"
+    IDC_70PERC              "70% zoom"
+    IDC_60PERC              "60% zoom"
+    IDC_50PERC              "50% zoom"
+    IDC_25PERC              "25% zoom"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_100PERC             "100% zoom"
+    IDC_110PERC             "110% zoom"
+    IDC_120PERC             "120% zoom"
+    IDC_130PERC             "130% zoom"
+    IDC_140PERC             "140% zoom"
+    IDC_150PERC             "150% zoom"
+    IDC_200PERC             "200% zoom"
+    IDC_SELECT_ALL          "Select all objects"
+    ID_ADD_CHECKBOX         "Add a checkbox\nCheckbox"
+    ID_ADD_RADIOBUTTON      "Add a radiobutton\nRadiobutton"
+    ID_ADD_LISTBOX          "Add a listbox\nListbox"
+    ID_ADD_GROUPBOX         "Add a groupbox\nGroupbox"
+    ID_ZOOM_IN              "Zoom in\nZoom in"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_ZOOM_OUT             "Zoom out\nZoom out"
+    ID_ADD_COMBOBOX         "Add a combobox\nCombobox"
+    ID_SNAP_TO_GRID         "Snap objects to grid\nSnap to grid"
+    ID_SHOW_GRID            "Show/hide grid\nGrid"
+    ID_SNAP_TO_MARGIN       "Restrain objects inside margins\nRestrain"
+    ID_MARGINS              "Show/hide margins\nMargins"
+    ID_RESTRAIN             "Restrain objects to margin\nSnap to margin"
+    ID_LEFT_ALIGN           "Align all selected objects to the left"
+    ID_RIGHT_ALIGN          "Align all selected objects to the right"
+    ID_TOP_ALIGN            "Top-align all selected object "
+    ID_BOTTOM_ALIGN         "Bottom-align all selected objects"
+    ID_MAKE_SAME_SIZE       "Make all selected objects the same size"
+    ID_UP                   "Move selected object up"
+    ID_DOWN                 "Move selected object down"
+    ID_FRONT                "Move selected object to front"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_BOTTOM               "Move selected object to the bottom"
+    ID_EXPORT               "Export dialog to DHTML"
+    ID_ADD_NONE             "Stop adding controls\nStop adding"
+    ID_BUTTON_MULTIDRAW     "Set multiple draw on/off\nMultidraw"
+    ID_DLG_PROPERTY         "Show Dialog Property"
+    ID_ADD_IMAGESTATIC      "Add a imagestatic\nImage Static"
+    ID_ADD_LISTVIEW         "Add a listview\nListview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_ADD_OUTLINE          "Add a OutLine\nOutLine"
+    ID_ADD_CHATEDIT         "Add a ChatEdit\nChat Edit"
+    ID_VIEW_MAGNET          "Magnet In Main Window"
+    ID_VIEW_MAGNET_MODE     "Enable or Disable Magnet Mode"
+END
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\DLGEditorS.rc2"  // Microsoft Visual C++에서 편집되지 않은 리소스
+#include "afxres.rc"         // 표준 구성 요소
+#include "afxprint.rc"       // 인쇄 미리 보기 리소스
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

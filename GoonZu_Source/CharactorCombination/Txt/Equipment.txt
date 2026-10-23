@@ -1,0 +1,10 @@
+Date	2004-04-23	
+EquipmentNum	7	
+EquipmentName	EquitmentCode	EquipmentIndex
+천사날개	EQU01	0
+대장기	EQU02	1
+화살통	EQU03	2
+영웅망치	EQU04	3
+연	EQU05	4
+악마날개	EQU06	5
+타락천사날개	EQU07	6

@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StatisticsTool", "StatisticsTool.vcproj", "{7499FBB5-CD38-4032-8D1E-4487C28DD942}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua513", "..\..\NLib\lua\lua513.vcproj", "{A33D572B-78A7-4ECF-B839-BBC1AA217EAA}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{7499FBB5-CD38-4032-8D1E-4487C28DD942}.Debug.ActiveCfg = Debug|Win32
+		{7499FBB5-CD38-4032-8D1E-4487C28DD942}.Debug.Build.0 = Debug|Win32
+		{7499FBB5-CD38-4032-8D1E-4487C28DD942}.Release.ActiveCfg = Release|Win32
+		{7499FBB5-CD38-4032-8D1E-4487C28DD942}.Release.Build.0 = Release|Win32
+		{A33D572B-78A7-4ECF-B839-BBC1AA217EAA}.Debug.ActiveCfg = Debug|Win32
+		{A33D572B-78A7-4ECF-B839-BBC1AA217EAA}.Debug.Build.0 = Debug|Win32
+		{A33D572B-78A7-4ECF-B839-BBC1AA217EAA}.Release.ActiveCfg = Release|Win32
+		{A33D572B-78A7-4ECF-B839-BBC1AA217EAA}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

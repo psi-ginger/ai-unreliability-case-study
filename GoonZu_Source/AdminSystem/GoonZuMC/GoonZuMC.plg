@@ -1,0 +1,55 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: GoonZuMC - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x412 /fo"Debug/GoonZuMC.res" /d "_DEBUG" "C:\Project\GoonZu\AdminSystem\GoonZuMC\GoonZuMC.rc"" 
+Creating temporary file "C:\DOCUME~1\이제완\LOCALS~1\Temp\RSPC5.tmp" with contents
+[
+winmm.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/GoonZuMC.pdb" /debug /machine:I386 /out:"C:\GoonZuMC\GoonZuMC.exe" /pdbtype:sept 
+.\Debug\FrontServerListDlg.obj
+.\Debug\GameServerListDlg.obj
+.\Debug\GoonZuMC.obj
+.\Debug\GoonZuMCDlg.obj
+.\Debug\LoginDlg.obj
+.\Debug\MasterProcess.obj
+.\Debug\MyRichEdit.obj
+.\Debug\NDataTypes.obj
+.\Debug\NDate.obj
+.\Debug\ServerInfo.obj
+.\Debug\StatisticsData.obj
+.\Debug\StatisticsDlg.obj
+.\Debug\StatisticsGraph.obj
+.\Debug\StdAfx.obj
+.\Debug\ITZCell.obj
+.\Debug\ITZEncrypt.obj
+.\Debug\ITZListen.obj
+.\Debug\ITZMap.obj
+.\Debug\ITZNetIOCP.obj
+.\Debug\ITZNetOverlapped.obj
+.\Debug\ITZNetworkThread.obj
+.\Debug\ITZPerson.obj
+.\Debug\ITZQList.obj
+.\Debug\ITZRecvBuffer.obj
+.\Debug\ITZSendBuffer.obj
+.\Debug\ITZServer.obj
+.\Debug\ITZSession.obj
+.\Debug\ITZSessionManager.obj
+.\Debug\ITZWorld.obj
+.\Debug\GoonZuMC.res
+]
+Creating command line "link.exe @"C:\DOCUME~1\이제완\LOCALS~1\Temp\RSPC5.tmp""
+<h3>Output Window</h3>
+Compiling resources...
+Linking...
+
+
+
+<h3>Results</h3>
+GoonZuMC.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.youxi.net.cn/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.youxi.net.cn/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.youxi.net.cn/">
+      <s:element name="GleeActivHLJZGame">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DBIP" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="port" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="passWord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GleeActivHLJZGameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GleeActivHLJZGameResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="GleeActivHLJZGameSoapIn">
+    <part name="parameters" element="s0:GleeActivHLJZGame" />
+  </message>
+  <message name="GleeActivHLJZGameSoapOut">
+    <part name="parameters" element="s0:GleeActivHLJZGameResponse" />
+  </message>
+  <portType name="GameActivServiceSoap">
+    <operation name="GleeActivHLJZGame">
+      <input message="s0:GleeActivHLJZGameSoapIn" />
+      <output message="s0:GleeActivHLJZGameSoapOut" />
+    </operation>
+  </portType>
+  <binding name="GameActivServiceSoap" type="s0:GameActivServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GleeActivHLJZGame">
+      <soap:operation soapAction="http://www.youxi.net.cn/GleeActivHLJZGame" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="GameActivServiceSoap12" type="s0:GameActivServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+    <operation name="GleeActivHLJZGame">
+      <soap12:operation soapAction="http://www.youxi.net.cn/GleeActivHLJZGame" style="document" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      <input>
+        <soap12:body use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </input>
+      <output>
+        <soap12:body use="literal" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="GameActivService">
+    <port name="GameActivServiceSoap" binding="s0:GameActivServiceSoap">
+      <soap:address location="http://webservice.hljz.net/GameActivService.asmx" />
+    </port>
+    <port name="GameActivServiceSoap12" binding="s0:GameActivServiceSoap12">
+      <soap12:address location="http://webservice.hljz.net/GameActivService.asmx" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" />
+    </port>
+  </service>
+</definitions>

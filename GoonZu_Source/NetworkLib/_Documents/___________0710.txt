@@ -1,0 +1,65 @@
+
+1. ITZPerson class에대한 설명
+
+멤버함수
+	virtual void Init()		<-- 세션 메니저에서 활성화 될 때 호출된다( 초기화 )
+	virtual void Close()    	<-- 세션 메니저에서 비활성화 될 때 호출된다
+
+	ITZSession* GetSession()	<-- 이 ITZPerson객체와 연결된 ITZSession객체를 얻는다
+
+	ITZSendBuffer* GetSendBuffer()
+	ITZRecvBuffer* GetRecvBuffer()
+
+	UI32	GetCharID()		<-- 캐릭터아이디 값을 얻는다
+
+
+멤버변수
+	UI32	m_uiCharID		<-- 캐릭터아이디
+					    아이디 값의 범위는 1부터 팩토리에서 생성한 개수만큼이다
+					    이것은 객체생성이후 소멸까지 고유한 값이 된다. 
+					    임의로 수정할 수 없다
+
+
+2. ITZSessionFactory에서 캐릭터아이디에 해당하는 ITZPerson객체의 포인터를 얻어오기
+
+	ITZPerson*	ITZSessionFactory::GetPerson( UI32 uiCharID )
+
+
+3. 예)
+
+//	class cltChar : public ITZPerson		// base character class
+
+//	class cltPlayerChar : public cltChar		// player character class
+//	class cltNPC        : public cltChar		// NPC class
+
+
+int		maxconnection = 1000;
+
+cltChar*	character[ 30000 ];
+
+ITZSessionManager			sm;
+ITZSessionFactory< cltPlayerChar >	sf;
+
+sf.CreateFactory( &sm, maxconnection, 30000, 30000 );	// 1000개의 세션, 퍼슨 객체가 생성되고 
+							// 각 퍼슨 객체에는
+							// 1 - 1000까지의 고유한 캐릭터 아이디가 부여된다
+
+
+int i;
+
+character[ 0 ] = NULL;
+
+// 플레이어 객체 연결 
+for( i = 1; i <= maxconnection; ++i )
+{
+	character[ i ] = sf.GetPerson( i );
+}
+
+// NPC생성
+for( i = 10000; i < 30000; ++i ) 	// maxconnection 이후 범위...
+{
+	character[ i ] = new cltNPC;
+}
+
+
+

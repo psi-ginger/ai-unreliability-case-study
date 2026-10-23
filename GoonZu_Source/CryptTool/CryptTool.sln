@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PaperCryptTool", "CryptTool.vcproj", "{3CFBFA66-933C-447E-967D-45B119508942}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NLib", "..\NLib\NLib.vcproj", "{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 1
+		SccProjectUniqueName0 = CryptTool.vcproj
+		SccProjectName0 = \u0022$/Source/PaperCryptTool\u0022,\u0020GAJAAAAA
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Final = Final
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{3CFBFA66-933C-447E-967D-45B119508942}.Debug.ActiveCfg = Debug|Win32
+		{3CFBFA66-933C-447E-967D-45B119508942}.Debug.Build.0 = Debug|Win32
+		{3CFBFA66-933C-447E-967D-45B119508942}.Final.ActiveCfg = Final|Win32
+		{3CFBFA66-933C-447E-967D-45B119508942}.Final.Build.0 = Final|Win32
+		{3CFBFA66-933C-447E-967D-45B119508942}.Release.ActiveCfg = Release|Win32
+		{3CFBFA66-933C-447E-967D-45B119508942}.Release.Build.0 = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Debug.ActiveCfg = Debug|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Debug.Build.0 = Debug|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Final.ActiveCfg = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Final.Build.0 = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release.ActiveCfg = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

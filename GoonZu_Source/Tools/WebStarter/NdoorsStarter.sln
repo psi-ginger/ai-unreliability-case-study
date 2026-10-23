@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NdoorsStarter", "NdoorsStarter\NdoorsStarter.vcproj", "{C4BB2BB7-6965-42AE-8DEA-61ADD985C662}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NdoorsStarterPS", "NdoorsStarter\NdoorsStarterPS.vcproj", "{7172FB40-AB44-477C-A734-E7E88C93B119}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C4BB2BB7-6965-42AE-8DEA-61ADD985C662} = {C4BB2BB7-6965-42AE-8DEA-61ADD985C662}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4BB2BB7-6965-42AE-8DEA-61ADD985C662}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C4BB2BB7-6965-42AE-8DEA-61ADD985C662}.Debug|Win32.Build.0 = Debug|Win32
+		{C4BB2BB7-6965-42AE-8DEA-61ADD985C662}.Release|Win32.ActiveCfg = Release|Win32
+		{C4BB2BB7-6965-42AE-8DEA-61ADD985C662}.Release|Win32.Build.0 = Release|Win32
+		{7172FB40-AB44-477C-A734-E7E88C93B119}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7172FB40-AB44-477C-A734-E7E88C93B119}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,378 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\GoonZuMC.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.kor\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\GoonZuMC.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_GOONZUMC_DIALOG DIALOGEX 0, 0, 600, 417
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Goonzu Server Monitor Client"
+FONT 10, "굴림", 0, 0, 0x1
+BEGIN
+    CONTROL         "Tab2",IDC_TAB_MAIN,"SysTabControl32",0x0,0,20,585,273
+    EDITTEXT        IDC_EDIT_TOTALUSER,531,1,54,12,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    CTEXT           "Total User Count",IDC_STATIC,422,1,83,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    LTEXT           "",IDC_STATIC_RICH,1,302,584,87
+    CTEXT           "Char Create/Del",IDC_STATIC,0,1,60,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    EDITTEXT        IDC_EDIT_NEWCHAR,61,1,54,12,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT1,223,393,139,12,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    LTEXT           "E-MAIL",IDC_STATIC,195,394,25,11,NOT WS_VISIBLE
+    PUSHBUTTON      "TEST",IDC_BUTTON1,365,391,32,14,NOT WS_VISIBLE
+    EDITTEXT        IDC_EDIT2,47,393,139,12,ES_AUTOHSCROLL | NOT WS_VISIBLE
+    LTEXT           "SMTP",IDC_STATIC,21,394,25,11,NOT WS_VISIBLE
+END
+
+IDD_DIALOG_LOGIN DIALOGEX 0, 0, 154, 105
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Goonzu Server Monitor"
+FONT 9, "굴림", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_ID,40,20,60,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PW,40,35,60,12,ES_PASSWORD | ES_AUTOHSCROLL
+    LTEXT           "ID",IDC_STATIC,10,20,29,12,SS_CENTERIMAGE
+    LTEXT           "PW",IDC_STATIC,10,35,29,12,SS_CENTERIMAGE
+    PUSHBUTTON      "Log In",IDC_BUTTON_LOGIN,105,35,37,15
+    COMBOBOX        IDC_COMBO_IP,70,65,80,65,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Master Server IP",IDC_STATIC,7,65,58,15,SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT_STATUS,0,90,112,15,ES_AUTOHSCROLL | ES_READONLY | 
+                    NOT WS_BORDER,WS_EX_STATICEDGE
+    GROUPBOX        "로그인",IDC_STATIC,5,5,145,55
+    PUSHBUTTON      "Quit",IDC_BUTTON_EXIT,112,90,42,15
+END
+
+IDD_DIALOG_GAMESERVERLIST DIALOGEX 0, 0, 595, 260
+STYLE DS_SETFONT | WS_CHILD
+FONT 10, "굴림", 0, 0, 0x1
+BEGIN
+    CONTROL         "List1",IDC_LIST_GAMESERVER,"SysListView32",LVS_REPORT | 
+                    WS_BORDER | WS_TABSTOP,107,0,465,146
+    EDITTEXT        IDC_EDIT_GAMESERVERINFO,0,38,101,214,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_GAMESERVERTITLE,1,22,101,13,ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_CMD,111,158,302,15,ES_AUTOHSCROLL
+    PUSHBUTTON      "Command Send",IDC_BUTTON,415,158,56,14
+    GROUPBOX        "GM Command",IDC_STATIC,106,148,467,104
+    LISTBOX         IDC_LISTGMCMDLOG,111,178,460,74,LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Alarm On",IDC_BTNALARMON,1,4,50,14
+    PUSHBUTTON      "Alarm Off",IDC_BTNALARMOFF,53,4,50,14
+    PUSHBUTTON      "Select All",IDC_BTNSELECTALL,479,158,43,14
+    PUSHBUTTON      "Not Select All",IDC_BTNNOTSELECTALL,523,158,44,14
+END
+
+IDD_DIALOG_STATISTICS DIALOGEX 0, 0, 455, 264
+STYLE DS_SETFONT | WS_CHILD
+FONT 9, "굴림", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "",IDC_STATIC,5,2,156,256
+    COMBOBOX        IDC_COMBO_YEAR1,20,29,29,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Req",IDC_BUTTON_REQUEST1,100,30,26,12
+    COMBOBOX        IDC_COMBO_MONTH1,50,29,24,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_DAY1,75,29,24,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Clear",IDC_BUTTON_CLEAR1,128,30,26,12
+    LTEXT           "1",IDC_STATIC,11,29,8,14,SS_CENTERIMAGE | SS_SUNKEN
+    COMBOBOX        IDC_COMBO_YEAR2,20,47,29,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Req",IDC_BUTTON_REQUEST2,100,48,26,12
+    COMBOBOX        IDC_COMBO_MONTH2,50,47,24,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_DAY2,75,47,24,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Clear",IDC_BUTTON_CLEAR2,128,48,26,12
+    LTEXT           "2",IDC_STATIC,11,47,8,14,SS_CENTERIMAGE | SS_SUNKEN
+    COMBOBOX        IDC_COMBO_YEAR3,20,64,29,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Req",IDC_BUTTON_REQUEST3,100,65,26,12
+    COMBOBOX        IDC_COMBO_MONTH3,50,64,24,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_DAY3,75,64,24,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Clear",IDC_BUTTON_CLEAR3,128,65,26,12
+    LTEXT           "3",IDC_STATIC,11,64,8,14,SS_CENTERIMAGE | SS_SUNKEN
+    COMBOBOX        IDC_COMBO_YEAR4,20,81,29,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Req",IDC_BUTTON_REQUEST4,100,82,26,12
+    COMBOBOX        IDC_COMBO_MONTH4,50,81,24,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_DAY4,75,81,24,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Clear",IDC_BUTTON_CLEAR4,128,82,26,12
+    LTEXT           "4",IDC_STATIC,11,81,8,14,SS_CENTERIMAGE | SS_SUNKEN
+    CONTROL         "List1",IDC_LIST_USERNUM,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | WS_BORDER | WS_TABSTOP,10,114,146,140
+    GROUPBOX        "",IDC_STATIC,163,2,287,255
+    PUSHBUTTON      "1",IDC_BUTTON_1,10,99,26,12
+    PUSHBUTTON      "2",IDC_BUTTON_2,42,99,26,12
+    PUSHBUTTON      "3",IDC_BUTTON_3,74,99,26,12
+    PUSHBUTTON      "4",IDC_BUTTON_4,106,99,26,12
+    CONTROL         "Save File",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,10,11,46,10
+END
+
+IDD_DIALOG_FRONTSERVERLIST DIALOGEX 0, 0, 395, 244
+STYLE DS_SETFONT | WS_CHILD
+FONT 10, "굴림", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "",IDC_STATIC,1,1,148,236
+    CONTROL         "List1",IDC_LIST_FRONTSERVER,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,6,28,132,200
+    LTEXT           "Front Server",IDC_STATIC,7,11,132,15,SS_CENTERIMAGE | 
+                    SS_SUNKEN,WS_EX_STATICEDGE
+    GROUPBOX        "",IDC_STATIC,154,2,148,236,NOT WS_VISIBLE
+    CONTROL         "",IDC_LIST_AUTHSERVER,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_NOSORTHEADER | NOT WS_VISIBLE | 
+                    WS_BORDER | WS_TABSTOP,160,29,132,199
+    LTEXT           "Auth Server",IDC_STATIC,160,12,132,15,SS_CENTERIMAGE | 
+                    SS_SUNKEN | NOT WS_VISIBLE,WS_EX_STATICEDGE
+END
+
+IDD_SERVERSTATEDLG DIALOGEX 0, 0, 586, 232
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 9, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "HW",IDC_STATIC,7,7,122,218
+    GROUPBOX        "SW",IDC_STATIC,135,7,122,218
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,11,19,113,196
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,139,19,113,196
+    GROUPBOX        "Info",IDC_STATIC,263,7,316,218
+    CTEXT           "##########아직 지원하지 않는 기능 입니다.##########",
+                    IDC_STATIC,98,83,417,12,0,WS_EX_CLIENTEDGE
+END
+
+IDD_LOGDLG DIALOGEX 0, 0, 563, 232
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 9, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "FPS",IDC_STATIC,7,7,151,185
+    GROUPBOX        "Warning",IDC_STATIC,166,7,326,184
+    COMBOBOX        IDC_COMBO_YEAR1,189,203,29,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_MONTH1,219,203,24,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_DAY1,244,203,24,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_YEAR5,288,203,29,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_MONTH5,318,203,24,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_DAY5,343,203,24,107,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "부터",IDC_STATIC,270,203,16,11,SS_SUNKEN
+    LTEXT           "까지",IDC_STATIC,369,203,16,11,SS_SUNKEN
+    PUSHBUTTON      "Search",IDC_BUTTON1,391,201,50,14
+    PUSHBUTTON      "File Export",IDC_BUTTON2,443,201,50,14
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,14,17,134,166
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | 
+                    WS_BORDER | WS_TABSTOP,173,17,241,166
+    EDITTEXT        IDC_EDIT_GAMESERVERINFO,418,17,70,167,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    CTEXT           "##########아직 지원하지 않는 기능 입니다.##########",
+                    IDC_STATIC,98,83,417,12,0,WS_EX_CLIENTEDGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041103a4"
+        BEGIN
+            VALUE "FileDescription", "GoonZuMC MFC 응용 프로그램"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "GoonZuMC"
+            VALUE "LegalCopyright", "Copyright (C) 2003"
+            VALUE "OriginalFilename", "GoonZuMC.EXE"
+            VALUE "ProductName", "GoonZuMC 응용 프로그램"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x411, 932
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_GOONZUMC_DIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 585
+        VERTGUIDE, 60
+        VERTGUIDE, 492
+        VERTGUIDE, 505
+        VERTGUIDE, 517
+        TOPMARGIN, 1
+        BOTTOMMARGIN, 414
+    END
+
+    IDD_DIALOG_LOGIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 7
+    END
+
+    IDD_DIALOG_GAMESERVERLIST, DIALOG
+    BEGIN
+        RIGHTMARGIN, 581
+        BOTTOMMARGIN, 252
+    END
+
+    IDD_DIALOG_STATISTICS, DIALOG
+    BEGIN
+        RIGHTMARGIN, 447
+        BOTTOMMARGIN, 260
+    END
+
+    IDD_SERVERSTATEDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 579
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 225
+    END
+
+    IDD_LOGDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 556
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 225
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE 18, 1
+#pragma code_page(949)
+#endif //_WIN32
+#include "res\GoonZuMC.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.kor\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,76 @@
+// Created by Microsoft (R) C/C++ Compiler Version 12.00.9782.0 (c0a47778).
+//
+// StmOCX.tlh
+//
+// C++ source equivalent of Win32 type library StmOCX.dll
+// compiler-generated file created 07/26/06 at 15:55:13 - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+//
+// Forward references and typedefs
+//
+
+struct /* coclass */ Stm;
+struct __declspec(uuid("8380414d-5aa6-4b74-93eb-855d7361e6b4"))
+/* dual interface */ IStm;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(IStm, __uuidof(IStm));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("7a0d1738-10ea-47ff-92be-4e137b5be1a4"))
+Stm;
+    // [ default ] interface IStm
+
+struct __declspec(uuid("8380414d-5aa6-4b74-93eb-855d7361e6b4"))
+IStm : IDispatch
+{
+    //
+    // Wrapper methods for error-handling
+    //
+
+    _bstr_t ioVersion ( );
+    _bstr_t ioBegin ( );
+    HRESULT ioEnd (
+        _bstr_t blackbox );
+
+    //
+    // Raw methods provided by interface
+    //
+
+    virtual HRESULT __stdcall raw_ioVersion (
+        BSTR * version ) = 0;
+    virtual HRESULT __stdcall raw_ioBegin (
+        BSTR * blackbox ) = 0;
+    virtual HRESULT __stdcall raw_ioEnd (
+        BSTR blackbox ) = 0;
+};
+
+//
+// Named GUID constants initializations
+//
+
+extern "C" const GUID __declspec(selectany) LIBID_STMOCXLib =
+    {0x0ab6d809,0x3081,0x494f,{0xbd,0x93,0xd5,0x8f,0x48,0x0b,0xf0,0xe3}};
+extern "C" const GUID __declspec(selectany) CLSID_Stm =
+    {0x7a0d1738,0x10ea,0x47ff,{0x92,0xbe,0x4e,0x13,0x7b,0x5b,0xe1,0xa4}};
+extern "C" const GUID __declspec(selectany) IID_IStm =
+    {0x8380414d,0x5aa6,0x4b74,{0x93,0xeb,0x85,0x5d,0x73,0x61,0xe6,0xb4}};
+
+//
+// Wrapper method implementations
+//
+
+#include "StmOCX.tli"
+
+#pragma pack(pop)

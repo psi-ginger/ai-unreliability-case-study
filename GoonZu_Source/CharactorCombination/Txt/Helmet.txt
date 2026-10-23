@@ -1,0 +1,13 @@
+Date	2000.01.31	
+HelmetNum	10	
+HelmetName	HelmetCode	HelmetIndex
+기본머리	KOR01	0
+레저아머	HMT01	1
+아시가루투구	HMT10	2
+상자투구	HMT20	3
+본헬름	HMT25	4
+청동투구	HMT30	5
+월영의투구(적)	HMT32	6
+아이언캡(서양)	HMT34	7
+일륜의투구(청)	HMT36	8
+메탈헬름(서양)	HMT38	9

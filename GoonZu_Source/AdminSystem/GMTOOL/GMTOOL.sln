@@ -1,0 +1,81 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GMTOOL", "GMTOOL.vcproj", "{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NLib", "..\..\NLib\NLib.vcproj", "{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NGameDataManager", "..\..\NGameDataManager\NGameDataManager.vcproj", "{6F10736E-FB8E-46A9-B82B-80D190750B51}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+		Release_English = Release_English
+		Release_Europe = Release_Europe
+		Release_Japan = Release_Japan
+		Release_Korea = Release_Korea
+		Release_NHNChina = Release_NHNChina
+		Release_Taiwan = Release_Taiwan
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Debug.ActiveCfg = Debug|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Debug.Build.0 = Debug|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release.ActiveCfg = Release|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release.Build.0 = Release|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release_English.ActiveCfg = Release_English|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release_English.Build.0 = Release_English|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release_Europe.ActiveCfg = Release_Europe|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release_Europe.Build.0 = Release_Europe|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release_Japan.ActiveCfg = Release_Japan|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release_Japan.Build.0 = Release_Japan|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release_Korea.ActiveCfg = Release_Korea|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release_Korea.Build.0 = Release_Korea|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release_NHNChina.ActiveCfg = Release_NHNChina|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release_NHNChina.Build.0 = Release_NHNChina|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release_Taiwan.ActiveCfg = Release_Taiwan|Win32
+		{4F6A85D7-DCB9-474A-9E05-1421BD5A26CC}.Release_Taiwan.Build.0 = Release_Taiwan|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Debug.ActiveCfg = Debug|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Debug.Build.0 = Debug|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release.ActiveCfg = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release.Build.0 = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release_English.ActiveCfg = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release_English.Build.0 = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release_Europe.ActiveCfg = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release_Europe.Build.0 = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release_Japan.ActiveCfg = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release_Japan.Build.0 = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release_Korea.ActiveCfg = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release_Korea.Build.0 = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release_NHNChina.ActiveCfg = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release_NHNChina.Build.0 = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release_Taiwan.ActiveCfg = Release|Win32
+		{9C0DB3C0-6150-4A8C-A4E9-4121BDE2BBB0}.Release_Taiwan.Build.0 = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Debug.ActiveCfg = Debug|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Debug.Build.0 = Debug|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release.ActiveCfg = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release.Build.0 = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release_English.ActiveCfg = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release_English.Build.0 = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release_Europe.ActiveCfg = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release_Europe.Build.0 = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release_Japan.ActiveCfg = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release_Japan.Build.0 = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release_Korea.ActiveCfg = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release_Korea.Build.0 = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release_NHNChina.ActiveCfg = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release_NHNChina.Build.0 = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release_Taiwan.ActiveCfg = Release|Win32
+		{6F10736E-FB8E-46A9-B82B-80D190750B51}.Release_Taiwan.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

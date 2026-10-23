@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CharactorCombination", "CharactorCombination.vcproj", "{A6A45F2B-00C4-4F9B-B7C4-51545CCAF6EC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graphic", "Graphic\Graphic.vcproj", "{2460E42B-56CA-40D3-8C41-F54E38C827E7}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 1
+		SccProjectUniqueName0 = CharactorCombination.vcproj
+		SccProjectName0 = \u0022$/SMLee/CharactorCombination\u0022,\u0020XGAAAAAA
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{A6A45F2B-00C4-4F9B-B7C4-51545CCAF6EC}.Debug.ActiveCfg = Debug|Win32
+		{A6A45F2B-00C4-4F9B-B7C4-51545CCAF6EC}.Debug.Build.0 = Debug|Win32
+		{A6A45F2B-00C4-4F9B-B7C4-51545CCAF6EC}.Release.ActiveCfg = Release|Win32
+		{A6A45F2B-00C4-4F9B-B7C4-51545CCAF6EC}.Release.Build.0 = Release|Win32
+		{2460E42B-56CA-40D3-8C41-F54E38C827E7}.Debug.ActiveCfg = Debug|Win32
+		{2460E42B-56CA-40D3-8C41-F54E38C827E7}.Debug.Build.0 = Debug|Win32
+		{2460E42B-56CA-40D3-8C41-F54E38C827E7}.Release.ActiveCfg = Release|Win32
+		{2460E42B-56CA-40D3-8C41-F54E38C827E7}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

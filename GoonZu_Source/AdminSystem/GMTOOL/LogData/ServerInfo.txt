@@ -1,0 +1,51 @@
+ServerNames			
+2007-03-07			
+v0.1			
+LEEKH			
+
+<Data>			
+ServerName	TableName	ServerIP	ServerPort
+???_Dev	Global01	116.127.221.195	8300
+???_Chi	Global02	116.127.221.195	8300
+???_Dev	Global03	116.127.221.195	8300
+???_Eng	Global04	116.127.221.195	8300
+???_Dev	Global05	116.127.221.195	8300
+???_CHI	Global06	116.127.221.195	8300
+???_Dev	Global07	116.127.221.195	8300
+???_Eur	Global08	116.127.221.195	8300
+???_Dev	Global09	116.127.221.195	8300
+???_Jap	Global10	116.127.221.195	8300
+???_Dev	Global11	116.127.221.195	8300
+???_Tai	Global12	116.127.221.195	8300
+???_Dev	Global13	116.127.221.195	8300
+???_Kor	Global14	116.127.221.195	8300
+???_Chi	Global15	116.127.221.195	8300
+???_Eur	Global16	116.127.221.195	8300
+???_Chi	Global17	116.127.221.195	8300
+???_Tai	Global18	116.127.221.195	8300
+"SUCKSAM_TAI"	Global19	116.127.221.195	8300
+???_Eng	Global20	116.127.221.195	8300
+japan-Server	Global21	116.127.221.195	8300
+Korea-Server	Global22	116.127.221.195	8300
+English-Server	Global23	116.127.221.195	8300
+QA-ENG	Global24	116.127.221.195	8300
+QA-KOR	Global25	116.127.221.195	8300
+QA-Jap	Global26	116.127.221.195	8300
+QA_Chi	Global27	116.127.221.195	8300
+QA_Tai	Global28	116.127.221.195	8300
+QA_Eur	Global29	116.127.221.195	8300
+??_Japan	Global30	116.127.221.195	8300
+??_Dev	Global31	116.127.221.195	8300
+??_Europe	Global32	116.127.221.195	8300
+???_Dev	Global33	116.127.221.195	8300
+"??-KOR"	Global34	116.127.221.195	8300
+???_Eur	Global35	116.127.221.195	8300
+GlobalDev	Global36	116.127.221.195	8300
+QA-DEV	Global36	116.127.221.195	8300
+???	GoonzuSpecial01	222.122.40.147	8300
+Globaltest	Global01	4.59.52.98	8300
+GlobalZeus	Global01	4.59.52.91	8300
+GlobalHera	Global02	4.59.52.91	8300
+GlobalAthena	Global03	4.59.52.91	8300
+???	Global01	221.149.69.116	8300
+<End>			

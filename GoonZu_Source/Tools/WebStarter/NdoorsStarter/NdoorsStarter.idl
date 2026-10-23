@@ -1,0 +1,50 @@
+// NdoorsStarter.idl : NdoorsStarter의 IDL 소스입니다.
+//
+
+// 이 파일은 MIDL 도구에 의해 처리되어
+// 형식 라이브러리(NdoorsStarter.tlb) 및 마샬링 코드가 생성됩니다.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(ED9E837D-9A64-4D2A-999D-47A9EF7399F9),
+	dual,
+	nonextensible,
+	helpstring("INdoorsGameStarter 인터페이스"),
+	pointer_default(unique)
+]
+interface INdoorsGameStarter : IDispatch{
+	[id(1), helpstring("메서드 InitStarter")] HRESULT InitStarter([in] BSTR GameTitle, [in] BSTR FileName);
+	[id(2), helpstring("메서드 Run")] HRESULT Run(void);
+	[propget, id(3), helpstring("속성 GameInstalled")] HRESULT GameInstalled([out, retval] LONG* pVal);
+	[propget, id(4), helpstring("속성 RunResult")] HRESULT RunResult([out, retval] LONG* pVal);
+};
+[
+	uuid(71CC369F-2803-407B-B60D-ED764B9233DA),
+	version(1.0),
+	helpstring("NdoorsStarter 1.0 형식 라이브러리")
+]
+library NdoorsStarterLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(1121DC70-9B47-4D7E-91D9-CD1753562A14),
+		helpstring("_INdoorsGameStarterEvents Interface")
+	]
+	dispinterface _INdoorsGameStarterEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(BDAF9A81-8FDE-4F9B-A91B-CCCD3CF003A4),
+		helpstring("NdoorsGameStarter Class")
+	]
+	coclass NdoorsGameStarter
+	{
+		[default] interface INdoorsGameStarter;
+		[default, source] dispinterface _INdoorsGameStarterEvents;
+	};
+};

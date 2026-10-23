@@ -1,0 +1,284 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어 resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+#ifdef _WIN32
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\GLogClient.rc2""  // Microsoft Visual C++에서 편집되지 않은 리소스\r\n"
+    "#include ""afxres.rc""         // 표준 구성 요소\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\GLogClient.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_GLOGCLIENT_DIALOG DIALOGEX 0, 0, 578, 367
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Log Tool"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+END
+
+IDD_TOOL_DIALOG DIALOGEX 0, 0, 655, 70
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_BORDER | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_DATE,"SysDateTimePick32",DTS_RIGHTALIGN | 
+                    WS_TABSTOP,48,7,109,15
+    CONTROL         "",IDC_STARTTIME,"SysDateTimePick32",DTS_RIGHTALIGN | 
+                    DTS_UPDOWN | WS_TABSTOP | 0x8,48,23,46,15
+    CONTROL         "",IDC_ENDTIME,"SysDateTimePick32",DTS_RIGHTALIGN | 
+                    DTS_UPDOWN | WS_TABSTOP | 0x8,112,23,45,15
+    EDITTEXT        IDC_EDIT_NAME,222,7,89,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_TARGETNAME,222,23,89,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SEARCHWORD,408,48,148,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "SEARCH",IDC_BTN_SEARCH,599,7,49,34
+    LTEXT           "DATE : ",IDC_STATIC,7,9,38,8
+    LTEXT           "TIME : ",IDC_STATIC,7,26,35,8
+    LTEXT           "~",IDC_STATIC,101,26,8,8
+    LTEXT           "SERVER : ",IDC_STATIC,7,41,34,8
+    LTEXT           "USER : ",IDC_STATIC,166,9,25,8
+    LTEXT           "TARGET USER : ",IDC_STATIC,166,26,51,8
+    LTEXT           "LOGTEXT SEARCH : ",IDC_STATIC,337,50,68,8
+    COMBOBOX        IDC_COMBO_FILTER,408,29,148,60,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "EDIT",IDC_BUTTON_FILTEREDIT,556,29,33,13,WS_DISABLED
+    COMBOBOX        IDC_COMBO_SERVERNAME,48,39,109,91,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "STOP",IDC_BUTTON_STOP,599,43,49,20
+    EDITTEXT        IDC_EDIT_ITEMUNIQUE,222,39,89,14,ES_AUTOHSCROLL
+    LTEXT           "ITEM UNIQUE : ",IDC_STATIC,166,41,52,8
+    EDITTEXT        IDC_EDIT_COMMAND,408,14,148,14,ES_AUTOHSCROLL
+    CONTROL         "COMMAND :   ",IDC_RADIO_COMMAND,"Button",
+                    BS_AUTORADIOBUTTON,326,17,74,10
+    CONTROL         "COMMAND FILTER :",IDC_RADIO_COMMANDFILTER,"Button",
+                    BS_AUTORADIOBUTTON,326,31,77,10
+    GROUPBOX        "COMMAND OPTION",IDC_STATIC,319,7,276,38
+    LTEXT           "In Searching...",IDC_STATIC_SEARCHING,7,55,52,8,NOT 
+                    WS_VISIBLE
+END
+
+IDD_RESULT_DIALOG DIALOGEX 0, 0, 601, 327
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+EXSTYLE WS_EX_OVERLAPPEDWINDOW
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_LIST_RESULT,"SysListView32",LVS_REPORT | 
+                    LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,115,560,92
+    EDITTEXT        IDC_EDIT_LOGTEXT,7,250,560,38,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_READONLY
+    GROUPBOX        "DETAIL SEARCH",IDC_GROUPBOX,7,7,560,55
+    PUSHBUTTON      "ALL",IDC_BUTTON_CLEAR,497,21,50,18
+    EDITTEXT        IDC_EDIT_DETAILSEARCHWORD,14,18,145,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "SEARCH",IDC_BUTTON_DETAILSEARCH,161,18,56,15
+    PUSHBUTTON      "SEND SELECTED TO NEW WINDOW",IDC_BUTTON_SENDNEWWINDOW,
+                    93,37,131,15
+    PUSHBUTTON      "SELECT",IDC_BUTTON_DEL_SELECT,392,21,50,17
+    PUSHBUTTON      "DESELECT",IDC_BUTTON_DEL_DESELECT,445,21,50,17
+    GROUPBOX        "DELETE",IDC_STATIC,383,11,170,44
+    GROUPBOX        "TEXT WORK",IDC_STATIC,229,11,149,44
+    PUSHBUTTON      "EXPORT",IDC_BUTTON_EXPORT,242,20,58,14
+    PUSHBUTTON      "IMPORT",IDC_BUTTON_IMPORT,242,35,58,14,WS_DISABLED
+    PUSHBUTTON      "OPEN NEW WINDOW",IDC_BUTTON1,14,37,79,14
+    PUSHBUTTON      "SELECT EXPORT",IDC_BUTTON_SELEXPORT,303,20,68,14
+END
+
+IDD_NEWRESULT_DIALOG DIALOGEX 0, 0, 624, 347
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Result"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_LOGIN_DIALOG DIALOGEX 0, 0, 156, 67
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Login"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_LOGINID,36,7,113,15,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LOGINPW,36,24,113,15,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,45,42,50,18
+    PUSHBUTTON      "CANCEL",IDCANCEL,99,42,50,18
+    LTEXT           "ID :",IDC_STATIC,18,9,13,8
+    LTEXT           "PW :",IDC_STATIC,15,26,16,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "TODO: <회사 이름>"
+            VALUE "FileDescription", "TODO: <파일 설명>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "GLogClient.exe"
+            VALUE "LegalCopyright", "TODO: (c) <회사 이름>.  All rights reserved."
+            VALUE "OriginalFilename", "GLogClient.exe"
+            VALUE "ProductName", "TODO: <제품 이름>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "변환", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_GLOGCLIENT_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 571
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 360
+    END
+
+    IDD_TOOL_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 648
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 63
+    END
+
+    IDD_RESULT_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 594
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 320
+    END
+
+    IDD_NEWRESULT_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 617
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 340
+    END
+
+    IDD_LOGIN_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 149
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 60
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // 한국어 resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\GLogClient.rc2"  // Microsoft Visual C++에서 편집되지 않은 리소스
+#include "afxres.rc"         // 표준 구성 요소
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

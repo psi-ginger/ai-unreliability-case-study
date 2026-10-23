@@ -1,0 +1,8 @@
+Date	2004-04-23	
+MantleNum	3	
+MantleName	MantleCode	MantleIndex
+ª°∞£∏¡≈‰	MTL01	0
+∆ƒ∂ı∏¡≈‰	MTL02	1
+¡¶ø’¿«∏¡≈‰	MTL03	2
+
+

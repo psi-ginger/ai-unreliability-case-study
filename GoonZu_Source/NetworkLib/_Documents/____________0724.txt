@@ -1,0 +1,96 @@
+네트웍 라이브러리 수정 사항
+2003-07-24
+
+1. ITZNetworkThread::LogOut()함수는 더 이상 사용하지 않는다
+
+2. 사용자측에서 세션 상태가 SESSION_STATE_DISCONNECTED인지 여부를 조회할 수 없다
+
+  라이브러리 내부적으로만 사용하는 상태
+  SESSION_STATE_CONNECTED
+  SESSION_STATE_DISCONNECTED
+
+  라이브러리 외부에서도 조회할 수 있는 상태
+  SESSION_STATE_NONE
+  SESSION_STATE_ESTABLISHED
+
+
+  *) SESSION_STATE_NONE과 SESSION_STATE_DISCONNECTED의 차이점
+
+     SESSION_STATE_NONE : 연결이 이루어 지지 않은 상태, session비활성 상태
+     SESSION_STATE_DISCONNECTED : 연결중에 있다가 세션 접속이 끊어진 상태, session을 비활성화 시켜야할 상태
+
+
+3. 클라이언트에서, 
+   능동 접속의 경우 기존에는 NewConnect로 세션을 얻고나면, 
+   클래스가 소멸될때까지
+   세션이 접속 중인 상태이든 접속 중이 아닌 상태이든 세션은 활성화 상태였는데
+   수정후에는 
+   세션이 접속 중일 때만 활성화 상태로 된다
+
+
+---------------
+고쳐야할 소스
+---------------
+
+1. 초기화 부분
+
+기존)
+
+pFrontSession = sm.NewConnect( "192.168.1.4", 5700 );
+pGameSession = sm.NewConnect( "", 0 );
+
+
+수정)
+
+pGameSession = sm.GetSession( 0 );		// GetSession함수의 인자는 session index이다
+pFrontSession = sm.GetSession( 1 );
+
+
+2. 상태체크부분
+- SESSION_STATE_DISCONNECTED는 라이브러리 외부의 코드에서 사용하지 않는다
+
+기존)
+if( pFrontSession->GetState() == SESSION_STATE_DISCONNECTED )
+
+
+수정)
+if( pFrontSession->GetState() == SESSION_STATE_NONE )
+
+
+3. Connect부분
+- 기존에는 NewConnect로 초기화하고 세션 객체의 멤버 함수인 Connect()를 호출하여 접속 시도하였으나,
+수정후에는 SessionManager의 멤버 함수를 호출하여 접속 시도를 한다. 
+접속 시도할 때마다 세션 인덱스, 접속 ip, 접속 port를 인자로 넘겨야 한다.
+
+- 클라이언트에서, 게임서버로 접속할 때 InitConnect()함수를 호출할 필요가 없다.
+
+
+*)프론트 세션
+기존)
+if( pFrontSession->Connect() ) {
+// 프론트 서버와의 접속이 성공이면,
+
+}
+
+수정)
+if( sm.Connect( 1, "192.168.1.4", 5700 ) == pFrontSession ) {
+// 프론트 서버와의 접속이 성공이면,
+
+}
+
+
+*)게임 세션
+기존)
+pGameSession->InitConnect( ip, port );
+
+if( pGameSession->Connect() ) {
+// 게임 서버와의 접속이 성공이면,
+
+}
+
+수정)
+if( sm.Connect( 0, ip, port ) == pGameSession ) {
+// 게임 서버와의 접속이 성공이면,
+
+}
+

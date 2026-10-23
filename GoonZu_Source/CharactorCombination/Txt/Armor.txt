@@ -1,0 +1,17 @@
+Date	2006.01.31	
+ArmorNum	10	
+ArmorName	ArmorCode	ArmorIndex
+기본몸통	KOR01	0
+레저아머	ARM01	1
+아시가루갑옷	ARM10	2
+상자갑옷	ARM20	3
+본갑옷	ARM25	4
+동갑옷	ARM30	5
+월영의갑옷(적)	ARM32	6
+아이언메일      ARM34	7
+일륜의갑옷(청)	ARM36	8
+반딧드메일      ARM38	9
+
+
+
+

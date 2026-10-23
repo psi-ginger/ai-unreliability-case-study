@@ -1,0 +1,47 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlobalTradeServer", "GlobalTradeServer.vcproj", "{40F9BEEE-CDCC-4BD1-BCD0-42ACE8AB1C33}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C1789FC2-7B3E-4AE1-8486-BB73C1BB2DCC} = {C1789FC2-7B3E-4AE1-8486-BB73C1BB2DCC}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GZCore", "..\GZCore\GZCore.vcproj", "{C1789FC2-7B3E-4AE1-8486-BB73C1BB2DCC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NkCommon", "..\..\branches\TRY_00130_Refactoring1\NTech\Src_NkCore\NkCommon\VC70\NkCommon.vcproj", "{25B9E0DD-E4B1-4EB0-BD12-E0CD3BBCF97F}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Debug_MDd = Debug_MDd
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{40F9BEEE-CDCC-4BD1-BCD0-42ACE8AB1C33}.Debug.ActiveCfg = Debug|Win32
+		{40F9BEEE-CDCC-4BD1-BCD0-42ACE8AB1C33}.Debug.Build.0 = Debug|Win32
+		{40F9BEEE-CDCC-4BD1-BCD0-42ACE8AB1C33}.Debug_MDd.ActiveCfg = Debug|Win32
+		{40F9BEEE-CDCC-4BD1-BCD0-42ACE8AB1C33}.Debug_MDd.Build.0 = Debug|Win32
+		{40F9BEEE-CDCC-4BD1-BCD0-42ACE8AB1C33}.Release.ActiveCfg = Release|Win32
+		{40F9BEEE-CDCC-4BD1-BCD0-42ACE8AB1C33}.Release.Build.0 = Release|Win32
+		{C1789FC2-7B3E-4AE1-8486-BB73C1BB2DCC}.Debug.ActiveCfg = Debug|Win32
+		{C1789FC2-7B3E-4AE1-8486-BB73C1BB2DCC}.Debug.Build.0 = Debug|Win32
+		{C1789FC2-7B3E-4AE1-8486-BB73C1BB2DCC}.Debug_MDd.ActiveCfg = Debug_MDd|Win32
+		{C1789FC2-7B3E-4AE1-8486-BB73C1BB2DCC}.Debug_MDd.Build.0 = Debug_MDd|Win32
+		{C1789FC2-7B3E-4AE1-8486-BB73C1BB2DCC}.Release.ActiveCfg = Release|Win32
+		{C1789FC2-7B3E-4AE1-8486-BB73C1BB2DCC}.Release.Build.0 = Release|Win32
+		{25B9E0DD-E4B1-4EB0-BD12-E0CD3BBCF97F}.Debug.ActiveCfg = Debug|Win32
+		{25B9E0DD-E4B1-4EB0-BD12-E0CD3BBCF97F}.Debug.Build.0 = Debug|Win32
+		{25B9E0DD-E4B1-4EB0-BD12-E0CD3BBCF97F}.Debug_MDd.ActiveCfg = Debug|Win32
+		{25B9E0DD-E4B1-4EB0-BD12-E0CD3BBCF97F}.Debug_MDd.Build.0 = Debug|Win32
+		{25B9E0DD-E4B1-4EB0-BD12-E0CD3BBCF97F}.Release.ActiveCfg = Release|Win32
+		{25B9E0DD-E4B1-4EB0-BD12-E0CD3BBCF97F}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,28 @@
+//---------------------------------
+// 2003/6/3 ±èÅÂ°ï
+//---------------------------------
+#include "Stock.h"
+#include "..\..\CommonLogic\CommonLogic.h"
+
+#include "..\..\Resource.h"
+
+extern cltCommonLogic* pclClient;
+
+
+//-----------------------------------------------
+// »çÀÚ ÆÈÀÚ ÁÖ¹® °ü¸®ÀÚ. 
+//-----------------------------------------------
+cltStockOrderManager::cltStockOrderManager() : cltTradeOrderManager(MAX_STOCK_ORDER_NUMBER)
+{
+
+}
+
+cltStockOrderManager::~cltStockOrderManager()
+{
+
+}
+
+
+
+
+

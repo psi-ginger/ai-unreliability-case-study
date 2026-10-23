@@ -1,0 +1,6 @@
+8 8
+0 0 0 0
+c:/goonzuworld/goonzu_japan/
+C:\GoonZuWorld\Goonzu_Japan\TextMgr\TextMgr.txt
+
+1

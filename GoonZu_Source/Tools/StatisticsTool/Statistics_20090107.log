@@ -1,0 +1,1512 @@
+if( type(NStatistics) ~= "table" ) then NStatistics = {} end
+NStatistics["2009-01-07"] = 
+{
+    ["DBNetMessage"] = 
+    {
+        ["23:00"] = 
+        {
+            ["1301"] = 
+            {
+                ["RecvSize"] = 1346880,
+                ["RecvCount"] = 120,
+            },
+            ["5002"] = 
+            {
+                ["RecvSize"] = 28800,
+                ["RecvCount"] = 1800,
+            },
+            ["1503"] = 
+            {
+                ["RecvSize"] = 144809280,
+                ["RecvCount"] = 2520,
+            },
+            ["1101"] = 
+            {
+                ["RecvSize"] = 884224,
+                ["RecvCount"] = 314,
+            },
+            ["6103"] = 
+            {
+                ["RecvSize"] = 488,
+                ["RecvCount"] = 1,
+            },
+            ["1100"] = 
+            {
+                ["SendSize"] = 3768,
+                ["SendCount"] = 314,
+            },
+            ["6102"] = 
+            {
+                ["SendSize"] = 22,
+                ["SendCount"] = 1,
+            },
+            ["2431"] = 
+            {
+                ["RecvSize"] = 43208,
+                ["RecvCount"] = 1,
+            },
+            ["1413"] = 
+            {
+                ["RecvSize"] = 840,
+                ["RecvCount"] = 70,
+            },
+            ["5831"] = 
+            {
+                ["RecvSize"] = 72,
+                ["RecvCount"] = 6,
+            },
+            ["5000"] = 
+            {
+                ["SendSize"] = 8640,
+                ["SendCount"] = 240,
+            },
+            ["5813"] = 
+            {
+                ["RecvSize"] = 2160,
+                ["RecvCount"] = 6,
+            },
+            ["1412"] = 
+            {
+                ["SendSize"] = 7280,
+                ["SendCount"] = 70,
+            },
+        },
+        ["22:00"] = 
+        {
+            ["1301"] = 
+            {
+                ["RecvSize"] = 1346880,
+                ["RecvCount"] = 120,
+            },
+            ["5002"] = 
+            {
+                ["RecvSize"] = 28800,
+                ["RecvCount"] = 1800,
+            },
+            ["1503"] = 
+            {
+                ["RecvSize"] = 144809280,
+                ["RecvCount"] = 2520,
+            },
+            ["1101"] = 
+            {
+                ["RecvSize"] = 853248,
+                ["RecvCount"] = 303,
+            },
+            ["6103"] = 
+            {
+                ["RecvSize"] = 488,
+                ["RecvCount"] = 1,
+            },
+            ["1100"] = 
+            {
+                ["SendSize"] = 3636,
+                ["SendCount"] = 303,
+            },
+            ["6102"] = 
+            {
+                ["SendSize"] = 22,
+                ["SendCount"] = 1,
+            },
+            ["2431"] = 
+            {
+                ["RecvSize"] = 43208,
+                ["RecvCount"] = 1,
+            },
+            ["1413"] = 
+            {
+                ["RecvSize"] = 816,
+                ["RecvCount"] = 68,
+            },
+            ["5831"] = 
+            {
+                ["RecvSize"] = 72,
+                ["RecvCount"] = 6,
+            },
+            ["5000"] = 
+            {
+                ["SendSize"] = 8640,
+                ["SendCount"] = 240,
+            },
+            ["5813"] = 
+            {
+                ["RecvSize"] = 2160,
+                ["RecvCount"] = 6,
+            },
+            ["1412"] = 
+            {
+                ["SendSize"] = 7072,
+                ["SendCount"] = 68,
+            },
+        },
+        ["17:00"] = 
+        {
+            ["2746"] = 
+            {
+                ["SendSize"] = 264,
+                ["SendCount"] = 22,
+            },
+            ["1123"] = 
+            {
+                ["RecvSize"] = 135072,
+                ["RecvCount"] = 42,
+            },
+            ["1339"] = 
+            {
+                ["RecvSize"] = 1344,
+                ["RecvCount"] = 42,
+            },
+            ["9022"] = 
+            {
+                ["RecvSize"] = 544,
+                ["RecvCount"] = 1,
+            },
+            ["5835"] = 
+            {
+                ["RecvSize"] = 3212,
+                ["RecvCount"] = 1,
+            },
+            ["2741"] = 
+            {
+                ["RecvSize"] = 10640,
+                ["RecvCount"] = 5,
+            },
+            ["9069"] = 
+            {
+                ["RecvSize"] = 56,
+                ["RecvCount"] = 1,
+            },
+            ["1313"] = 
+            {
+                ["RecvSize"] = 3216,
+                ["RecvCount"] = 1,
+            },
+            ["5028"] = 
+            {
+                ["RecvSize"] = 32,
+                ["RecvCount"] = 1,
+            },
+            ["9075"] = 
+            {
+                ["RecvSize"] = 36,
+                ["RecvCount"] = 1,
+            },
+            ["8929"] = 
+            {
+                ["RecvSize"] = 1096,
+                ["RecvCount"] = 2,
+            },
+            ["1566"] = 
+            {
+                ["SendSize"] = 12,
+                ["SendCount"] = 1,
+            },
+            ["1901"] = 
+            {
+                ["RecvSize"] = 5216,
+                ["RecvCount"] = 1,
+            },
+            ["9068"] = 
+            {
+                ["SendSize"] = 12,
+                ["SendCount"] = 1,
+            },
+            ["5103"] = 
+            {
+                ["RecvSize"] = 160,
+                ["RecvCount"] = 2,
+            },
+            ["2609"] = 
+            {
+                ["RecvSize"] = 84672,
+                ["RecvCount"] = 42,
+            },
+            ["27"] = 
+            {
+                ["RecvSize"] = 48,
+                ["RecvCount"] = 1,
+            },
+            ["5000"] = 
+            {
+                ["SendSize"] = 792,
+                ["SendCount"] = 22,
+            },
+            ["5851"] = 
+            {
+                ["RecvSize"] = 20,
+                ["RecvCount"] = 1,
+            },
+            ["403"] = 
+            {
+                ["RecvSize"] = 1512,
+                ["RecvCount"] = 42,
+            },
+            ["503"] = 
+            {
+                ["RecvSize"] = 12160,
+                ["RecvCount"] = 10,
+            },
+            ["5516"] = 
+            {
+                ["SendSize"] = 20,
+                ["SendCount"] = 1,
+            },
+            ["5841"] = 
+            {
+                ["RecvSize"] = 432,
+                ["RecvCount"] = 1,
+            },
+            ["1411"] = 
+            {
+                ["RecvSize"] = 12160,
+                ["RecvCount"] = 10,
+            },
+            ["5813"] = 
+            {
+                ["RecvSize"] = 720,
+                ["RecvCount"] = 2,
+            },
+            ["1413"] = 
+            {
+                ["RecvSize"] = 120,
+                ["RecvCount"] = 10,
+            },
+            ["5831"] = 
+            {
+                ["RecvSize"] = 12,
+                ["RecvCount"] = 1,
+            },
+            ["521"] = 
+            {
+                ["RecvSize"] = 24,
+                ["RecvCount"] = 1,
+            },
+            ["5002"] = 
+            {
+                ["RecvSize"] = 2608,
+                ["RecvCount"] = 163,
+            },
+            ["1101"] = 
+            {
+                ["RecvSize"] = 236544,
+                ["RecvCount"] = 84,
+            },
+            ["2101"] = 
+            {
+                ["RecvSize"] = 6016,
+                ["RecvCount"] = 1,
+            },
+            ["2601"] = 
+            {
+                ["RecvSize"] = 84672,
+                ["RecvCount"] = 42,
+            },
+            ["2715"] = 
+            {
+                ["RecvSize"] = 1220320,
+                ["RecvCount"] = 20,
+            },
+            ["1107"] = 
+            {
+                ["RecvSize"] = 1021440,
+                ["RecvCount"] = 840,
+            },
+            ["26"] = 
+            {
+                ["SendSize"] = 44,
+                ["SendCount"] = 1,
+            },
+            ["1109"] = 
+            {
+                ["RecvSize"] = 1144,
+                ["RecvCount"] = 2,
+            },
+            ["9063"] = 
+            {
+                ["RecvSize"] = 20,
+                ["RecvCount"] = 1,
+            },
+            ["9020"] = 
+            {
+                ["RecvSize"] = 28,
+                ["RecvCount"] = 1,
+            },
+            ["55"] = 
+            {
+                ["RecvSize"] = 24,
+                ["RecvCount"] = 1,
+            },
+            ["5016"] = 
+            {
+                ["RecvSize"] = 12,
+                ["RecvCount"] = 1,
+            },
+            ["5807"] = 
+            {
+                ["RecvSize"] = 368,
+                ["RecvCount"] = 1,
+            },
+            ["5319"] = 
+            {
+                ["RecvSize"] = 128,
+                ["RecvCount"] = 2,
+            },
+            ["2501"] = 
+            {
+                ["RecvSize"] = 6016,
+                ["RecvCount"] = 1,
+            },
+            ["308"] = 
+            {
+                ["SendSize"] = 100,
+                ["SendCount"] = 1,
+            },
+            ["1412"] = 
+            {
+                ["SendSize"] = 1040,
+                ["SendCount"] = 10,
+            },
+            ["5020"] = 
+            {
+                ["RecvSize"] = 812,
+                ["RecvCount"] = 1,
+            },
+            ["5701"] = 
+            {
+                ["RecvSize"] = 120,
+                ["RecvCount"] = 5,
+            },
+            ["5517"] = 
+            {
+                ["RecvSize"] = 4616,
+                ["RecvCount"] = 1,
+            },
+            ["5102"] = 
+            {
+                ["SendSize"] = 60,
+                ["SendCount"] = 5,
+            },
+            ["1401"] = 
+            {
+                ["RecvSize"] = 1687200,
+                ["RecvCount"] = 300,
+            },
+            ["376"] = 
+            {
+                ["RecvSize"] = 5136,
+                ["RecvCount"] = 1,
+            },
+            ["9087"] = 
+            {
+                ["RecvSize"] = 36,
+                ["RecvCount"] = 1,
+            },
+            ["1567"] = 
+            {
+                ["RecvSize"] = 76,
+                ["RecvCount"] = 1,
+            },
+            ["2001"] = 
+            {
+                ["RecvSize"] = 1616,
+                ["RecvCount"] = 1,
+            },
+            ["9"] = 
+            {
+                ["RecvSize"] = 6120,
+                ["RecvCount"] = 1,
+            },
+            ["15"] = 
+            {
+                ["RecvSize"] = 16728,
+                ["RecvCount"] = 1,
+            },
+            ["2433"] = 
+            {
+                ["RecvSize"] = 8006,
+                ["RecvCount"] = 1,
+            },
+            ["5303"] = 
+            {
+                ["RecvSize"] = 627984,
+                ["RecvCount"] = 672,
+            },
+            ["9001"] = 
+            {
+                ["RecvSize"] = 160,
+                ["RecvCount"] = 10,
+            },
+            ["9062"] = 
+            {
+                ["SendSize"] = 16,
+                ["SendCount"] = 1,
+            },
+            ["9019"] = 
+            {
+                ["SendSize"] = 20,
+                ["SendCount"] = 1,
+            },
+            ["375"] = 
+            {
+                ["SendSize"] = 12,
+                ["SendCount"] = 1,
+            },
+            ["54"] = 
+            {
+                ["SendSize"] = 8,
+                ["SendCount"] = 1,
+            },
+            ["1100"] = 
+            {
+                ["SendSize"] = 504,
+                ["SendCount"] = 42,
+            },
+            ["401"] = 
+            {
+                ["RecvSize"] = 1512,
+                ["RecvCount"] = 42,
+            },
+            ["5803"] = 
+            {
+                ["RecvSize"] = 360,
+                ["RecvCount"] = 1,
+            },
+            ["5423"] = 
+            {
+                ["RecvSize"] = 32,
+                ["RecvCount"] = 1,
+            },
+            ["9054"] = 
+            {
+                ["RecvSize"] = 24,
+                ["RecvCount"] = 1,
+            },
+            ["1503"] = 
+            {
+                ["RecvSize"] = 24134880,
+                ["RecvCount"] = 420,
+            },
+            ["427"] = 
+            {
+                ["RecvSize"] = 16,
+                ["RecvCount"] = 1,
+            },
+            ["5004"] = 
+            {
+                ["RecvSize"] = 32,
+                ["RecvCount"] = 1,
+            },
+            ["6103"] = 
+            {
+                ["RecvSize"] = 488,
+                ["RecvCount"] = 1,
+            },
+            ["5811"] = 
+            {
+                ["RecvSize"] = 332,
+                ["RecvCount"] = 1,
+            },
+            ["2431"] = 
+            {
+                ["RecvSize"] = 43208,
+                ["RecvCount"] = 1,
+            },
+            ["88"] = 
+            {
+                ["RecvSize"] = 1760,
+                ["RecvCount"] = 10,
+            },
+            ["5805"] = 
+            {
+                ["RecvSize"] = 4320,
+                ["RecvCount"] = 1,
+            },
+            ["1149"] = 
+            {
+                ["RecvSize"] = 153888,
+                ["RecvCount"] = 42,
+            },
+            ["6309"] = 
+            {
+                ["RecvSize"] = 3968,
+                ["RecvCount"] = 1,
+            },
+            ["1301"] = 
+            {
+                ["RecvSize"] = 1257088,
+                ["RecvCount"] = 112,
+            },
+            ["2301"] = 
+            {
+                ["RecvSize"] = 84672,
+                ["RecvCount"] = 42,
+            },
+            ["2309"] = 
+            {
+                ["RecvSize"] = 84672,
+                ["RecvCount"] = 42,
+            },
+            ["5419"] = 
+            {
+                ["RecvSize"] = 24,
+                ["RecvCount"] = 1,
+            },
+            ["9003"] = 
+            {
+                ["RecvSize"] = 160,
+                ["RecvCount"] = 1,
+            },
+            ["9086"] = 
+            {
+                ["SendSize"] = 12,
+                ["SendCount"] = 1,
+            },
+            ["5801"] = 
+            {
+                ["RecvSize"] = 336,
+                ["RecvCount"] = 1,
+            },
+            ["5833"] = 
+            {
+                ["RecvSize"] = 3212,
+                ["RecvCount"] = 1,
+            },
+            ["5845"] = 
+            {
+                ["RecvSize"] = 3372,
+                ["RecvCount"] = 1,
+            },
+            ["1505"] = 
+            {
+                ["RecvSize"] = 84672,
+                ["RecvCount"] = 42,
+            },
+            ["309"] = 
+            {
+                ["RecvSize"] = 184,
+                ["RecvCount"] = 1,
+            },
+            ["1317"] = 
+            {
+                ["RecvSize"] = 96624,
+                ["RecvCount"] = 99,
+            },
+            ["5809"] = 
+            {
+                ["RecvSize"] = 368,
+                ["RecvCount"] = 1,
+            },
+            ["1309"] = 
+            {
+                ["RecvSize"] = 1616,
+                ["RecvCount"] = 1,
+            },
+            ["2747"] = 
+            {
+                ["RecvSize"] = 704,
+                ["RecvCount"] = 22,
+            },
+            ["5030"] = 
+            {
+                ["RecvSize"] = 24,
+                ["RecvCount"] = 1,
+            },
+        },
+        ["20:00"] = 
+        {
+            ["2720"] = 
+            {
+                ["SendSize"] = 64,
+                ["SendCount"] = 2,
+            },
+            ["1503"] = 
+            {
+                ["RecvSize"] = 144809280,
+                ["RecvCount"] = 2520,
+            },
+            ["2431"] = 
+            {
+                ["RecvSize"] = 43208,
+                ["RecvCount"] = 1,
+            },
+            ["1413"] = 
+            {
+                ["RecvSize"] = 1224,
+                ["RecvCount"] = 102,
+            },
+            ["5831"] = 
+            {
+                ["RecvSize"] = 72,
+                ["RecvCount"] = 6,
+            },
+            ["2712"] = 
+            {
+                ["SendSize"] = 56,
+                ["SendCount"] = 2,
+            },
+            ["1301"] = 
+            {
+                ["RecvSize"] = 1346880,
+                ["RecvCount"] = 120,
+            },
+            ["301"] = 
+            {
+                ["RecvSize"] = 184,
+                ["RecvCount"] = 1,
+            },
+            ["5002"] = 
+            {
+                ["RecvSize"] = 28800,
+                ["RecvCount"] = 1800,
+            },
+            ["1101"] = 
+            {
+                ["RecvSize"] = 827904,
+                ["RecvCount"] = 294,
+            },
+            ["6103"] = 
+            {
+                ["RecvSize"] = 488,
+                ["RecvCount"] = 1,
+            },
+            ["1100"] = 
+            {
+                ["SendSize"] = 3528,
+                ["SendCount"] = 294,
+            },
+            ["6102"] = 
+            {
+                ["SendSize"] = 22,
+                ["SendCount"] = 1,
+            },
+            ["2721"] = 
+            {
+                ["RecvSize"] = 4960,
+                ["RecvCount"] = 2,
+            },
+            ["300"] = 
+            {
+                ["SendSize"] = 108,
+                ["SendCount"] = 1,
+            },
+            ["2713"] = 
+            {
+                ["RecvSize"] = 4912,
+                ["RecvCount"] = 2,
+            },
+            ["5000"] = 
+            {
+                ["SendSize"] = 8640,
+                ["SendCount"] = 240,
+            },
+            ["5813"] = 
+            {
+                ["RecvSize"] = 2160,
+                ["RecvCount"] = 6,
+            },
+            ["1412"] = 
+            {
+                ["SendSize"] = 10608,
+                ["SendCount"] = 102,
+            },
+        },
+        ["18:00"] = 
+        {
+            ["1301"] = 
+            {
+                ["RecvSize"] = 718336,
+                ["RecvCount"] = 64,
+            },
+            ["5002"] = 
+            {
+                ["RecvSize"] = 15408,
+                ["RecvCount"] = 963,
+            },
+            ["1503"] = 
+            {
+                ["RecvSize"] = 72404640,
+                ["RecvCount"] = 1260,
+            },
+            ["1101"] = 
+            {
+                ["RecvSize"] = 436480,
+                ["RecvCount"] = 155,
+            },
+            ["6103"] = 
+            {
+                ["RecvSize"] = 488,
+                ["RecvCount"] = 1,
+            },
+            ["1100"] = 
+            {
+                ["SendSize"] = 1860,
+                ["SendCount"] = 155,
+            },
+            ["5813"] = 
+            {
+                ["RecvSize"] = 1440,
+                ["RecvCount"] = 4,
+            },
+            ["1413"] = 
+            {
+                ["RecvSize"] = 720,
+                ["RecvCount"] = 60,
+            },
+            ["5831"] = 
+            {
+                ["RecvSize"] = 48,
+                ["RecvCount"] = 4,
+            },
+            ["5000"] = 
+            {
+                ["SendSize"] = 4608,
+                ["SendCount"] = 128,
+            },
+            ["6102"] = 
+            {
+                ["SendSize"] = 22,
+                ["SendCount"] = 1,
+            },
+            ["1412"] = 
+            {
+                ["SendSize"] = 6240,
+                ["SendCount"] = 60,
+            },
+        },
+        ["19:00"] = 
+        {
+            ["1301"] = 
+            {
+                ["RecvSize"] = 1346880,
+                ["RecvCount"] = 120,
+            },
+            ["301"] = 
+            {
+                ["RecvSize"] = 184,
+                ["RecvCount"] = 1,
+            },
+            ["5002"] = 
+            {
+                ["RecvSize"] = 28800,
+                ["RecvCount"] = 1800,
+            },
+            ["1503"] = 
+            {
+                ["RecvSize"] = 144809280,
+                ["RecvCount"] = 2520,
+            },
+            ["1101"] = 
+            {
+                ["RecvSize"] = 864512,
+                ["RecvCount"] = 307,
+            },
+            ["6103"] = 
+            {
+                ["RecvSize"] = 488,
+                ["RecvCount"] = 1,
+            },
+            ["6102"] = 
+            {
+                ["SendSize"] = 22,
+                ["SendCount"] = 1,
+            },
+            ["1100"] = 
+            {
+                ["SendSize"] = 3684,
+                ["SendCount"] = 307,
+            },
+            ["5813"] = 
+            {
+                ["RecvSize"] = 2160,
+                ["RecvCount"] = 6,
+            },
+            ["2431"] = 
+            {
+                ["RecvSize"] = 43208,
+                ["RecvCount"] = 1,
+            },
+            ["300"] = 
+            {
+                ["SendSize"] = 108,
+                ["SendCount"] = 1,
+            },
+            ["5831"] = 
+            {
+                ["RecvSize"] = 72,
+                ["RecvCount"] = 6,
+            },
+            ["5000"] = 
+            {
+                ["SendSize"] = 8640,
+                ["SendCount"] = 240,
+            },
+            ["1413"] = 
+            {
+                ["RecvSize"] = 1332,
+                ["RecvCount"] = 111,
+            },
+            ["1412"] = 
+            {
+                ["SendSize"] = 11544,
+                ["SendCount"] = 111,
+            },
+        },
+        ["21:00"] = 
+        {
+            ["76"] = 
+            {
+                ["SendSize"] = 80,
+                ["SendCount"] = 1,
+            },
+            ["77"] = 
+            {
+                ["RecvSize"] = 84,
+                ["RecvCount"] = 1,
+            },
+            ["1503"] = 
+            {
+                ["RecvSize"] = 144809280,
+                ["RecvCount"] = 2520,
+            },
+            ["30"] = 
+            {
+                ["SendSize"] = 32,
+                ["SendCount"] = 1,
+            },
+            ["5872"] = 
+            {
+                ["SendSize"] = 216,
+                ["SendCount"] = 1,
+            },
+            ["2431"] = 
+            {
+                ["RecvSize"] = 43208,
+                ["RecvCount"] = 1,
+            },
+            ["1413"] = 
+            {
+                ["RecvSize"] = 864,
+                ["RecvCount"] = 72,
+            },
+            ["5831"] = 
+            {
+                ["RecvSize"] = 72,
+                ["RecvCount"] = 6,
+            },
+            ["6102"] = 
+            {
+                ["SendSize"] = 22,
+                ["SendCount"] = 1,
+            },
+            ["28"] = 
+            {
+                ["SendSize"] = 24,
+                ["SendCount"] = 1,
+            },
+            ["78"] = 
+            {
+                ["SendSize"] = 80,
+                ["SendCount"] = 1,
+            },
+            ["1301"] = 
+            {
+                ["RecvSize"] = 1346880,
+                ["RecvCount"] = 120,
+            },
+            ["23"] = 
+            {
+                ["RecvSize"] = 12,
+                ["RecvCount"] = 1,
+            },
+            ["301"] = 
+            {
+                ["RecvSize"] = 184,
+                ["RecvCount"] = 1,
+            },
+            ["5002"] = 
+            {
+                ["RecvSize"] = 28800,
+                ["RecvCount"] = 1800,
+            },
+            ["29"] = 
+            {
+                ["RecvSize"] = 12,
+                ["RecvCount"] = 1,
+            },
+            ["1101"] = 
+            {
+                ["RecvSize"] = 827904,
+                ["RecvCount"] = 294,
+            },
+            ["6103"] = 
+            {
+                ["RecvSize"] = 488,
+                ["RecvCount"] = 1,
+            },
+            ["26"] = 
+            {
+                ["SendSize"] = 44,
+                ["SendCount"] = 1,
+            },
+            ["1100"] = 
+            {
+                ["SendSize"] = 3528,
+                ["SendCount"] = 294,
+            },
+            ["5813"] = 
+            {
+                ["RecvSize"] = 2160,
+                ["RecvCount"] = 6,
+            },
+            ["27"] = 
+            {
+                ["RecvSize"] = 48,
+                ["RecvCount"] = 1,
+            },
+            ["300"] = 
+            {
+                ["SendSize"] = 108,
+                ["SendCount"] = 1,
+            },
+            ["31"] = 
+            {
+                ["RecvSize"] = 36,
+                ["RecvCount"] = 1,
+            },
+            ["5000"] = 
+            {
+                ["SendSize"] = 8640,
+                ["SendCount"] = 240,
+            },
+            ["22"] = 
+            {
+                ["SendSize"] = 48,
+                ["SendCount"] = 1,
+            },
+            ["1412"] = 
+            {
+                ["SendSize"] = 7488,
+                ["SendCount"] = 72,
+            },
+        },
+    },
+    ["NetMessage"] = 
+    {
+        ["17:00"] = 
+        {
+            ["152"] = 
+            {
+                ["RecvSize"] = 6,
+                ["RecvCount"] = 1,
+            },
+            ["7220"] = 
+            {
+                ["RecvSize"] = 25,
+                ["RecvCount"] = 5,
+            },
+            ["1148"] = 
+            {
+                ["RecvSize"] = 9,
+                ["RecvCount"] = 1,
+            },
+            ["6801"] = 
+            {
+                ["SendSize"] = 30,
+                ["SendCount"] = 5,
+            },
+            ["7606"] = 
+            {
+                ["SendSize"] = 6,
+                ["SendCount"] = 1,
+            },
+            ["177"] = 
+            {
+                ["SendSize"] = 525,
+                ["SendCount"] = 25,
+            },
+            ["8064"] = 
+            {
+                ["SendSize"] = 9,
+                ["SendCount"] = 1,
+            },
+            ["1108"] = 
+            {
+                ["SendSize"] = 65,
+                ["SendCount"] = 5,
+            },
+            ["7216"] = 
+            {
+                ["SendSize"] = 160,
+                ["SendCount"] = 20,
+            },
+            ["1149"] = 
+            {
+                ["SendSize"] = 265,
+                ["SendCount"] = 1,
+            },
+            ["1"] = 
+            {
+                ["SendSize"] = 13,
+                ["SendCount"] = 1,
+            },
+            ["150"] = 
+            {
+                ["RecvSize"] = 6,
+                ["RecvCount"] = 1,
+            },
+            ["3"] = 
+            {
+                ["SendSize"] = 6303,
+                ["SendCount"] = 3,
+            },
+            ["2"] = 
+            {
+                ["RecvSize"] = 53,
+                ["RecvCount"] = 1,
+            },
+            ["5"] = 
+            {
+                ["SendSize"] = 1605,
+                ["SendCount"] = 5,
+            },
+            ["4"] = 
+            {
+                ["RecvSize"] = 9,
+                ["RecvCount"] = 1,
+            },
+            ["1502"] = 
+            {
+                ["SendSize"] = 2409,
+                ["SendCount"] = 1,
+            },
+            ["7600"] = 
+            {
+                ["SendSize"] = 13,
+                ["SendCount"] = 1,
+            },
+            ["1170"] = 
+            {
+                ["SendSize"] = 90,
+                ["SendCount"] = 2,
+            },
+            ["5129"] = 
+            {
+                ["RecvSize"] = 14,
+                ["RecvCount"] = 2,
+            },
+            ["7617"] = 
+            {
+                ["SendSize"] = 13,
+                ["SendCount"] = 1,
+            },
+            ["1501"] = 
+            {
+                ["RecvSize"] = 9,
+                ["RecvCount"] = 1,
+            },
+            ["5130"] = 
+            {
+                ["SendSize"] = 106,
+                ["SendCount"] = 2,
+            },
+            ["8001"] = 
+            {
+                ["SendSize"] = 89,
+                ["SendCount"] = 1,
+            },
+            ["1102"] = 
+            {
+                ["SendSize"] = 27,
+                ["SendCount"] = 1,
+            },
+            ["5217"] = 
+            {
+                ["SendSize"] = 21,
+                ["SendCount"] = 1,
+            },
+            ["5122"] = 
+            {
+                ["SendSize"] = 538,
+                ["SendCount"] = 2,
+            },
+            ["246"] = 
+            {
+                ["RecvSize"] = 5,
+                ["RecvCount"] = 1,
+            },
+            ["116"] = 
+            {
+                ["SendSize"] = 138,
+                ["SendCount"] = 2,
+            },
+            ["8097"] = 
+            {
+                ["SendSize"] = 11,
+                ["SendCount"] = 1,
+            },
+            ["154"] = 
+            {
+                ["RecvSize"] = 6,
+                ["RecvCount"] = 1,
+            },
+            ["7210"] = 
+            {
+                ["SendSize"] = 109,
+                ["SendCount"] = 1,
+            },
+            ["6807"] = 
+            {
+                ["RecvSize"] = 29,
+                ["RecvCount"] = 1,
+            },
+            ["5121"] = 
+            {
+                ["RecvSize"] = 26,
+                ["RecvCount"] = 2,
+            },
+            ["8140"] = 
+            {
+                ["SendSize"] = 49,
+                ["SendCount"] = 1,
+            },
+            ["106"] = 
+            {
+                ["SendSize"] = 106,
+                ["SendCount"] = 2,
+            },
+            ["216"] = 
+            {
+                ["SendSize"] = 34,
+                ["SendCount"] = 2,
+            },
+            ["270"] = 
+            {
+                ["SendSize"] = 17,
+                ["SendCount"] = 1,
+            },
+            ["243"] = 
+            {
+                ["RecvSize"] = 45,
+                ["RecvCount"] = 5,
+            },
+            ["240"] = 
+            {
+                ["RecvSize"] = 6496,
+                ["RecvCount"] = 224,
+            },
+            ["8181"] = 
+            {
+                ["SendSize"] = 29,
+                ["SendCount"] = 1,
+            },
+            ["6800"] = 
+            {
+                ["RecvSize"] = 45,
+                ["RecvCount"] = 5,
+            },
+            ["6219"] = 
+            {
+                ["SendSize"] = 5105,
+                ["SendCount"] = 1,
+            },
+            ["1208"] = 
+            {
+                ["SendSize"] = 18,
+                ["SendCount"] = 2,
+            },
+            ["249"] = 
+            {
+                ["SendSize"] = 10413,
+                ["SendCount"] = 1,
+            },
+            ["349"] = 
+            {
+                ["SendSize"] = 5125,
+                ["SendCount"] = 1,
+            },
+            ["101"] = 
+            {
+                ["SendSize"] = 143,
+                ["SendCount"] = 13,
+            },
+            ["1101"] = 
+            {
+                ["RecvSize"] = 9,
+                ["RecvCount"] = 1,
+            },
+            ["7203"] = 
+            {
+                ["SendSize"] = 16025,
+                ["SendCount"] = 5,
+            },
+            ["2926"] = 
+            {
+                ["SendSize"] = 81,
+                ["SendCount"] = 1,
+            },
+            ["148"] = 
+            {
+                ["RecvSize"] = 6,
+                ["RecvCount"] = 1,
+            },
+            ["5101"] = 
+            {
+                ["SendSize"] = 1162,
+                ["SendCount"] = 2,
+            },
+            ["128"] = 
+            {
+                ["SendSize"] = 17,
+                ["SendCount"] = 1,
+            },
+            ["248"] = 
+            {
+                ["SendSize"] = 6933,
+                ["SendCount"] = 1,
+            },
+            ["5100"] = 
+            {
+                ["RecvSize"] = 26,
+                ["RecvCount"] = 2,
+            },
+            ["100"] = 
+            {
+                ["RecvSize"] = 35,
+                ["RecvCount"] = 7,
+            },
+            ["7202"] = 
+            {
+                ["RecvSize"] = 45,
+                ["RecvCount"] = 5,
+            },
+            ["244"] = 
+            {
+                ["SendSize"] = 145,
+                ["SendCount"] = 5,
+            },
+        },
+        ["20:00"] = 
+        {
+            ["1208"] = 
+            {
+                ["SendSize"] = 135,
+                ["SendCount"] = 15,
+            },
+            ["1108"] = 
+            {
+                ["SendSize"] = 26,
+                ["SendCount"] = 2,
+            },
+            ["101"] = 
+            {
+                ["SendSize"] = 2640,
+                ["SendCount"] = 240,
+            },
+            ["121"] = 
+            {
+                ["RecvSize"] = 630,
+                ["RecvCount"] = 90,
+            },
+            ["1170"] = 
+            {
+                ["SendSize"] = 540,
+                ["SendCount"] = 12,
+            },
+            ["216"] = 
+            {
+                ["SendSize"] = 34,
+                ["SendCount"] = 2,
+            },
+            ["177"] = 
+            {
+                ["SendSize"] = 8820,
+                ["SendCount"] = 420,
+            },
+            ["100"] = 
+            {
+                ["RecvSize"] = 600,
+                ["RecvCount"] = 120,
+            },
+            ["7210"] = 
+            {
+                ["SendSize"] = 109,
+                ["SendCount"] = 1,
+            },
+            ["7216"] = 
+            {
+                ["SendSize"] = 2880,
+                ["SendCount"] = 360,
+            },
+            ["7909"] = 
+            {
+                ["SendSize"] = 9,
+                ["SendCount"] = 1,
+            },
+        },
+        ["18:00"] = 
+        {
+            ["1170"] = 
+            {
+                ["SendSize"] = 270,
+                ["SendCount"] = 6,
+            },
+            ["1208"] = 
+            {
+                ["SendSize"] = 72,
+                ["SendCount"] = 8,
+            },
+            ["1108"] = 
+            {
+                ["SendSize"] = 13,
+                ["SendCount"] = 1,
+            },
+            ["177"] = 
+            {
+                ["SendSize"] = 4725,
+                ["SendCount"] = 225,
+            },
+            ["101"] = 
+            {
+                ["SendSize"] = 1408,
+                ["SendCount"] = 128,
+            },
+            ["100"] = 
+            {
+                ["RecvSize"] = 320,
+                ["RecvCount"] = 64,
+            },
+            ["7216"] = 
+            {
+                ["SendSize"] = 1544,
+                ["SendCount"] = 193,
+            },
+            ["121"] = 
+            {
+                ["RecvSize"] = 336,
+                ["RecvCount"] = 48,
+            },
+        },
+        ["19:00"] = 
+        {
+            ["1208"] = 
+            {
+                ["SendSize"] = 135,
+                ["SendCount"] = 15,
+            },
+            ["1108"] = 
+            {
+                ["SendSize"] = 26,
+                ["SendCount"] = 2,
+            },
+            ["101"] = 
+            {
+                ["SendSize"] = 2640,
+                ["SendCount"] = 240,
+            },
+            ["121"] = 
+            {
+                ["RecvSize"] = 630,
+                ["RecvCount"] = 90,
+            },
+            ["240"] = 
+            {
+                ["RecvSize"] = 29,
+                ["RecvCount"] = 1,
+            },
+            ["1170"] = 
+            {
+                ["SendSize"] = 540,
+                ["SendCount"] = 12,
+            },
+            ["216"] = 
+            {
+                ["SendSize"] = 34,
+                ["SendCount"] = 2,
+            },
+            ["177"] = 
+            {
+                ["SendSize"] = 8820,
+                ["SendCount"] = 420,
+            },
+            ["100"] = 
+            {
+                ["RecvSize"] = 600,
+                ["RecvCount"] = 120,
+            },
+            ["7216"] = 
+            {
+                ["SendSize"] = 2880,
+                ["SendCount"] = 360,
+            },
+            ["7210"] = 
+            {
+                ["SendSize"] = 109,
+                ["SendCount"] = 1,
+            },
+        },
+        ["21:00"] = 
+        {
+            ["107"] = 
+            {
+                ["RecvSize"] = 5,
+                ["RecvCount"] = 1,
+            },
+            ["1208"] = 
+            {
+                ["SendSize"] = 27,
+                ["SendCount"] = 3,
+            },
+            ["1108"] = 
+            {
+                ["SendSize"] = 13,
+                ["SendCount"] = 1,
+            },
+            ["101"] = 
+            {
+                ["SendSize"] = 616,
+                ["SendCount"] = 56,
+            },
+            ["121"] = 
+            {
+                ["RecvSize"] = 147,
+                ["RecvCount"] = 21,
+            },
+            ["240"] = 
+            {
+                ["RecvSize"] = 29,
+                ["RecvCount"] = 1,
+            },
+            ["1170"] = 
+            {
+                ["SendSize"] = 135,
+                ["SendCount"] = 3,
+            },
+            ["177"] = 
+            {
+                ["SendSize"] = 2058,
+                ["SendCount"] = 98,
+            },
+            ["108"] = 
+            {
+                ["SendSize"] = 5,
+                ["SendCount"] = 1,
+            },
+            ["7210"] = 
+            {
+                ["SendSize"] = 109,
+                ["SendCount"] = 1,
+            },
+            ["7216"] = 
+            {
+                ["SendSize"] = 664,
+                ["SendCount"] = 83,
+            },
+            ["100"] = 
+            {
+                ["RecvSize"] = 140,
+                ["RecvCount"] = 28,
+            },
+        },
+    },
+}
+-- time:47ms

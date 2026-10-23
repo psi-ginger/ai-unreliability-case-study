@@ -1,0 +1,4 @@
+Date	2005.12.20	
+HorseNum	1	
+HorseName	HorseCode	HorseIndex
+Á¶¶û¸»	HOR01	0

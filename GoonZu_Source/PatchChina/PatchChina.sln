@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PatchChina", "PatchChina.vcproj", "{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {F8611F77-12EF-4F9D-B605-4724CD3CA953}
+		SccProjectUniqueName1 = PatchChina.vcproj
+		SccProjectName1 = \u0022$/0901OBT_GOONZU\u0022,\u0020SYMAAAAA
+		SccLocalPath1 = ..
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection1 = PatchChina\\
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+		ReleaseChina = ReleaseChina
+		ReleaseEnglish = ReleaseEnglish
+		ReleaseNetmarble = ReleaseNetmarble
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.Debug.ActiveCfg = Debug|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.Debug.Build.0 = Debug|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.Release.ActiveCfg = Release|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.Release.Build.0 = Release|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseChina.ActiveCfg = ReleaseChina|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseChina.Build.0 = ReleaseChina|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseEnglish.ActiveCfg = ReleaseEnglish|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseEnglish.Build.0 = ReleaseEnglish|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseNetmarble.ActiveCfg = ReleaseNetmarble|Win32
+		{EC52DE3F-C0A0-49F0-AC65-CDF8B52C20B4}.ReleaseNetmarble.Build.0 = ReleaseNetmarble|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
