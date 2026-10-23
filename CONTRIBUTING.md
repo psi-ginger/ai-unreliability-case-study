@@ -60,7 +60,7 @@ Before starting any implementation, check the table below. Claim an **`⚪ Avail
 | **MOD-01** | **Cargo & Project Scaffold** | `Client.h` / Root | `Cargo.toml`, `src/main.rs`, `src/config.rs` | `feat/mod-01-scaffold` | 🟢 Completed | PsiGinger / Agent 1 | Clean `cargo check` & builds verified |
 | **MOD-02** | **State Box (FSM)** | Client/Network/StateBox.h | src/client/state_box.rs | 🟢 Completed | feat/mod-02-statebox | cargo check & cargo test passed (3 tests) |
 | **MOD-03** | **Network Session** | NetworkLib/ITZNetLib | src/network/net_session.rs | 🟢 Completed | feat/mod-03-net-session | cargo check & cargo test passed (4 tests) |
-| **MOD-04** | **World List** | `Client/WorldList.h` | `src/world/world_list.rs` | `feat/mod-04-world-list` | ⚪ Available | - | Struct size & field layout parity |
+| **MOD-04** | **World List** | Client/WorldList.h | src/world/world_list.rs | 🟡 In Progress | feat/mod-04-world-list | Struct size & field layout parity |
 | **MOD-05** | **Char Client Data** | `Client/Char/Char-Client.h` | `src/char/char_client.rs` | `feat/mod-05-char-client` | ⚪ Available | - | Character stats, position, slots |
 | **MOD-06** | **CltClient Core Class** | `Client/Client.h`, `Client.cpp` | `src/client/clt_client.rs` | `feat/mod-06-clt-client` | ⚪ Available | - | Aggregates all managers |
 | **MOD-07** | **Front Login Handler** | `Client/Client-Login.cpp` | `src/client/client_login.rs` | `feat/mod-07-front-login` | ⚪ Available | - | Opcodes 30000, 21, 1000, 3, 1002 |

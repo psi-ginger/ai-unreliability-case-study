@@ -1,6 +1,7 @@
 mod client;
 mod config;
 mod network;
+mod world;
 
 use clap::Parser;
 use config::EndpointMode;
