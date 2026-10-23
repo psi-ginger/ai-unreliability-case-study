@@ -58,7 +58,7 @@ Before starting any implementation, check the table below. Claim an **`⚪ Avail
 | ID | Module Name | C++ Source Reference | Target Rust File | Quarantine Branch | Status | Claimed By | Verification Gate |
 |---|---|---|---|---|---|---|---|
 | **MOD-01** | **Cargo & Project Scaffold** | `Client.h` / Root | `Cargo.toml`, `src/main.rs`, `src/config.rs` | `feat/mod-01-scaffold` | 🟢 Completed | PsiGinger / Agent 1 | Clean `cargo check` & builds verified |
-| **MOD-02** | **State Box (FSM)** | `Client/Network/StateBox.h` | `src/client/state_box.rs` | `feat/mod-02-statebox` | ⚪ Available | - | Enum state parity with C++ |
+| **MOD-02** | **State Box (FSM)** | Client/Network/StateBox.h | src/client/state_box.rs | 🟢 Completed | feat/mod-02-statebox | cargo check & cargo test passed (3 tests) |
 | **MOD-03** | **Network Session** | `NetworkLib/ITZNetLib` | `src/network/net_session.rs` | `feat/mod-03-net-session` | ⚪ Available | - | TCP socket + `gz-cipher` framing |
 | **MOD-04** | **World List** | `Client/WorldList.h` | `src/world/world_list.rs` | `feat/mod-04-world-list` | ⚪ Available | - | Struct size & field layout parity |
 | **MOD-05** | **Char Client Data** | `Client/Char/Char-Client.h` | `src/char/char_client.rs` | `feat/mod-05-char-client` | ⚪ Available | - | Character stats, position, slots |
