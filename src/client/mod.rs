@@ -1,3 +1,4 @@
+pub mod client_loop;
 pub mod client_game_entry;
 pub mod client_login;
 pub mod clt_client;

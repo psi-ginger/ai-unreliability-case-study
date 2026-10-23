@@ -65,7 +65,7 @@ Before starting any implementation, check the table below. Claim an **`⚪ Avail
 | **MOD-06** | **CltClient Core Class** | Client/Client.h, Client.cpp | src/client/clt_client.rs | 🟢 Completed | feat/mod-06-clt-client | cargo check & cargo test passed (8 tests) |
 | **MOD-07** | **Front Login Handler** | Client/Client-Login.cpp | src/client/client_login.rs | 🟢 Completed | feat/mod-07-front-login | cargo check & cargo test passed (10 tests) |
 | **MOD-08** | **Game Entry Handler** | Client/Client-ServerReturn.cpp | src/client/client_game_entry.rs | 🟢 Completed | feat/mod-08-game-entry | cargo check & cargo test passed (12 tests) |
-| **MOD-09** | **In-Game Event Loop** | `Client/Client-Winsock.cpp` | `src/client/client_loop.rs` | `feat/mod-09-in-game-loop` | ⚪ Available | - | Heartbeat (Op 100) + Broadcasts |
+| **MOD-09** | **In-Game Event Loop** | Client/Client-Winsock.cpp | src/client/client_loop.rs | 🟡 In Progress | feat/mod-09-in-game-loop | Heartbeat (Op 100) + Broadcasts |
 | **MOD-10** | **Chat & Broadcasts** | `Client/Client-Message.cpp` | `src/client/client_chat.rs` | `feat/mod-10-chat-broadcast` | ⚪ Available | - | Opcode 118 & system messages |
 
 *Status Legend:*
