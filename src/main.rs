@@ -28,11 +28,16 @@ async fn main() -> anyhow::Result<()> {
     let args = Args::parse();
     let mode = if args.ngrok { EndpointMode::Ngrok } else { EndpointMode::Local };
     let mut client = CltClient::new(mode, args.user, args.pass);
+    tracing::info!("connecting to front...");
     client.connect_front().await?;
     client.login_front().await?;
+    tracing::info!("front login ok, auth_key={}", client.auth_key);
     client.fetch_world_list().await?;
+    tracing::info!("world list fetched, count={}", client.world_list.get_count());
+    tracing::info!("connecting to game...");
     client.connect_game(None).await?;
     client.auth_game().await?;
+    tracing::info!("game auth ok, entering world...");
     client.enter_world(args.slot).await?;
     let (tx, rx) = tokio::sync::watch::channel(false);
     let _ = tx;

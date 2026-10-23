@@ -30,10 +30,12 @@ impl CltClient {
         loop {
             tokio::select! {
                 _ = ticker.tick() => {
+                    tracing::info!("in world loop: sending heartbeat...");
                     let _ = self.send_heartbeat().await;
                 }
                 res = self.poll_game_packet() => {
                     if let Ok(Some(frame)) = res {
+                        tracing::info!("in world loop: received packet opcode={}", frame.cmd());
                         match frame.cmd() {
                             x if x == GameMsg::ResponsePersonIp as u16 => {
                                 let p = frame.payload();
