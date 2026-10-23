@@ -29,15 +29,12 @@ impl CltClient {
     }
 
     pub async fn login_front(&mut self) -> anyhow::Result<()> {
-        let mut body = vec![0u8; 2108];
-        let id = self.account_id.as_bytes();
-        let pw = self.password.as_bytes();
-        for (i, b) in id.iter().take(19).enumerate() {
-            body[i] = *b;
-        }
-        for (i, b) in pw.iter().take(19).enumerate() {
-            body[20 + i] = *b;
-        }
+        let mut w = gz_proto::wire::Writer::new();
+        w.fixed_str(&self.account_id, 20);
+        w.fixed_str(&self.password, 20);
+        w.fixed_str("00-00-00-00-00-00", 20);
+        w.pad(2048);
+        let body = w.finish();
         let frame = Frame::new(FrontMsg::RequestEnglishLogin as u16, &body)?;
         let session = self.front_session.as_mut().ok_or_else(|| anyhow::anyhow!("no front session"))?;
         session.send_frame(&frame).await?;
@@ -45,15 +42,19 @@ impl CltClient {
         if resp.cmd() != 1000 {
             return Err(anyhow::anyhow!("expected login response"));
         }
-        if !resp.payload().is_empty() && resp.payload()[0] != 0 {
-            // result field may be u16 at 0
-        }
+        // notice handshake
+        let notice_req = Frame::new(FrontMsg::RequestNotice as u16, &[])?;
+        session.send_frame(&notice_req).await?;
+        let _notice_resp = session.recv_frame().await?;
         self.set_state(UserState::FrontAuthOk);
         Ok(())
     }
 
     pub async fn fetch_world_list(&mut self) -> anyhow::Result<()> {
-        let frame = Frame::new(FrontMsg::RequestWorldlist as u16, &[0u8; 4])?;
+        let mut w = gz_proto::wire::Writer::new();
+        w.fixed_str(&self.account_id, 20);
+        let body = w.finish();
+        let frame = Frame::new(FrontMsg::RequestWorldlist as u16, &body)?;
         let session = self.front_session.as_mut().ok_or_else(|| anyhow::anyhow!("no front session"))?;
         session.send_frame(&frame).await?;
         let resp = session.recv_frame().await?;
