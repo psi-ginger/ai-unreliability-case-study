@@ -1,5 +1,6 @@
 mod client;
 mod config;
+mod network;
 
 use clap::Parser;
 use config::EndpointMode;
