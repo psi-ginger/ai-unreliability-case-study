@@ -1,6 +1,34 @@
 # Contributing & AI Work Coordination Guide
 
-Welcome to the **GoonZu Client (Rust Port)** project. This document coordinates tasks across multiple independent AI instances, platforms (Cursor, Claude, ChatGPT, Copilot, etc.), and human contributors.
+Welcome to the **GoonZu Client (Rust Port)** project. This document coordinates tasks across multiple independent AI instances, remote machines/environments, and human contributors.
+
+---
+
+## 🛡️ Quarantine Branch Protocol (STRICTLY ENFORCED)
+
+> [!CAUTION]
+> **NEVER PUSH DIRECTLY TO `main`!**
+> The `main` branch is locked and reserved exclusively for verified, working, and QC-approved code. All contributors and external AI instances must work inside dedicated quarantine branches.
+
+### Branching Rules:
+1. **Branch Naming Standard:**
+   - Every claimed module must be developed on a quarantine branch named:
+     `feat/<module-id>-<short-description>` (e.g. `feat/mod-01-scaffold`, `feat/mod-02-statebox`).
+2. **Quarantine Isolation:**
+   - Check out from the latest `main`:
+     ```bash
+     git checkout main && git pull origin main
+     git checkout -b feat/<module-id>-<short-description>
+     ```
+3. **Quarantine Push:**
+   - Once implementation passes local `cargo check`, push ONLY to your quarantine branch:
+     ```bash
+     git add .
+     git commit -m "feat(<module-id>): implement <description>"
+     git push origin feat/<module-id>-<short-description>
+     ```
+4. **QC Release & Merge Gate:**
+   - The Lead QC (local workstation) will pull the quarantine branch, verify 1-1 C++ parity, run socket integration tests, and merge into `main`.
 
 ---
 
@@ -25,44 +53,45 @@ Welcome to the **GoonZu Client (Rust Port)** project. This document coordinates 
 
 ## 📋 Module Claiming & Work Tracker
 
-Before starting any implementation, check the table below. Claim an **`⚪ Available`** module by marking it **`🟡 In Progress`** and filling in your contributor/AI name. Once tested and verified, mark it **`🟢 Completed`**.
+Before starting any implementation, check the table below. Claim an **`⚪ Available`** module by marking it **`🟡 In Progress`** and filling in your contributor/AI name and quarantine branch. Once verified and merged into `main`, it will be marked **`🟢 Completed`**.
 
-| ID | Module Name | C++ Source Reference | Target Rust File | Status | Claimed By | Verification Gate |
-|---|---|---|---|---|---|---|
-| **MOD-01** | **Cargo & Project Scaffold** | `Client.h` / Root | `Cargo.toml`, `src/main.rs`, `src/config.rs` | ⚪ Available | - | Clean `cargo check` & builds |
-| **MOD-02** | **State Box (FSM)** | `Client/Network/StateBox.h` | `src/client/state_box.rs` | ⚪ Available | - | Enum state parity with C++ |
-| **MOD-03** | **Network Session** | `NetworkLib/ITZNetLib` | `src/network/net_session.rs` | ⚪ Available | - | TCP socket + `gz-cipher` framing |
-| **MOD-04** | **World List** | `Client/WorldList.h` | `src/world/world_list.rs` | ⚪ Available | - | Struct size & field layout parity |
-| **MOD-05** | **Char Client Data** | `Client/Char/Char-Client.h` | `src/char/char_client.rs` | ⚪ Available | - | Character stats, position, slots |
-| **MOD-06** | **CltClient Core Class** | `Client/Client.h`, `Client.cpp` | `src/client/clt_client.rs` | ⚪ Available | - | Aggregates all managers |
-| **MOD-07** | **Front Login Handler** | `Client/Client-Login.cpp` | `src/client/client_login.rs` | ⚪ Available | - | Opcodes 30000, 21, 1000, 3, 1002 |
-| **MOD-08** | **Game Entry Handler** | `Client/Client-ServerReturn.cpp` | `src/client/client_game_entry.rs` | ⚪ Available | - | Opcodes 1, 2, 3 (15 slots), 4, 106, 5 |
-| **MOD-09** | **In-Game Event Loop** | `Client/Client-Winsock.cpp` | `src/client/client_loop.rs` | ⚪ Available | - | Heartbeat (Op 100) + Broadcasts |
-| **MOD-10** | **Chat & Broadcasts** | `Client/Client-Message.cpp` | `src/client/client_chat.rs` | ⚪ Available | - | Opcode 118 & system messages |
+| ID | Module Name | C++ Source Reference | Target Rust File | Quarantine Branch | Status | Claimed By | Verification Gate |
+|---|---|---|---|---|---|---|---|
+| **MOD-01** | **Cargo & Project Scaffold** | `Client.h` / Root | `Cargo.toml`, `src/main.rs`, `src/config.rs` | `feat/mod-01-scaffold` | ⚪ Available | - | Clean `cargo check` & builds |
+| **MOD-02** | **State Box (FSM)** | `Client/Network/StateBox.h` | `src/client/state_box.rs` | `feat/mod-02-statebox` | ⚪ Available | - | Enum state parity with C++ |
+| **MOD-03** | **Network Session** | `NetworkLib/ITZNetLib` | `src/network/net_session.rs` | `feat/mod-03-net-session` | ⚪ Available | - | TCP socket + `gz-cipher` framing |
+| **MOD-04** | **World List** | `Client/WorldList.h` | `src/world/world_list.rs` | `feat/mod-04-world-list` | ⚪ Available | - | Struct size & field layout parity |
+| **MOD-05** | **Char Client Data** | `Client/Char/Char-Client.h` | `src/char/char_client.rs` | `feat/mod-05-char-client` | ⚪ Available | - | Character stats, position, slots |
+| **MOD-06** | **CltClient Core Class** | `Client/Client.h`, `Client.cpp` | `src/client/clt_client.rs` | `feat/mod-06-clt-client` | ⚪ Available | - | Aggregates all managers |
+| **MOD-07** | **Front Login Handler** | `Client/Client-Login.cpp` | `src/client/client_login.rs` | `feat/mod-07-front-login` | ⚪ Available | - | Opcodes 30000, 21, 1000, 3, 1002 |
+| **MOD-08** | **Game Entry Handler** | `Client/Client-ServerReturn.cpp` | `src/client/client_game_entry.rs` | `feat/mod-08-game-entry` | ⚪ Available | - | Opcodes 1, 2, 3 (15 slots), 4, 106, 5 |
+| **MOD-09** | **In-Game Event Loop** | `Client/Client-Winsock.cpp` | `src/client/client_loop.rs` | `feat/mod-09-in-game-loop` | ⚪ Available | - | Heartbeat (Op 100) + Broadcasts |
+| **MOD-10** | **Chat & Broadcasts** | `Client/Client-Message.cpp` | `src/client/client_chat.rs` | `feat/mod-10-chat-broadcast` | ⚪ Available | - | Opcode 118 & system messages |
 
 *Status Legend:*
 - ⚪ **Available**: Open for anyone to claim.
-- 🟡 **In Progress**: Currently being worked on. Do NOT overwrite.
-- 🟢 **Completed**: Implemented, verified against C++ & live server.
+- 🟡 **In Progress**: Currently being worked on in quarantine branch. Do NOT overwrite.
+- 🟢 **Completed**: Implemented, verified against C++ & live server, merged into `main`.
 
 ---
 
-## 🚀 How to Claim and Work on a Module
+## 🚀 How to Prompt an External AI / Remote Agent
 
-When interacting with any AI agent or contributor, prompt them with:
+Copy and paste this prompt to any external AI agent:
 
 ```text
-"Read CONTRIBUTING.md and README.md.
-Claim module [Module ID: e.g. MOD-02] from the Work Tracker.
-Implement the target file strictly following the 1-1 OOP mapping against the referenced C++ source.
-Do not modify unrelated files."
-```
+Read CONTRIBUTING.md and README.md.
 
-### Workflow Rules:
-1. **Claim the module** in the table above.
-2. Read the referenced C++ header and `.cpp` file in `GoonZu_Source/`.
-3. Implement the corresponding Rust struct and methods.
-4. Verify using `cargo check` and run socket tests against the active server endpoints:
-   - Front: `127.0.0.1:5700` or `0.tcp.ap.ngrok.io:11853`
-   - Game: `127.0.0.1:4010` or `0.tcp.ap.ngrok.io:27911`
-5. Update the table to **`🟢 Completed`** with verification notes.
+Task:
+1. Check the Work Tracker in CONTRIBUTING.md.
+2. Claim an available module (e.g. MOD-01).
+3. Create and switch to a quarantine branch:
+   git checkout main && git pull origin main
+   git checkout -b feat/<module-id>-<short-description>
+4. Update CONTRIBUTING.md to mark the module as "🟡 In Progress" with your details.
+5. Implement the target file strictly following 1-1 OOP mapping against the referenced C++ source in GoonZu_Source/.
+6. Verify with `cargo check`.
+7. Commit and push ONLY to your quarantine branch:
+   git push origin feat/<module-id>-<short-description>
+   (DO NOT push to main).
+```
