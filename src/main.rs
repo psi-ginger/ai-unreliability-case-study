@@ -1,3 +1,4 @@
+mod char;
 mod client;
 mod config;
 mod network;

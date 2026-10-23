@@ -61,7 +61,7 @@ Before starting any implementation, check the table below. Claim an **`⚪ Avail
 | **MOD-02** | **State Box (FSM)** | Client/Network/StateBox.h | src/client/state_box.rs | 🟢 Completed | feat/mod-02-statebox | cargo check & cargo test passed (3 tests) |
 | **MOD-03** | **Network Session** | NetworkLib/ITZNetLib | src/network/net_session.rs | 🟢 Completed | feat/mod-03-net-session | cargo check & cargo test passed (4 tests) |
 | **MOD-04** | **World List** | Client/WorldList.h | src/world/world_list.rs | 🟢 Completed | feat/mod-04-world-list | cargo check & cargo test passed (6 tests) |
-| **MOD-05** | **Char Client Data** | `Client/Char/Char-Client.h` | `src/char/char_client.rs` | `feat/mod-05-char-client` | ⚪ Available | - | Character stats, position, slots |
+| **MOD-05** | **Char Client Data** | Client/Char/Char-Client.h | src/char/char_client.rs | 🟢 Completed | feat/mod-05-char-client | cargo check & cargo test passed (7 tests) |
 | **MOD-06** | **CltClient Core Class** | `Client/Client.h`, `Client.cpp` | `src/client/clt_client.rs` | `feat/mod-06-clt-client` | ⚪ Available | - | Aggregates all managers |
 | **MOD-07** | **Front Login Handler** | `Client/Client-Login.cpp` | `src/client/client_login.rs` | `feat/mod-07-front-login` | ⚪ Available | - | Opcodes 30000, 21, 1000, 3, 1002 |
 | **MOD-08** | **Game Entry Handler** | `Client/Client-ServerReturn.cpp` | `src/client/client_game_entry.rs` | `feat/mod-08-game-entry` | ⚪ Available | - | Opcodes 1, 2, 3 (15 slots), 4, 106, 5 |
