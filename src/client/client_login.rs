@@ -17,10 +17,12 @@ impl CltClient {
             return Err(anyhow::anyhow!("expected secret key"));
         }
         let payload = frame.payload();
-        if payload.len() < 4 {
+        if payload.len() < 5 {
             return Err(anyhow::anyhow!("short secret key"));
         }
-        session.set_out_cipher(Some(Cipher::session_cipher(payload[0], payload[1])));
+        session.set_out_cipher(Some(Cipher::session_cipher(payload[2], payload[4])));
+        // Front sends plaintext inbound frames.
+        session.set_in_cipher(None);
         self.front_session = Some(session);
         self.set_state(UserState::FrontConnected);
         Ok(())
