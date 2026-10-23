@@ -5,6 +5,24 @@ use tokio::sync::watch;
 use tokio::time::{interval, Duration};
 
 impl CltClient {
+    pub async fn send_chat(&mut self, text: &str) -> anyhow::Result<()> {
+        let mut body = vec![0u8; 256];
+        let b = text.as_bytes();
+        for (i, x) in b.iter().take(255).enumerate() { body[i] = *x; }
+        let frame = Frame::new(118, &body)?;
+        if let Some(s) = &mut self.game_session { s.send_frame(&frame).await?; }
+        Ok(())
+    }
+
+    pub async fn send_move(&mut self, x: i32, y: i32) -> anyhow::Result<()> {
+        let mut body = vec![0u8; 8];
+        body[0..4].copy_from_slice(&x.to_le_bytes());
+        body[4..8].copy_from_slice(&y.to_le_bytes());
+        let frame = Frame::new(200, &body)?;
+        if let Some(s) = &mut self.game_session { s.send_frame(&frame).await?; }
+        Ok(())
+    }
+
     pub async fn send_heartbeat(&mut self) -> anyhow::Result<()> {
         let frame = Frame::new(GameMsg::RequestHeartbeat as u16, &[])?;
         if let Some(s) = &mut self.game_session {
@@ -26,12 +44,24 @@ impl CltClient {
     }
 
     pub async fn run_world_loop(&mut self, mut stop_rx: watch::Receiver<bool>) -> anyhow::Result<()> {
-        let mut ticker = interval(Duration::from_secs(10));
+        let mut ticker10 = interval(Duration::from_secs(10));
+        let mut ticker500 = interval(Duration::from_millis(500));
+        let mut n = 0i32;
+        let mut x = 0i32;
         loop {
             tokio::select! {
-                _ = ticker.tick() => {
+                _ = ticker10.tick() => {
                     tracing::info!("in world loop: sending heartbeat...");
                     let _ = self.send_heartbeat().await;
+                }
+                _ = ticker500.tick() => {
+                    if n % 2 == 0 {
+                        let _ = self.send_chat(&format!("Stress ping #{}", n)).await;
+                    } else {
+                        x += 1;
+                        let _ = self.send_move(x, x).await;
+                    }
+                    n += 1;
                 }
                 res = self.poll_game_packet() => {
                     if let Ok(Some(frame)) = res {
