@@ -1,0 +1,119 @@
+use crate::client::clt_client::CltClient;
+use std::sync::atomic::{AtomicUsize, Ordering};
+pub static TOTAL_CHATS: AtomicUsize = AtomicUsize::new(0);
+pub static TOTAL_MOVES: AtomicUsize = AtomicUsize::new(0);
+pub static TOTAL_HEARTBEATS: AtomicUsize = AtomicUsize::new(0);
+pub static TOTAL_RECV: AtomicUsize = AtomicUsize::new(0);
+use gz_net::Frame;
+use gz_proto::opcodes_game::GameMsg;
+use tokio::sync::watch;
+use tokio::time::{interval, Duration};
+
+impl CltClient {
+    pub async fn send_chat(&mut self, text: &str) -> anyhow::Result<()> {
+        let mut body = vec![0u8; 256];
+        let b = text.as_bytes();
+        for (i, x) in b.iter().take(255).enumerate() { body[i] = *x; }
+        let frame = Frame::new(118, &body)?;
+        if let Some(s) = &mut self.game_session { s.send_frame(&frame).await?; TOTAL_CHATS.fetch_add(1, Ordering::Relaxed); }
+        Ok(())
+    }
+
+    pub async fn send_move(&mut self, x: i32, y: i32) -> anyhow::Result<()> {
+        let mut body = vec![0u8; 8];
+        body[0..4].copy_from_slice(&x.to_le_bytes());
+        body[4..8].copy_from_slice(&y.to_le_bytes());
+        let frame = Frame::new(200, &body)?;
+        if let Some(s) = &mut self.game_session { s.send_frame(&frame).await?; TOTAL_MOVES.fetch_add(1, Ordering::Relaxed); }
+        Ok(())
+    }
+
+    pub async fn send_heartbeat(&mut self) -> anyhow::Result<()> {
+        let frame = Frame::new(GameMsg::RequestHeartbeat as u16, &[])?;
+        if let Some(s) = &mut self.game_session {
+            s.send_frame(&frame).await?;
+        }
+        Ok(())
+    }
+
+    pub async fn poll_game_packet(&mut self) -> anyhow::Result<Option<Frame>> {
+        if let Some(s) = &mut self.game_session {
+            match tokio::time::timeout(Duration::from_millis(100), s.recv_frame()).await {
+                Ok(Ok(frame)) => Ok(Some(frame)),
+                Ok(Err(e)) => Err(e),
+                Err(_) => Ok(None),
+            }
+        } else {
+            Ok(None)
+        }
+    }
+
+    pub async fn run_world_loop(&mut self, mut stop_rx: watch::Receiver<bool>) -> anyhow::Result<()> {
+        let mut ticker10 = interval(Duration::from_secs(10));
+        let mut ticker500 = interval(Duration::from_millis(500));
+        let mut n = 0i32;
+        let mut x = 0i32;
+        loop {
+            tokio::select! {
+                _ = ticker10.tick() => {
+                    tracing::info!("in world loop: sending heartbeat...");
+                    let _ = self.send_heartbeat().await;
+                    TOTAL_HEARTBEATS.fetch_add(1, Ordering::Relaxed);
+                }
+                _ = ticker500.tick() => {
+                    if n % 2 == 0 {
+                        let _ = self.send_chat(&format!("Stress ping #{}", n)).await;
+                    } else {
+                        x += 1;
+                        let _ = self.send_move(x, x).await;
+                    }
+                    n += 1;
+                }
+                res = self.poll_game_packet() => {
+                    if let Ok(Some(frame)) = res {
+                        TOTAL_RECV.fetch_add(1, Ordering::Relaxed);
+                        tracing::info!("in world loop: received packet opcode={}", frame.cmd());
+                        match frame.cmd() {
+                            x if x == GameMsg::ResponsePersonIp as u16 => {
+                                let p = frame.payload();
+                                if p.len() >= 16 {
+                                    let hp = i32::from_le_bytes([p[0],p[1],p[2],p[3]]);
+                                    let max_hp = i32::from_le_bytes([p[4],p[5],p[6],p[7]]);
+                                    let mp = i32::from_le_bytes([p[8],p[9],p[10],p[11]]);
+                                    let max_mp = i32::from_le_bytes([p[12],p[13],p[14],p[15]]);
+                                    self.my_char.update_vitals(hp, max_hp, mp, max_mp);
+                                }
+                            }
+                            x if x == GameMsg::ResponseCharupdate as u16 => {
+                                let p = frame.payload();
+                                if p.len() >= 8 {
+                                    let x = i32::from_le_bytes([p[0],p[1],p[2],p[3]]);
+                                    let y = i32::from_le_bytes([p[4],p[5],p[6],p[7]]);
+                                    self.my_char.update_pos(x, y);
+                                }
+                            }
+                            _ => {}
+                        }
+                    }
+                }
+                changed = stop_rx.changed() => {
+                    if changed.is_ok() && *stop_rx.borrow() {
+                        break;
+                    }
+                }
+            }
+        }
+        Ok(())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn heartbeat_frame() {
+        let f = Frame::new(GameMsg::RequestHeartbeat as u16, &[]).unwrap();
+        assert_eq!(f.cmd(), 100);
+    }
+}

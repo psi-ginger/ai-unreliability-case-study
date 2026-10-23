@@ -10,30 +10,31 @@ impl CltClient {
         self.set_state(UserState::GameConnecting);
         let addr = endpoint.unwrap_or(self.config.endpoints().game);
         let mut session = crate::network::net_session::NetSession::connect(addr).await?;
+        session.set_in_cipher(Some(Cipher::link_cipher()));
         self.set_state(UserState::GameConnected);
         let frame = session.recv_frame().await?;
         if frame.cmd() != GameMsg::ResponseClientcharunique as u16 {
             return Err(anyhow::anyhow!("expected char unique"));
         }
         let payload = frame.payload();
-        if payload.len() < 4 {
+        if payload.len() < 6 {
             return Err(anyhow::anyhow!("short key"));
         }
-        session.set_out_cipher(Some(Cipher::session_cipher(payload[0], payload[1])));
-        session.set_in_cipher(Some(Cipher::session_cipher(0x12, 0x34)));
+        session.set_out_cipher(Some(Cipher::session_cipher(payload[4], payload[5])));
         self.game_session = Some(session);
         Ok(())
     }
 
     pub async fn auth_game(&mut self) -> anyhow::Result<()> {
-        let mut body = vec![0u8; 44];
+        let mut body = vec![0u8; 48];
+        body[0..4].copy_from_slice(&self.auth_key.to_le_bytes());
         let id = self.account_id.as_bytes();
         let pw = self.password.as_bytes();
         for (i, b) in id.iter().take(20).enumerate() {
-            body[i] = *b;
+            body[4 + i] = *b;
         }
         for (i, b) in pw.iter().take(20).enumerate() {
-            body[20 + i] = *b;
+            body[24 + i] = *b;
         }
         let frame = Frame::new(GameMsg::RequestLogin as u16, &body)?;
         let session = self.game_session.as_mut().ok_or_else(|| anyhow::anyhow!("no game session"))?;
