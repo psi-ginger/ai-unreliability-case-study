@@ -12,6 +12,7 @@ pub struct CltClient {
     pub game_session: Option<NetSession>,
     pub account_id: String,
     pub password: String,
+    pub auth_key: i32,
     pub config: EndpointMode,
 }
 
@@ -25,6 +26,7 @@ impl CltClient {
             game_session: None,
             account_id,
             password,
+            auth_key: 0,
             config,
         }
     }

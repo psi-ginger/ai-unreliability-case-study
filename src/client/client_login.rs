@@ -42,6 +42,10 @@ impl CltClient {
         if resp.cmd() != 1000 {
             return Err(anyhow::anyhow!("expected login response"));
         }
+        let p = resp.payload();
+        if p.len() >= 6 {
+            self.auth_key = i32::from_le_bytes([p[2], p[3], p[4], p[5]]);
+        }
         // notice handshake
         let notice_req = Frame::new(FrontMsg::RequestNotice as u16, &[])?;
         session.send_frame(&notice_req).await?;
