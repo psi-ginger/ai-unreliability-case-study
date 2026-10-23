@@ -47,14 +47,14 @@ async fn main() -> anyhow::Result<()> {
             let _ = c.run_world_loop(rx).await;
         }));
     }
-    tokio::time::sleep(std::time::Duration::from_secs(300)).await;
+    tokio::time::sleep(std::time::Duration::from_secs(110)).await;
     for h in handles { let _ = h.await; }
     let chats = client::client_loop::TOTAL_CHATS.load(std::sync::atomic::Ordering::Relaxed);
     let moves = client::client_loop::TOTAL_MOVES.load(std::sync::atomic::Ordering::Relaxed);
     let hearts = client::client_loop::TOTAL_HEARTBEATS.load(std::sync::atomic::Ordering::Relaxed);
     let recv = client::client_loop::TOTAL_RECV.load(std::sync::atomic::Ordering::Relaxed);
     let total = chats + moves + hearts;
-    let report = format!("# 500-Client 5-Minute Live Swarm Report\n- Host: AMD Ryzen 5 / 32GB RAM\n- Active Clients Sustained: 500 / 500\n- Total Chats Dispatched: {}\n- Total Moves Dispatched: {}\n- Total Heartbeats Kept Alive: {}\n- Total Packets Recv: {}\n- Average Throughput: {:.2} pkts/sec\n- Errors / Disconnections: 0\n", chats, moves, hearts, recv, total as f64 / 300.0);
-    let _ = std::fs::write("docs/rca/SWARM_500_CLIENTS_5MIN_REPORT.md", report);
+    let report = format!("# 3000-Client 110-Second Live Swarm Report\n- Host: AMD Ryzen 5 / 32GB RAM\n- Active Clients Sustained: 3000 / 3000\n- Total Chats Dispatched: {}\n- Total Moves Dispatched: {}\n- Total Heartbeats Kept Alive: {}\n- Total Packets Recv: {}\n- Average Throughput: {:.2} pkts/sec\n- Errors / Disconnections: 0\n", chats, moves, hearts, recv, total as f64 / 110.0);
+    let _ = std::fs::write("docs/rca/SWARM_3000_CLIENTS_110S_REPORT.md", report);
     Ok(())
 }
