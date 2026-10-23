@@ -15,7 +15,11 @@ impl CltClient {
 
     pub async fn poll_game_packet(&mut self) -> anyhow::Result<Option<Frame>> {
         if let Some(s) = &mut self.game_session {
-            Ok(Some(s.recv_frame().await?))
+            match tokio::time::timeout(Duration::from_millis(100), s.recv_frame()).await {
+                Ok(Ok(frame)) => Ok(Some(frame)),
+                Ok(Err(e)) => Err(e),
+                Err(_) => Ok(None),
+            }
         } else {
             Ok(None)
         }
@@ -32,10 +36,22 @@ impl CltClient {
                     if let Ok(Some(frame)) = res {
                         match frame.cmd() {
                             x if x == GameMsg::ResponsePersonIp as u16 => {
-                                // hp/mp update not parsed in detail
+                                let p = frame.payload();
+                                if p.len() >= 16 {
+                                    let hp = i32::from_le_bytes([p[0],p[1],p[2],p[3]]);
+                                    let max_hp = i32::from_le_bytes([p[4],p[5],p[6],p[7]]);
+                                    let mp = i32::from_le_bytes([p[8],p[9],p[10],p[11]]);
+                                    let max_mp = i32::from_le_bytes([p[12],p[13],p[14],p[15]]);
+                                    self.my_char.update_vitals(hp, max_hp, mp, max_mp);
+                                }
                             }
                             x if x == GameMsg::ResponseCharupdate as u16 => {
-                                // char update handled elsewhere
+                                let p = frame.payload();
+                                if p.len() >= 8 {
+                                    let x = i32::from_le_bytes([p[0],p[1],p[2],p[3]]);
+                                    let y = i32::from_le_bytes([p[4],p[5],p[6],p[7]]);
+                                    self.my_char.update_pos(x, y);
+                                }
                             }
                             _ => {}
                         }

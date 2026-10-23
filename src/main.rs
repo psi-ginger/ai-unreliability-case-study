@@ -5,26 +5,38 @@ mod network;
 mod world;
 
 use clap::Parser;
+use client::clt_client::CltClient;
+use client::state_box::UserState;
 use config::EndpointMode;
 
 #[derive(Parser, Debug)]
 #[command(name = "goonzu-client", version, about = "GoonZu client (Rust port)")]
 struct Args {
-    /// Use ngrok remote endpoints instead of localhost.
     #[arg(long, default_value_t = false)]
     ngrok: bool,
+    #[arg(long, default_value = "test")]
+    user: String,
+    #[arg(long, default_value = "test")]
+    pass: String,
+    #[arg(long, default_value_t = 0)]
+    slot: usize,
 }
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     tracing_subscriber::fmt::init();
     let args = Args::parse();
-    let mode = if args.ngrok {
-        EndpointMode::Ngrok
-    } else {
-        EndpointMode::Local
-    };
-    let ep = mode.endpoints();
-    tracing::info!(front = ep.front, game = ep.game, "endpoints selected");
+    let mode = if args.ngrok { EndpointMode::Ngrok } else { EndpointMode::Local };
+    let mut client = CltClient::new(mode, args.user, args.pass);
+    client.connect_front().await?;
+    client.login_front().await?;
+    client.fetch_world_list().await?;
+    client.connect_game(None).await?;
+    client.auth_game().await?;
+    client.enter_world(args.slot).await?;
+    let (tx, rx) = tokio::sync::watch::channel(false);
+    let _ = tx;
+    client.run_world_loop(rx).await?;
+    let _ = UserState::GamePlaying;
     Ok(())
 }
