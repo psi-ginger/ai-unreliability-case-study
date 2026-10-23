@@ -47,7 +47,7 @@ async fn main() -> anyhow::Result<()> {
             let _ = c.run_world_loop(rx).await;
         }));
     }
-    tokio::time::sleep(std::time::Duration::from_secs(60)).await;
+    tokio::time::sleep(std::time::Duration::from_secs(300)).await;
     for h in handles { let _ = h.await; }
     Ok(())
 }
