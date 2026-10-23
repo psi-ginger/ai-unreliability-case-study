@@ -57,7 +57,7 @@ Before starting any implementation, check the table below. Claim an **`⚪ Avail
 
 | ID | Module Name | C++ Source Reference | Target Rust File | Quarantine Branch | Status | Claimed By | Verification Gate |
 |---|---|---|---|---|---|---|---|
-| **MOD-01** | **Cargo & Project Scaffold** | `Client.h` / Root | `Cargo.toml`, `src/main.rs`, `src/config.rs` | `feat/mod-01-scaffold` | ⚪ Available | - | Clean `cargo check` & builds |
+| **MOD-01** | **Cargo & Project Scaffold** | `Client.h` / Root | `Cargo.toml`, `src/main.rs`, `src/config.rs` | `feat/mod-01-scaffold` | 🟢 Completed | PsiGinger / Agent 1 | Clean `cargo check` & builds verified |
 | **MOD-02** | **State Box (FSM)** | `Client/Network/StateBox.h` | `src/client/state_box.rs` | `feat/mod-02-statebox` | ⚪ Available | - | Enum state parity with C++ |
 | **MOD-03** | **Network Session** | `NetworkLib/ITZNetLib` | `src/network/net_session.rs` | `feat/mod-03-net-session` | ⚪ Available | - | TCP socket + `gz-cipher` framing |
 | **MOD-04** | **World List** | `Client/WorldList.h` | `src/world/world_list.rs` | `feat/mod-04-world-list` | ⚪ Available | - | Struct size & field layout parity |
