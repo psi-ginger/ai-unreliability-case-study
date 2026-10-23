@@ -1,4 +1,9 @@
 use crate::client::clt_client::CltClient;
+use std::sync::atomic::{AtomicUsize, Ordering};
+pub static TOTAL_CHATS: AtomicUsize = AtomicUsize::new(0);
+pub static TOTAL_MOVES: AtomicUsize = AtomicUsize::new(0);
+pub static TOTAL_HEARTBEATS: AtomicUsize = AtomicUsize::new(0);
+pub static TOTAL_RECV: AtomicUsize = AtomicUsize::new(0);
 use gz_net::Frame;
 use gz_proto::opcodes_game::GameMsg;
 use tokio::sync::watch;
@@ -10,7 +15,7 @@ impl CltClient {
         let b = text.as_bytes();
         for (i, x) in b.iter().take(255).enumerate() { body[i] = *x; }
         let frame = Frame::new(118, &body)?;
-        if let Some(s) = &mut self.game_session { s.send_frame(&frame).await?; }
+        if let Some(s) = &mut self.game_session { s.send_frame(&frame).await?; TOTAL_CHATS.fetch_add(1, Ordering::Relaxed); }
         Ok(())
     }
 
@@ -19,7 +24,7 @@ impl CltClient {
         body[0..4].copy_from_slice(&x.to_le_bytes());
         body[4..8].copy_from_slice(&y.to_le_bytes());
         let frame = Frame::new(200, &body)?;
-        if let Some(s) = &mut self.game_session { s.send_frame(&frame).await?; }
+        if let Some(s) = &mut self.game_session { s.send_frame(&frame).await?; TOTAL_MOVES.fetch_add(1, Ordering::Relaxed); }
         Ok(())
     }
 
@@ -53,6 +58,7 @@ impl CltClient {
                 _ = ticker10.tick() => {
                     tracing::info!("in world loop: sending heartbeat...");
                     let _ = self.send_heartbeat().await;
+                    TOTAL_HEARTBEATS.fetch_add(1, Ordering::Relaxed);
                 }
                 _ = ticker500.tick() => {
                     if n % 2 == 0 {
@@ -65,6 +71,7 @@ impl CltClient {
                 }
                 res = self.poll_game_packet() => {
                     if let Ok(Some(frame)) = res {
+                        TOTAL_RECV.fetch_add(1, Ordering::Relaxed);
                         tracing::info!("in world loop: received packet opcode={}", frame.cmd());
                         match frame.cmd() {
                             x if x == GameMsg::ResponsePersonIp as u16 => {
